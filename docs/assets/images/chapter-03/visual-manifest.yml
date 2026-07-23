@@ -39,6 +39,9 @@ exports:
   - id: ch03-incident-response
     source: incident-response-mas.svg
     output: incident-response-mas.png
+  - id: ch03-caseops-slice2
+    source: caseops-slice2-collaboration.svg
+    output: caseops-slice2-collaboration.png
 
 provenance:
   method: deterministic SVG composition
