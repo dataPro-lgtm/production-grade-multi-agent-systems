@@ -8,7 +8,7 @@
 
 | 章 | 主题 | 读者带走的核心产物 |
 |---|---|---|
-| [01](../chapters/01-what-is-an-ai-agent.md) | **先判断是否需要 Agent**<br>从确定性基线、动态路径和自治边界开始判断。 | CaseOps Slice 0、自治矩阵、ADR |
+| [01](../chapters/01-what-is-an-ai-agent.md) | **理解 Agent：从本质到架构边界**<br>讲清闭环、五层结构、自治与单/多 Agent 判断，再用 CaseOps 验证。 | Agent 判断框架、CaseOps Slice 0、ADR |
 | [02](../chapters/02-tool-calling-state-machine-and-mcp.md) | **让 Agent 安全地行动**<br>把工具调用放入可持久化、可恢复的状态机。 | 工具合同、状态机、幂等与 MCP 边界 |
 | [03](../chapters/03-multi-agent-patterns-collaboration-and-incident-response.md) | **让多个 Agent 可靠协作**<br>按领域、状态、权限和故障边界选择协作模式。 | 模式决策记录、协作合同、事件响应机制 |
 

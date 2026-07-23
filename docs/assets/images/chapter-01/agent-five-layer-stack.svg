@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img">
+<defs><marker id="arrow-1e3a5f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1e3a5f"/></marker><marker id="arrow-d59621" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d59621"/></marker><marker id="arrow-3c8d77" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3c8d77"/></marker><marker id="arrow-c94c4c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c94c4c"/></marker><marker id="arrow-7651a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7651a6"/></marker><marker id="arrow-55708f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#55708f"/></marker></defs>
+<rect width="1600" height="900" fill="#fbf7ec"/>
+<path d="M 18 177 C 420 169, 930 188, 1580 176 M 25 720 C 520 730, 1000 708, 1575 721" stroke="#e7dfce" stroke-width="2" fill="none" opacity=".55"/>
+
+<text x="70" y="75" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="43" font-weight="760" fill="#1e3a5f" text-anchor="start"><tspan x="70" dy="0">生产 Agent 的五层结构：责任清楚，系统才可治理</tspan></text>
+<path d="M 70 94 C 270 87, 490 101, 720 93" fill="none" stroke="#d59621" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+<text x="72" y="130" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="23" font-weight="500" fill="#55708f" text-anchor="start"><tspan x="72" dy="0">五层不等于五个服务；它们是必须被分配、验证和观察的五组工程责任。</tspan></text>
+<rect x="155" y="205" width="1060" height="112" rx="22" fill="#dfeaf4" stroke="#1e3a5f" stroke-width="4"/>
+<rect x="157" y="204" width="1059" height="113" rx="23" fill="none" stroke="#1e3a5f" stroke-width="1.2" opacity=".3" transform="rotate(.15 685 261)"/>
+<text x="240" y="255" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="31" font-weight="760" fill="#1e3a5f" text-anchor="start"><tspan x="240" dy="0">目标层</tspan></text>
+<text x="240" y="293" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="500" fill="#55708f" text-anchor="start"><tspan x="240" dy="0">目标 · 成功标准 · 范围 · 终止条件</tspan></text>
+<rect x="960" y="236" width="200" height="50" rx="25" fill="#fffdf7" stroke="#1e3a5f" stroke-width="2"/>
+<rect x="962" y="235" width="199" height="51" rx="26" fill="none" stroke="#1e3a5f" stroke-width="1.2" opacity=".3" transform="rotate(.15 1060 261)"/><text x="1060" y="269" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="700" fill="#1e3a5f" text-anchor="middle"><tspan x="1060" dy="0">要什么 / 何时停</tspan></text>
+<rect x="155" y="342" width="1060" height="112" rx="22" fill="#e9e0f4" stroke="#7651a6" stroke-width="4"/>
+<rect x="157" y="341" width="1059" height="113" rx="23" fill="none" stroke="#7651a6" stroke-width="1.2" opacity=".3" transform="rotate(.15 685 398)"/>
+<text x="240" y="392" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="31" font-weight="760" fill="#7651a6" text-anchor="start"><tspan x="240" dy="0">认知层</tspan></text>
+<text x="240" y="430" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="500" fill="#55708f" text-anchor="start"><tspan x="240" dy="0">推理 · 规划 · 路由 · 评估 · 反思</tspan></text>
+<rect x="960" y="373" width="200" height="50" rx="25" fill="#fffdf7" stroke="#7651a6" stroke-width="2"/>
+<rect x="962" y="372" width="199" height="51" rx="26" fill="none" stroke="#7651a6" stroke-width="1.2" opacity=".3" transform="rotate(.15 1060 398)"/><text x="1060" y="406" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="700" fill="#7651a6" text-anchor="middle"><tspan x="1060" dy="0">下一步做什么</tspan></text>
+<rect x="155" y="479" width="1060" height="112" rx="22" fill="#f7e7b8" stroke="#d59621" stroke-width="4"/>
+<rect x="157" y="478" width="1059" height="113" rx="23" fill="none" stroke="#d59621" stroke-width="1.2" opacity=".3" transform="rotate(.15 685 535)"/>
+<text x="240" y="529" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="31" font-weight="760" fill="#d59621" text-anchor="start"><tspan x="240" dy="0">行动层</tspan></text>
+<text x="240" y="567" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="500" fill="#55708f" text-anchor="start"><tspan x="240" dy="0">检索 · 计算 · 操作 · 通信</tspan></text>
+<rect x="960" y="510" width="200" height="50" rx="25" fill="#fffdf7" stroke="#d59621" stroke-width="2"/>
+<rect x="962" y="509" width="199" height="51" rx="26" fill="none" stroke="#d59621" stroke-width="1.2" opacity=".3" transform="rotate(.15 1060 535)"/><text x="1060" y="543" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="700" fill="#d59621" text-anchor="middle"><tspan x="1060" dy="0">怎样影响环境</tspan></text>
+<rect x="155" y="616" width="1060" height="112" rx="22" fill="#dcefe7" stroke="#3c8d77" stroke-width="4"/>
+<rect x="157" y="615" width="1059" height="113" rx="23" fill="none" stroke="#3c8d77" stroke-width="1.2" opacity=".3" transform="rotate(.15 685 672)"/>
+<text x="240" y="666" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="31" font-weight="760" fill="#3c8d77" text-anchor="start"><tspan x="240" dy="0">状态层</tspan></text>
+<text x="240" y="704" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="500" fill="#55708f" text-anchor="start"><tspan x="240" dy="0">任务状态 · 记忆 · 知识 · 证据 · 轨迹</tspan></text>
+<rect x="960" y="647" width="200" height="50" rx="25" fill="#fffdf7" stroke="#3c8d77" stroke-width="2"/>
+<rect x="962" y="646" width="199" height="51" rx="26" fill="none" stroke="#3c8d77" stroke-width="1.2" opacity=".3" transform="rotate(.15 1060 672)"/><text x="1060" y="680" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="700" fill="#3c8d77" text-anchor="middle"><tspan x="1060" dy="0">发生了什么</tspan></text>
+<path d="M 685 317 C 685 315, 685 344, 685 342" fill="none" stroke="#1e3a5f" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<path d="M 685 454 C 685 452, 685 481, 685 479" fill="none" stroke="#7651a6" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-7651a6)"/>
+<path d="M 685 591 C 685 589, 685 618, 685 616" fill="none" stroke="#d59621" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-d59621)"/>
+<rect x="1270" y="205" width="270" height="523" rx="34" fill="#f7dddd" stroke="#c94c4c" stroke-width="5"/>
+<rect x="1272" y="204" width="269" height="524" rx="35" fill="none" stroke="#c94c4c" stroke-width="1.2" opacity=".3" transform="rotate(.15 1405 466.5)"/>
+<text x="1405" y="272" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="34" font-weight="780" fill="#c94c4c" text-anchor="middle"><tspan x="1405" dy="0">控制层</tspan></text>
+<text x="1405" y="335" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="24" font-weight="650" fill="#1e3a5f" text-anchor="middle"><tspan x="1405" dy="0">身份与权限</tspan></text>
+<text x="1405" y="378" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="24" font-weight="650" fill="#1e3a5f" text-anchor="middle"><tspan x="1405" dy="0">Schema 校验</tspan></text>
+<text x="1405" y="421" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="24" font-weight="650" fill="#1e3a5f" text-anchor="middle"><tspan x="1405" dy="0">预算与超时</tspan></text>
+<text x="1405" y="464" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="24" font-weight="650" fill="#1e3a5f" text-anchor="middle"><tspan x="1405" dy="0">审批与幂等</tspan></text>
+<text x="1405" y="507" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="24" font-weight="650" fill="#1e3a5f" text-anchor="middle"><tspan x="1405" dy="0">重试与熔断</tspan></text>
+<text x="1405" y="550" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="24" font-weight="650" fill="#1e3a5f" text-anchor="middle"><tspan x="1405" dy="0">审计与追踪</tspan></text>
+<rect x="1305" y="650" width="200" height="50" rx="25" fill="#fffdf7" stroke="#c94c4c" stroke-width="2"/>
+<rect x="1307" y="649" width="199" height="51" rx="26" fill="none" stroke="#c94c4c" stroke-width="1.2" opacity=".3" transform="rotate(.15 1405 675)"/><text x="1405" y="683" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="700" fill="#c94c4c" text-anchor="middle"><tspan x="1405" dy="0">是否允许</tspan></text>
+<path d="M 1270 261 C 1251.6666666666667 259, 1233.3333333333333 263, 1215 261" fill="none" stroke="#c94c4c" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-c94c4c)"/>
+<path d="M 1270 398 C 1251.6666666666667 396, 1233.3333333333333 400, 1215 398" fill="none" stroke="#c94c4c" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-c94c4c)"/>
+<path d="M 1270 535 C 1251.6666666666667 533, 1233.3333333333333 537, 1215 535" fill="none" stroke="#c94c4c" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-c94c4c)"/>
+<path d="M 1270 672 C 1251.6666666666667 670, 1233.3333333333333 674, 1215 672" fill="none" stroke="#c94c4c" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-c94c4c)"/>
+<rect x="320" y="775" width="960" height="64" rx="25" fill="#fffdf7" stroke="#55708f" stroke-width="2" stroke-dasharray="10 8"/>
+<rect x="322" y="774" width="959" height="65" rx="26" fill="none" stroke="#55708f" stroke-width="1.2" opacity=".3" transform="rotate(.15 800 807)"/>
+<text x="800" y="816" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="24" font-weight="680" fill="#1e3a5f" text-anchor="middle"><tspan x="800" dy="0">模型主要参与认知；运行时必须让目标、行动、状态与控制保持一致。</tspan></text>
+
+<text x="1525" y="860" font-family="'Kaiti SC','STKaiti',sans-serif" font-size="18" fill="#55708f" text-anchor="end">生产级多智能体系统 · 第 01 章</text>
+</svg>

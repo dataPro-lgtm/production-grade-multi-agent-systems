@@ -128,6 +128,44 @@ ${text(800, 693, "终止也是显式动作", 27, { anchor: "middle", weight: 700
 ${text(800, 730, "完成 · 证据不足 · 拒绝 · 等待审批 · 转人工", 21, { anchor: "middle", color: C.muted })}
 `);
 
+files["agent-five-layer-stack.svg"] = svg(`
+${titleBlock("生产 Agent 的五层结构：责任清楚，系统才可治理", "五层不等于五个服务；它们是必须被分配、验证和观察的五组工程责任。")}
+${box(155, 205, 1060, 112, { fill: C.blueSoft, stroke: C.ink, strokeWidth: 4 })}
+${text(240, 255, "目标层", 31, { weight: 760 })}
+${text(240, 293, "目标 · 成功标准 · 范围 · 终止条件", 22, { color: C.muted })}
+${pill(960, 236, 200, "要什么 / 何时停", C.ink, C.paper)}
+${box(155, 342, 1060, 112, { fill: C.purpleSoft, stroke: C.purple, strokeWidth: 4 })}
+${text(240, 392, "认知层", 31, { weight: 760, color: C.purple })}
+${text(240, 430, "推理 · 规划 · 路由 · 评估 · 反思", 22, { color: C.muted })}
+${pill(960, 373, 200, "下一步做什么", C.purple, C.paper)}
+${box(155, 479, 1060, 112, { fill: C.amberSoft, stroke: C.amber, strokeWidth: 4 })}
+${text(240, 529, "行动层", 31, { weight: 760, color: C.amber })}
+${text(240, 567, "检索 · 计算 · 操作 · 通信", 22, { color: C.muted })}
+${pill(960, 510, 200, "怎样影响环境", C.amber, C.paper)}
+${box(155, 616, 1060, 112, { fill: C.greenSoft, stroke: C.green, strokeWidth: 4 })}
+${text(240, 666, "状态层", 31, { weight: 760, color: C.green })}
+${text(240, 704, "任务状态 · 记忆 · 知识 · 证据 · 轨迹", 22, { color: C.muted })}
+${pill(960, 647, 200, "发生了什么", C.green, C.paper)}
+${line(685, 317, 685, 342, { color: C.ink, width: 3 })}
+${line(685, 454, 685, 479, { color: C.purple, width: 3 })}
+${line(685, 591, 685, 616, { color: C.amber, width: 3 })}
+${box(1270, 205, 270, 523, { fill: C.redSoft, stroke: C.red, strokeWidth: 5, radius: 34 })}
+${text(1405, 272, "控制层", 34, { anchor: "middle", weight: 780, color: C.red })}
+${text(1405, 335, "身份与权限", 24, { anchor: "middle", color: C.ink, weight: 650 })}
+${text(1405, 378, "Schema 校验", 24, { anchor: "middle", color: C.ink, weight: 650 })}
+${text(1405, 421, "预算与超时", 24, { anchor: "middle", color: C.ink, weight: 650 })}
+${text(1405, 464, "审批与幂等", 24, { anchor: "middle", color: C.ink, weight: 650 })}
+${text(1405, 507, "重试与熔断", 24, { anchor: "middle", color: C.ink, weight: 650 })}
+${text(1405, 550, "审计与追踪", 24, { anchor: "middle", color: C.ink, weight: 650 })}
+${pill(1305, 650, 200, "是否允许", C.red, C.paper)}
+${line(1270, 261, 1215, 261, { color: C.red, width: 3 })}
+${line(1270, 398, 1215, 398, { color: C.red, width: 3 })}
+${line(1270, 535, 1215, 535, { color: C.red, width: 3 })}
+${line(1270, 672, 1215, 672, { color: C.red, width: 3 })}
+${box(320, 775, 960, 64, { fill: C.paper, stroke: C.muted, strokeWidth: 2, dash: "10 8", radius: 25 })}
+${text(800, 816, "模型主要参与认知；运行时必须让目标、行动、状态与控制保持一致。", 24, { anchor: "middle", weight: 680 })}
+`);
+
 files["autonomy-matrix.svg"] = svg(`
 ${titleBlock("自治有两条轴：会规划，不等于可以执行", "规划自治决定“下一步谁选”；执行自治决定“系统允许改变什么”。")}
 ${line(240, 730, 1450, 730, { color: C.ink, width: 5 })}

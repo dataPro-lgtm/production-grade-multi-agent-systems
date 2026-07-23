@@ -22,6 +22,9 @@ exports:
   - id: ch01-loop
     source: agent-minimal-loop.svg
     output: agent-minimal-loop.png
+  - id: ch01-five-layer-stack
+    source: agent-five-layer-stack.svg
+    output: agent-five-layer-stack.png
   - id: ch01-autonomy-matrix
     source: autonomy-matrix.svg
     output: autonomy-matrix.png
