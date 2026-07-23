@@ -27,6 +27,17 @@
 | Reconcile | 在外部副作用状态未知时查询权威系统并收敛本地状态，而不是盲目重试 |
 | Artifact | Agent 或工具产生的可引用产物；生产系统中宜使用不可变版本和内容哈希 |
 | AgentOps | 围绕 Goal、Plan、Route、Tool、Evidence、Decision 与 Control 建立可诊断、可干预、可恢复和可持续优化的生产运营责任体系 |
+| Capstone | 用一个完整项目闭合问题、架构、实现、安全、评测、发布、运营和维护证据的综合交付 |
+| Vertical Slice | 用最小能力穿过身份、计划、委派、工具、状态、证据、评测和观测等真实边界的端到端切片 |
+| Evidence Package | 与特定 Release Candidate 绑定，汇集产品、架构、实现、质量、安全、韧性、运营和可追溯证据的验收包 |
+| Traceability Matrix | 连接 Requirement、ADR、Contract、Implementation、Verification、Runtime Evidence 和 Sign-off 的双向关系 |
+| Release Candidate | 已固定源代码、合同、Prompt、Model、Tool、Policy、Knowledge、制品和证据版本的候选发布对象 |
+| Clean-room Reproduction | 由未依赖作者本机状态和口头指导的独立环境，按公开步骤复现系统与证据的验收方法 |
+| SBOM | Software Bill of Materials，描述发布制品所含直接与传递依赖、版本、标识和许可证的软件物料清单 |
+| Build Provenance | 描述制品由谁、在什么构建过程、使用哪些输入生成的可验证来源信息 |
+| Artifact Attestation | 对制品及其来源、构建或其他属性作出的可验证签名声明；它不等于制品没有漏洞 |
+| Release Gate | 针对问题、设计、切片、质量、安全或运营等独立风险做出 Pass、Conditional Pass 或 Fail 的发布门禁 |
+| System Acceptance | 基于需求、证据、风险与独立复现，对系统是否可以交付作出的正式判断 |
 | Goal Outcome Event | 描述目标结果、安全路径、证据覆盖、时延、成本、版本和关联引用的结构化运营事件 |
 | Tier 1 Metric | 直接表达用户承诺和系统整体健康、能够改变运营决策的目标级指标 |
 | Tier 2 Metric | 按 Planner、Router、Worker、Tool、Model、State 与 Security 等责任层解释 Tier 1 变化的诊断指标 |

@@ -33,6 +33,9 @@
 - 将第 09 周 Word 讲义重构为“AgentOps、事件诊断、运行控制、韧性、成本与持续优化”正式章节；
 - 增加 6 幅第 09 章可编辑白板手绘风原创运营架构图及确定性生成脚本；
 - 增加 Goal Outcome、Tier 1 / Tier 2 指标、Incident Bundle、Control Action、恢复、成本、GameDay 与 ORR 生产运营契约；
+- 将第 10 周 Word 讲义重构为“Capstone 系统验收、Evidence Package、发布门禁与 GitHub 开源交付”正式章节；
+- 增加 6 幅第 10 章可编辑白板手绘风原创验收架构图及确定性生成脚本；
+- 增加 Charter、Requirement、Traceability、Vertical Slice、Clean-room Reproduction、SBOM / Provenance、Release Gates 与开源治理契约；
 - 增加阅读路径、全书路线、术语表和工程模板；
 - 增加贡献指南、Issue 模板和质量检查脚本。
 
@@ -55,4 +58,6 @@
 - 将第 08 章从指标与平台罗列重构为“如何证明多 Agent 系统真的变好”的完整质量控制链，并按当前主流离线评测、LLM Judge 与线上监控实践校准；
 - 去除第 09 章中的学习成果、课次安排、演示脚本、作业、评分 Rubric、自测答案和课程阶段总结；
 - 将第 09 章从 AgentOps 控制项罗列重构为 C-102 上线事故主线，并按当前 OpenTelemetry GenAI、SRE、FinOps、Kubernetes 与韧性演练实践校准；
+- 去除第 10 章中的学习成果、课次、课程包、答辩评分、冲刺安排、演示脚本、自测答案和课程总结；
+- 将第 10 章从毕业设计任务清单重构为“如何让独立评审者验证并接管系统”的交付证据链，并按当前 GitHub、NIST SSDF、SLSA、OSI 与 Semantic Versioning 实践校准；
 - 统一全书目录、阅读指南与贡献标准中的图书化叙事要求。
