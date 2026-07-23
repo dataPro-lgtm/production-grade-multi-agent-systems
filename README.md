@@ -9,7 +9,7 @@
 - 多 Agent 应该按哪些真实工程边界拆分？
 - 怎样把工具、状态、权限、评测、可观测性和故障恢复做成生产系统？
 
-> 当前状态：项目骨架与自动发布链路已建立，前五章均已完成面向正式出版物的图书化重构，并配有可编辑的原创架构图。其余章节将按路线图持续填充。
+> 当前状态：项目骨架与自动发布链路已建立，前六章均已完成面向正式出版物的图书化重构，并配有可编辑的原创架构图。其余章节将按路线图持续填充。
 
 ## 在线阅读
 
@@ -24,6 +24,7 @@
 - [第 03 章：让多个 Agent 可靠协作——架构模式、协作合同与事件响应](docs/chapters/03-multi-agent-patterns-collaboration-and-incident-response.md)
 - [第 04 章：让模型只看到正确的上下文——Context Engineering、Agentic RAG 与 GraphRAG](docs/chapters/04-context-engineering-agentic-rag-and-graphrag.md)
 - [第 05 章：从“能启动”到“可恢复”——生产基础设施、可观测性与故障恢复](docs/chapters/05-production-infrastructure-observability-and-recovery.md)
+- [第 06 章：不要指望模型保护自己——多 Agent 纵深防御、Tool Guard 与红队验证](docs/chapters/06-agent-security-tool-guard-privacy-and-red-teaming.md)
 - [全书目录与写作状态](docs/guide/book-roadmap.md)
 - [读者阅读路径](docs/guide/reading-path.md)
 - [术语表](docs/appendices/glossary.md)
@@ -32,6 +33,7 @@
 - [多 Agent 模式决策记录模板](docs/toolkit/pattern-decision-record.md)
 - [Context Engineering 设计画布](docs/toolkit/context-engineering-canvas.md)
 - [生产就绪与恢复契约](docs/toolkit/production-readiness-contract.md)
+- [Agent 安全评审与红队契约](docs/toolkit/agent-security-review-pack.md)
 
 ## 本地预览
 

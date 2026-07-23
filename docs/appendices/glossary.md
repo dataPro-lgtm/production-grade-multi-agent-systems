@@ -50,4 +50,21 @@
 | Bulkhead | 按任务、租户、工具或资源池隔离并发和故障的舱壁机制 |
 | Backpressure | 系统过载时通过拒绝、有界排队、限流或降级抑制上游输入的机制 |
 | DLQ | Dead Letter Queue，保存达到重试上限或无法处理消息并等待诊断与受控重放的队列 |
+| Prompt Injection | 攻击者通过用户输入、检索内容、工具结果或其他渠道影响模型目标、决策或输出的攻击 |
+| Indirect Prompt Injection | 恶意指令不直接来自用户，而是藏在网页、邮件、文档、OCR、工具结果或 Peer Agent 内容中 |
+| Least Agency | 只在确有必要时授予最小功能、最小权限和最小自主性的 Agent 安全原则 |
+| Tool Guard | 位于模型 Tool Intent 与特权执行器之间，执行身份、策略、Schema、风险、审批和结果门禁的架构角色 |
+| Policy Enforcement Point | 截获访问或动作请求并执行 Policy Decision 的确定性控制点 |
+| Workload Identity | 代表服务、Agent、Worker 或 Tool Runtime 的机器身份，与最终用户身份分开 |
+| Effective Authority | 用户、Workload、委托、任务、工具、资源、环境和审批权限的有效交集 |
+| Bound Approval | 绑定具体动作、资源、参数哈希、版本、Scope 和有效期的审批授权 |
+| TOCTOU | Time of Check to Time of Use，检查通过后到执行前状态变化导致旧授权失效的问题 |
+| Confused Deputy | 低权限主体诱导高权限服务使用自身权限完成原主体无权执行的动作 |
+| Token Audience | Access Token 被签发给的目标资源服务；接收方必须验证自己是预期受众 |
+| DLP | Data Loss Prevention，对敏感数据的发现、分类、转换、阻断和外流监控 |
+| Security Invariant | 不允许通过统计错误预算消费的零容忍安全条件，例如未授权副作用必须为零 |
+| Attack Success Rate | 在指定攻击集、版本和重复次数内，攻击达成禁用目标的比例 |
+| Red Team | 在明确范围和安全约束下模拟攻击，以验证控制、检测、响应与恢复能力的活动 |
+| Fail Closed | 控制或依赖失败时默认拒绝受保护动作，避免因安全组件不可用而绕过策略 |
+| Nonce | 只使用一次的随机或唯一值，用于发现消息、审批或委托的重放 |
 | ADR | Architecture Decision Record，记录背景、约束、选项、决策和验证方式 |

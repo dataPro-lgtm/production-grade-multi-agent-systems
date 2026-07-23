@@ -1,0 +1,33 @@
+chapter: 6
+title: 不要指望模型保护自己
+style:
+  direction: 架构师白板手绘体
+  canvas: 1600x900
+  background: warm-paper
+  palette: ink-blue, amber, green, red, purple
+  source: scripts/generate_ch06_visuals.mjs
+  editable_format: svg
+  delivery_format: png
+assets:
+  - id: agent-security-trust-boundaries
+    figure: 6-1
+    purpose: 展示不可信、受控、特权与受保护四类信任域
+  - id: defense-in-depth-execution-flow
+    figure: 6-2
+    purpose: 展示恶意内容到受控副作用之间的多层安全执行流
+  - id: tool-guard-authority-intersection
+    figure: 6-3
+    purpose: 解释用户、Agent、任务、资源与审批的有效权限交集
+  - id: privacy-purpose-lifecycle
+    figure: 6-4
+    purpose: 展示敏感数据的用途绑定、转换、保留与删除传播
+  - id: secure-mcp-a2a-delegation
+    figure: 6-5
+    purpose: 区分 MCP 和 A2A 中的身份、令牌受众、委托与业务授权
+  - id: red-team-evidence-loop
+    figure: 6-6
+    purpose: 展示威胁、攻击、观测、评测、验收与回归闭环
+provenance:
+  original: true
+  external_assets: none
+  generated_at: 2026-07-23
