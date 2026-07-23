@@ -26,6 +26,11 @@
 | Late Result | 任务超时、取消或 Plan 已更新后才到达的结果；应记录但不能默认合并到当前状态 |
 | Reconcile | 在外部副作用状态未知时查询权威系统并收敛本地状态，而不是盲目重试 |
 | Artifact | Agent 或工具产生的可引用产物；生产系统中宜使用不可变版本和内容哈希 |
+| AgentOps | 围绕 Goal、Plan、Route、Tool、Evidence、Decision 与 Control 建立可诊断、可干预、可恢复和可持续优化的生产运营责任体系 |
+| Goal Outcome Event | 描述目标结果、安全路径、证据覆盖、时延、成本、版本和关联引用的结构化运营事件 |
+| Tier 1 Metric | 直接表达用户承诺和系统整体健康、能够改变运营决策的目标级指标 |
+| Tier 2 Metric | 按 Planner、Router、Worker、Tool、Model、State 与 Security 等责任层解释 Tier 1 变化的诊断指标 |
+| Incident Bundle | 汇集事故影响、版本、证据、控制动作、回滚和时间线的可移交事实包 |
 | A2A | Agent2Agent Protocol，独立 Agent 之间发现能力、交换消息、跟踪任务和交付产物的互操作协议 |
 | AgentCard | A2A 中描述 Agent 身份、接口、能力、技能与安全方案的发现对象 |
 | Capability Snapshot | 从 AgentCard 或 Registry 派生，并按用户、租户、环境、版本和风险过滤后提供给 Planner 的能力快照 |
@@ -52,6 +57,8 @@
 | Data Leakage | 评测案例或其语义近邻进入训练、Few-shot、RAG 或 Memory，使回归分数虚高而不代表泛化能力的现象 |
 | Trace | 一次任务中计划、路由、工具、状态和输出的可观测执行轨迹 |
 | Control Plane | 负责路由、计划、策略、预算、审批与状态转换的控制责任面 |
+| Runtime Control Plane | 把生产观测转化为熔断、降级、取消、限流、回滚和恢复等受审计动作的运行控制面 |
+| Control Action Contract | 对控制动作的目标、范围、原因、审批、预期版本、期限、回滚和恢复条件的约定 |
 | Execution Plane | 负责实际运行 Agent、Tool、Worker、Sandbox 与模型调用的执行责任面 |
 | Source of Truth | 某项事实发生冲突时具有最终裁决权的权威来源 |
 | Derived Index | 从权威来源生成、用于提升查询或分析效率，并且应能按版本重建的派生结构 |
@@ -62,12 +69,23 @@
 | OpenTelemetry | 用于生成、传播、采集和导出 Trace、Metric 与 Log 等遥测数据的开放可观测性框架 |
 | Baggage | 随请求传播的受控键值上下文；可能进入下游网络请求，不应携带敏感数据 |
 | SLO | Service Level Objective，在指定窗口内对用户可感知服务指标设定的目标 |
+| SLI | Service Level Indicator，对用户可感知服务表现的计算定义，必须声明人群、分子、分母、窗口和排除项 |
 | Error Budget | `1 - SLO` 所允许的不可靠空间，用于平衡变更速度与可靠性投入 |
+| Error Budget Burn Rate | 在给定窗口内消耗错误预算的速度，用于识别快速或持续的可靠性退化 |
 | RPO | Recovery Point Objective，故障后可以接受丢失的数据时间范围 |
 | RTO | Recovery Time Objective，从故障到恢复目标服务允许的最长时间 |
 | Circuit Breaker | 在下游持续故障时快速失败，并通过受控探测判断是否恢复的熔断机制 |
 | Bulkhead | 按任务、租户、工具或资源池隔离并发和故障的舱壁机制 |
 | Backpressure | 系统过载时通过拒绝、有界排队、限流或降级抑制上游输入的机制 |
+| Retry Amplification | 物理尝试总数与唯一逻辑操作数之比，用于识别多层重试叠加造成的负载和成本放大 |
+| Cost per Successful Goal | 总有效成本与成功 Goal 数量的比值，把技术消耗关联到业务结果的单位经济指标 |
+| Wasted Cost | 失败、被丢弃、重复或未对最终结果产生贡献的模型、工具与平台成本 |
+| Semantic Cache | 按意图、实体、权限、版本与有效时间匹配语义等价请求或中间结果的缓存；命中必须重新满足隔离与证据约束 |
+| Experience Store | 保存经过来源、人工复核、范围、有效期、隐私和版本兼容治理的可复用运行经验的存储 |
+| Prompt Release Manifest | 记录 Prompt 版本、代码提交、变量、兼容合同、评测、灰度、排除风险、回滚和 Owner 的发布清单 |
+| GameDay | 在受控、接近生产的环境中注入故障，联合验证系统、人员、流程、告警、Runbook 与恢复能力的演练 |
+| ORR | Operational Readiness Review，以 SLO、质量、安全、恢复、运营、成本和演练证据做出 Go、Conditional Go 或 No-Go 决策的生产就绪评审 |
+| Break-glass | 在紧急情况下临时提升或绕过常规访问流程的受控机制，必须有明确范围、审批、TTL 和审计 |
 | DLQ | Dead Letter Queue，保存达到重试上限或无法处理消息并等待诊断与受控重放的队列 |
 | Prompt Injection | 攻击者通过用户输入、检索内容、工具结果或其他渠道影响模型目标、决策或输出的攻击 |
 | Indirect Prompt Injection | 恶意指令不直接来自用户，而是藏在网页、邮件、文档、OCR、工具结果或 Peer Agent 内容中 |

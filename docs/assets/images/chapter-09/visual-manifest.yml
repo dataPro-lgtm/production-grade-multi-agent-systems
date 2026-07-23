@@ -1,0 +1,35 @@
+version: 1
+chapter: 09
+style: architect-whiteboard
+source: scripts/generate_ch09_visuals.mjs
+assets:
+  - id: agentops-five-operational-views
+    svg: agentops-five-operational-views.svg
+    png: agentops-five-operational-views.png
+    width: 1600
+    height: 900
+  - id: diagnostic-triad
+    svg: diagnostic-triad.svg
+    png: diagnostic-triad.png
+    width: 1600
+    height: 900
+  - id: incident-causal-reconstruction
+    svg: incident-causal-reconstruction.svg
+    png: incident-causal-reconstruction.png
+    width: 1600
+    height: 900
+  - id: runtime-control-state-machine
+    svg: runtime-control-state-machine.svg
+    png: runtime-control-state-machine.png
+    width: 1600
+    height: 900
+  - id: cost-causal-tree
+    svg: cost-causal-tree.svg
+    png: cost-causal-tree.png
+    width: 1600
+    height: 900
+  - id: continuous-operations-loop
+    svg: continuous-operations-loop.svg
+    png: continuous-operations-loop.png
+    width: 1600
+    height: 900

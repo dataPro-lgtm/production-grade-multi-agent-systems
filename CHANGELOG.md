@@ -30,6 +30,9 @@
 - 将第 08 周 Word 讲义重构为“多 Agent 评测、Golden Dataset、分层指标、Judge、N-run 与持续回归”正式章节；
 - 增加 6 幅第 08 章可编辑白板手绘风原创评测架构图及确定性生成脚本；
 - 增加 Quality Contract、Golden Entry、Fixture、Evaluator、Judge Calibration、N-run、Regression Gate、Eval Report 与 Quality Incident 持续回归契约；
+- 将第 09 周 Word 讲义重构为“AgentOps、事件诊断、运行控制、韧性、成本与持续优化”正式章节；
+- 增加 6 幅第 09 章可编辑白板手绘风原创运营架构图及确定性生成脚本；
+- 增加 Goal Outcome、Tier 1 / Tier 2 指标、Incident Bundle、Control Action、恢复、成本、GameDay 与 ORR 生产运营契约；
 - 增加阅读路径、全书路线、术语表和工程模板；
 - 增加贡献指南、Issue 模板和质量检查脚本。
 
@@ -50,4 +53,6 @@
 - 将第 07 章从组件与检查项罗列重构为 C-102 调查主线，并按 A2A 1.0、MCP 2025-11-25 与 OpenTelemetry 当前规范校准；
 - 去除第 08 章中的学习成果、课次安排、演示脚本、作业、评分 Rubric、自测答案和预告；
 - 将第 08 章从指标与平台罗列重构为“如何证明多 Agent 系统真的变好”的完整质量控制链，并按当前主流离线评测、LLM Judge 与线上监控实践校准；
+- 去除第 09 章中的学习成果、课次安排、演示脚本、作业、评分 Rubric、自测答案和课程阶段总结；
+- 将第 09 章从 AgentOps 控制项罗列重构为 C-102 上线事故主线，并按当前 OpenTelemetry GenAI、SRE、FinOps、Kubernetes 与韧性演练实践校准；
 - 统一全书目录、阅读指南与贡献标准中的图书化叙事要求。
