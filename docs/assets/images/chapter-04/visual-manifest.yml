@@ -1,0 +1,49 @@
+visual_system:
+  name: architect-whiteboard
+  version: 1
+  inherited_from: chapter-01
+  canvas: warm-white
+  primary_ink: "#1e3a5f"
+  accent_amber: "#d59621"
+  accent_green: "#3c8d77"
+  risk_red: "#c94c4c"
+  accent_purple: "#7651a6"
+  typography:
+    preferred:
+      - Kaiti SC
+      - STKaiti
+      - Noto Sans SC
+    fallback: sans-serif
+  treatment:
+    - editable SVG source
+    - subtle hand-drawn double strokes
+    - deterministic Chinese labels and technical relationships
+    - high-contrast palette
+
+exports:
+  - id: ch04-context-pipeline
+    source: context-engineering-pipeline.svg
+    output: context-engineering-pipeline.png
+  - id: ch04-context-planes
+    source: context-inventory-planes.svg
+    output: context-inventory-planes.png
+  - id: ch04-context-pack
+    source: context-pack-contract.svg
+    output: context-pack-contract.png
+  - id: ch04-hybrid-agentic
+    source: hybrid-agentic-retrieval.svg
+    output: hybrid-agentic-retrieval.png
+  - id: ch04-graphrag-path
+    source: graphrag-evidence-path.svg
+    output: graphrag-evidence-path.png
+  - id: ch04-investigation-system
+    source: enterprise-knowledge-investigation.svg
+    output: enterprise-knowledge-investigation.png
+
+provenance:
+  method: deterministic SVG composition
+  generator: scripts/generate_ch04_visuals.mjs
+  generated_text: false
+  source_document_images_reused: false
+  source_book_images_reused: false
+  note: Word 原图和参考书仅用于概念研究，最终图稿均按本书视觉系统重新绘制。

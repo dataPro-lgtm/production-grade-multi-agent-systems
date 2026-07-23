@@ -9,7 +9,7 @@
 - 多 Agent 应该按哪些真实工程边界拆分？
 - 怎样把工具、状态、权限、评测、可观测性和故障恢复做成生产系统？
 
-> 当前状态：项目骨架与自动发布链路已建立，前三章均已完成面向正式出版物的图书化重构，并配有可编辑的原创架构图。其余章节将按路线图持续填充。
+> 当前状态：项目骨架与自动发布链路已建立，前四章均已完成面向正式出版物的图书化重构，并配有可编辑的原创架构图。其余章节将按路线图持续填充。
 
 ## 在线阅读
 
@@ -22,12 +22,14 @@
 - [第 01 章：到底什么才算 AI Agent？](docs/chapters/01-what-is-an-ai-agent.md)
 - [第 02 章：让 Agent 安全地行动——工具调用、状态机与 MCP](docs/chapters/02-tool-calling-state-machine-and-mcp.md)
 - [第 03 章：让多个 Agent 可靠协作——架构模式、协作合同与事件响应](docs/chapters/03-multi-agent-patterns-collaboration-and-incident-response.md)
+- [第 04 章：让模型只看到正确的上下文——Context Engineering、Agentic RAG 与 GraphRAG](docs/chapters/04-context-engineering-agentic-rag-and-graphrag.md)
 - [全书目录与写作状态](docs/guide/book-roadmap.md)
 - [读者阅读路径](docs/guide/reading-path.md)
 - [术语表](docs/appendices/glossary.md)
 - [Agent 定义卡](docs/toolkit/agent-definition-card.md)
 - [架构决策记录模板](docs/toolkit/architecture-decision-record.md)
 - [多 Agent 模式决策记录模板](docs/toolkit/pattern-decision-record.md)
+- [Context Engineering 设计画布](docs/toolkit/context-engineering-canvas.md)
 
 ## 本地预览
 
