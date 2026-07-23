@@ -24,6 +24,9 @@
 - 将第 06 周 Word 讲义重构为“多 Agent 纵深防御、Tool Guard、隐私审计与红队验证”正式章节；
 - 增加 6 幅第 06 章可编辑白板手绘风原创安全架构图及确定性生成脚本；
 - 增加 Threat Record、Tool Security Manifest、Bound Approval、Delegation、Audit、Red-Team Case 与 Security Acceptance 安全评审契约；
+- 将第 07 周 Word 讲义重构为“分层多 Agent、Supervisor、A2A、MCP 与 Context Graph 系统合龙”正式章节；
+- 增加 6 幅第 07 章可编辑白板手绘风原创系统合龙架构图及确定性生成脚本；
+- 增加 Layer Registry、Capability Snapshot、Plan、A2A Dispatch、MCP Tool、State Ownership、Join、Context Graph、Failure Drill 与 System Acceptance 合龙契约；
 - 增加阅读路径、全书路线、术语表和工程模板；
 - 增加贡献指南、Issue 模板和质量检查脚本。
 
@@ -40,4 +43,6 @@
 - 将第 05 章从部署产品与命令罗列重构为平台边界、状态所有权、运行契约、遥测、可靠性与恢复证据链；
 - 去除第 06 章中的学习成果、单元安排、课堂攻防、多媒体脚本、作业和评分 Rubric；
 - 将第 06 章从控制项罗列重构为间接注入攻击主线，并按 OWASP Agentic Top 10 2026、MCP 2025-11-25 与 A2A 1.0 校准；
+- 去除第 07 章中的学习成果、课次安排、演示脚本、作业、评分 Rubric、自测答案和预告；
+- 将第 07 章从组件与检查项罗列重构为 C-102 调查主线，并按 A2A 1.0、MCP 2025-11-25 与 OpenTelemetry 当前规范校准；
 - 统一全书目录、阅读指南与贡献标准中的图书化叙事要求。

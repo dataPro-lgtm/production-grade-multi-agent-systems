@@ -18,12 +18,17 @@
 | Context Graph | 描述一次 Agent 执行中 Goal、Task、Tool、Evidence 和 Claim 因果关系的图 |
 | Handoff | 一个 Agent 将任务控制权和必要状态显式移交给另一个 Agent |
 | Supervisor | 负责路由、委托、汇总或控制多个责任单元的编排角色 |
+| Central Supervisor | 负责跨领域 Goal 分解、Team 路由、全局依赖、预算和结果汇总的控制面角色 |
+| Team Supervisor | 在单一领域内选择 Worker、分配子预算、验证局部结果并对外返回 Team Result 的角色 |
 | Delegation Contract | 对子任务目标、验收标准、范围、工具、预算、截止时间和升级方式的约定 |
 | Result Contract | 对 Agent 任务状态、结论、证据引用、缺失信息、副作用和下一步建议的约定 |
 | Join Contract | 对并行任务等待集合、完成阈值、超时、冲突与晚到结果的聚合约定 |
+| Late Result | 任务超时、取消或 Plan 已更新后才到达的结果；应记录但不能默认合并到当前状态 |
+| Reconcile | 在外部副作用状态未知时查询权威系统并收敛本地状态，而不是盲目重试 |
 | Artifact | Agent 或工具产生的可引用产物；生产系统中宜使用不可变版本和内容哈希 |
 | A2A | Agent2Agent Protocol，独立 Agent 之间发现能力、交换消息、跟踪任务和交付产物的互操作协议 |
 | AgentCard | A2A 中描述 Agent 身份、接口、能力、技能与安全方案的发现对象 |
+| Capability Snapshot | 从 AgentCard 或 Registry 派生，并按用户、租户、环境、版本和风险过滤后提供给 Planner 的能力快照 |
 | Tool Call | 模型生成的结构化动作提议；需要经过解析、校验和授权后才能执行 |
 | Tool Contract | 工具名称、用途、输入 Schema、权限、错误、幂等和副作用的完整契约 |
 | State | Agent 跨步骤共享的结构化运行数据，包括任务、证据、控制和关联信息 |

@@ -1,0 +1,33 @@
+chapter: 7
+title: 从组件拼装到系统合龙
+style:
+  direction: 架构师白板手绘体
+  canvas: 1600x900
+  background: warm-paper
+  palette: ink-blue, amber, green, red, purple
+  source: scripts/generate_ch07_visuals.mjs
+  editable_format: svg
+  delivery_format: png
+assets:
+  - id: layered-multi-agent-system
+    figure: 7-1
+    purpose: 展示 Access、Central Supervisor、Team Supervisor、Worker 与 Tool 的责任收缩
+  - id: a2a-mcp-boundary
+    figure: 7-2
+    purpose: 区分 A2A 的 Agent 系统协作边界与 MCP 的工具资源调用边界
+  - id: state-ownership-and-join
+    figure: 7-3
+    purpose: 展示状态字段所有权、并发步骤与确定性 Join
+  - id: end-to-end-incident-flow
+    figure: 7-4
+    purpose: 展示 C-102 调查从目标到 Artifact、Evidence 与审批边界的完整链路
+  - id: context-graph-runtime
+    figure: 7-5
+    purpose: 展示 Goal、Plan、Agent、Tool、Artifact、Evidence 与 Claim 的运行时因果链
+  - id: integration-verification-loop
+    figure: 7-6
+    purpose: 展示合同、垂直切片、证据、故障、验收与扩展闭环
+provenance:
+  original: true
+  external_assets: none
+  generated_at: 2026-07-23
