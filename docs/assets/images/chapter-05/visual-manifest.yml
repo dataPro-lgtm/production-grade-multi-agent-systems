@@ -1,0 +1,33 @@
+chapter: 5
+title: 从“能启动”到“可恢复”
+style:
+  direction: 架构师白板手绘体
+  canvas: 1600x900
+  background: warm-paper
+  palette: ink-blue, amber, green, red, purple
+  source: scripts/generate_ch05_visuals.mjs
+  editable_format: svg
+  delivery_format: png
+assets:
+  - id: production-platform-planes
+    figure: 5-1
+    purpose: 区分体验、控制、执行、数据与运营责任
+  - id: stateless-core-stateful-edge
+    figure: 5-2
+    purpose: 说明计算实例与持久状态的不同生命周期
+  - id: deployment-health-contract
+    figure: 5-3
+    purpose: 区分 Process、Startup、Liveness、Readiness 与 Synthetic
+  - id: observability-causal-chain
+    figure: 5-4
+    purpose: 展示请求跨 Agent、Tool、Queue 与数据源的遥测关联
+  - id: reliability-envelope
+    figure: 5-5
+    purpose: 展示 Deadline、重试、熔断、舱壁、队列与幂等的保护层
+  - id: backup-restore-loop
+    figure: 5-6
+    purpose: 把备份、恢复、业务不变量与 RPO/RTO 连接成闭环
+provenance:
+  original: true
+  external_assets: none
+  generated_at: 2026-07-23
