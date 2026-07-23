@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">多 Agent 拆分的真实工程边界</title>
+  <desc id="desc">领域、数据、工具、权限、状态、故障、规模和所有权是判断是否应拆分 Agent 的八类工程边界。</desc>
+  <defs>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".014" numOctaves="2" seed="17" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.3"/></filter>
+    <style>.t{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}.h1{font-size:42px;font-weight:700}.h2{font-size:30px;font-weight:700}.b{font-size:20px}.line{stroke:#1e3a5f;stroke-width:4;stroke-dasharray:10 10;fill:none}</style>
+  </defs>
+  <rect width="1600" height="900" fill="#fbfaf5"/>
+  <text x="80" y="75" class="t h1">不要先给 Agent 起名字，先寻找真实边界</text>
+
+  <g filter="url(#rough)">
+    <ellipse cx="800" cy="445" rx="245" ry="125" fill="#fff1bb" stroke="#d59621" stroke-width="6"/>
+  </g>
+  <text x="800" y="430" text-anchor="middle" class="t h1">是否应该拆分？</text>
+  <text x="800" y="480" text-anchor="middle" class="t h2">边界不同，责任才独立</text>
+
+  <path d="M580 390 L365 255 M750 320 L690 230 M850 320 L910 230 M1020 390 L1235 255 M580 505 L365 640 M750 570 L690 690 M850 570 L910 690 M1020 505 L1235 640" class="line"/>
+
+  <g filter="url(#rough)">
+    <rect x="90" y="145" width="340" height="150" rx="16" fill="#e8f2ff" stroke="#326da8" stroke-width="4"/>
+    <rect x="485" y="110" width="280" height="145" rx="16" fill="#e7f5ed" stroke="#3c8d77" stroke-width="4"/>
+    <rect x="835" y="110" width="280" height="145" rx="16" fill="#f4ebff" stroke="#7651a6" stroke-width="4"/>
+    <rect x="1170" y="145" width="340" height="150" rx="16" fill="#ffe9e5" stroke="#c94c4c" stroke-width="4"/>
+    <rect x="90" y="605" width="340" height="150" rx="16" fill="#fff4d2" stroke="#d59621" stroke-width="4"/>
+    <rect x="485" y="650" width="280" height="145" rx="16" fill="#e8f2ff" stroke="#326da8" stroke-width="4"/>
+    <rect x="835" y="650" width="280" height="145" rx="16" fill="#e7f5ed" stroke="#3c8d77" stroke-width="4"/>
+    <rect x="1170" y="605" width="340" height="150" rx="16" fill="#f4ebff" stroke="#7651a6" stroke-width="4"/>
+  </g>
+  <text x="260" y="202" text-anchor="middle" class="t h2">领域 Domain</text><text x="260" y="242" text-anchor="middle" class="t b">术语 · 规则 · 成功标准</text>
+  <text x="625" y="167" text-anchor="middle" class="t h2">数据 Data</text><text x="625" y="207" text-anchor="middle" class="t b">表 · 文档 · 实体范围</text>
+  <text x="975" y="167" text-anchor="middle" class="t h2">工具 Tools</text><text x="975" y="207" text-anchor="middle" class="t b">读写能力与副作用</text>
+  <text x="1340" y="202" text-anchor="middle" class="t h2">权限 Permission</text><text x="1340" y="242" text-anchor="middle" class="t b">身份 · 审批 · 最小权限</text>
+
+  <text x="260" y="662" text-anchor="middle" class="t h2">状态 State</text><text x="260" y="702" text-anchor="middle" class="t b">创建 · 更新 · 生命周期</text>
+  <text x="625" y="707" text-anchor="middle" class="t h2">故障 Failure</text><text x="625" y="747" text-anchor="middle" class="t b">超时 · 重试 · 降级</text>
+  <text x="975" y="707" text-anchor="middle" class="t h2">规模 Scale</text><text x="975" y="747" text-anchor="middle" class="t b">容量 · SLO · 成本预算</text>
+  <text x="1340" y="662" text-anchor="middle" class="t h2">所有权 Owner</text><text x="1340" y="702" text-anchor="middle" class="t b">团队 · 发布 · 运维责任</text>
+  <text x="800" y="855" text-anchor="middle" class="t h2" fill="#c94c4c">若这些维度没有显著差异，多个角色通常不应成为多个 Agent</text>
+</svg>

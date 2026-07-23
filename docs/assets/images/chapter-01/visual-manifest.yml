@@ -1,0 +1,42 @@
+visual_system:
+  name: architect-whiteboard
+  version: 1
+  canvas: warm-white
+  primary_ink: "#1e3a5f"
+  accent_amber: "#d59621"
+  accent_green: "#3c8d77"
+  risk_red: "#c94c4c"
+  typography:
+    preferred:
+      - Kaiti SC
+      - STKaiti
+      - Noto Sans SC
+    fallback: sans-serif
+  treatment:
+    - editable SVG source
+    - subtle hand-drawn displacement on shapes
+    - deterministic labels and relationships
+    - high-contrast palette for light and dark readers
+
+exports:
+  - id: ch01-loop
+    source: agent-minimal-loop.svg
+    output: agent-minimal-loop.png
+  - id: ch01-autonomy
+    source: autonomy-levels.svg
+    output: autonomy-levels.png
+  - id: ch01-boundaries
+    source: engineering-boundaries.svg
+    output: engineering-boundaries.png
+  - id: ch01-ladder
+    source: architecture-escalation.svg
+    output: architecture-escalation.png
+  - id: ch01-data-agent
+    source: data-agent-architectures.svg
+    output: data-agent-architectures.png
+
+provenance:
+  method: deterministic SVG composition
+  generated_text: false
+  source_book_images_reused: false
+  note: 原书仅用于概念研究，未复制其插图或视觉设计。
