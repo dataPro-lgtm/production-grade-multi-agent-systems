@@ -48,9 +48,11 @@ nav:
   - 正文:
       - 第 01 章 到底什么才算 AI Agent: chapters/01-what-is-an-ai-agent.md
       - 第 02 章 让 Agent 安全地行动: chapters/02-tool-calling-state-machine-and-mcp.md
+      - 第 03 章 让多个 Agent 可靠协作: chapters/03-multi-agent-patterns-collaboration-and-incident-response.md
   - 工程模板:
       - Agent 定义卡: toolkit/agent-definition-card.md
       - 架构决策记录: toolkit/architecture-decision-record.md
+      - 多 Agent 模式决策记录: toolkit/pattern-decision-record.md
       - 章节写作模板: toolkit/chapter-template.md
   - 附录:
       - 术语表: appendices/glossary.md

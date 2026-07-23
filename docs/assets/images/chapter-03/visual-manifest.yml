@@ -1,0 +1,49 @@
+visual_system:
+  name: architect-whiteboard
+  version: 1
+  inherited_from: chapter-01
+  canvas: warm-white
+  primary_ink: "#1e3a5f"
+  accent_amber: "#d59621"
+  accent_green: "#3c8d77"
+  risk_red: "#c94c4c"
+  accent_purple: "#7651a6"
+  typography:
+    preferred:
+      - Kaiti SC
+      - STKaiti
+      - Noto Sans SC
+    fallback: sans-serif
+  treatment:
+    - editable SVG source
+    - subtle hand-drawn double strokes
+    - deterministic Chinese labels and technical relationships
+    - high-contrast palette
+
+exports:
+  - id: ch03-control-axes
+    source: multi-agent-control-axes.svg
+    output: multi-agent-control-axes.png
+  - id: ch03-pattern-family
+    source: pattern-family-map.svg
+    output: pattern-family-map.png
+  - id: ch03-handoff-supervisor
+    source: handoff-vs-supervisor.svg
+    output: handoff-vs-supervisor.png
+  - id: ch03-fanout-join
+    source: fanout-join-contract.svg
+    output: fanout-join-contract.png
+  - id: ch03-contract-stack
+    source: collaboration-contract-stack.svg
+    output: collaboration-contract-stack.png
+  - id: ch03-incident-response
+    source: incident-response-mas.svg
+    output: incident-response-mas.png
+
+provenance:
+  method: deterministic SVG composition
+  generator: scripts/generate_ch03_visuals.mjs
+  generated_text: false
+  source_document_images_reused: false
+  source_book_images_reused: false
+  note: Word 原图和参考书仅用于概念研究，最终图稿均按本书视觉系统重新绘制。
