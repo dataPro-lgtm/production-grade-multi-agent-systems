@@ -37,8 +37,9 @@
 - [x] 第 07 章：分层多 Agent、Supervisor、A2A、MCP 与 Context Graph 合龙
 - [x] 第 08 章：Golden Dataset、分层指标、Judge、N-run 与持续回归
 - [x] 第 09 章：AgentOps、事件诊断、运行控制、韧性、成本与持续优化
-- [x] 章节写作、Agent 定义卡、ADR、生产就绪、安全评审、系统合龙、评测回归与 AgentOps 模板
-- [ ] 第 10 章及后续章节正文
+- [x] 第 10 章：Capstone 系统验收、证据包、发布门禁与 GitHub 开源交付
+- [x] 章节写作、Agent 定义卡、ADR、生产就绪、安全评审、系统合龙、评测回归、AgentOps 与 Capstone 验收模板
+- [ ] 后续案例与专题章节
 - [ ] 随书代码实验与自动化测试
 - [ ] 第一版完整审校与正式发布
 

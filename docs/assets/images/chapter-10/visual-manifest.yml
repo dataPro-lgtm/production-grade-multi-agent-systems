@@ -1,0 +1,35 @@
+version: 1
+chapter: 10
+style: architect-whiteboard
+source: scripts/generate_ch10_visuals.mjs
+assets:
+  - id: capstone-lifecycle-closure
+    svg: capstone-lifecycle-closure.svg
+    png: capstone-lifecycle-closure.png
+    width: 1600
+    height: 900
+  - id: acceptance-evidence-chain
+    svg: acceptance-evidence-chain.svg
+    png: acceptance-evidence-chain.png
+    width: 1600
+    height: 900
+  - id: vertical-slice-through-boundaries
+    svg: vertical-slice-through-boundaries.svg
+    png: vertical-slice-through-boundaries.png
+    width: 1600
+    height: 900
+  - id: sequential-release-gates
+    svg: sequential-release-gates.svg
+    png: sequential-release-gates.png
+    width: 1600
+    height: 900
+  - id: open-source-delivery-products
+    svg: open-source-delivery-products.svg
+    png: open-source-delivery-products.png
+    width: 1600
+    height: 900
+  - id: capstone-maturity-ladder
+    svg: capstone-maturity-ladder.svg
+    png: capstone-maturity-ladder.png
+    width: 1600
+    height: 900
