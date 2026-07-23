@@ -50,11 +50,13 @@ nav:
       - 第 02 章 让 Agent 安全地行动: chapters/02-tool-calling-state-machine-and-mcp.md
       - 第 03 章 让多个 Agent 可靠协作: chapters/03-multi-agent-patterns-collaboration-and-incident-response.md
       - 第 04 章 让模型只看到正确的上下文: chapters/04-context-engineering-agentic-rag-and-graphrag.md
+      - 第 05 章 从能启动到可恢复: chapters/05-production-infrastructure-observability-and-recovery.md
   - 工程模板:
       - Agent 定义卡: toolkit/agent-definition-card.md
       - 架构决策记录: toolkit/architecture-decision-record.md
       - 多 Agent 模式决策记录: toolkit/pattern-decision-record.md
       - Context Engineering 设计画布: toolkit/context-engineering-canvas.md
+      - 生产就绪与恢复契约: toolkit/production-readiness-contract.md
       - 章节写作模板: toolkit/chapter-template.md
   - 附录:
       - 术语表: appendices/glossary.md

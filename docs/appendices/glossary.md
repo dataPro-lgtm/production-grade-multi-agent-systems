@@ -32,4 +32,22 @@
 | MCP | Model Context Protocol，AI Host 与外部 Server 发现、读取和调用能力的标准协议 |
 | Golden Dataset | 用于持续评测和回归比较的代表性任务与标准证据集合 |
 | Trace | 一次任务中计划、路由、工具、状态和输出的可观测执行轨迹 |
+| Control Plane | 负责路由、计划、策略、预算、审批与状态转换的控制责任面 |
+| Execution Plane | 负责实际运行 Agent、Tool、Worker、Sandbox 与模型调用的执行责任面 |
+| Source of Truth | 某项事实发生冲突时具有最终裁决权的权威来源 |
+| Derived Index | 从权威来源生成、用于提升查询或分析效率，并且应能按版本重建的派生结构 |
+| Startup Probe | 判断应用是否在允许时间内完成初始化；成功前不应执行常规存活与就绪探测 |
+| Liveness Probe | 判断进程是否陷入需要重启才能恢复的内部故障 |
+| Readiness Probe | 判断当前实例能否接收新流量；失败通常移出流量而不重启 |
+| Synthetic Check | 以受控测试请求验证关键端到端业务路径的主动检查 |
+| OpenTelemetry | 用于生成、传播、采集和导出 Trace、Metric 与 Log 等遥测数据的开放可观测性框架 |
+| Baggage | 随请求传播的受控键值上下文；可能进入下游网络请求，不应携带敏感数据 |
+| SLO | Service Level Objective，在指定窗口内对用户可感知服务指标设定的目标 |
+| Error Budget | `1 - SLO` 所允许的不可靠空间，用于平衡变更速度与可靠性投入 |
+| RPO | Recovery Point Objective，故障后可以接受丢失的数据时间范围 |
+| RTO | Recovery Time Objective，从故障到恢复目标服务允许的最长时间 |
+| Circuit Breaker | 在下游持续故障时快速失败，并通过受控探测判断是否恢复的熔断机制 |
+| Bulkhead | 按任务、租户、工具或资源池隔离并发和故障的舱壁机制 |
+| Backpressure | 系统过载时通过拒绝、有界排队、限流或降级抑制上游输入的机制 |
+| DLQ | Dead Letter Queue，保存达到重试上限或无法处理消息并等待诊断与受控重放的队列 |
 | ADR | Architecture Decision Record，记录背景、约束、选项、决策和验证方式 |
