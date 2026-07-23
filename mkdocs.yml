@@ -47,6 +47,7 @@ nav:
       - 全书目录与进度: guide/book-roadmap.md
   - 正文:
       - 第 01 章 到底什么才算 AI Agent: chapters/01-what-is-an-ai-agent.md
+      - 第 02 章 让 Agent 安全地行动: chapters/02-tool-calling-state-machine-and-mcp.md
   - 工程模板:
       - Agent 定义卡: toolkit/agent-definition-card.md
       - 架构决策记录: toolkit/architecture-decision-record.md

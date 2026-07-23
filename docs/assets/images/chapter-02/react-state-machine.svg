@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">ReAct 的显式状态机</title>
+  <desc id="desc">模型节点产生结构化结果，路由器将状态送往策略和工具、澄清、审批、验证或终止节点。</desc>
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="17" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#1e3a5f" stroke-width="2.2"/></marker>
+    <style>.label{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}.title{font-size:42px;font-weight:700}.box-title{font-size:29px;font-weight:700}.body{font-size:20px}.small{font-size:18px}.flow{fill:none;stroke:#1e3a5f;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}.risk{fill:none;stroke:#c94c4c;stroke-width:4.5;stroke-dasharray:10 8;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1600" height="900" fill="#fbfaf5"/>
+  <path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">ReAct 不是提示词技巧，而是一张状态图</text>
+
+  <g filter="url(#rough)">
+    <rect x="80" y="280" width="260" height="150" rx="26" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
+    <rect x="470" y="280" width="260" height="150" rx="26" fill="#fff4d2" stroke="#d59621" stroke-width="5"/>
+    <rect x="860" y="180" width="260" height="150" rx="26" fill="#fff0ef" stroke="#c94c4c" stroke-width="5"/>
+    <rect x="1250" y="180" width="260" height="150" rx="26" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
+    <rect x="860" y="500" width="260" height="130" rx="26" fill="#f4ebff" stroke="#7651a6" stroke-width="5"/>
+    <rect x="1250" y="500" width="260" height="130" rx="26" fill="#ffffff" stroke="#c94c4c" stroke-width="5"/>
+    <rect x="470" y="610" width="260" height="130" rx="26" fill="#fff1bb" stroke="#d59621" stroke-width="5"/>
+  </g>
+
+  <text x="210" y="337" text-anchor="middle" class="label box-title">模型节点</text><text x="210" y="379" text-anchor="middle" class="label body">读取受限上下文</text><text x="210" y="410" text-anchor="middle" class="label small">提出结构化下一步</text>
+  <text x="600" y="337" text-anchor="middle" class="label box-title">条件路由</text><text x="600" y="379" text-anchor="middle" class="label body">检查状态与预算</text><text x="600" y="410" text-anchor="middle" class="label small">选择合法边</text>
+  <text x="990" y="237" text-anchor="middle" class="label box-title">策略门禁</text><text x="990" y="279" text-anchor="middle" class="label body">授权 · 风险 · 审批</text><text x="990" y="310" text-anchor="middle" class="label small">允许 / 拒绝</text>
+  <text x="1380" y="237" text-anchor="middle" class="label box-title">工具节点</text><text x="1380" y="279" text-anchor="middle" class="label body">确定性执行</text><text x="1380" y="310" text-anchor="middle" class="label small">写回结果或错误</text>
+  <text x="990" y="552" text-anchor="middle" class="label box-title">暂停状态</text><text x="990" y="594" text-anchor="middle" class="label body">澄清 / 人工审批</text>
+  <text x="1380" y="552" text-anchor="middle" class="label box-title">终止状态</text><text x="1380" y="594" text-anchor="middle" class="label body">完成 / 拒绝 / 失败</text>
+  <text x="600" y="662" text-anchor="middle" class="label box-title">输出验证</text><text x="600" y="704" text-anchor="middle" class="label body">证据覆盖 · 格式 · 安全</text>
+
+  <path d="M340 355 L470 355" class="flow"/>
+  <path d="M730 330 C785 300 810 270 860 255" class="flow"/><text x="775" y="270" class="label small">Tool Call</text>
+  <path d="M1120 255 L1250 255" class="flow"/>
+  <path d="M1380 330 C1360 420 1160 430 720 400 C450 380 320 430 245 280" class="flow"/>
+  <path d="M730 380 C790 430 830 525 860 565" class="flow"/><text x="735" y="475" class="label small">澄清 / 审批</text>
+  <path d="M730 410 C725 505 680 580 650 610" class="flow"/><text x="655" y="520" class="label small">最终回答</text>
+  <path d="M730 675 C920 720 1160 700 1250 590" class="flow"/>
+  <path d="M1120 565 L1250 565" class="risk"/><text x="1152" y="545" class="label small">拒绝 / 超时</text>
+
+  <path d="M80 810 C400 790 700 808 1000 795 C1210 785 1400 800 1520 790" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="800" y="842" text-anchor="middle" class="label box-title" fill="#9d3030">最大步数 · 预算 · 循环检测 · 权限阻断，必须由运行时强制</text>
+</svg>

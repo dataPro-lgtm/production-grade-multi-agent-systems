@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Agent State 的五层运行契约</title>
+  <desc id="desc">Agent State 分为消息、任务、证据、控制和追踪五层，完整状态与进入模型的受限上下文分离。</desc>
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="23" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#1e3a5f" stroke-width="2.2"/></marker>
+    <style>.label{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}.title{font-size:42px;font-weight:700}.layer{font-size:29px;font-weight:700}.body{font-size:22px}.small{font-size:19px}.flow{fill:none;stroke:#1e3a5f;stroke-width:4.5;stroke-dasharray:11 9;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1600" height="900" fill="#fbfaf5"/>
+  <path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">State 是 Agent 的运行契约，不只是消息列表</text>
+
+  <g filter="url(#rough)">
+    <rect x="120" y="150" width="980" height="108" rx="18" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
+    <rect x="120" y="276" width="980" height="108" rx="18" fill="#e3f0f8" stroke="#326da8" stroke-width="5"/>
+    <rect x="120" y="402" width="980" height="108" rx="18" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
+    <rect x="120" y="528" width="980" height="108" rx="18" fill="#fff4d2" stroke="#d59621" stroke-width="5"/>
+    <rect x="120" y="654" width="980" height="108" rx="18" fill="#fff0ef" stroke="#c94c4c" stroke-width="5"/>
+    <rect x="1210" y="220" width="300" height="350" rx="28" fill="#f4ebff" stroke="#7651a6" stroke-width="5"/>
+  </g>
+
+  <text x="165" y="215" class="label layer">Messages</text><text x="430" y="215" class="label body">用户输入 · 模型响应 · Tool Message</text>
+  <text x="165" y="341" class="label layer">Task</text><text x="430" y="341" class="label body">目标 · 计划 · 当前步骤 · 任务状态</text>
+  <text x="165" y="467" class="label layer">Evidence</text><text x="430" y="467" class="label body">事实 · 来源 · 新鲜度 · 质量状态</text>
+  <text x="165" y="593" class="label layer">Control</text><text x="430" y="593" class="label body">预算 · 重试 · 风险 · 权限 · 审批</text>
+  <text x="165" y="719" class="label layer">Trace</text><text x="430" y="719" class="label body">thread_id · trace_id · call_id · 版本</text>
+
+  <text x="1360" y="282" text-anchor="middle" class="label layer">模型上下文</text>
+  <text x="1360" y="330" text-anchor="middle" class="label body">经过选择与过滤</text>
+  <text x="1360" y="380" text-anchor="middle" class="label small">必要消息</text>
+  <text x="1360" y="416" text-anchor="middle" class="label small">必要证据</text>
+  <text x="1360" y="452" text-anchor="middle" class="label small">允许看到的约束</text>
+  <text x="1360" y="510" text-anchor="middle" class="label body" fill="#9d3030">不是完整 State</text>
+
+  <path d="M1100 204 C1160 205 1170 275 1210 300" class="flow"/>
+  <path d="M1100 456 C1160 450 1170 390 1210 380" class="flow"/>
+  <path d="M1100 582 C1170 575 1170 480 1210 460" class="flow"/>
+
+  <text x="800" y="835" text-anchor="middle" class="label layer" fill="#9d3030">控制数据结构化保存；只有必要内容才进入模型上下文</text>
+</svg>

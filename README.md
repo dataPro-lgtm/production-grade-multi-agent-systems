@@ -20,6 +20,7 @@
 ## 已完成内容
 
 - [第 01 章：到底什么才算 AI Agent？](docs/chapters/01-what-is-an-ai-agent.md)
+- [第 02 章：让 Agent 安全地行动——工具调用、状态机与 MCP](docs/chapters/02-tool-calling-state-machine-and-mcp.md)
 - [全书目录与写作状态](docs/guide/book-roadmap.md)
 - [读者阅读路径](docs/guide/reading-path.md)
 - [术语表](docs/appendices/glossary.md)
