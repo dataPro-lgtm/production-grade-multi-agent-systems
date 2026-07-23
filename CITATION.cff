@@ -8,4 +8,5 @@ version: 0.1.0
 date-released: 2026-07-23
 license: CC-BY-4.0
 abstract: 一本从架构判断、系统边界和生产控制出发，讲解多智能体系统工程落地的中文开源书。
-
+repository-code: https://github.com/dataPro-lgtm/production-grade-multi-agent-systems
+url: https://datapro-lgtm.github.io/production-grade-multi-agent-systems/

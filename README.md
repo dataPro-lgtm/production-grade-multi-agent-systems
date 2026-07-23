@@ -13,7 +13,9 @@
 
 ## 在线阅读
 
-仓库使用 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) 构建。首次推送到 GitHub 后，在仓库的 **Settings → Pages → Build and deployment** 中选择 **GitHub Actions**，即可自动发布。
+在线版：<https://datapro-lgtm.github.io/production-grade-multi-agent-systems/>
+
+仓库使用 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) 构建，并通过 GitHub Actions 自动发布。
 
 ## 已完成内容
 

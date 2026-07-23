@@ -1,6 +1,10 @@
 site_name: 生产级多智能体系统
 site_description: 从架构判断到工程落地
 site_author: DataDan
+site_url: https://datapro-lgtm.github.io/production-grade-multi-agent-systems/
+repo_url: https://github.com/dataPro-lgtm/production-grade-multi-agent-systems
+repo_name: dataPro-lgtm/production-grade-multi-agent-systems
+edit_uri: edit/main/docs/
 copyright: Copyright © 2026 DataDan · CC BY 4.0
 
 theme:
@@ -83,5 +87,9 @@ extra_css:
 
 extra:
   generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/dataPro-lgtm/production-grade-multi-agent-systems
+      name: GitHub 仓库
 
 strict: true
