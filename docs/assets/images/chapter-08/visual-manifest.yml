@@ -1,0 +1,17 @@
+chapter: 08
+style: architect-whiteboard
+generator: scripts/generate_ch08_visuals.mjs
+deterministic: true
+assets:
+  - svg: evaluation-causal-chain.svg
+    png: evaluation-causal-chain.png
+  - svg: four-levels-of-correctness.svg
+    png: four-levels-of-correctness.png
+  - svg: golden-entry-contract.svg
+    png: golden-entry-contract.png
+  - svg: judge-control-plane.svg
+    png: judge-control-plane.png
+  - svg: n-run-distribution-and-gates.svg
+    png: n-run-distribution-and-gates.png
+  - svg: continuous-evaluation-loop.svg
+    png: continuous-evaluation-loop.png
