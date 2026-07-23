@@ -1,66 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-  <title id="title">AI Agent 最小运行闭环</title>
-  <desc id="desc">Agent 围绕目标依次观察、决策、行动和更新状态，并在完成、风险或证据不足时停止或转交人工。</desc>
-  <defs>
-    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2"/>
-    </filter>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
-      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#1e3a5f" stroke-width="2.2"/>
-    </marker>
-    <style>
-      .label{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}
-      .title{font-size:42px;font-weight:700}
-      .box-title{font-size:32px;font-weight:700}
-      .body{font-size:22px}
-      .small{font-size:19px}
-      .ink{fill:none;stroke:#1e3a5f;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
-      .flow{fill:none;stroke:#1e3a5f;stroke-width:5;stroke-linecap:round;stroke-dasharray:12 10;marker-end:url(#arrow)}
-    </style>
-  </defs>
-  <rect width="1600" height="900" fill="#fbfaf5"/>
-  <path d="M60 90 C330 68 620 80 860 70 C1110 60 1370 72 1540 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
-  <text x="80" y="72" class="label title">AI Agent 的最小运行闭环</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img">
+<defs><marker id="arrow-1e3a5f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1e3a5f"/></marker><marker id="arrow-d59621" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d59621"/></marker><marker id="arrow-3c8d77" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3c8d77"/></marker><marker id="arrow-c94c4c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c94c4c"/></marker><marker id="arrow-7651a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7651a6"/></marker><marker id="arrow-55708f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#55708f"/></marker></defs>
+<rect width="1600" height="900" fill="#fbf7ec"/>
+<path d="M 18 177 C 420 169, 930 188, 1580 176 M 25 720 C 520 730, 1000 708, 1575 721" stroke="#e7dfce" stroke-width="2" fill="none" opacity=".55"/>
 
-  <g filter="url(#rough)">
-    <rect x="580" y="105" width="440" height="96" rx="20" fill="#fff1bb" stroke="#d59621" stroke-width="5"/>
-  </g>
-  <text x="800" y="147" text-anchor="middle" class="label box-title">目标 Goal</text>
-  <text x="800" y="180" text-anchor="middle" class="label body">成功标准 · 约束 · 终止条件</text>
+<text x="70" y="75" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="43" font-weight="760" fill="#1e3a5f" text-anchor="start"><tspan x="70" dy="0">Agent 的最小闭环：模型选路，运行时控场</tspan></text>
+<path d="M 70 94 C 270 87, 490 101, 720 93" fill="none" stroke="#d59621" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+<text x="72" y="130" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="23" font-weight="500" fill="#55708f" text-anchor="start"><tspan x="72" dy="0">观察结果必须改变下一动作；权限、执行、状态与终止不交给模型自由发挥。</tspan></text>
+<rect x="565" y="315" width="470" height="235" rx="90" fill="#fffdf7" stroke="#1e3a5f" stroke-width="4"/>
+<rect x="567" y="314" width="469" height="236" rx="91" fill="none" stroke="#1e3a5f" stroke-width="1.2" opacity=".3" transform="rotate(.15 800 432.5)"/>
+<text x="800" y="385" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="38" font-weight="760" fill="#1e3a5f" text-anchor="middle"><tspan x="800" dy="0">目标 + 当前状态</tspan></text>
+<text x="800" y="438" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="25" font-weight="500" fill="#55708f" text-anchor="middle"><tspan x="800" dy="0">范围 · 预算 · 证据缺口</tspan></text>
+<rect x="690" y="474" width="220" height="50" rx="25" fill="#f7e7b8" stroke="#d59621" stroke-width="2"/>
+<rect x="692" y="473" width="219" height="51" rx="26" fill="none" stroke="#d59621" stroke-width="1.2" opacity=".3" transform="rotate(.15 800 499)"/><text x="800" y="507" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="700" fill="#d59621" text-anchor="middle"><tspan x="800" dy="0">受约束动作空间</tspan></text>
+<rect x="85" y="255" width="285" height="150" rx="22" fill="#dfeaf4" stroke="#1e3a5f" stroke-width="3"/>
+<rect x="87" y="254" width="284" height="151" rx="23" fill="none" stroke="#1e3a5f" stroke-width="1.2" opacity=".3" transform="rotate(.15 227.5 330)"/>
+<text x="228" y="308" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="31" font-weight="720" fill="#1e3a5f" text-anchor="middle"><tspan x="228" dy="0">① Observe</tspan></text>
+<text x="228" y="353" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="21" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="228" dy="0">工具结果 · 错误 · 权限</tspan></text>
+<rect x="1230" y="255" width="285" height="150" rx="22" fill="#e9e0f4" stroke="#7651a6" stroke-width="3"/>
+<rect x="1232" y="254" width="284" height="151" rx="23" fill="none" stroke="#7651a6" stroke-width="1.2" opacity=".3" transform="rotate(.15 1372.5 330)"/>
+<text x="1372" y="308" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="31" font-weight="720" fill="#7651a6" text-anchor="middle"><tspan x="1372" dy="0">② Decide</tspan></text>
+<text x="1372" y="353" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="21" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="1372" dy="0">选择下一动作或停止</tspan></text>
+<rect x="1230" y="590" width="285" height="150" rx="22" fill="#f7dddd" stroke="#c94c4c" stroke-width="3"/>
+<rect x="1232" y="589" width="284" height="151" rx="23" fill="none" stroke="#c94c4c" stroke-width="1.2" opacity=".3" transform="rotate(.15 1372.5 665)"/>
+<text x="1372" y="643" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="29" font-weight="720" fill="#c94c4c" text-anchor="middle"><tspan x="1372" dy="0">③ Policy + Act</tspan></text>
+<text x="1372" y="688" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="21" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="1372" dy="0">鉴权 · 校验 · 幂等执行</tspan></text>
+<rect x="85" y="590" width="285" height="150" rx="22" fill="#dcefe7" stroke="#3c8d77" stroke-width="3"/>
+<rect x="87" y="589" width="284" height="151" rx="23" fill="none" stroke="#3c8d77" stroke-width="1.2" opacity=".3" transform="rotate(.15 227.5 665)"/>
+<text x="228" y="643" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="31" font-weight="720" fill="#3c8d77" text-anchor="middle"><tspan x="228" dy="0">④ Update</tspan></text>
+<text x="228" y="688" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="21" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="228" dy="0">持久化状态与证据</tspan></text>
+<path d="M 370 320 C 435 318, 500 382, 565 380" fill="none" stroke="#1e3a5f" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<path d="M 1035 380 C 1100 378, 1165 322, 1230 320" fill="none" stroke="#7651a6" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-7651a6)"/>
+<path d="M 1372 405 C 1372 403, 1372 592, 1372 590" fill="none" stroke="#c94c4c" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-c94c4c)"/>
+<path d="M 1230 665 C 1165 663, 1100 502, 1035 500" fill="none" stroke="#c94c4c" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-c94c4c)"/>
+<path d="M 565 500 C 500 498, 435 667, 370 665" fill="none" stroke="#3c8d77" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-3c8d77)"/>
+<path d="M 228 590 C 228 588, 228 407, 228 405" fill="none" stroke="#3c8d77" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-3c8d77)"/>
+<rect x="545" y="650" width="510" height="105" rx="22" fill="#fffdf7" stroke="#55708f" stroke-width="2" stroke-dasharray="10 8"/>
+<rect x="547" y="649" width="509" height="106" rx="23" fill="none" stroke="#55708f" stroke-width="1.2" opacity=".3" transform="rotate(.15 800 702.5)"/>
+<text x="800" y="693" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="27" font-weight="700" fill="#1e3a5f" text-anchor="middle"><tspan x="800" dy="0">终止也是显式动作</tspan></text>
+<text x="800" y="730" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="21" font-weight="500" fill="#55708f" text-anchor="middle"><tspan x="800" dy="0">完成 · 证据不足 · 拒绝 · 等待审批 · 转人工</tspan></text>
 
-  <g filter="url(#rough)">
-    <rect x="120" y="330" width="300" height="170" rx="26" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
-    <rect x="505" y="330" width="300" height="170" rx="26" fill="#fff4d2" stroke="#d59621" stroke-width="5"/>
-    <rect x="890" y="330" width="300" height="170" rx="26" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
-    <rect x="1275" y="330" width="250" height="170" rx="26" fill="#f4ebff" stroke="#7651a6" stroke-width="5"/>
-  </g>
-  <text x="270" y="385" text-anchor="middle" class="label box-title">观察</text>
-  <text x="270" y="425" text-anchor="middle" class="label body">用户 · 环境 · 工具结果</text>
-  <text x="270" y="461" text-anchor="middle" class="label small">Observe</text>
-
-  <text x="655" y="385" text-anchor="middle" class="label box-title">决策</text>
-  <text x="655" y="425" text-anchor="middle" class="label body">选择下一动作</text>
-  <text x="655" y="461" text-anchor="middle" class="label small">Decide</text>
-
-  <text x="1040" y="385" text-anchor="middle" class="label box-title">行动</text>
-  <text x="1040" y="425" text-anchor="middle" class="label body">受控工具执行</text>
-  <text x="1040" y="461" text-anchor="middle" class="label small">Act</text>
-
-  <text x="1400" y="385" text-anchor="middle" class="label box-title">更新</text>
-  <text x="1400" y="425" text-anchor="middle" class="label body">状态 · 证据 · 预算</text>
-  <text x="1400" y="461" text-anchor="middle" class="label small">Update</text>
-
-  <path d="M420 415 C450 404 470 404 505 415" class="flow"/>
-  <path d="M805 415 C835 404 855 404 890 415" class="flow"/>
-  <path d="M1190 415 C1220 404 1240 404 1275 415" class="flow"/>
-  <path d="M1400 500 C1394 650 1120 690 820 680 C490 670 265 620 270 500" class="flow"/>
-  <path d="M800 201 C720 240 620 260 500 310" class="flow"/>
-
-  <g filter="url(#rough)">
-    <rect x="460" y="700" width="680" height="110" rx="18" fill="#ffffff" stroke="#c94c4c" stroke-width="4"/>
-  </g>
-  <text x="800" y="744" text-anchor="middle" class="label box-title" fill="#9d3030">终止或转交人工</text>
-  <text x="800" y="780" text-anchor="middle" class="label body">完成 · 拒绝 · 风险超限 · 证据不足 · 预算耗尽</text>
-  <path d="M1400 500 C1360 585 1220 676 1140 730" stroke="#c94c4c" stroke-width="5" fill="none" stroke-dasharray="10 10" marker-end="url(#arrow)"/>
+<text x="1525" y="860" font-family="'Kaiti SC','STKaiti',sans-serif" font-size="18" fill="#55708f" text-anchor="end">生产级多智能体系统 · 第 01 章</text>
 </svg>

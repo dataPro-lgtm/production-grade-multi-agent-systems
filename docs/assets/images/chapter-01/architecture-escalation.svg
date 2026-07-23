@@ -1,30 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-  <title id="title">架构复杂度升级阶梯</title>
-  <desc id="desc">系统从确定性代码依次升级到普通 LLM 应用、LLM 工作流、单 Agent 和多 Agent，每次升级都需要可验证的理由。</desc>
-  <defs>
-    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="2" seed="23" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"/></filter>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10" fill="none" stroke="#c94c4c" stroke-width="2"/></marker>
-    <style>.t{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}.h1{font-size:42px;font-weight:700}.h2{font-size:29px;font-weight:700}.b{font-size:20px}</style>
-  </defs>
-  <rect width="1600" height="900" fill="#fbfaf5"/>
-  <text x="80" y="76" class="t h1">选择满足需求的最简单架构</text>
-  <g filter="url(#rough)">
-    <path d="M100 710 L100 590 L370 590 L370 470 L640 470 L640 350 L910 350 L910 230 L1180 230 L1180 110 L1510 110 L1510 710 Z" fill="#ffffff" stroke="#1e3a5f" stroke-width="6" stroke-linejoin="round"/>
-  </g>
-  <rect x="100" y="590" width="270" height="120" fill="#eef1f4"/>
-  <rect x="370" y="470" width="270" height="240" fill="#e8f2ff"/>
-  <rect x="640" y="350" width="270" height="360" fill="#fff4d2"/>
-  <rect x="910" y="230" width="270" height="480" fill="#e7f5ed"/>
-  <rect x="1180" y="110" width="330" height="600" fill="#f4ebff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img">
+<defs><marker id="arrow-1e3a5f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1e3a5f"/></marker><marker id="arrow-d59621" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d59621"/></marker><marker id="arrow-3c8d77" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3c8d77"/></marker><marker id="arrow-c94c4c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c94c4c"/></marker><marker id="arrow-7651a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7651a6"/></marker><marker id="arrow-55708f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#55708f"/></marker></defs>
+<rect width="1600" height="900" fill="#fbf7ec"/>
+<path d="M 18 177 C 420 169, 930 188, 1580 176 M 25 720 C 520 730, 1000 708, 1575 721" stroke="#e7dfce" stroke-width="2" fill="none" opacity=".55"/>
 
-  <text x="235" y="635" text-anchor="middle" class="t h2">确定性代码</text><text x="235" y="675" text-anchor="middle" class="t b">规则清楚 · 结果可计算</text>
-  <text x="505" y="515" text-anchor="middle" class="t h2">普通 LLM 应用</text><text x="505" y="555" text-anchor="middle" class="t b">生成 · 抽取 · 分类</text>
-  <text x="775" y="395" text-anchor="middle" class="t h2">LLM 工作流</text><text x="775" y="435" text-anchor="middle" class="t b">固定路径中的语义节点</text>
-  <text x="1045" y="275" text-anchor="middle" class="t h2">单 Agent</text><text x="1045" y="315" text-anchor="middle" class="t b">根据反馈动态选动作</text>
-  <text x="1345" y="155" text-anchor="middle" class="t h2">多 Agent</text><text x="1345" y="195" text-anchor="middle" class="t b">真实边界下的协作系统</text>
+<text x="70" y="75" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="43" font-weight="760" fill="#1e3a5f" text-anchor="start"><tspan x="70" dy="0">架构升级靠证据推动，不靠名词推动</tspan></text>
+<path d="M 70 94 C 270 87, 490 101, 720 93" fill="none" stroke="#d59621" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+<text x="72" y="130" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="23" font-weight="500" fill="#55708f" text-anchor="start"><tspan x="72" dy="0">每增加一层自治，都要说明上一层为什么无法满足需求。</tspan></text>
+<rect x="70" y="620" width="245" height="130" rx="22" fill="#dfeaf4" stroke="#1e3a5f" stroke-width="3"/>
+<rect x="72" y="619" width="244" height="131" rx="23" fill="none" stroke="#1e3a5f" stroke-width="1.2" opacity=".3" transform="rotate(.15 192.5 685)"/>
+<text x="192" y="670" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="29" font-weight="720" fill="#1e3a5f" text-anchor="middle"><tspan x="192" dy="0">确定性代码</tspan></text>
+<text x="192" y="710" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="21" font-weight="500" fill="#55708f" text-anchor="middle"><tspan x="192" dy="0">规则明确</tspan></text>
+<rect x="365" y="530" width="245" height="165" rx="22" fill="#fffdf7" stroke="#1e3a5f" stroke-width="3"/>
+<rect x="367" y="529" width="244" height="166" rx="23" fill="none" stroke="#1e3a5f" stroke-width="1.2" opacity=".3" transform="rotate(.15 487.5 612.5)"/>
+<text x="487" y="582" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="29" font-weight="720" fill="#1e3a5f" text-anchor="middle"><tspan x="487" dy="0">LLM 调用</tspan></text>
+<text x="487" y="623" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="21" font-weight="500" fill="#55708f" text-anchor="middle"><tspan x="487" dy="0">抽取 · 分类</tspan><tspan x="487" dy="27.3">摘要 · 改写</tspan></text>
+<rect x="660" y="430" width="260" height="190" rx="22" fill="#f7e7b8" stroke="#d59621" stroke-width="3"/>
+<rect x="662" y="429" width="259" height="191" rx="23" fill="none" stroke="#d59621" stroke-width="1.2" opacity=".3" transform="rotate(.15 790 525)"/>
+<text x="790" y="483" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="29" font-weight="720" fill="#d59621" text-anchor="middle"><tspan x="790" dy="0">LLM 工作流</tspan></text>
+<text x="790" y="520" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="20" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="790" dy="0">代码定义整体路径</tspan></text>
+<text x="790" y="548" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="20" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="790" dy="0">模型处理局部语义</tspan></text>
+<rect x="708" y="568" width="165" height="50" rx="25" fill="#fffdf7" stroke="#d59621" stroke-width="2"/>
+<rect x="710" y="567" width="164" height="51" rx="26" fill="none" stroke="#d59621" stroke-width="1.2" opacity=".3" transform="rotate(.15 790.5 593)"/><text x="790.5" y="601" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="700" fill="#d59621" text-anchor="middle"><tspan x="790.5" dy="0">常见终点</tspan></text>
+<rect x="970" y="315" width="245" height="215" rx="22" fill="#dcefe7" stroke="#3c8d77" stroke-width="4"/>
+<rect x="972" y="314" width="244" height="216" rx="23" fill="none" stroke="#3c8d77" stroke-width="1.2" opacity=".3" transform="rotate(.15 1092.5 422.5)"/>
+<text x="1092" y="370" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="31" font-weight="760" fill="#3c8d77" text-anchor="middle"><tspan x="1092" dy="0">单 Agent</tspan></text>
+<text x="1092" y="408" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="20" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="1092" dy="0">根据反馈选路</tspan></text>
+<text x="1092" y="438" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="20" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="1092" dy="0">动作空间受限</tspan></text>
+<rect x="1017" y="468" width="150" height="50" rx="25" fill="#fffdf7" stroke="#3c8d77" stroke-width="2"/>
+<rect x="1019" y="467" width="149" height="51" rx="26" fill="none" stroke="#3c8d77" stroke-width="1.2" opacity=".3" transform="rotate(.15 1092 493)"/><text x="1092" y="501" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="700" fill="#3c8d77" text-anchor="middle"><tspan x="1092" dy="0">先选它</tspan></text>
+<rect x="1280" y="205" width="245" height="235" rx="22" fill="#e9e0f4" stroke="#7651a6" stroke-width="3"/>
+<rect x="1282" y="204" width="244" height="236" rx="23" fill="none" stroke="#7651a6" stroke-width="1.2" opacity=".3" transform="rotate(.15 1402.5 322.5)"/>
+<text x="1402" y="262" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="31" font-weight="760" fill="#7651a6" text-anchor="middle"><tspan x="1402" dy="0">多 Agent</tspan></text>
+<text x="1402" y="300" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="19" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="1402" dy="0">责任边界独立</tspan></text>
+<text x="1402" y="330" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="19" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="1402" dy="0">协议 · Join · 恢复</tspan></text>
+<rect x="1330" y="365" width="145" height="50" rx="25" fill="#fffdf7" stroke="#7651a6" stroke-width="2"/>
+<rect x="1332" y="364" width="144" height="51" rx="26" fill="none" stroke="#7651a6" stroke-width="1.2" opacity=".3" transform="rotate(.15 1402.5 390)"/><text x="1402.5" y="398" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="700" fill="#7651a6" text-anchor="middle"><tspan x="1402.5" dy="0">有条件</tspan></text>
+<path d="M 315 670 C 331.6666666666667 668, 348.3333333333333 617, 365 615" fill="none" stroke="#1e3a5f" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<path d="M 610 580 C 626.6666666666666 578, 643.3333333333334 527, 660 525" fill="none" stroke="#d59621" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-d59621)"/>
+<path d="M 920 475 C 936.6666666666666 473, 953.3333333333334 422, 970 420" fill="none" stroke="#3c8d77" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-3c8d77)"/>
+<path d="M 1215 365 C 1236.6666666666667 363, 1258.3333333333333 317, 1280 315" fill="none" stroke="#7651a6" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-7651a6)"/>
+<text x="205" y="786" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="500" fill="#55708f" text-anchor="middle"><tspan x="205" dy="0">稳定规则</tspan></text>
+<text x="1460" y="786" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="650" fill="#c94c4c" text-anchor="end"><tspan x="1460" dy="0">状态、测试、安全与运维成本上升</tspan></text>
+<path d="M 320 810 C 670 808, 1020 812, 1370 810" fill="none" stroke="#c94c4c" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-c94c4c)"/>
 
-  <path d="M210 540 C500 300 920 130 1440 70" fill="none" stroke="#c94c4c" stroke-width="5" stroke-dasharray="12 10" marker-end="url(#arrow)"/>
-  <text x="690" y="190" class="t h2" fill="#c94c4c">自治 / 成本 / 延迟 / 测试空间</text>
-  <g filter="url(#rough)"><rect x="260" y="760" width="1080" height="92" rx="18" fill="#fff1bb" stroke="#d59621" stroke-width="4"/></g>
-  <text x="800" y="818" text-anchor="middle" class="t h2">下一层解决了已被数据证明的问题吗？如果没有，就停在当前层。</text>
+<text x="1525" y="860" font-family="'Kaiti SC','STKaiti',sans-serif" font-size="18" fill="#55708f" text-anchor="end">生产级多智能体系统 · 第 01 章</text>
 </svg>

@@ -8,7 +8,7 @@
 
 | 章 | 主题 | 读者带走的核心产物 |
 |---|---|---|
-| [01](../chapters/01-what-is-an-ai-agent.md) | **到底什么才算 AI Agent？**<br>从目标闭环、自治等级和真实工程边界开始判断。 | Agent 判定表、自治等级、架构阶梯 |
+| [01](../chapters/01-what-is-an-ai-agent.md) | **先判断是否需要 Agent**<br>从确定性基线、动态路径和自治边界开始判断。 | CaseOps Slice 0、自治矩阵、ADR |
 | [02](../chapters/02-tool-calling-state-machine-and-mcp.md) | **让 Agent 安全地行动**<br>把工具调用放入可持久化、可恢复的状态机。 | 工具合同、状态机、幂等与 MCP 边界 |
 | [03](../chapters/03-multi-agent-patterns-collaboration-and-incident-response.md) | **让多个 Agent 可靠协作**<br>按领域、状态、权限和故障边界选择协作模式。 | 模式决策记录、协作合同、事件响应机制 |
 
@@ -35,7 +35,10 @@
 
 ## 贯穿全书的系统
 
-十章共享一条逐步演进的业务线索：系统从受约束的数据分析任务出发，进入支付事故调查与 C-102 理赔调查，并在第 03—10 章逐渐补齐协作、证据、平台、安全、评测、运营和交付能力。读者看到的不是十个彼此孤立的 Demo，而是一个生产系统如何一步步获得可信边界。
+十章只使用一条主线：CaseOps 调查理赔案件 C-102 为什么仍未完成，确认缺失材料和适用规则；如果需要联系客户，只能生成草稿，不得自动发送。
+
+系统从第 1 章的确定性调查基线出发，逐步获得工具状态机、Agent 协作、可信 Context、生产平台、安全控制、评测和运营能力。完整实现独立维护在 [CaseOps 代码仓库](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops)，每章引用经过验证的不可变 tag。
 
 [开始阅读第 01 章](../chapters/01-what-is-an-ai-agent.md){ .md-button .md-button--primary }
+[运行 CaseOps](caseops-project.md){ .md-button }
 [查看工程模板](../toolkit/agent-definition-card.md){ .md-button }

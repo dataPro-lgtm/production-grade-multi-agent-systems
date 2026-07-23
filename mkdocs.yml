@@ -45,8 +45,10 @@ nav:
   - 阅读本书:
       - 阅读建议: guide/reading-path.md
       - 全书目录: guide/book-roadmap.md
+      - 贯穿项目 CaseOps: guide/caseops-project.md
+      - 2.0 重构规划: guide/version-2-editorial-plan.md
   - 第一部分 · 架构与执行边界:
-      - 第 01 章 到底什么才算 AI Agent: chapters/01-what-is-an-ai-agent.md
+      - 第 01 章 先判断是否需要 Agent: chapters/01-what-is-an-ai-agent.md
       - 第 02 章 让 Agent 安全地行动: chapters/02-tool-calling-state-machine-and-mcp.md
       - 第 03 章 让多个 Agent 可靠协作: chapters/03-multi-agent-patterns-collaboration-and-incident-response.md
   - 第二部分 · 上下文与生产底座:

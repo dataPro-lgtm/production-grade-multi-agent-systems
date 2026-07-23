@@ -1,39 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-  <title id="title">多 Agent 拆分的真实工程边界</title>
-  <desc id="desc">领域、数据、工具、权限、状态、故障、规模和所有权是判断是否应拆分 Agent 的八类工程边界。</desc>
-  <defs>
-    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".014" numOctaves="2" seed="17" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.3"/></filter>
-    <style>.t{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}.h1{font-size:42px;font-weight:700}.h2{font-size:30px;font-weight:700}.b{font-size:20px}.line{stroke:#1e3a5f;stroke-width:4;stroke-dasharray:10 10;fill:none}</style>
-  </defs>
-  <rect width="1600" height="900" fill="#fbfaf5"/>
-  <text x="80" y="75" class="t h1">不要先给 Agent 起名字，先寻找真实边界</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img">
+<defs><marker id="arrow-1e3a5f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1e3a5f"/></marker><marker id="arrow-d59621" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d59621"/></marker><marker id="arrow-3c8d77" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3c8d77"/></marker><marker id="arrow-c94c4c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c94c4c"/></marker><marker id="arrow-7651a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7651a6"/></marker><marker id="arrow-55708f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#55708f"/></marker></defs>
+<rect width="1600" height="900" fill="#fbf7ec"/>
+<path d="M 18 177 C 420 169, 930 188, 1580 176 M 25 720 C 520 730, 1000 708, 1575 721" stroke="#e7dfce" stroke-width="2" fill="none" opacity=".55"/>
 
-  <g filter="url(#rough)">
-    <ellipse cx="800" cy="445" rx="245" ry="125" fill="#fff1bb" stroke="#d59621" stroke-width="6"/>
-  </g>
-  <text x="800" y="430" text-anchor="middle" class="t h1">是否应该拆分？</text>
-  <text x="800" y="480" text-anchor="middle" class="t h2">边界不同，责任才独立</text>
+<text x="70" y="75" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="43" font-weight="760" fill="#1e3a5f" text-anchor="start"><tspan x="70" dy="0">值得拆分的 Agent，必须对应真实工程边界</tspan></text>
+<path d="M 70 94 C 270 87, 490 101, 720 93" fill="none" stroke="#d59621" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+<text x="72" y="130" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="23" font-weight="500" fill="#55708f" text-anchor="start"><tspan x="72" dy="0">先找责任差异，再起角色名称；Prompt 数量不是架构边界。</tspan></text>
+<rect x="600" y="330" width="400" height="190" rx="70" fill="#fffdf7" stroke="#1e3a5f" stroke-width="4"/>
+<rect x="602" y="329" width="399" height="191" rx="71" fill="none" stroke="#1e3a5f" stroke-width="1.2" opacity=".3" transform="rotate(.15 800 425)"/>
+<text x="800" y="395" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="37" font-weight="760" fill="#1e3a5f" text-anchor="middle"><tspan x="800" dy="0">为什么必须拆开？</tspan></text>
+<text x="800" y="445" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="24" font-weight="500" fill="#55708f" text-anchor="middle"><tspan x="800" dy="0">能否独立授权、恢复、扩缩容</tspan></text>
+<text x="800" y="482" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="24" font-weight="500" fill="#55708f" text-anchor="middle"><tspan x="800" dy="0">并由明确所有者负责？</tspan></text>
+<rect x="75" y="220" width="300" height="135" rx="22" fill="#dfeaf4" stroke="#1e3a5f" stroke-width="3"/>
+<rect x="77" y="219" width="299" height="136" rx="23" fill="none" stroke="#1e3a5f" stroke-width="1.2" opacity=".3" transform="rotate(.15 225 287.5)"/>
+<text x="225" y="270" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="29" font-weight="720" fill="#1e3a5f" text-anchor="middle"><tspan x="225" dy="0">领域与验收</tspan></text>
+<text x="225" y="313" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="21" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="225" dy="0">术语、规则、成功标准</tspan></text>
+<rect x="1225" y="220" width="300" height="135" rx="22" fill="#f7e7b8" stroke="#d59621" stroke-width="3"/>
+<rect x="1227" y="219" width="299" height="136" rx="23" fill="none" stroke="#d59621" stroke-width="1.2" opacity=".3" transform="rotate(.15 1375 287.5)"/>
+<text x="1375" y="270" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="29" font-weight="720" fill="#d59621" text-anchor="middle"><tspan x="1375" dy="0">数据与工具</tspan></text>
+<text x="1375" y="313" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="21" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="1375" dy="0">访问范围、读写能力</tspan></text>
+<rect x="55" y="565" width="320" height="135" rx="22" fill="#dcefe7" stroke="#3c8d77" stroke-width="3"/>
+<rect x="57" y="564" width="319" height="136" rx="23" fill="none" stroke="#3c8d77" stroke-width="1.2" opacity=".3" transform="rotate(.15 215 632.5)"/>
+<text x="215" y="615" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="29" font-weight="720" fill="#3c8d77" text-anchor="middle"><tspan x="215" dy="0">权限与身份</tspan></text>
+<text x="215" y="658" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="21" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="215" dy="0">委托、审批、最小权限</tspan></text>
+<rect x="1225" y="565" width="320" height="135" rx="22" fill="#f7dddd" stroke="#c94c4c" stroke-width="3"/>
+<rect x="1227" y="564" width="319" height="136" rx="23" fill="none" stroke="#c94c4c" stroke-width="1.2" opacity=".3" transform="rotate(.15 1385 632.5)"/>
+<text x="1385" y="615" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="29" font-weight="720" fill="#c94c4c" text-anchor="middle"><tspan x="1385" dy="0">状态与故障</tspan></text>
+<text x="1385" y="658" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="21" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="1385" dy="0">所有权、重试、降级</tspan></text>
+<rect x="625" y="655" width="350" height="115" rx="22" fill="#e9e0f4" stroke="#7651a6" stroke-width="3"/>
+<rect x="627" y="654" width="349" height="116" rx="23" fill="none" stroke="#7651a6" stroke-width="1.2" opacity=".3" transform="rotate(.15 800 712.5)"/>
+<text x="800" y="700" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="29" font-weight="720" fill="#7651a6" text-anchor="middle"><tspan x="800" dy="0">团队与运行责任</tspan></text>
+<text x="800" y="740" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="21" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="800" dy="0">发布 · SLO · 独立容量</tspan></text>
+<path d="M 375 290 C 450 288, 525 382, 600 380" fill="none" stroke="#1e3a5f" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<path d="M 1225 290 C 1150 288, 1075 382, 1000 380" fill="none" stroke="#d59621" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-d59621)"/>
+<path d="M 375 630 C 453.3333333333333 628, 531.6666666666666 497, 610 495" fill="none" stroke="#3c8d77" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-3c8d77)"/>
+<path d="M 1225 630 C 1146.6666666666667 628, 1068.3333333333333 497, 990 495" fill="none" stroke="#c94c4c" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-c94c4c)"/>
+<path d="M 800 655 C 800 653, 800 522, 800 520" fill="none" stroke="#7651a6" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-7651a6)"/>
+<text x="800" y="820" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="26" font-weight="650" fill="#1e3a5f" text-anchor="middle"><tspan x="800" dy="0">若边界无法独立测试，拆分通常只会增加协调成本。</tspan></text>
 
-  <path d="M580 390 L365 255 M750 320 L690 230 M850 320 L910 230 M1020 390 L1235 255 M580 505 L365 640 M750 570 L690 690 M850 570 L910 690 M1020 505 L1235 640" class="line"/>
-
-  <g filter="url(#rough)">
-    <rect x="90" y="145" width="340" height="150" rx="16" fill="#e8f2ff" stroke="#326da8" stroke-width="4"/>
-    <rect x="485" y="110" width="280" height="145" rx="16" fill="#e7f5ed" stroke="#3c8d77" stroke-width="4"/>
-    <rect x="835" y="110" width="280" height="145" rx="16" fill="#f4ebff" stroke="#7651a6" stroke-width="4"/>
-    <rect x="1170" y="145" width="340" height="150" rx="16" fill="#ffe9e5" stroke="#c94c4c" stroke-width="4"/>
-    <rect x="90" y="605" width="340" height="150" rx="16" fill="#fff4d2" stroke="#d59621" stroke-width="4"/>
-    <rect x="485" y="650" width="280" height="145" rx="16" fill="#e8f2ff" stroke="#326da8" stroke-width="4"/>
-    <rect x="835" y="650" width="280" height="145" rx="16" fill="#e7f5ed" stroke="#3c8d77" stroke-width="4"/>
-    <rect x="1170" y="605" width="340" height="150" rx="16" fill="#f4ebff" stroke="#7651a6" stroke-width="4"/>
-  </g>
-  <text x="260" y="202" text-anchor="middle" class="t h2">领域 Domain</text><text x="260" y="242" text-anchor="middle" class="t b">术语 · 规则 · 成功标准</text>
-  <text x="625" y="167" text-anchor="middle" class="t h2">数据 Data</text><text x="625" y="207" text-anchor="middle" class="t b">表 · 文档 · 实体范围</text>
-  <text x="975" y="167" text-anchor="middle" class="t h2">工具 Tools</text><text x="975" y="207" text-anchor="middle" class="t b">读写能力与副作用</text>
-  <text x="1340" y="202" text-anchor="middle" class="t h2">权限 Permission</text><text x="1340" y="242" text-anchor="middle" class="t b">身份 · 审批 · 最小权限</text>
-
-  <text x="260" y="662" text-anchor="middle" class="t h2">状态 State</text><text x="260" y="702" text-anchor="middle" class="t b">创建 · 更新 · 生命周期</text>
-  <text x="625" y="707" text-anchor="middle" class="t h2">故障 Failure</text><text x="625" y="747" text-anchor="middle" class="t b">超时 · 重试 · 降级</text>
-  <text x="975" y="707" text-anchor="middle" class="t h2">规模 Scale</text><text x="975" y="747" text-anchor="middle" class="t b">容量 · SLO · 成本预算</text>
-  <text x="1340" y="662" text-anchor="middle" class="t h2">所有权 Owner</text><text x="1340" y="702" text-anchor="middle" class="t b">团队 · 发布 · 运维责任</text>
-  <text x="800" y="855" text-anchor="middle" class="t h2" fill="#c94c4c">若这些维度没有显著差异，多个角色通常不应成为多个 Agent</text>
+<text x="1525" y="860" font-family="'Kaiti SC','STKaiti',sans-serif" font-size="18" fill="#55708f" text-anchor="end">生产级多智能体系统 · 第 01 章</text>
 </svg>

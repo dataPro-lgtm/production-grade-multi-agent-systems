@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img">
+<defs><marker id="arrow-1e3a5f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1e3a5f"/></marker><marker id="arrow-d59621" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d59621"/></marker><marker id="arrow-3c8d77" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3c8d77"/></marker><marker id="arrow-c94c4c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c94c4c"/></marker><marker id="arrow-7651a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7651a6"/></marker><marker id="arrow-55708f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#55708f"/></marker></defs>
+<rect width="1600" height="900" fill="#fbf7ec"/>
+<path d="M 18 177 C 420 169, 930 188, 1580 176 M 25 720 C 520 730, 1000 708, 1575 721" stroke="#e7dfce" stroke-width="2" fill="none" opacity=".55"/>
+
+<text x="70" y="75" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="43" font-weight="760" fill="#1e3a5f" text-anchor="start"><tspan x="70" dy="0">自治有两条轴：会规划，不等于可以执行</tspan></text>
+<path d="M 70 94 C 270 87, 490 101, 720 93" fill="none" stroke="#d59621" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+<text x="72" y="130" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="23" font-weight="500" fill="#55708f" text-anchor="start"><tspan x="72" dy="0">规划自治决定“下一步谁选”；执行自治决定“系统允许改变什么”。</tspan></text>
+<path d="M 240 730 C 643.3333333333334 728, 1046.6666666666667 732, 1450 730" fill="none" stroke="#1e3a5f" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<path d="M 240 730 C 240 728, 240 207, 240 205" fill="none" stroke="#1e3a5f" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<text x="1450" y="780" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="25" font-weight="700" fill="#1e3a5f" text-anchor="end"><tspan x="1450" dy="0">规划自治高</tspan></text>
+<text x="245" y="780" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="500" fill="#55708f" text-anchor="start"><tspan x="245" dy="0">规划自治低</tspan></text>
+<text x="172" y="215" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="25" font-weight="700" fill="#1e3a5f" text-anchor="middle"><tspan x="172" dy="0">执行自治高</tspan></text>
+<text x="168" y="710" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="500" fill="#55708f" text-anchor="middle"><tspan x="168" dy="0">执行自治低</tspan></text>
+<path d="M 845 225 C 845 223, 845 732, 845 730" fill="none" stroke="#d9d4c7" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+<path d="M 240 475 C 636.6666666666666 473, 1033.3333333333333 477, 1430 475" fill="none" stroke="#d9d4c7" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+<rect x="295" y="260" width="430" height="150" rx="22" fill="#f7dddd" stroke="#c94c4c" stroke-width="3"/>
+<rect x="297" y="259" width="429" height="151" rx="23" fill="none" stroke="#c94c4c" stroke-width="1.2" opacity=".3" transform="rotate(.15 510 335)"/>
+<text x="510" y="312" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="31" font-weight="720" fill="#c94c4c" text-anchor="middle"><tspan x="510" dy="0">固定资金流程</tspan></text>
+<text x="510" y="357" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="510" dy="0">代码定路 · 可产生真实副作用</tspan></text>
+<rect x="965" y="260" width="400" height="150" rx="22" fill="#e9e0f4" stroke="#7651a6" stroke-width="3"/>
+<rect x="967" y="259" width="399" height="151" rx="23" fill="none" stroke="#7651a6" stroke-width="1.2" opacity=".3" transform="rotate(.15 1165 335)"/>
+<text x="1165" y="312" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="31" font-weight="720" fill="#7651a6" text-anchor="middle"><tspan x="1165" dy="0">高风险自主系统</tspan></text>
+<text x="1165" y="357" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="1165" dy="0">少量场景 · 强治理与审批</tspan></text>
+<rect x="295" y="545" width="430" height="135" rx="22" fill="#dfeaf4" stroke="#1e3a5f" stroke-width="3"/>
+<rect x="297" y="544" width="429" height="136" rx="23" fill="none" stroke="#1e3a5f" stroke-width="1.2" opacity=".3" transform="rotate(.15 510 612.5)"/>
+<text x="510" y="595" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="31" font-weight="720" fill="#1e3a5f" text-anchor="middle"><tspan x="510" dy="0">普通工作流</tspan></text>
+<text x="510" y="638" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="510" dy="0">代码定路 · 只读或无副作用</tspan></text>
+<rect x="965" y="530" width="400" height="165" rx="22" fill="#dcefe7" stroke="#3c8d77" stroke-width="4"/>
+<rect x="967" y="529" width="399" height="166" rx="23" fill="none" stroke="#3c8d77" stroke-width="1.2" opacity=".3" transform="rotate(.15 1165 612.5)"/>
+<text x="1165" y="583" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="32" font-weight="760" fill="#3c8d77" text-anchor="middle"><tspan x="1165" dy="0">CaseOps 目标位置</tspan></text>
+<text x="1165" y="626" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="23" font-weight="500" fill="#1e3a5f" text-anchor="middle"><tspan x="1165" dy="0">动态调查 · 低执行权限</tspan></text>
+<rect x="1050" y="655" width="230" height="50" rx="25" fill="#f7e7b8" stroke="#d59621" stroke-width="2"/>
+<rect x="1052" y="654" width="229" height="51" rx="26" fill="none" stroke="#d59621" stroke-width="1.2" opacity=".3" transform="rotate(.15 1165 680)"/><text x="1165" y="688" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="22" font-weight="700" fill="#d59621" text-anchor="middle"><tspan x="1165" dy="0">草稿必须审批</tspan></text>
+<text x="800" y="825" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="26" font-weight="650" fill="#55708f" text-anchor="middle"><tspan x="800" dy="0">矩阵不是成熟度排行：规划空间扩大时，执行权限不必同步扩大。</tspan></text>
+
+<text x="1525" y="860" font-family="'Kaiti SC','STKaiti',sans-serif" font-size="18" fill="#55708f" text-anchor="end">生产级多智能体系统 · 第 01 章</text>
+</svg>

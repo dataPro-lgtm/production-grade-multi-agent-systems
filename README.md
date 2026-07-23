@@ -28,7 +28,9 @@
 
 ## 随书工程产物
 
-每章都提供可带回项目使用的架构图、决策方法或工程契约，包括 Agent 定义卡、ADR、Context Engineering 画布、生产就绪与安全评审、Golden Dataset、AgentOps 运营就绪以及 Capstone 验收与开源交付模板。
+本书配套独立代码仓库 [CaseOps](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops)。它不是按章复制的零散示例，而是一套逐章演进、始终可运行的生产导向参考系统。第 1 章对应版本为 [`chapter-01-slice-0`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-01-slice-0)。
+
+书稿仓库同时提供可直接带回项目使用的架构图、决策方法和工程契约，包括 Agent 定义卡、ADR、Context Engineering 画布、生产就绪与安全评审、Golden Dataset、AgentOps 运营就绪以及 Capstone 验收与开源交付模板。
 
 ## 本地预览
 
@@ -59,7 +61,7 @@ mkdocs serve
 │   ├── appendices/          # 术语表等附录
 │   ├── toolkit/             # 可复制的工程模板
 │   └── assets/              # 图片与样式
-├── examples/                # 随书实验和示例代码
+├── examples/                # 各章代码版本索引
 ├── sources/                 # 原始讲义与转换来源
 ├── scripts/                 # 本地质量检查
 ├── .github/                 # Issue、PR 与自动发布配置

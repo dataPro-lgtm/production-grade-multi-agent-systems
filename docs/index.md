@@ -11,8 +11,9 @@
   <div class="book-actions">
     <a class="md-button md-button--primary" href="chapters/01-what-is-an-ai-agent/">开始阅读</a>
     <a class="md-button" href="guide/book-roadmap/">浏览全书目录</a>
+    <a class="md-button" href="guide/caseops-project/">运行 CaseOps</a>
   </div>
-  <p class="book-meta">10 章完整正文 · 原创架构图 · 可复制工程契约 · GitHub 开源</p>
+  <p class="book-meta">10 章完整正文 · 原创架构图 · 可运行贯穿项目 · GitHub 开源</p>
 </section>
 
 ## 这本书解决什么
@@ -71,6 +72,7 @@
 - 设计工具合同、状态机、协作协议、Context Pack 与安全执行边界；
 - 建立覆盖部署、可观测性、恢复、评测和线上运营的生产保证；
 - 交付 ADR、Golden Dataset、Evidence Package、Release Gates 等可审查产物。
+- 沿同一个 CaseOps 代码仓库逐章运行、测试并验证系统演进。
 
 </div>
 

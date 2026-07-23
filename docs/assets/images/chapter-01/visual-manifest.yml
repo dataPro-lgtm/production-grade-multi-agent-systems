@@ -22,21 +22,21 @@ exports:
   - id: ch01-loop
     source: agent-minimal-loop.svg
     output: agent-minimal-loop.png
-  - id: ch01-autonomy
-    source: autonomy-levels.svg
-    output: autonomy-levels.png
+  - id: ch01-autonomy-matrix
+    source: autonomy-matrix.svg
+    output: autonomy-matrix.png
   - id: ch01-boundaries
     source: engineering-boundaries.svg
     output: engineering-boundaries.png
   - id: ch01-ladder
     source: architecture-escalation.svg
     output: architecture-escalation.png
-  - id: ch01-data-agent
-    source: data-agent-architectures.svg
-    output: data-agent-architectures.png
+  - id: ch01-caseops-options
+    source: caseops-architecture-options.svg
+    output: caseops-architecture-options.png
 
 provenance:
   method: deterministic SVG composition
   generated_text: false
   source_book_images_reused: false
-  note: 原书仅用于概念研究，未复制其插图或视觉设计。
+  note: 所有图围绕 CaseOps 独立设计，未复用参考书插图或视觉结构。

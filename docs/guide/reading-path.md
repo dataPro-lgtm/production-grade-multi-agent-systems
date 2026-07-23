@@ -31,7 +31,9 @@
 1. 先理解案例中的约束与误判；
 2. 再检查架构图中的责任和信任边界；
 3. 将章节末的契约或模板带回自己的项目；
-4. 用验证标准检查设计，而不是只确认 Demo 能运行。
+4. 切换到本章固定的 CaseOps tag，运行测试和验收命令；
+5. 用验证标准检查设计，而不是只确认服务能启动。
 
 [浏览全书目录](book-roadmap.md){ .md-button .md-button--primary }
 [从第 01 章开始](../chapters/01-what-is-an-ai-agent.md){ .md-button }
+[查看 CaseOps](caseops-project.md){ .md-button }
