@@ -9,7 +9,7 @@
 - 多 Agent 应该按哪些真实工程边界拆分？
 - 怎样把工具、状态、权限、评测、可观测性和故障恢复做成生产系统？
 
-> 当前状态：项目骨架与自动发布链路已建立，前八章均已完成面向正式出版物的图书化重构，并配有可编辑的原创架构图。其余章节将按路线图持续填充。
+> 当前状态：项目骨架与自动发布链路已建立，前九章均已完成面向正式出版物的图书化重构，并配有可编辑的原创架构图。其余章节将按路线图持续填充。
 
 ## 在线阅读
 
@@ -27,6 +27,7 @@
 - [第 06 章：不要指望模型保护自己——多 Agent 纵深防御、Tool Guard 与红队验证](docs/chapters/06-agent-security-tool-guard-privacy-and-red-teaming.md)
 - [第 07 章：从组件拼装到系统合龙——分层多 Agent、Supervisor、A2A、MCP 与 Context Graph](docs/chapters/07-layered-multi-agent-supervisor-a2a-mcp-context-graph.md)
 - [第 08 章：从“看起来不错”到“可以证明”——多 Agent 评测、Golden Dataset 与持续回归](docs/chapters/08-multi-agent-evaluation-golden-dataset-and-continuous-regression.md)
+- [第 09 章：上线只是运营的第一天——AgentOps、事件诊断、韧性与持续优化](docs/chapters/09-agentops-incident-diagnosis-resilience-and-continuous-optimization.md)
 - [全书目录与写作状态](docs/guide/book-roadmap.md)
 - [读者阅读路径](docs/guide/reading-path.md)
 - [术语表](docs/appendices/glossary.md)
@@ -38,6 +39,7 @@
 - [Agent 安全评审与红队契约](docs/toolkit/agent-security-review-pack.md)
 - [多 Agent 系统合龙与验收契约](docs/toolkit/multi-agent-system-integration-contract.md)
 - [多 Agent 评测与持续回归契约](docs/toolkit/multi-agent-evaluation-and-regression-contract.md)
+- [AgentOps 生产运营与就绪契约](docs/toolkit/agentops-operations-readiness-contract.md)
 
 ## 本地预览
 

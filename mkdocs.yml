@@ -54,6 +54,7 @@ nav:
       - 第 06 章 不要指望模型保护自己: chapters/06-agent-security-tool-guard-privacy-and-red-teaming.md
       - 第 07 章 从组件拼装到系统合龙: chapters/07-layered-multi-agent-supervisor-a2a-mcp-context-graph.md
       - 第 08 章 从看起来不错到可以证明: chapters/08-multi-agent-evaluation-golden-dataset-and-continuous-regression.md
+      - 第 09 章 上线只是运营的第一天: chapters/09-agentops-incident-diagnosis-resilience-and-continuous-optimization.md
   - 工程模板:
       - Agent 定义卡: toolkit/agent-definition-card.md
       - 架构决策记录: toolkit/architecture-decision-record.md
@@ -63,6 +64,7 @@ nav:
       - Agent 安全评审与红队契约: toolkit/agent-security-review-pack.md
       - 多 Agent 系统合龙与验收契约: toolkit/multi-agent-system-integration-contract.md
       - 多 Agent 评测与持续回归契约: toolkit/multi-agent-evaluation-and-regression-contract.md
+      - AgentOps 生产运营与就绪契约: toolkit/agentops-operations-readiness-contract.md
       - 章节写作模板: toolkit/chapter-template.md
   - 附录:
       - 术语表: appendices/glossary.md
