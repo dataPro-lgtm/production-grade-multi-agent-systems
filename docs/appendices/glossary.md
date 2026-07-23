@@ -35,7 +35,21 @@
 | Checkpoint | 在状态图步骤边界保存的状态快照，用于暂停、恢复、回放和故障分析 |
 | Idempotency | 同一业务动作被重复请求时，不产生额外副作用或返回同一结果的性质 |
 | MCP | Model Context Protocol，AI Host 与外部 Server 发现、读取和调用能力的标准协议 |
-| Golden Dataset | 用于持续评测和回归比较的代表性任务与标准证据集合 |
+| Golden Dataset | 经过治理、可重复执行、能代表关键风险的评测案例合同集合；包含输入、事实、证据、路径不变量、容忍度和来源 |
+| Golden Entry | Golden Dataset 中单个版本化案例，描述输入、预期事实与证据、允许和禁止行为、运行策略及治理元数据 |
+| Evaluation Contract | 对质量属性、作用人群、计算方式、评估器、切片、阈值、门禁和 Owner 的约定 |
+| Evaluator | 对一次或一组 Agent 运行产生结构化度量或判决的代码、领域规则、LLM Judge 或人工评审机制 |
+| LLM-as-a-Judge | 使用语言模型按明确 Rubric 评估开放式输出或进行成对比较的测量方法；需要校准、版本化、弃权和人工复核 |
+| Judge Calibration | 将 Judge 判决与独立人类标签比较，评估一致率、Precision、Recall、Kappa、顺序稳定性和切片误差的过程 |
+| Evaluation Slice | 按意图、风险、语言、路径、模型、工具或其他维度划分的评测子集，用于发现总体平均值掩盖的差异 |
+| Holdout Set | 与开发调参隔离、用于发布验证或周期审计的保留评测集 |
+| N-run | 在声明的模型参数、Fixture、缓存和状态重置条件下，对同一案例重复运行并分析结果分布的方法 |
+| pass@k | k 次尝试中至少一次成功的概率或观测指标，常用于候选生成与搜索场景 |
+| pass^k | 本书用于表示 k 次运行全部成功的记号，强调稳定执行；它不是统一的行业标准命名 |
+| Paired Evaluation | 让 Baseline 与 Candidate 在相同案例和受控条件下运行，并按案例比较差值的评测设计 |
+| Regression Gate | 根据硬门禁、非回归容忍度和性能成本预算，决定变更是否允许进入下一发布阶段的质量策略 |
+| Quality Drift | 目标成功、忠实度、安全、决策或体验等质量属性随时间或版本变化的现象 |
+| Data Leakage | 评测案例或其语义近邻进入训练、Few-shot、RAG 或 Memory，使回归分数虚高而不代表泛化能力的现象 |
 | Trace | 一次任务中计划、路由、工具、状态和输出的可观测执行轨迹 |
 | Control Plane | 负责路由、计划、策略、预算、审批与状态转换的控制责任面 |
 | Execution Plane | 负责实际运行 Agent、Tool、Worker、Sandbox 与模型调用的执行责任面 |

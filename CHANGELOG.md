@@ -27,6 +27,9 @@
 - 将第 07 周 Word 讲义重构为“分层多 Agent、Supervisor、A2A、MCP 与 Context Graph 系统合龙”正式章节；
 - 增加 6 幅第 07 章可编辑白板手绘风原创系统合龙架构图及确定性生成脚本；
 - 增加 Layer Registry、Capability Snapshot、Plan、A2A Dispatch、MCP Tool、State Ownership、Join、Context Graph、Failure Drill 与 System Acceptance 合龙契约；
+- 将第 08 周 Word 讲义重构为“多 Agent 评测、Golden Dataset、分层指标、Judge、N-run 与持续回归”正式章节；
+- 增加 6 幅第 08 章可编辑白板手绘风原创评测架构图及确定性生成脚本；
+- 增加 Quality Contract、Golden Entry、Fixture、Evaluator、Judge Calibration、N-run、Regression Gate、Eval Report 与 Quality Incident 持续回归契约；
 - 增加阅读路径、全书路线、术语表和工程模板；
 - 增加贡献指南、Issue 模板和质量检查脚本。
 
@@ -45,4 +48,6 @@
 - 将第 06 章从控制项罗列重构为间接注入攻击主线，并按 OWASP Agentic Top 10 2026、MCP 2025-11-25 与 A2A 1.0 校准；
 - 去除第 07 章中的学习成果、课次安排、演示脚本、作业、评分 Rubric、自测答案和预告；
 - 将第 07 章从组件与检查项罗列重构为 C-102 调查主线，并按 A2A 1.0、MCP 2025-11-25 与 OpenTelemetry 当前规范校准；
+- 去除第 08 章中的学习成果、课次安排、演示脚本、作业、评分 Rubric、自测答案和预告；
+- 将第 08 章从指标与平台罗列重构为“如何证明多 Agent 系统真的变好”的完整质量控制链，并按当前主流离线评测、LLM Judge 与线上监控实践校准；
 - 统一全书目录、阅读指南与贡献标准中的图书化叙事要求。
