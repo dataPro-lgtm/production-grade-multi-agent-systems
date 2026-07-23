@@ -1,46 +1,41 @@
-# 全书目录与写作进度
+# 全书目录
 
-> 这是当前的编辑路线，不是不可修改的承诺。章节会根据案例、读者反馈和工程验证结果调整。
+全书共十章，分为三个部分。章节之间不是知识点的堆叠，而是一条连续的工程主线：**判断边界 → 建立控制 → 形成系统 → 证明质量 → 完成交付**。
 
-## 第一部分：先判断，再 Agent 化
+## 第一部分：架构与执行边界 { #part-one }
 
-| 章 | 主题 | 核心产出 | 状态 |
-|---|---|---|---|
-| 01 | 到底什么才算 AI Agent？ | Agent 判定表、自治等级、架构阶梯 | 已重构 |
-| 02 | Agent 如何调用工具并根据反馈行动 | 工具契约、状态机、持久化与 MCP 边界 | 已完成 |
-| 03 | 让多个 Agent 可靠协作 | 模式选择、协作合同、状态所有权与事故响应 PDR | 已完成 |
-| 04 | 让模型只看到正确的上下文 | Context Pack、Hybrid/Agentic RAG、GraphRAG 与评测画布 | 已完成 |
+先回答“该不该 Agent 化”，再解决“怎样行动”和“怎样协作”。
 
-## 第二部分：把多 Agent 系统运行起来
+| 章 | 主题 | 读者带走的核心产物 |
+|---|---|---|
+| [01](../chapters/01-what-is-an-ai-agent.md) | **到底什么才算 AI Agent？**<br>从目标闭环、自治等级和真实工程边界开始判断。 | Agent 判定表、自治等级、架构阶梯 |
+| [02](../chapters/02-tool-calling-state-machine-and-mcp.md) | **让 Agent 安全地行动**<br>把工具调用放入可持久化、可恢复的状态机。 | 工具合同、状态机、幂等与 MCP 边界 |
+| [03](../chapters/03-multi-agent-patterns-collaboration-and-incident-response.md) | **让多个 Agent 可靠协作**<br>按领域、状态、权限和故障边界选择协作模式。 | 模式决策记录、协作合同、事件响应机制 |
 
-| 章 | 主题 | 核心产出 | 状态 |
-|---|---|---|---|
-| 05 | 从“能启动”到“可恢复” | 平台五平面、状态所有权、运行契约、SLO 与恢复闭环 | 已完成 |
-| 06 | 不要指望模型保护自己 | 信任边界、Tool Guard、隐私审计、红队与安全验收 | 已完成 |
-| 07 | 从组件拼装到系统合龙 | 分层多 Agent、Supervisor、A2A/MCP、Context Graph 与系统验收 | 已完成 |
-| 08 | 从“看起来不错”到“可以证明” | Golden Dataset、分层指标、Judge、N-run 与持续回归 | 已完成 |
-| 09 | 上线只是运营的第一天 | AgentOps、目标级 SLO、因果诊断、运行控制、韧性、成本与 ORR | 已完成 |
-| 10 | 交付的不是 Demo，而是一套证据 | Capstone、垂直切片、Evidence Package、Release Gates 与开源交付 | 已完成 |
+## 第二部分：上下文与生产底座 { #part-two }
 
-## 第三部分：生产级控制与验证
+让系统获得正确证据，并在真实基础设施与安全约束中运行。
 
-| 章 | 主题 | 核心产出 | 状态 |
-|---|---|---|---|
-| 11 | 模型路由、成本与容量运营 | 路由策略、配额、容量模型与成本预算 | 待写 |
+| 章 | 主题 | 读者带走的核心产物 |
+|---|---|---|
+| [04](../chapters/04-context-engineering-agentic-rag-and-graphrag.md) | **让模型只看到正确的上下文**<br>治理检索、授权、版本、证据和上下文预算。 | Context Pack、Agentic RAG、GraphRAG 设计画布 |
+| [05](../chapters/05-production-infrastructure-observability-and-recovery.md) | **从“能启动”到“可恢复”**<br>建立部署、可观测性、可靠性与恢复闭环。 | 运行契约、SLO、状态所有权、恢复演练 |
+| [06](../chapters/06-agent-security-tool-guard-privacy-and-red-teaming.md) | **不要指望模型保护自己**<br>用确定性边界限制被操纵模型的影响范围。 | Tool Guard、隐私审计、红队与安全验收 |
 
-## 第四部分：工程案例与组织落地
+## 第三部分：合龙、验证与交付 { #part-three }
 
-| 章 | 主题 | 核心产出 | 状态 |
-|---|---|---|---|
-| 12 | 构建一个可测试的 Data Agent | 端到端代码、测试与 ADR | 待写 |
-| 13 | 从单 Agent 演进到受约束多 Agent | 演进 Diff、收益评测、回退方案 | 待写 |
-| 14 | 上线、治理与团队协作 | 上线清单、责任矩阵、成熟度模型 | 待写 |
+把组件合成系统，用证据证明质量，并建立上线后的运营与交付闭环。
 
-## 第一版完成标准
+| 章 | 主题 | 读者带走的核心产物 |
+|---|---|---|
+| [07](../chapters/07-layered-multi-agent-supervisor-a2a-mcp-context-graph.md) | **从组件拼装到系统合龙**<br>贯通 Supervisor、A2A、MCP、状态与证据。 | 分层架构、Context Graph、端到端验收契约 |
+| [08](../chapters/08-multi-agent-evaluation-golden-dataset-and-continuous-regression.md) | **从“看起来不错”到“可以证明”**<br>评估随机执行链，而不只看最终文本。 | Golden Dataset、分层指标、N-run、回归门禁 |
+| [09](../chapters/09-agentops-incident-diagnosis-resilience-and-continuous-optimization.md) | **上线只是运营的第一天**<br>围绕用户目标诊断、控制、恢复和持续优化。 | 目标级 SLO、因果诊断、运行控制、ORR |
+| [10](../chapters/10-capstone-system-acceptance-and-open-source-delivery.md) | **交付的不是 Demo，而是一套证据**<br>让独立评审者能够追溯、复现并继续维护。 | Evidence Package、Release Gates、开源交付契约 |
 
-- 每章至少包含一个真实业务案例和一个明确的架构决策；
-- 涉及代码的章节必须能按文件级路径运行和验证；
-- 所有高风险操作都说明权限、审批、幂等与回滚边界；
-- 每章提供可复用的契约、清单、决策方法或验证方法；
-- 全书通过链接、站点构建和基础内容检查；
-- 第三方材料具备清晰引用和许可说明。
+## 贯穿全书的系统
+
+十章共享一条逐步演进的业务线索：系统从受约束的数据分析任务出发，进入支付事故调查与 C-102 理赔调查，并在第 03—10 章逐渐补齐协作、证据、平台、安全、评测、运营和交付能力。读者看到的不是十个彼此孤立的 Demo，而是一个生产系统如何一步步获得可信边界。
+
+[开始阅读第 01 章](../chapters/01-what-is-an-ai-agent.md){ .md-button .md-button--primary }
+[查看工程模板](../toolkit/agent-definition-card.md){ .md-button }
