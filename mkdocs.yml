@@ -1,5 +1,5 @@
 site_name: 生产级多智能体系统
-site_description: 从架构判断到工程落地
+site_description: 一本关于生产级多智能体系统架构、工程、评测、运营与交付的中文开源书
 site_author: DataDan
 site_url: https://datapro-lgtm.github.io/production-grade-multi-agent-systems/
 repo_url: https://github.com/dataPro-lgtm/production-grade-multi-agent-systems
@@ -42,32 +42,37 @@ theme:
 
 nav:
   - 首页: index.md
-  - 阅读指南:
-      - 阅读路径: guide/reading-path.md
-      - 全书目录与进度: guide/book-roadmap.md
-  - 正文:
+  - 阅读本书:
+      - 阅读建议: guide/reading-path.md
+      - 全书目录: guide/book-roadmap.md
+  - 第一部分 · 架构与执行边界:
       - 第 01 章 到底什么才算 AI Agent: chapters/01-what-is-an-ai-agent.md
       - 第 02 章 让 Agent 安全地行动: chapters/02-tool-calling-state-machine-and-mcp.md
       - 第 03 章 让多个 Agent 可靠协作: chapters/03-multi-agent-patterns-collaboration-and-incident-response.md
+  - 第二部分 · 上下文与生产底座:
       - 第 04 章 让模型只看到正确的上下文: chapters/04-context-engineering-agentic-rag-and-graphrag.md
       - 第 05 章 从能启动到可恢复: chapters/05-production-infrastructure-observability-and-recovery.md
       - 第 06 章 不要指望模型保护自己: chapters/06-agent-security-tool-guard-privacy-and-red-teaming.md
+  - 第三部分 · 合龙、验证与交付:
       - 第 07 章 从组件拼装到系统合龙: chapters/07-layered-multi-agent-supervisor-a2a-mcp-context-graph.md
       - 第 08 章 从看起来不错到可以证明: chapters/08-multi-agent-evaluation-golden-dataset-and-continuous-regression.md
       - 第 09 章 上线只是运营的第一天: chapters/09-agentops-incident-diagnosis-resilience-and-continuous-optimization.md
       - 第 10 章 交付的不是 Demo 而是一套证据: chapters/10-capstone-system-acceptance-and-open-source-delivery.md
   - 工程模板:
-      - Agent 定义卡: toolkit/agent-definition-card.md
-      - 架构决策记录: toolkit/architecture-decision-record.md
-      - 多 Agent 模式决策记录: toolkit/pattern-decision-record.md
-      - Context Engineering 设计画布: toolkit/context-engineering-canvas.md
-      - 生产就绪与恢复契约: toolkit/production-readiness-contract.md
-      - Agent 安全评审与红队契约: toolkit/agent-security-review-pack.md
-      - 多 Agent 系统合龙与验收契约: toolkit/multi-agent-system-integration-contract.md
-      - 多 Agent 评测与持续回归契约: toolkit/multi-agent-evaluation-and-regression-contract.md
-      - AgentOps 生产运营与就绪契约: toolkit/agentops-operations-readiness-contract.md
-      - Capstone 系统验收与开源交付契约: toolkit/capstone-system-acceptance-and-open-source-delivery-contract.md
-      - 章节写作模板: toolkit/chapter-template.md
+      - 架构决策:
+          - Agent 定义卡: toolkit/agent-definition-card.md
+          - 架构决策记录: toolkit/architecture-decision-record.md
+          - 多 Agent 模式决策记录: toolkit/pattern-decision-record.md
+      - 系统设计:
+          - Context Engineering 设计画布: toolkit/context-engineering-canvas.md
+          - 生产就绪与恢复契约: toolkit/production-readiness-contract.md
+          - Agent 安全评审与红队契约: toolkit/agent-security-review-pack.md
+      - 验证与交付:
+          - 系统合龙与验收契约: toolkit/multi-agent-system-integration-contract.md
+          - 评测与持续回归契约: toolkit/multi-agent-evaluation-and-regression-contract.md
+          - AgentOps 生产运营契约: toolkit/agentops-operations-readiness-contract.md
+          - Capstone 验收与开源交付契约: toolkit/capstone-system-acceptance-and-open-source-delivery-contract.md
+      - 写作模板: toolkit/chapter-template.md
   - 附录:
       - 术语表: appendices/glossary.md
       - 许可与引用: appendices/license-and-citation.md
