@@ -1,0 +1,31 @@
+name: 勘误
+description: 报告错字、事实错误、失效链接或难以理解的段落
+title: "[勘误] "
+labels:
+  - errata
+body:
+  - type: input
+    id: location
+    attributes:
+      label: 位置
+      description: 请提供章节、标题或链接。
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: 当前内容或问题
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 建议修改
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 参考依据
+      description: 如涉及事实判断，请附官方文档、规范、论文或可复现实验。
+

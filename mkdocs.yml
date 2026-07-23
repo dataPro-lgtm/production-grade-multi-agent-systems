@@ -1,0 +1,87 @@
+site_name: 生产级多智能体系统
+site_description: 从架构判断到工程落地
+site_author: DataDan
+copyright: Copyright © 2026 DataDan · CC BY 4.0
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - content.code.copy
+    - content.action.edit
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+  font:
+    text: Noto Sans SC
+    code: JetBrains Mono
+
+nav:
+  - 首页: index.md
+  - 阅读指南:
+      - 阅读路径: guide/reading-path.md
+      - 全书目录与进度: guide/book-roadmap.md
+  - 正文:
+      - 第 01 章 到底什么才算 AI Agent: chapters/01-what-is-an-ai-agent.md
+  - 工程模板:
+      - Agent 定义卡: toolkit/agent-definition-card.md
+      - 架构决策记录: toolkit/architecture-decision-record.md
+      - 章节写作模板: toolkit/chapter-template.md
+  - 附录:
+      - 术语表: appendices/glossary.md
+      - 许可与引用: appendices/license-and-citation.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra:
+  generator: false
+
+strict: true

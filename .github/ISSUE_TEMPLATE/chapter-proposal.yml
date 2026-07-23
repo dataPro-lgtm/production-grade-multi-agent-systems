@@ -1,0 +1,29 @@
+name: 章节或案例提案
+description: 提议新章节、工程案例或较大内容重构
+title: "[提案] "
+labels:
+  - proposal
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 要解决的真实问题
+    validations:
+      required: true
+  - type: textarea
+    id: readers
+    attributes:
+      label: 目标读者与学习产出
+    validations:
+      required: true
+  - type: textarea
+    id: outline
+    attributes:
+      label: 建议提纲
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 代码、案例与验证计划
+

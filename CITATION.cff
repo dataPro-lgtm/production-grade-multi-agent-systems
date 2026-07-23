@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: 如果本书对你的研究、课程或工程实践有帮助，请按以下信息引用。
+title: "生产级多智能体系统：从架构判断到工程落地"
+type: book
+authors:
+  - family-names: DataDan
+version: 0.1.0
+date-released: 2026-07-23
+license: CC-BY-4.0
+abstract: 一本从架构判断、系统边界和生产控制出发，讲解多智能体系统工程落地的中文开源书。
+
