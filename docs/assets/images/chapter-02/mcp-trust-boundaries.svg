@@ -1,51 +1,69 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-  <title id="title">MCP 的 Host、Client、Server 与双重安全边界</title>
-  <desc id="desc">MCP Host 为每个 Server 管理一个独立 Client；Host 控制能力暴露与上下文，Server 执行资源侧身份、权限和业务校验。</desc>
+  <title id="title">CaseOps MCP 双重信任边界</title>
+  <desc id="desc">API Host 先根据用户身份与任务授权，签发短期任务令牌；MCP Server 再验证令牌、租户、任务、作用域和资源，模型参数不包含租户。</desc>
   <defs>
-    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="31" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/></filter>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#1e3a5f" stroke-width="2.2"/></marker>
-    <style>.label{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}.title{font-size:42px;font-weight:700}.box-title{font-size:27px;font-weight:700}.body{font-size:20px}.small{font-size:18px}.flow{fill:none;stroke:#1e3a5f;stroke-width:4.5;marker-end:url(#arrow)}</style>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="31" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#1e3a5f" stroke-width="2.2"/>
+    </marker>
+    <style>
+      .label{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}
+      .title{font-size:42px;font-weight:700}.box-title{font-size:28px;font-weight:700}.body{font-size:20px}.small{font-size:18px}
+      .flow{fill:none;stroke:#1e3a5f;stroke-width:4.5;stroke-linecap:round;marker-end:url(#arrow)}
+    </style>
   </defs>
   <rect width="1600" height="900" fill="#fbfaf5"/>
   <path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
-  <text x="80" y="72" class="label title">MCP 标准化连接，但安全责任仍在两端</text>
+  <text x="80" y="72" class="label title">双重授权：协议连通以后，还要验证资源边界</text>
 
   <g filter="url(#rough)">
-    <rect x="70" y="170" width="380" height="530" rx="30" fill="#fff4d2" stroke="#d59621" stroke-width="5"/>
-    <rect x="520" y="190" width="280" height="150" rx="22" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
-    <rect x="520" y="395" width="280" height="150" rx="22" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
-    <rect x="520" y="600" width="280" height="150" rx="22" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
-    <rect x="880" y="190" width="300" height="150" rx="22" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
-    <rect x="880" y="395" width="300" height="150" rx="22" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
-    <rect x="880" y="600" width="300" height="150" rx="22" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
-    <rect x="1250" y="190" width="290" height="560" rx="26" fill="#f4ebff" stroke="#7651a6" stroke-width="5"/>
+    <rect x="55" y="170" width="400" height="560" rx="30" fill="#fff4d2" stroke="#d59621" stroke-width="5"/>
+    <rect x="520" y="235" width="250" height="170" rx="24" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
+    <rect x="520" y="500" width="250" height="170" rx="24" fill="#f4ebff" stroke="#7651a6" stroke-width="5"/>
+    <rect x="845" y="170" width="420" height="560" rx="30" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
+    <rect x="1330" y="260" width="220" height="380" rx="28" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
   </g>
 
-  <text x="260" y="230" text-anchor="middle" class="label box-title">MCP Host / AI 应用</text>
-  <text x="115" y="300" class="label body">• 用户体验与同意</text><text x="115" y="345" class="label body">• 模型与 Agent 循环</text>
-  <text x="115" y="390" class="label body">• 能力暴露与上下文过滤</text><text x="115" y="435" class="label body">• 风险、预算与审批</text>
-  <text x="115" y="500" class="label small">每个 Server 一条独立 Client 连接</text>
-  <text x="260" y="610" text-anchor="middle" class="label box-title" fill="#9d3030">Host 安全边界</text>
-  <text x="260" y="650" text-anchor="middle" class="label small">谁能看见和选择哪些能力？</text>
+  <text x="255" y="225" text-anchor="middle" class="label box-title">CaseOps API / MCP Host</text>
+  <text x="100" y="295" class="label body">① API Key → Principal</text>
+  <text x="100" y="340" class="label body">② 锁定 tenant_id 与 case_id</text>
+  <text x="100" y="385" class="label body">③ Tool allowlist 与 Scope</text>
+  <text x="100" y="430" class="label body">④ 风险、预算、动作指纹</text>
+  <text x="100" y="475" class="label body">⑤ 只把最小工具交给 Planner</text>
+  <text x="255" y="590" text-anchor="middle" class="label box-title" fill="#9d3030">Host 授权边界</text>
+  <text x="255" y="635" text-anchor="middle" class="label small">模型只能提议，不能声明身份</text>
 
-  <text x="660" y="247" text-anchor="middle" class="label box-title">MCP Client A</text><text x="660" y="290" text-anchor="middle" class="label body">版本与能力协商</text>
-  <text x="660" y="452" text-anchor="middle" class="label box-title">MCP Client B</text><text x="660" y="495" text-anchor="middle" class="label body">协议消息路由</text>
-  <text x="660" y="657" text-anchor="middle" class="label box-title">MCP Client C</text><text x="660" y="700" text-anchor="middle" class="label body">连接与通知管理</text>
+  <text x="645" y="292" text-anchor="middle" class="label box-title">MCP Client</text>
+  <text x="645" y="337" text-anchor="middle" class="label body">initialize · list · call</text>
+  <text x="645" y="375" text-anchor="middle" class="label small">Streamable HTTP</text>
 
-  <text x="1030" y="247" text-anchor="middle" class="label box-title">SQL Server</text><text x="1030" y="290" text-anchor="middle" class="label body">指标查询 Tools</text>
-  <text x="1030" y="452" text-anchor="middle" class="label box-title">Knowledge Server</text><text x="1030" y="495" text-anchor="middle" class="label body">Schema Resources</text>
-  <text x="1030" y="657" text-anchor="middle" class="label box-title">Action Server</text><text x="1030" y="700" text-anchor="middle" class="label body">工单与审批 Tools</text>
+  <text x="645" y="548" text-anchor="middle" class="label box-title">短期任务令牌</text>
+  <text x="645" y="590" text-anchor="middle" class="label small">aud · tenant · task · sub</text>
+  <text x="645" y="622" text-anchor="middle" class="label small">scope · iat · nbf · exp · jti</text>
 
-  <text x="1395" y="245" text-anchor="middle" class="label box-title">Server 资源边界</text>
-  <text x="1290" y="315" class="label body">• Token 与 Scope</text><text x="1290" y="360" class="label body">• 租户与数据权限</text>
-  <text x="1290" y="405" class="label body">• 参数与业务规则</text><text x="1290" y="450" class="label body">• 幂等与速率限制</text>
-  <text x="1290" y="495" class="label body">• 结果过滤与审计</text>
-  <text x="1395" y="590" text-anchor="middle" class="label box-title" fill="#9d3030">Server 再授权</text>
-  <text x="1395" y="632" text-anchor="middle" class="label small">协议连接 ≠ 业务许可</text>
+  <text x="1055" y="225" text-anchor="middle" class="label box-title">CaseOps MCP Tool Server</text>
+  <text x="900" y="295" class="label body">① 验证签名、issuer 与 audience</text>
+  <text x="900" y="340" class="label body">② 从令牌读取 tenant 与 task</text>
+  <text x="900" y="385" class="label body">③ 逐工具检查 required scope</text>
+  <text x="900" y="430" class="label body">④ 参数与业务规则再校验</text>
+  <text x="900" y="475" class="label body">⑤ 结构化结果与 evidence_ref</text>
+  <text x="1055" y="590" text-anchor="middle" class="label box-title" fill="#9d3030">Server 资源边界</text>
+  <text x="1055" y="635" text-anchor="middle" class="label small">协议连通 ≠ 有权读取数据</text>
 
-  <path d="M450 270 L520 270" class="flow"/><path d="M450 475 L520 475" class="flow"/><path d="M450 680 L520 680" class="flow"/>
-  <path d="M800 270 L880 270" class="flow"/><path d="M800 475 L880 475" class="flow"/><path d="M800 680 L880 680" class="flow"/>
-  <path d="M1180 270 L1250 270" class="flow"/><path d="M1180 475 L1250 475" class="flow"/><path d="M1180 680 L1250 680" class="flow"/>
+  <text x="1440" y="330" text-anchor="middle" class="label box-title">PostgreSQL</text>
+  <text x="1440" y="385" text-anchor="middle" class="label body">案件 · 规则</text>
+  <text x="1440" y="425" text-anchor="middle" class="label body">来源材料 · 别名</text>
+  <text x="1440" y="485" text-anchor="middle" class="label small">查询必须包含</text>
+  <text x="1440" y="520" text-anchor="middle" class="label small">verified tenant_id</text>
 
-  <text x="800" y="835" text-anchor="middle" class="label box-title">初始化 → 版本协商 → 能力发现 → 调用 → 结构化结果</text>
+  <path d="M455 320 L520 320" class="flow"/>
+  <path d="M645 405 L645 500" class="flow"/>
+  <path d="M770 585 C815 555 820 360 845 330" class="flow"/>
+  <path d="M1265 400 L1330 400" class="flow"/>
+
+  <rect x="230" y="770" width="1140" height="72" rx="28" fill="#fff0ef" stroke="#c94c4c" stroke-width="4" filter="url(#rough)"/>
+  <text x="800" y="816" text-anchor="middle" class="label box-title" fill="#9d3030">工具参数没有 tenant_id；凭据不进入 Prompt，也不向下游透传</text>
 </svg>

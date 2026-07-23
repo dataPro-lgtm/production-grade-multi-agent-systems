@@ -1,6 +1,6 @@
 visual_system:
   name: architect-whiteboard
-  version: 1
+  version: 2
   inherited_from: chapter-01
   canvas: warm-white
   primary_ink: "#1e3a5f"
@@ -45,4 +45,4 @@ provenance:
   generated_text: false
   source_document_images_reused: false
   source_book_images_reused: false
-  note: Word 原图和参考书仅用于概念研究，最终图稿均按本书视觉系统重新绘制。
+  note: 2.0 图稿已与 CaseOps Slice 1 的状态和 MCP 信任边界对齐；Word 原图和参考书只用于概念研究。
