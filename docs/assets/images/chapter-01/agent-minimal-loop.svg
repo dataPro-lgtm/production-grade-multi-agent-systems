@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">AI Agent 最小运行闭环</title>
+  <desc id="desc">Agent 围绕目标依次观察、决策、行动和更新状态，并在完成、风险或证据不足时停止或转交人工。</desc>
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#1e3a5f" stroke-width="2.2"/>
+    </marker>
+    <style>
+      .label{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}
+      .title{font-size:42px;font-weight:700}
+      .box-title{font-size:32px;font-weight:700}
+      .body{font-size:22px}
+      .small{font-size:19px}
+      .ink{fill:none;stroke:#1e3a5f;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+      .flow{fill:none;stroke:#1e3a5f;stroke-width:5;stroke-linecap:round;stroke-dasharray:12 10;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#fbfaf5"/>
+  <path d="M60 90 C330 68 620 80 860 70 C1110 60 1370 72 1540 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">AI Agent 的最小运行闭环</text>
+
+  <g filter="url(#rough)">
+    <rect x="580" y="105" width="440" height="96" rx="20" fill="#fff1bb" stroke="#d59621" stroke-width="5"/>
+  </g>
+  <text x="800" y="147" text-anchor="middle" class="label box-title">目标 Goal</text>
+  <text x="800" y="180" text-anchor="middle" class="label body">成功标准 · 约束 · 终止条件</text>
+
+  <g filter="url(#rough)">
+    <rect x="120" y="330" width="300" height="170" rx="26" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
+    <rect x="505" y="330" width="300" height="170" rx="26" fill="#fff4d2" stroke="#d59621" stroke-width="5"/>
+    <rect x="890" y="330" width="300" height="170" rx="26" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
+    <rect x="1275" y="330" width="250" height="170" rx="26" fill="#f4ebff" stroke="#7651a6" stroke-width="5"/>
+  </g>
+  <text x="270" y="385" text-anchor="middle" class="label box-title">观察</text>
+  <text x="270" y="425" text-anchor="middle" class="label body">用户 · 环境 · 工具结果</text>
+  <text x="270" y="461" text-anchor="middle" class="label small">Observe</text>
+
+  <text x="655" y="385" text-anchor="middle" class="label box-title">决策</text>
+  <text x="655" y="425" text-anchor="middle" class="label body">选择下一动作</text>
+  <text x="655" y="461" text-anchor="middle" class="label small">Decide</text>
+
+  <text x="1040" y="385" text-anchor="middle" class="label box-title">行动</text>
+  <text x="1040" y="425" text-anchor="middle" class="label body">受控工具执行</text>
+  <text x="1040" y="461" text-anchor="middle" class="label small">Act</text>
+
+  <text x="1400" y="385" text-anchor="middle" class="label box-title">更新</text>
+  <text x="1400" y="425" text-anchor="middle" class="label body">状态 · 证据 · 预算</text>
+  <text x="1400" y="461" text-anchor="middle" class="label small">Update</text>
+
+  <path d="M420 415 C450 404 470 404 505 415" class="flow"/>
+  <path d="M805 415 C835 404 855 404 890 415" class="flow"/>
+  <path d="M1190 415 C1220 404 1240 404 1275 415" class="flow"/>
+  <path d="M1400 500 C1394 650 1120 690 820 680 C490 670 265 620 270 500" class="flow"/>
+  <path d="M800 201 C720 240 620 260 500 310" class="flow"/>
+
+  <g filter="url(#rough)">
+    <rect x="460" y="700" width="680" height="110" rx="18" fill="#ffffff" stroke="#c94c4c" stroke-width="4"/>
+  </g>
+  <text x="800" y="744" text-anchor="middle" class="label box-title" fill="#9d3030">终止或转交人工</text>
+  <text x="800" y="780" text-anchor="middle" class="label body">完成 · 拒绝 · 风险超限 · 证据不足 · 预算耗尽</text>
+  <path d="M1400 500 C1360 585 1220 676 1140 730" stroke="#c94c4c" stroke-width="5" fill="none" stroke-dasharray="10 10" marker-end="url(#arrow)"/>
+</svg>

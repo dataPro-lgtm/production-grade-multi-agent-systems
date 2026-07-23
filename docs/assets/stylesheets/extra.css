@@ -14,15 +14,49 @@
 }
 
 .md-typeset table:not([class]) {
+  display: table;
+  width: 100%;
+  margin: 1.4rem 0 1.8rem;
+  overflow: hidden;
+  border: 1px solid rgba(32, 58, 114, 0.16);
+  border-radius: 0.55rem;
+  box-shadow: 0 0.35rem 1.1rem rgba(32, 58, 114, 0.07);
   font-size: 0.76rem;
 }
 
+.md-typeset table:not([class]) th {
+  padding: 0.72rem 0.85rem;
+  border-bottom: 0;
+  background: #203a72;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.md-typeset table:not([class]) td {
+  padding: 0.68rem 0.85rem;
+  border-top: 1px solid rgba(32, 58, 114, 0.09);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.md-typeset table:not([class]) tbody tr:nth-child(even) {
+  background: rgba(32, 58, 114, 0.035);
+}
+
+.md-typeset table:not([class]) tbody tr:hover {
+  background: rgba(213, 139, 0, 0.07);
+}
+
 .md-typeset img {
+  display: block;
+  margin: 1.35rem auto 0.65rem;
+  border: 1px solid rgba(32, 58, 114, 0.1);
   border-radius: 0.4rem;
+  box-shadow: 0 0.45rem 1.4rem rgba(32, 58, 114, 0.08);
 }
 
 .md-typeset .md-button {
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
 }
-

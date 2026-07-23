@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">架构复杂度升级阶梯</title>
+  <desc id="desc">系统从确定性代码依次升级到普通 LLM 应用、LLM 工作流、单 Agent 和多 Agent，每次升级都需要可验证的理由。</desc>
+  <defs>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="2" seed="23" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10" fill="none" stroke="#c94c4c" stroke-width="2"/></marker>
+    <style>.t{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}.h1{font-size:42px;font-weight:700}.h2{font-size:29px;font-weight:700}.b{font-size:20px}</style>
+  </defs>
+  <rect width="1600" height="900" fill="#fbfaf5"/>
+  <text x="80" y="76" class="t h1">选择满足需求的最简单架构</text>
+  <g filter="url(#rough)">
+    <path d="M100 710 L100 590 L370 590 L370 470 L640 470 L640 350 L910 350 L910 230 L1180 230 L1180 110 L1510 110 L1510 710 Z" fill="#ffffff" stroke="#1e3a5f" stroke-width="6" stroke-linejoin="round"/>
+  </g>
+  <rect x="100" y="590" width="270" height="120" fill="#eef1f4"/>
+  <rect x="370" y="470" width="270" height="240" fill="#e8f2ff"/>
+  <rect x="640" y="350" width="270" height="360" fill="#fff4d2"/>
+  <rect x="910" y="230" width="270" height="480" fill="#e7f5ed"/>
+  <rect x="1180" y="110" width="330" height="600" fill="#f4ebff"/>
+
+  <text x="235" y="635" text-anchor="middle" class="t h2">确定性代码</text><text x="235" y="675" text-anchor="middle" class="t b">规则清楚 · 结果可计算</text>
+  <text x="505" y="515" text-anchor="middle" class="t h2">普通 LLM 应用</text><text x="505" y="555" text-anchor="middle" class="t b">生成 · 抽取 · 分类</text>
+  <text x="775" y="395" text-anchor="middle" class="t h2">LLM 工作流</text><text x="775" y="435" text-anchor="middle" class="t b">固定路径中的语义节点</text>
+  <text x="1045" y="275" text-anchor="middle" class="t h2">单 Agent</text><text x="1045" y="315" text-anchor="middle" class="t b">根据反馈动态选动作</text>
+  <text x="1345" y="155" text-anchor="middle" class="t h2">多 Agent</text><text x="1345" y="195" text-anchor="middle" class="t b">真实边界下的协作系统</text>
+
+  <path d="M210 540 C500 300 920 130 1440 70" fill="none" stroke="#c94c4c" stroke-width="5" stroke-dasharray="12 10" marker-end="url(#arrow)"/>
+  <text x="690" y="190" class="t h2" fill="#c94c4c">自治 / 成本 / 延迟 / 测试空间</text>
+  <g filter="url(#rough)"><rect x="260" y="760" width="1080" height="92" rx="18" fill="#fff1bb" stroke="#d59621" stroke-width="4"/></g>
+  <text x="800" y="818" text-anchor="middle" class="t h2">下一层解决了已被数据证明的问题吗？如果没有，就停在当前层。</text>
+</svg>
