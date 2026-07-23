@@ -34,8 +34,9 @@
 - [x] 第 04 章：Context Engineering、Agentic RAG 与 GraphRAG
 - [x] 第 05 章：生产基础设施、可观测性与故障恢复
 - [x] 第 06 章：多 Agent 纵深防御、Tool Guard、隐私审计与红队
-- [x] 章节写作、Agent 定义卡、ADR、生产就绪与安全评审模板
-- [ ] 第 07 章及后续章节正文
+- [x] 第 07 章：分层多 Agent、Supervisor、A2A、MCP 与 Context Graph 合龙
+- [x] 章节写作、Agent 定义卡、ADR、生产就绪、安全评审与系统合龙模板
+- [ ] 第 08 章及后续章节正文
 - [ ] 随书代码实验与自动化测试
 - [ ] 第一版完整审校与正式发布
 
