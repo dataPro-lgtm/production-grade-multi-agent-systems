@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">从 Thread 到 Trace、Run 和 Evidence 的可观测链路</title>
+  <desc id="desc">一个 Thread 包含多次 Trace；一次 Trace 包含模型、策略、工具和验证 Run，并关联证据与最终回答。</desc>
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="37" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#1e3a5f" stroke-width="2.2"/></marker>
+    <style>.label{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}.title{font-size:42px;font-weight:700}.box-title{font-size:27px;font-weight:700}.body{font-size:20px}.small{font-size:18px}.flow{fill:none;stroke:#1e3a5f;stroke-width:4;marker-end:url(#arrow)}.link{fill:none;stroke:#7651a6;stroke-width:4;stroke-dasharray:10 8;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1600" height="900" fill="#fbfaf5"/>
+  <path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">可观测性要还原过程，而不是只保存答案</text>
+
+  <g filter="url(#rough)">
+    <rect x="580" y="125" width="440" height="92" rx="20" fill="#fff4d2" stroke="#d59621" stroke-width="5"/>
+    <rect x="580" y="270" width="440" height="92" rx="20" fill="#f4ebff" stroke="#7651a6" stroke-width="5"/>
+    <rect x="55" y="445" width="255" height="145" rx="22" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
+    <rect x="365" y="445" width="255" height="145" rx="22" fill="#fff0ef" stroke="#c94c4c" stroke-width="5"/>
+    <rect x="675" y="445" width="255" height="145" rx="22" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
+    <rect x="985" y="445" width="255" height="145" rx="22" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
+    <rect x="1295" y="445" width="255" height="145" rx="22" fill="#fff4d2" stroke="#d59621" stroke-width="5"/>
+    <rect x="240" y="690" width="430" height="110" rx="22" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
+    <rect x="930" y="690" width="430" height="110" rx="22" fill="#f4ebff" stroke="#7651a6" stroke-width="5"/>
+  </g>
+
+  <text x="800" y="165" text-anchor="middle" class="label box-title">Thread：跨轮任务状态</text><text x="800" y="198" text-anchor="middle" class="label small">thread_id · 用户 · 对话生命周期</text>
+  <text x="800" y="310" text-anchor="middle" class="label box-title">Trace：一次用户目标</text><text x="800" y="343" text-anchor="middle" class="label small">trace_id · Prompt / Tool / Dataset 版本</text>
+
+  <text x="182" y="495" text-anchor="middle" class="label box-title">Model Run</text><text x="182" y="535" text-anchor="middle" class="label body">工具选择</text><text x="182" y="566" text-anchor="middle" class="label small">Token · 延迟</text>
+  <text x="492" y="495" text-anchor="middle" class="label box-title">Policy Run</text><text x="492" y="535" text-anchor="middle" class="label body">授权与风险</text><text x="492" y="566" text-anchor="middle" class="label small">规则版本 · 原因</text>
+  <text x="802" y="495" text-anchor="middle" class="label box-title">Tool Run</text><text x="802" y="535" text-anchor="middle" class="label body">参数与结果</text><text x="802" y="566" text-anchor="middle" class="label small">call_id · 延迟</text>
+  <text x="1112" y="495" text-anchor="middle" class="label box-title">Model Run</text><text x="1112" y="535" text-anchor="middle" class="label body">证据解释</text><text x="1112" y="566" text-anchor="middle" class="label small">决策 · 回答</text>
+  <text x="1422" y="495" text-anchor="middle" class="label box-title">Validation Run</text><text x="1422" y="535" text-anchor="middle" class="label body">证据与安全</text><text x="1422" y="566" text-anchor="middle" class="label small">覆盖率 · 评分</text>
+
+  <text x="455" y="735" text-anchor="middle" class="label box-title">Evidence</text><text x="455" y="772" text-anchor="middle" class="label body">来源 · 新鲜度 · 质量 · evidence_id</text>
+  <text x="1145" y="735" text-anchor="middle" class="label box-title">最终答案 / 终止原因</text><text x="1145" y="772" text-anchor="middle" class="label body">引用证据，或明确失败、拒绝、转人工</text>
+
+  <path d="M800 217 L800 270" class="flow"/>
+  <path d="M690 362 C520 405 310 390 182 445" class="flow"/><path d="M750 362 C650 410 565 405 492 445" class="flow"/>
+  <path d="M800 362 L802 445" class="flow"/><path d="M850 362 C950 410 1040 405 1112 445" class="flow"/><path d="M910 362 C1080 405 1300 390 1422 445" class="flow"/>
+  <path d="M802 590 C720 650 580 650 500 690" class="link"/>
+  <path d="M500 690 C680 625 960 625 1080 690" class="link"/>
+  <path d="M1422 590 C1400 640 1300 660 1250 690" class="flow"/>
+
+  <text x="800" y="858" text-anchor="middle" class="label box-title">参数与结果先脱敏；稳定 ID 让模型、策略、工具、证据和答案能够互相追溯</text>
+</svg>

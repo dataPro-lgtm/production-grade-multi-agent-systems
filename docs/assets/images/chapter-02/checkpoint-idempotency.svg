@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Checkpoint 与幂等故障窗口</title>
+  <desc id="desc">外部动作成功而新检查点尚未保存时发生崩溃，系统恢复后可能重复执行；幂等键和执行账本关闭这一风险窗口。</desc>
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="29" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#1e3a5f" stroke-width="2.2"/></marker>
+    <style>.label{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}.title{font-size:42px;font-weight:700}.box-title{font-size:28px;font-weight:700}.body{font-size:21px}.small{font-size:18px}.flow{fill:none;stroke:#1e3a5f;stroke-width:4.5;marker-end:url(#arrow)}.risk{fill:none;stroke:#c94c4c;stroke-width:5;stroke-dasharray:10 8;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1600" height="900" fill="#fbfaf5"/>
+  <path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">Checkpoint 能恢复状态，但不能自动消除重复副作用</text>
+
+  <path d="M120 330 C460 318 770 335 1090 322 C1280 315 1420 325 1490 318" stroke="#1e3a5f" stroke-width="5" fill="none"/>
+  <g filter="url(#rough)">
+    <rect x="90" y="210" width="220" height="100" rx="18" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
+    <rect x="380" y="210" width="220" height="100" rx="18" fill="#fff4d2" stroke="#d59621" stroke-width="5"/>
+    <rect x="670" y="210" width="220" height="100" rx="18" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
+    <rect x="960" y="210" width="220" height="100" rx="18" fill="#fff0ef" stroke="#c94c4c" stroke-width="5"/>
+    <rect x="1250" y="210" width="220" height="100" rx="18" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
+  </g>
+  <text x="200" y="252" text-anchor="middle" class="label box-title">读取 CP-2</text><text x="200" y="286" text-anchor="middle" class="label small">最近稳定状态</text>
+  <text x="490" y="252" text-anchor="middle" class="label box-title">调用写工具</text><text x="490" y="286" text-anchor="middle" class="label small">携带幂等键</text>
+  <text x="780" y="252" text-anchor="middle" class="label box-title">外部成功</text><text x="780" y="286" text-anchor="middle" class="label small">副作用已发生</text>
+  <text x="1070" y="252" text-anchor="middle" class="label box-title" fill="#9d3030">进程崩溃</text><text x="1070" y="286" text-anchor="middle" class="label small">CP-3 尚未保存</text>
+  <text x="1360" y="252" text-anchor="middle" class="label box-title">从 CP-2 恢复</text><text x="1360" y="286" text-anchor="middle" class="label small">可能再次调用</text>
+
+  <line x1="200" y1="310" x2="200" y2="370" stroke="#326da8" stroke-width="4"/>
+  <line x1="490" y1="310" x2="490" y2="370" stroke="#d59621" stroke-width="4"/>
+  <line x1="780" y1="310" x2="780" y2="370" stroke="#3c8d77" stroke-width="4"/>
+  <line x1="1070" y1="310" x2="1070" y2="370" stroke="#c94c4c" stroke-width="4"/>
+  <line x1="1360" y1="310" x2="1360" y2="370" stroke="#326da8" stroke-width="4"/>
+
+  <path d="M1080 390 C1030 460 900 470 790 410" class="risk"/>
+  <text x="930" y="475" text-anchor="middle" class="label box-title" fill="#9d3030">危险窗口：外部已成功，状态尚未提交</text>
+
+  <g filter="url(#rough)">
+    <rect x="150" y="560" width="390" height="180" rx="24" fill="#fff4d2" stroke="#d59621" stroke-width="5"/>
+    <rect x="605" y="560" width="390" height="180" rx="24" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
+    <rect x="1060" y="560" width="390" height="180" rx="24" fill="#f4ebff" stroke="#7651a6" stroke-width="5"/>
+  </g>
+  <text x="345" y="615" text-anchor="middle" class="label box-title">稳定幂等键</text><text x="345" y="658" text-anchor="middle" class="label body">同一业务动作保持同一 Key</text><text x="345" y="700" text-anchor="middle" class="label small">不要按重试次数重新生成</text>
+  <text x="800" y="615" text-anchor="middle" class="label box-title">执行账本</text><text x="800" y="658" text-anchor="middle" class="label body">PENDING · COMPLETED · FAILED</text><text x="800" y="700" text-anchor="middle" class="label small">恢复时先查账本</text>
+  <text x="1255" y="615" text-anchor="middle" class="label box-title">事务 / 唯一约束</text><text x="1255" y="658" text-anchor="middle" class="label body">复用结果或拒绝重复写</text><text x="1255" y="700" text-anchor="middle" class="label small">必要时补偿或转人工</text>
+
+  <text x="800" y="835" text-anchor="middle" class="label box-title">Checkpoint 回答“从哪里继续”；幂等回答“继续时是否重复做事”</text>
+</svg>

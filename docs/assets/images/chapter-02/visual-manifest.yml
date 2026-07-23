@@ -1,0 +1,48 @@
+visual_system:
+  name: architect-whiteboard
+  version: 1
+  inherited_from: chapter-01
+  canvas: warm-white
+  primary_ink: "#1e3a5f"
+  accent_amber: "#d59621"
+  accent_green: "#3c8d77"
+  risk_red: "#c94c4c"
+  accent_purple: "#7651a6"
+  typography:
+    preferred:
+      - Kaiti SC
+      - STKaiti
+      - Noto Sans SC
+    fallback: sans-serif
+  treatment:
+    - editable SVG source
+    - subtle hand-drawn displacement on shapes
+    - deterministic Chinese labels and technical relationships
+    - high-contrast palette
+
+exports:
+  - id: ch02-tool-control
+    source: tool-call-control-plane.svg
+    output: tool-call-control-plane.png
+  - id: ch02-react-state
+    source: react-state-machine.svg
+    output: react-state-machine.png
+  - id: ch02-state-contract
+    source: state-contract.svg
+    output: state-contract.png
+  - id: ch02-checkpoint
+    source: checkpoint-idempotency.svg
+    output: checkpoint-idempotency.png
+  - id: ch02-mcp
+    source: mcp-trust-boundaries.svg
+    output: mcp-trust-boundaries.png
+  - id: ch02-observable
+    source: observable-execution.svg
+    output: observable-execution.png
+
+provenance:
+  method: deterministic SVG composition
+  generated_text: false
+  source_document_images_reused: false
+  source_book_images_reused: false
+  note: Word 原图和参考书仅用于概念研究，最终图稿均按本书视觉系统重新绘制。

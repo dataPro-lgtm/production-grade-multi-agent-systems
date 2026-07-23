@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Tool Calling 的受控执行责任链</title>
+  <desc id="desc">用户目标经过模型动作提议、协议解析、参数与策略校验、确定性执行、结果回写，最终形成证据化回答。</desc>
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="11" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#1e3a5f" stroke-width="2.2"/>
+    </marker>
+    <style>
+      .label{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}
+      .title{font-size:42px;font-weight:700}.box-title{font-size:27px;font-weight:700}.body{font-size:20px}.small{font-size:18px}
+      .flow{fill:none;stroke:#1e3a5f;stroke-width:4.5;stroke-linecap:round;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#fbfaf5"/>
+  <path d="M55 92 C380 66 680 82 970 66 C1210 54 1400 70 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">Tool Calling：从动作提议到受控执行</text>
+
+  <g filter="url(#rough)">
+    <rect x="55" y="270" width="170" height="150" rx="22" fill="#fff1bb" stroke="#d59621" stroke-width="5"/>
+    <rect x="265" y="270" width="180" height="150" rx="22" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
+    <rect x="485" y="270" width="180" height="150" rx="22" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
+    <rect x="705" y="270" width="190" height="150" rx="22" fill="#fff0ef" stroke="#c94c4c" stroke-width="5"/>
+    <rect x="935" y="270" width="180" height="150" rx="22" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
+    <rect x="1155" y="270" width="180" height="150" rx="22" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
+    <rect x="1375" y="270" width="170" height="150" rx="22" fill="#f4ebff" stroke="#7651a6" stroke-width="5"/>
+  </g>
+
+  <text x="140" y="325" text-anchor="middle" class="label box-title">用户目标</text>
+  <text x="140" y="365" text-anchor="middle" class="label body">Goal</text>
+  <text x="140" y="397" text-anchor="middle" class="label small">范围 · 约束</text>
+
+  <text x="355" y="325" text-anchor="middle" class="label box-title">模型决策</text>
+  <text x="355" y="365" text-anchor="middle" class="label body">选择下一步</text>
+  <text x="355" y="397" text-anchor="middle" class="label small">不直接执行</text>
+
+  <text x="575" y="325" text-anchor="middle" class="label box-title">Tool Call</text>
+  <text x="575" y="365" text-anchor="middle" class="label body">名称 · 参数</text>
+  <text x="575" y="397" text-anchor="middle" class="label small">动作提议</text>
+
+  <text x="800" y="325" text-anchor="middle" class="label box-title">策略门禁</text>
+  <text x="800" y="365" text-anchor="middle" class="label body">Schema · 权限</text>
+  <text x="800" y="397" text-anchor="middle" class="label small">风险 · 预算 · 审批</text>
+
+  <text x="1025" y="325" text-anchor="middle" class="label box-title">执行器</text>
+  <text x="1025" y="365" text-anchor="middle" class="label body">本地 · API</text>
+  <text x="1025" y="397" text-anchor="middle" class="label small">数据库 · MCP</text>
+
+  <text x="1245" y="325" text-anchor="middle" class="label box-title">Tool Result</text>
+  <text x="1245" y="365" text-anchor="middle" class="label body">事实 · 错误</text>
+  <text x="1245" y="397" text-anchor="middle" class="label small">关联 call_id</text>
+
+  <text x="1460" y="325" text-anchor="middle" class="label box-title">状态更新</text>
+  <text x="1460" y="365" text-anchor="middle" class="label body">证据 · Trace</text>
+  <text x="1460" y="397" text-anchor="middle" class="label small">继续或终止</text>
+
+  <path d="M225 345 L265 345" class="flow"/><path d="M445 345 L485 345" class="flow"/>
+  <path d="M665 345 L705 345" class="flow"/><path d="M895 345 L935 345" class="flow"/>
+  <path d="M1115 345 L1155 345" class="flow"/><path d="M1335 345 L1375 345" class="flow"/>
+
+  <g filter="url(#rough)">
+    <rect x="250" y="540" width="500" height="120" rx="22" fill="#e8f2ff" stroke="#326da8" stroke-width="4"/>
+    <rect x="850" y="540" width="500" height="120" rx="22" fill="#e7f5ed" stroke="#3c8d77" stroke-width="4"/>
+    <rect x="420" y="720" width="760" height="96" rx="20" fill="#fff0ef" stroke="#c94c4c" stroke-width="4"/>
+  </g>
+  <text x="500" y="585" text-anchor="middle" class="label box-title">模型平面：处理模糊判断</text>
+  <text x="500" y="625" text-anchor="middle" class="label body">理解目标 · 选择候选动作 · 解释证据</text>
+  <text x="1100" y="585" text-anchor="middle" class="label box-title">控制平面：承担执行后果</text>
+  <text x="1100" y="625" text-anchor="middle" class="label body">授权 · 校验 · 幂等 · 审计 · 真实调用</text>
+  <text x="800" y="778" text-anchor="middle" class="label box-title" fill="#9d3030">Tool Call 是动作提议，不是执行许可</text>
+</svg>
