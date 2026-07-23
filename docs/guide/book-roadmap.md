@@ -18,7 +18,7 @@
 
 | 章 | 主题 | 读者带走的核心产物 |
 |---|---|---|
-| [04](../chapters/04-context-engineering-agentic-rag-and-graphrag.md) | **让模型只看到正确的上下文**<br>治理检索、授权、版本、证据和上下文预算。 | Context Pack、Agentic RAG、GraphRAG 设计画布 |
+| [04](../chapters/04-context-engineering-agentic-rag-and-graphrag.md) | **让模型只看到正确的上下文**<br>讲透 Context Pack、Hybrid / Agentic RAG 与 GraphRAG，再用 CaseOps 验证受治理证据管线。 | Context Pack、GraphRAG 设计画布、Slice 3 与检索验收证据 |
 | [05](../chapters/05-production-infrastructure-observability-and-recovery.md) | **从“能启动”到“可恢复”**<br>建立部署、可观测性、可靠性与恢复闭环。 | 运行契约、SLO、状态所有权、恢复演练 |
 | [06](../chapters/06-agent-security-tool-guard-privacy-and-red-teaming.md) | **不要指望模型保护自己**<br>用确定性边界限制被操纵模型的影响范围。 | Tool Guard、隐私审计、红队与安全验收 |
 

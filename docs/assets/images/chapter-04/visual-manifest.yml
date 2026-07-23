@@ -39,6 +39,9 @@ exports:
   - id: ch04-investigation-system
     source: enterprise-knowledge-investigation.svg
     output: enterprise-knowledge-investigation.png
+  - id: ch04-caseops-slice3
+    source: caseops-slice3-context-pipeline.svg
+    output: caseops-slice3-context-pipeline.png
 
 provenance:
   method: deterministic SVG composition

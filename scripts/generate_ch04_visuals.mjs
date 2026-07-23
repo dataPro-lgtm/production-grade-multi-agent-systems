@@ -293,6 +293,60 @@ ${arrow(1015, 605, 1015, 690, { color: C.ink, dash: "9 7" })}
 ${text(800, 825, "真正的产物不是一段答案，而是一条能够被重放的证据决策链。", 26, { anchor: "middle", color: C.red, weight: 700 })}
 `);
 
+files["caseops-slice3-context-pipeline.svg"] = svg(`
+${titleBlock("CaseOps Slice 3：从候选到可审计 Context Pack", "检索只发现候选；Scope、用途、时态、完整性与信任门禁决定什么能成为证据。")}
+${box(50, 215, 235, 130, { fill: C.amberSoft, stroke: C.amber })}
+${text(167, 258, "Question", 29, { anchor: "middle", weight: 720, color: C.amber })}
+${text(167, 294, "Principal · purpose", 20, { anchor: "middle" })}
+${text(167, 321, "as_of · budget", 20, { anchor: "middle" })}
+${box(350, 215, 235, 130, { fill: C.blueSoft, stroke: C.ink })}
+${text(467, 258, "Query Planner", 29, { anchor: "middle", weight: 720 })}
+${text(467, 296, "allowlist · max_hops=2", 20, { anchor: "middle" })}
+${arrow(285, 280, 350, 280, { color: C.amber })}
+
+${box(80, 430, 250, 110, { fill: C.blueSoft, stroke: C.ink })}
+${text(205, 474, "Structured", 28, { anchor: "middle", weight: 720 })}
+${text(205, 510, "案件事实 · 精确业务键", 19, { anchor: "middle" })}
+${box(390, 430, 250, 110, { fill: C.purpleSoft, stroke: C.purple })}
+${text(515, 474, "PostgreSQL FTS", 27, { anchor: "middle", weight: 720, color: C.purple })}
+${text(515, 510, "GIN · websearch_to_tsquery", 18, { anchor: "middle" })}
+${box(700, 430, 250, 110, { fill: C.greenSoft, stroke: C.green })}
+${text(825, 474, "Graph Paths", 28, { anchor: "middle", weight: 720, color: C.green })}
+${text(825, 510, "允许模板 · 最长两跳", 19, { anchor: "middle" })}
+${arrow(420, 345, 205, 430)}
+${arrow(467, 345, 515, 430, { color: C.purple })}
+${arrow(515, 345, 825, 430, { color: C.green })}
+
+${box(1010, 390, 210, 150, { fill: C.paper, stroke: C.ink })}
+${text(1115, 438, "RRF", 34, { anchor: "middle", weight: 760 })}
+${text(1115, 477, "跨通道按名次融合", 19, { anchor: "middle" })}
+${text(1115, 509, "k = 60", 20, { anchor: "middle", color: C.muted })}
+${arrow(330, 485, 1010, 435)}
+${arrow(640, 485, 1010, 465, { color: C.purple })}
+${arrow(950, 485, 1010, 500, { color: C.green })}
+
+${box(1270, 245, 275, 295, { fill: C.redSoft, stroke: C.red, width: 4 })}
+${text(1407, 292, "Context Gates", 30, { anchor: "middle", weight: 760, color: C.red })}
+${text(1407, 345, ["scope · purpose", "temporal · sha256", "untrusted instruction", "dedup · budget"], 21, { anchor: "middle", lineGap: 1.52 })}
+${arrow(1220, 465, 1270, 420, { color: C.red })}
+
+${box(935, 650, 275, 105, { fill: C.greenSoft, stroke: C.green, width: 4 })}
+${text(1072, 693, "Context Pack", 30, { anchor: "middle", weight: 760, color: C.green })}
+${text(1072, 729, "7 Evidence · sufficient", 20, { anchor: "middle" })}
+${box(1270, 650, 275, 105, { fill: C.paper, stroke: C.green })}
+${text(1407, 693, "3 Claims", 30, { anchor: "middle", weight: 760, color: C.green })}
+${text(1407, 729, "每条绑定 Evidence ID", 19, { anchor: "middle" })}
+${arrow(1407, 540, 1110, 650, { color: C.green })}
+${arrow(1210, 702, 1270, 702, { color: C.green })}
+
+${box(50, 650, 795, 105, { fill: C.paper, stroke: C.ink, dash: "11 8" })}
+${text(85, 692, "Context Trace", 27, { weight: 760 })}
+${pill(270, 668, 170, "7 selected", C.green, C.greenSoft, 20)}
+${pill(465, 668, 160, "旧规则 ×", C.red, C.redSoft, 20)}
+${pill(650, 668, 160, "恶意邮件 ×", C.red, C.redSoft, 20)}
+${text(800, 817, "ContextRun + Audit + CloudEvents Outbox 在同一事务中持久化；重放不重复构建。", 25, { anchor: "middle", color: C.red, weight: 700 })}
+`);
+
 for (const [name, content] of Object.entries(files)) {
   fs.writeFileSync(path.join(outDir, name), content);
 }
