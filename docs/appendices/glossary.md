@@ -6,6 +6,16 @@
 | Agentic Workflow | 在确定性编排中引入局部动态判断的工作流 |
 | Bounded Autonomy | 被候选动作、权限、预算、状态机和评测门禁限制的自主性 |
 | Context Contract | 对进入模型上下文的信息类型、来源、权限、生命周期和可信度的约定 |
+| Context Engineering | 构建动态系统，在正确时机以正确格式向模型和工具提供完成任务所需的信息、能力与约束 |
+| Context Pack | 一次模型调用实际获得的类型化输入合同，包含目标、状态、证据、工具、预算、遗漏和版本信息 |
+| Evidence | 绑定来源、版本、Locator、时间、权限和所支持 Claim 的决策证据 |
+| Source Manifest | 对数据源 Owner、分类、ACL、刷新、有效时间、删除、解析器和 Schema 的登记合同 |
+| RAG | Retrieval-Augmented Generation，在生成时检索外部知识并作为模型上下文 |
+| Agentic RAG | Agent 根据推理进展决定何时、怎样检索，并在受限循环中补充证据 |
+| Hybrid Retrieval | 按查询形状组合 FTS、Vector、Graph、SQL 或 API，并对多路候选合并和精排 |
+| GraphRAG | 利用实体、关系、路径、社区或图算法检索和组织证据的模式；具体产品实现可能不同 |
+| Knowledge Graph | 描述业务实体、关系和规则的图，回答“什么是真的、什么相连” |
+| Context Graph | 描述一次 Agent 执行中 Goal、Task、Tool、Evidence 和 Claim 因果关系的图 |
 | Handoff | 一个 Agent 将任务控制权和必要状态显式移交给另一个 Agent |
 | Supervisor | 负责路由、委托、汇总或控制多个责任单元的编排角色 |
 | Delegation Contract | 对子任务目标、验收标准、范围、工具、预算、截止时间和升级方式的约定 |

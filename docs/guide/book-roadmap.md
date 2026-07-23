@@ -9,7 +9,7 @@
 | 01 | 到底什么才算 AI Agent？ | Agent 判定表、自治等级、架构阶梯 | 已重构 |
 | 02 | Agent 如何调用工具并根据反馈行动 | 工具契约、状态机、持久化与 MCP 边界 | 已完成 |
 | 03 | 让多个 Agent 可靠协作 | 模式选择、协作合同、状态所有权与事故响应 PDR | 已完成 |
-| 04 | 状态、记忆、知识与上下文工程 | Context Contract、Checkpoint 模型 | 待写 |
+| 04 | 让模型只看到正确的上下文 | Context Pack、Hybrid/Agentic RAG、GraphRAG 与评测画布 | 已完成 |
 
 ## 第二部分：多 Agent 系统设计
 
