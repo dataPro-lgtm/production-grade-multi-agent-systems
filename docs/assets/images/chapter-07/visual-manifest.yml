@@ -1,7 +1,8 @@
 chapter: 7
-title: 从组件拼装到系统合龙
+title: 系统合龙：Supervisor、A2A、MCP 与 Context Graph
 style:
-  direction: 架构师白板手绘体
+  direction: 架构师白板手绘体 v3
+  specification: ../visual-system.yml
   canvas: 1600x900
   background: warm-paper
   palette: ink-blue, amber, green, red, purple
@@ -27,6 +28,9 @@ assets:
   - id: integration-verification-loop
     figure: 7-6
     purpose: 展示合同、垂直切片、证据、故障、验收与扩展闭环
+  - id: system-convergence-runtime-context-graph
+    figure: 7-7
+    purpose: 区分团队内部收敛、系统级验收、Runtime Context Graph 与 OpenTelemetry Trace
 provenance:
   original: true
   external_assets: none

@@ -6,20 +6,20 @@ CaseOps 是本书独立维护的生产导向参考系统：
 
 书稿与代码采用双仓库结构。书稿仓库负责解释问题、推导判断和组织阅读；代码仓库负责运行时、测试、容器、CI、安全与版本发布。正文只引用已经验证的 tag 或 commit，不复制一份容易失真的源码快照。
 
-## 当前代码版本
+## 稳定发布
 
 | 项目 | 值 |
 |---|---|
-| 当前章节里程碑 | `chapter-10-slice-9` |
+| 章节里程碑 | `chapter-10-slice-9` |
 | 发布版本 | `v1.0.0` |
 | 固定提交 | `d52f0e0` |
 | 运行方式 | Docker Compose |
 | 服务 | FastAPI、A2A HTTP+JSON、MCP Streamable HTTP、PostgreSQL 17、OTel Collector、Tempo、Prometheus、Grafana |
 | 许可 | MIT |
 
-[查看 CaseOps v1.0.0 正式版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v1.0.0)
+[查看 CaseOps v1.0.0 正式版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/releases/tag/v1.0.0)
 
-## 已交付的十个切片
+## 十章对应的系统能力
 
 ### Slice 0：确定性基线
 
@@ -75,7 +75,7 @@ CaseOps 是本书独立维护的生产导向参考系统：
 7. 三条关键 Claim 均绑定 Context Pack 内的 Evidence ID；
 8. 历史规则和包含提示注入的外部邮件被确定性拒绝，并保留 Context Trace。
 
-当前 Hybrid 是结构化、全文和图路径的真实组合。Vector Channel 已进入类型合同，但在真实领域语料、固定 Embedding 版本、ACL 策略和可复现评测就绪前不默认启用。
+`v1.0.0` 的 Hybrid Retrieval 由结构化查询、全文检索和图路径组成。Vector Channel 已进入类型合同，但在真实领域语料、固定 Embedding 版本、ACL 策略和可复现评测就绪前不默认启用。
 
 ### Slice 4：可执行的生产运行保证
 
@@ -105,7 +105,7 @@ CaseOps 是本书独立维护的生产导向参考系统：
 7. OutputGuard 最小化邮箱与手机号，阻断合成 canary secret 和未获准的 Restricted 数据；
 8. 11 个版本化红队样例与一条真实恶意协作目标共同验证零越权副作用。
 
-这一切只证明当前实现边界。仓库没有把开发用 HS256 任务令牌写成企业 IdP，也没有把正则检测写成完整 DLP。
+这些证据只覆盖 `v1.0.0` 声明的实现边界。仓库没有把开发用 HS256 任务令牌写成企业 IdP，也没有把正则检测写成完整 DLP。
 
 ### Slice 6：分层系统合龙与 Runtime Context Graph
 
@@ -135,7 +135,7 @@ C-102 通过 7 项系统检查，最终为 `SYSTEM_ACCEPTED_WITH_HUMAN_REVIEW`�
 7. Candidate 与 Baseline 按 Case、按 Layer 成对比较，硬门禁不可互相抵扣；
 8. CI 以 JSON Artifact 留存每个 Trial 的诊断与发布结论。
 
-当前 conformance 执行器是确定性的。这 13 次运行验证控制面和系统路径稳定，不冒充真实随机模型的总体分布评测。
+Conformance 执行器是确定性的。这 13 次运行验证控制面和系统路径稳定，不冒充真实随机模型的总体分布评测。
 
 ### Slice 8：事故证据、资源归因与恢复验证
 
@@ -168,7 +168,7 @@ C-102 通过 7 项系统检查，最终为 `SYSTEM_ACCEPTED_WITH_HUMAN_REVIEW`�
 
 这个切片明确保留边界：SBOM 不是漏洞报告，Attestation 也不是安全认证。它们让“包含什么”和“从哪里构建”可验证，是否接受剩余风险仍由消费者和业务 Owner 决定。
 
-## 运行当前切片
+## 运行完整验收
 
 ```bash
 git clone https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops.git
@@ -191,51 +191,29 @@ chapter 10 accepted: clean archive -> pinned image -> non-root runtime
 
 详细命令、证据清单和消费者验证见 [第 10 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v1.0.0/docs/chapter-10-runbook.md)。事故诊断与恢复仍可单独执行 `make acceptance-chapter-09`。
 
-## 为什么不把它叫 Demo
+## 参考实现的工程边界
 
-当前仓库包含：
+CaseOps 不用组件数量证明“生产级”，而用可以失败、可以复核的工程责任支撑书中结论：
 
-- API、PostgreSQL 与 Alembic 迁移；
-- 租户查询边界、请求幂等、审计与 Outbox；
-- 显式 Agent 状态机、检查点与工具执行账本；
-- MCP Streamable HTTP、Bearer 校验和 DNS Rebinding 防护；
-- 官方 A2A Python SDK、Agent Card、Task Store 与 Bearer 任务令牌；
-- Supervisor、三个专业 Agent、类型化委托与确定性 Evidence Join；
-- CloudEvents 1.0 信封和事务性 Outbox；
-- Source Registry、PostgreSQL FTS、受限图路径、RRF 与 Context Gates；
-- 版本化 Context Pack、逐 Claim 证据绑定和逐候选 Context Trace；
-- Conformance Planner 与 OpenAI Responses API 适配器；
-- Prometheus 指标、健康检查和结构化日志；
-- 非 root、只读根文件系统、capabilities 全移除的容器；
-- Ruff、Mypy strict、pytest、分支覆盖率、Bandit 和 pip-audit；
-- API → A2A → MCP → PostgreSQL 端到端验收；
-- Context Pipeline → PostgreSQL FTS / Graph → Context Pack 端到端验收；
-- W3C Trace Context、绝对 deadline 和跨服务 Trace 验收；
-- Collector、Tempo、Prometheus、Grafana 可观测性栈；
-- 依赖降级、备份清单、隔离恢复和业务不变量验证。
-- Tool Security Manifest、三层权限交集、purpose/resource 绑定与默认拒绝的 ToolGuard；
-- 摘要化安全决策、OutputGuard、11 项红队与间接提示注入隔离验收。
-- 类型化系统 DAG、父子运行、跨团队确定性验收与 Runtime Context Graph；
-- 系统级幂等重放、Claim-Evidence 图不变量与第 7 章容器验收。
-- 版本化 Golden Dataset、Quality Contract、成对 Baseline 和六层确定性 Grader；
-- 13 次 Live HTTP N-run、跨租户图探测、语义指纹与 CI 评测 Artifact。
-- 持久化运行评估、跨层首故障重建、最小 Incident Bundle 与版本快照；
-- 可核验资源数量归因、A2A 故障注入、恢复后 Goal 复验与 CI GameDay Artifact。
-- 带哈希依赖锁、固定基础镜像、干净 Git 归档和非 root 运行时终审；
-- SPDX SBOM、Release Evidence Manifest、SHA-256 校验、GHCR 与 Artifact Attestation。
+- **领域与状态**：FastAPI、PostgreSQL、Alembic、租户边界、幂等、审计和事务性 Outbox；
+- **Agent 执行**：显式状态机、Checkpoint、工具执行账本、MCP Streamable HTTP 和 A2A Task；
+- **上下文与安全**：Source Registry、全文与图检索、Context Pack、Tool Guard、Output Guard 和红队回归；
+- **生产运行**：非 root 容器、健康合同、W3C Trace Context、Prometheus、Tempo、依赖降级和隔离恢复；
+- **质量与运营**：Golden Dataset、分层 Grader、N-run、运行评估、Incident Bundle 和 GameDay；
+- **发布与供应链**：哈希锁文件、固定基础镜像、干净 Git 归档、SPDX SBOM、Release Evidence 和 Artifact Attestation。
 
-这仍不等于“替任何企业完成生产认证”。真实身份提供方、完整 OAuth 2.1、经过领域评测的向量检索、跨进程 Supervisor 恢复、异步长任务入口、Broker 消费端、真实流量容量目标、PITR、跨区域灾备和在线模型评测仍是后续交付。未完成的能力会写成限制，不写成承诺。
+`v1.0.0` 也明确声明限制：它没有替企业完成身份接入、容量认证、PITR、跨区域灾备、真实模型总体分布评测或完整 DLP。公开合同只覆盖已经实现并留下证据的能力。
 
 ## 十章如何共用一个仓库
 
-`main` 始终保持可运行；每章发布一个不可变里程碑 tag。读者既可以按 tag 逐章观察系统演进，也可以在 `main` 查看当前完整实现。
+`main` 始终保持可运行；每章发布一个不可变里程碑 tag。读者既可以按 tag 观察系统演进，也可以在 `v1.0.0` 使用完整稳定实现。
 
 | 章节 | 主要代码增量 |
 |---|---|
 | 1 | 确定性领域内核、API、事务、审计、Outbox |
 | 2 | 工具状态机、MCP、超时、熔断与只读恢复 |
 | 3 | Supervisor、委托、并行与 Join Contract |
-| 4 | Context Pipeline、RAG 2.0、GraphRAG 与证据 |
+| 4 | Context Pipeline、Hybrid / Agentic RAG、GraphRAG 与证据 |
 | 5 | 平台化部署、遥测、SLO 与恢复 |
 | 6 | Tool Guard、权限交集、隐私释放、安全审计和红队 |
 | 7 | 分层 DAG、团队合龙、系统验收与 Runtime Context Graph |

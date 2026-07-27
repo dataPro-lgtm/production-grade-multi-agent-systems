@@ -1,38 +1,65 @@
 # 《生产级多智能体系统：从架构判断到工程落地》
 
-一本面向 AI 工程师、架构师、平台团队与技术负责人的中文开源书。
+[![Open Book](https://img.shields.io/badge/在线阅读-Open%20Book-173a63)](https://datapro-lgtm.github.io/production-grade-multi-agent-systems/)
+[![Book Build](https://github.com/dataPro-lgtm/production-grade-multi-agent-systems/actions/workflows/pages.yml/badge.svg)](https://github.com/dataPro-lgtm/production-grade-multi-agent-systems/actions/workflows/pages.yml)
+[![CaseOps](https://img.shields.io/badge/CaseOps-v1.0.0-2f7d67)](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/releases/tag/v1.0.0)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-d97706)](LICENSE)
 
-本书不从“怎样快速拼出一群 Agent”开始，而是沿着一条完整的工程主线，回答多智能体系统从架构判断到生产交付的关键问题：
+一本面向 AI 工程师、架构师、平台与安全团队、技术负责人的中文开源书。
 
-- 什么任务真的需要 Agent，自治应该停在哪里？
-- 多个 Agent 应该按哪些真实边界拆分和协作？
-- 怎样治理工具、状态、上下文、权限与失败恢复？
-- 如何用评测、可观测性和证据证明系统可以上线？
-- 怎样完成生产运营、系统验收与开源交付？
+本书从一个基础判断出发：系统中的哪一部分，真的需要根据环境反馈自主决定下一步？围绕这个问题，十章依次讨论受控工具调用、多 Agent 协作、上下文工程、生产基础设施、安全、系统合龙、评测、AgentOps 和可验证交付。
 
-## 在线阅读
-
-[在线阅读《生产级多智能体系统》](https://datapro-lgtm.github.io/production-grade-multi-agent-systems/)
-
-仓库使用 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) 构建，并通过 GitHub Actions 自动发布。
+[在线阅读](https://datapro-lgtm.github.io/production-grade-multi-agent-systems/) ·
+[全书目录](docs/guide/book-roadmap.md) ·
+[阅读建议](docs/guide/reading-path.md) ·
+[CaseOps 运行指南](docs/guide/caseops-project.md)
 
 ## 全书结构
 
-| 部分 | 章节 | 核心内容 |
+| 部分 | 章节 | 解决的问题 |
 |---|---|---|
-| 架构与执行边界 | 01—03 | Agent 判定、工具状态机、多 Agent 协作 |
-| 上下文与生产底座 | 04—06 | Context Engineering、生产基础设施、纵深防御 |
-| 合龙、验证与交付 | 07—10 | 系统合龙、持续评测、AgentOps、开源交付 |
+| 架构判断与执行控制 | 01—03 | 是否需要 Agent，怎样让模型安全行动，多个 Agent 如何可靠协作 |
+| 可信上下文与生产保障 | 04—06 | 模型依据什么行动，系统如何运行、恢复并限制安全影响 |
+| 系统合龙与持续交付 | 07—10 | 组件如何合成系统，质量如何证明，上线后如何运营并公开交付 |
 
-完整章节与每章工程产物见 [全书目录](docs/guide/book-roadmap.md)，按问题和角色进入可参考 [阅读建议](docs/guide/reading-path.md)。
+完整章节：
 
-## 随书工程产物
+1. Agent 的本质与架构边界
+2. 工具调用：状态机、控制面与 MCP
+3. 多 Agent 协作：架构模式、协议与事件响应
+4. 上下文工程：Agentic RAG、GraphRAG 与证据链
+5. 生产底座：部署、可观测性与故障恢复
+6. Agent 安全：纵深防御、Tool Guard 与红队验证
+7. 系统合龙：Supervisor、A2A、MCP 与 Context Graph
+8. 质量工程：Golden Dataset、分层评测与持续回归
+9. AgentOps：事件诊断、系统韧性与成本治理
+10. 系统交付：验收证据、Release Gate 与开源治理
 
-本书配套独立代码仓库 [CaseOps](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops)。它不是按章复制的零散示例，而是一套逐章演进、始终可运行的生产导向参考系统。当前已交付第 10 章里程碑 [`chapter-10-slice-9`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-10-slice-9) 与正式版本 [`v1.0.0`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/releases/tag/v1.0.0)：锁定构建输入、干净环境复现、SPDX SBOM、发布证据清单、GHCR 镜像与可验证来源证明共同关闭交付链。历史章节均保留不可变 tag。
+## 贯穿项目
 
-书稿仓库同时提供可直接带回项目使用的架构图、决策方法和工程契约，包括 Agent 定义卡、ADR、Context Engineering 画布、生产就绪与安全评审、Golden Dataset、AgentOps 运营就绪以及 Capstone 验收与开源交付模板。
+[CaseOps](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops) 是本书的独立参考实现。它围绕理赔案件调查构建一条完整业务链，把书中的 Tool Contract、MCP、A2A、Context Graph、Tool Guard、Golden Dataset、AgentOps 和发布证据落实到同一套可运行系统中。
 
-## 本地预览
+正式版本 [`v1.0.0`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/releases/tag/v1.0.0) 提供：
+
+- 锁定依赖与基础镜像 Digest；
+- 非 root 容器与干净环境重建；
+- 单元、集成、协议、安全、评测和 GameDay 门禁；
+- SPDX SBOM、Release Evidence Manifest 与 SHA-256 校验；
+- GHCR 镜像及可验证的构建来源证明。
+
+书稿负责讲清概念、原理、权衡和判断方法；CaseOps 负责实现合同、注入失败并提供运行证据。二者分仓维护，通过固定版本互相引用。
+
+## 随书工程材料
+
+本仓库提供 68 张原创架构图和 10 份可复制的工程模板，包括：
+
+- Agent 定义卡、架构决策记录和多 Agent 模式决策记录；
+- Context Engineering 画布、生产就绪与安全评审契约；
+- 系统合龙、持续评测、AgentOps 和开源交付契约。
+
+架构图同时保留可编辑 SVG 与网页 PNG，采用统一的架构师白板视觉系统。
+
+## 本地阅读
 
 需要 Python 3.10 或更高版本：
 
@@ -45,7 +72,7 @@ mkdocs serve
 
 浏览器打开 `http://127.0.0.1:8000`。
 
-发布前执行严格检查：
+提交前执行严格检查：
 
 ```bash
 ./scripts/validate.sh
@@ -55,25 +82,24 @@ mkdocs serve
 
 ```text
 .
-├── docs/                    # 网站与书稿正文
-│   ├── chapters/            # 正式章节
-│   ├── guide/               # 阅读建议与全书目录
-│   ├── appendices/          # 术语表等附录
-│   ├── toolkit/             # 可复制的工程模板
-│   └── assets/              # 图片与样式
-├── examples/                # 各章代码版本索引
-├── sources/                 # 原始讲义与转换来源
-├── scripts/                 # 本地质量检查
-├── .github/                 # Issue、PR 与自动发布配置
-└── mkdocs.yml               # 开源书站点配置
+├── docs/
+│   ├── chapters/            # 十章正式正文
+│   ├── guide/               # 目录、阅读建议与 CaseOps 指南
+│   ├── toolkit/             # 可复制的工程契约和检查表
+│   ├── appendices/          # 术语、许可与引用
+│   └── assets/              # SVG、PNG 与站点样式
+├── sources/                 # 原始资料与版本溯源
+├── scripts/                 # 内容、图稿和构建校验
+├── .github/                 # 贡献流程与自动发布
+└── mkdocs.yml               # 站点配置
 ```
 
-## 如何参与
+## 参与贡献
 
-欢迎提交勘误、案例、实验、图解和章节改进。请先阅读 [贡献指南](CONTRIBUTING.md)。涉及代码讲解时，请按真实文件级执行路径展开，并说明验证方式和失败路径。
+欢迎提交勘误、案例、图解和工程改进。请先阅读 [贡献指南](CONTRIBUTING.md)。涉及代码时，请给出真实文件路径、运行方式、失败路径和验证证据。
 
-## 许可
+## 许可与作者
 
-本书正文、图表与教学材料采用 [CC BY 4.0](LICENSE) 许可。你可以复制、分享和改编，但必须保留合理署名。第三方材料仍遵循其各自许可，详见章节中的引用说明。
+本书正文、图表与配套材料采用 [CC BY 4.0](LICENSE) 许可。复制、分享或改编时，请保留合理署名；第三方材料遵循各自许可。
 
-作者 / 讲师：DataDan
+作者：DataDan

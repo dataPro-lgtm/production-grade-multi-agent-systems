@@ -8,4 +8,4 @@ __pycache__/
 site/
 tmp/
 output/
-
+node_modules/

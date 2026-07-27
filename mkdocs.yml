@@ -1,5 +1,5 @@
 site_name: 生产级多智能体系统
-site_description: 一本关于生产级多智能体系统架构、工程、评测、运营与交付的中文开源书
+site_description: 从 Agent 架构判断、受控执行与多 Agent 协作，到生产运行、评测、运营和可验证交付
 site_author: DataDan
 site_url: https://datapro-lgtm.github.io/production-grade-multi-agent-systems/
 repo_url: https://github.com/dataPro-lgtm/production-grade-multi-agent-systems
@@ -46,20 +46,19 @@ nav:
       - 阅读建议: guide/reading-path.md
       - 全书目录: guide/book-roadmap.md
       - 贯穿项目 CaseOps: guide/caseops-project.md
-      - 2.0 重构规划: guide/version-2-editorial-plan.md
-  - 第一部分 · 架构与执行边界:
-      - 第 01 章 理解 Agent：从本质到架构边界: chapters/01-what-is-an-ai-agent.md
-      - 第 02 章 让 Agent 安全地行动: chapters/02-tool-calling-state-machine-and-mcp.md
-      - 第 03 章 让多个 Agent 可靠协作: chapters/03-multi-agent-patterns-collaboration-and-incident-response.md
-  - 第二部分 · 上下文与生产底座:
-      - 第 04 章 让模型只看到正确的上下文: chapters/04-context-engineering-agentic-rag-and-graphrag.md
-      - 第 05 章 从能启动到可恢复: chapters/05-production-infrastructure-observability-and-recovery.md
-      - 第 06 章 不要指望模型保护自己: chapters/06-agent-security-tool-guard-privacy-and-red-teaming.md
-  - 第三部分 · 合龙、验证与交付:
-      - 第 07 章 从组件拼装到系统合龙: chapters/07-layered-multi-agent-supervisor-a2a-mcp-context-graph.md
-      - 第 08 章 从看起来不错到可以证明: chapters/08-multi-agent-evaluation-golden-dataset-and-continuous-regression.md
-      - 第 09 章 上线只是运营的第一天: chapters/09-agentops-incident-diagnosis-resilience-and-continuous-optimization.md
-      - 第 10 章 交付的不是 Demo 而是一套证据: chapters/10-capstone-system-acceptance-and-open-source-delivery.md
+  - 第一部分 · 架构判断与执行控制:
+      - 第 01 章 Agent 的本质与架构边界: chapters/01-what-is-an-ai-agent.md
+      - 第 02 章 工具调用：状态机、控制面与 MCP: chapters/02-tool-calling-state-machine-and-mcp.md
+      - 第 03 章 多 Agent 协作：架构模式、协议与事件响应: chapters/03-multi-agent-patterns-collaboration-and-incident-response.md
+  - 第二部分 · 可信上下文与生产保障:
+      - 第 04 章 上下文工程：Agentic RAG、GraphRAG 与证据链: chapters/04-context-engineering-agentic-rag-and-graphrag.md
+      - 第 05 章 生产底座：部署、可观测性与故障恢复: chapters/05-production-infrastructure-observability-and-recovery.md
+      - 第 06 章 Agent 安全：纵深防御、Tool Guard 与红队验证: chapters/06-agent-security-tool-guard-privacy-and-red-teaming.md
+  - 第三部分 · 系统合龙与持续交付:
+      - 第 07 章 系统合龙：Supervisor、A2A、MCP 与 Context Graph: chapters/07-layered-multi-agent-supervisor-a2a-mcp-context-graph.md
+      - 第 08 章 质量工程：Golden Dataset、分层评测与持续回归: chapters/08-multi-agent-evaluation-golden-dataset-and-continuous-regression.md
+      - 第 09 章 AgentOps：事件诊断、系统韧性与成本治理: chapters/09-agentops-incident-diagnosis-resilience-and-continuous-optimization.md
+      - 第 10 章 系统交付：验收证据、Release Gate 与开源治理: chapters/10-capstone-system-acceptance-and-open-source-delivery.md
   - 工程模板:
       - 架构决策:
           - Agent 定义卡: toolkit/agent-definition-card.md
@@ -74,7 +73,6 @@ nav:
           - 评测与持续回归契约: toolkit/multi-agent-evaluation-and-regression-contract.md
           - AgentOps 生产运营契约: toolkit/agentops-operations-readiness-contract.md
           - Capstone 验收与开源交付契约: toolkit/capstone-system-acceptance-and-open-source-delivery-contract.md
-      - 写作模板: toolkit/chapter-template.md
   - 附录:
       - 术语表: appendices/glossary.md
       - 许可与引用: appendices/license-and-citation.md

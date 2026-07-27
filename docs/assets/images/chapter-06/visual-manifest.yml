@@ -1,7 +1,8 @@
 chapter: 6
-title: 不要指望模型保护自己
+title: Agent 安全：纵深防御、Tool Guard 与红队验证
 style:
-  direction: 架构师白板手绘体
+  direction: 架构师白板手绘体 v3
+  specification: ../visual-system.yml
   canvas: 1600x900
   background: warm-paper
   palette: ink-blue, amber, green, red, purple

@@ -1,6 +1,7 @@
-version: 1
+version: 3
 chapter: 10
 style: architect-whiteboard
+specification: ../visual-system.yml
 source: scripts/generate_ch10_visuals.mjs
 assets:
   - id: capstone-lifecycle-closure

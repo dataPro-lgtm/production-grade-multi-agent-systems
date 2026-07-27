@@ -1,9 +1,9 @@
 ---
-title: 第 08 章 从“看起来不错”到“可以证明”
-description: 多 Agent 评测、Golden Dataset、分层指标、LLM-as-a-Judge、N-run 与持续回归
+title: 第 08 章 质量工程：Golden Dataset、分层评测与持续回归
+description: 评估从目标到答案的随机因果链，并把质量证据转化为持续发布门禁
 ---
 
-# 第 08 章：从“看起来不错”到“可以证明”——多 Agent 评测、Golden Dataset 与持续回归
+# 第 08 章　质量工程：Golden Dataset、分层评测与持续回归
 
 第七章把 C-102 理赔调查系统合成了一条完整链路：Supervisor 把目标编译成计划，领域团队通过 A2A 接受任务，Worker 经由 MCP 获取数据，Context Graph 记录从 Goal 到 Claim 的证据关系，Tool Guard 则守住通知发送等高风险动作。
 
@@ -670,8 +670,8 @@ Collect → Classify → Extract → Curate → Retrieve → Inject → Improve
 
 ```yaml
 eval_report:
-  candidate: week08-v1.0
-  baseline: week07-v1.3
+  candidate: caseops-v0.8.0-rc1
+  baseline: caseops-v0.7.0
   dataset: golden-2026.07.1
   sample_size: 360
   run_policy: "30 cases × selected repetitions"
@@ -710,7 +710,7 @@ eval_report:
 
 “先上线看看”不是 Conditional-Go。没有监控、回滚和责任人的条件发布，只是把评测成本转移给用户。
 
-## 19. 案例主线：CaseOps Slice 7 如何把评测变成发布门禁
+## 19. CaseOps Slice 7：把评测变成发布门禁
 
 到这里，概念、方法和指标已经完整，但还差最关键的一步：把它们放进真实执行链，证明“评测控制面”本身能够运行。
 
@@ -720,9 +720,9 @@ CaseOps Slice 7 没有另造一个只返回固定字符串的 Eval Demo。它直
 
 *图 8-7　版本化 Dataset、质量契约和基线驱动真实 HTTP N-run；六层确定性 Grader 给出成对发布结论。*
 
-### 19.1 先声明这次评测能证明什么
+### 19.1 先声明评测能证明什么
 
-这次评测验证的 Claim 是：
+该评测验证的 Claim 是：
 
 > 在声明的 C-102 Fixture 和确定性 conformance 执行模式下，CaseOps 分层系统能够沿受约束路径收敛到有证据、租户隔离、零副作用的结论；v0.8.0 相对 v0.7.0 没有层级回归。
 
@@ -798,7 +798,7 @@ Run Status
 
 本章发布版本为 [`v0.8.0`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.8.0)，对应里程碑 tag [`chapter-08-slice-7`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-08-slice-7)，固定提交为 `9ebe81f`。完整实现与运行方法见独立代码仓库的[第 8 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.8.0/docs/chapter-08-runbook.md)。本章对应的架构决策是 [ADR-0008](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.8.0/docs/adr/0008-release-needs-system-level-evaluation-gates.md)。
 
-## 20. 最小落地顺序
+## 20. 落地顺序
 
 如果团队尚无评测基础设施，不要先搭建庞大平台。按一条高价值链路推进：
 
@@ -815,7 +815,7 @@ Run Status
 
 配套的[多 Agent 评测与持续回归契约](../toolkit/multi-agent-evaluation-and-regression-contract.md)给出了可直接复制的 Dataset、Fixture、Evaluator、Judge、N-run、Gate、Report 和质量事件模板。
 
-## 21. 发布前检查
+## 21. 发布检查
 
 ### 质量合同
 
@@ -845,7 +845,7 @@ Run Status
 - [ ] 报告包含差值、区间、切片、硬门禁与证据不足状态。
 - [ ] Conditional-Go 绑定 Canary、回滚条件、Owner 和失效时间。
 
-## 结语
+## 本章小结
 
 评测不是模型团队在发布前补做的一次考试，而是生产系统的质量控制面。
 

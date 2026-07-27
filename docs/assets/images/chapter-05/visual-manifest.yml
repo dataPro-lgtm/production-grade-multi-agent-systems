@@ -1,7 +1,8 @@
 chapter: 5
-title: 从“能启动”到“可恢复”
+title: 生产底座：部署、可观测性与故障恢复
 style:
-  direction: 架构师白板手绘体
+  direction: 架构师白板手绘体 v3
+  specification: ../visual-system.yml
   canvas: 1600x900
   background: warm-paper
   palette: ink-blue, amber, green, red, purple

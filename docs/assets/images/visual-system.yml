@@ -1,0 +1,46 @@
+name: architect-whiteboard
+version: 3
+purpose: 以架构师视角表达责任、控制流、数据流、证据链与失败边界
+
+canvas:
+  width: 1600
+  height: 900
+  background: "#fffdf9"
+  content_safe_area: [55, 55, 1545, 840]
+
+palette:
+  ink: "#173a63"
+  muted: "#526a82"
+  trust: "#2f7d67"
+  gate: "#d97706"
+  risk: "#c73e3e"
+  collaboration: "#6d4ba0"
+  paper: "#ffffff"
+
+typography:
+  preferred: ["Kaiti SC", "STKaiti", "Noto Sans SC"]
+  fallback: sans-serif
+  minimum_body_size: 18
+  deterministic_labels: true
+
+rules:
+  - 一张图只回答一个核心问题
+  - 标题先说明判断，副标题补充适用边界
+  - 蓝色表达主控制流，绿色表达可信路径，橙色表达门禁，红色表达风险，紫色表达协作边界
+  - 优先使用线框和轻底色，不用产品 Logo、装饰性人物或伪代码墙
+  - 箭头必须有明确方向，循环、回退和拒绝路径使用不同线型
+  - 中文、协议名、版本与因果关系必须由确定性 SVG 生成
+  - 每张 SVG 必须包含标题、可访问描述、章节页脚和对应 PNG
+
+reference_style:
+  supplied_by_reader: "ChatGPT Image 2026年7月27日 16_49_00.png"
+  adopted_traits:
+    - 暖白纸面
+    - 手绘线框
+    - 编号与流程层次
+    - 克制的多色语义
+    - 充足留白
+  excluded_traits:
+    - 课程周次
+    - 文件清单堆叠
+    - 不可校验的生成式文字

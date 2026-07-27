@@ -1,6 +1,7 @@
-version: 1
+version: 3
 chapter: 09
 style: architect-whiteboard
+specification: ../visual-system.yml
 source: scripts/generate_ch09_visuals.mjs
 assets:
   - id: agentops-five-operational-views

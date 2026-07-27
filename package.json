@@ -1,0 +1,11 @@
+{
+  "name": "production-grade-multi-agent-systems-book",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "visuals": "node scripts/finalize_visuals.mjs"
+  },
+  "devDependencies": {
+    "sharp": "0.35.3"
+  }
+}

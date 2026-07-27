@@ -39,6 +39,14 @@ python -m pip install -r requirements.txt
 ./scripts/validate.sh
 ```
 
+修改架构图时，还需使用仓库锁定的渲染依赖重新生成 SVG / PNG，并再次执行完整检查：
+
+```bash
+npm ci
+npm run visuals
+./scripts/validate.sh
+```
+
 ## 文件命名
 
 - 章节：`NN-short-english-slug.md`

@@ -2,7 +2,7 @@
 
 ## 本书许可
 
-除非具体文件另有说明，本书正文、图表与教学材料采用 Creative Commons Attribution 4.0 International（CC BY 4.0）许可。
+除非具体文件另有说明，本书正文、图表与工程模板采用 Creative Commons Attribution 4.0 International（CC BY 4.0）许可。
 
 你可以：
 
@@ -30,4 +30,3 @@ DataDan. 生产级多智能体系统：从架构判断到工程落地. 2026.
 ## 第三方内容
 
 第三方文献、商标、框架名称和外部链接不因收录在本书中而改变其原有权利归属。公开贡献不得提交未获授权的图书正文、课程资料、图片或代码。
-

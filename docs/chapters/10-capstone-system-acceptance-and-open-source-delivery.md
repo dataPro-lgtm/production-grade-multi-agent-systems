@@ -1,9 +1,9 @@
 ---
-title: 第 10 章 交付的不是 Demo，而是一套证据
-description: Capstone 系统验收、垂直切片、证据包、发布门禁与 GitHub 开源交付
+title: 第 10 章 系统交付：验收证据、Release Gate 与开源治理
+description: 通过可追溯需求、干净环境复现和可验证制品完成系统验收与开源交付
 ---
 
-# 第 10 章：交付的不是 Demo，而是一套证据——Capstone 系统验收与 GitHub 开源交付
+# 第 10 章　系统交付：验收证据、Release Gate 与开源治理
 
 前九章把 C-102 理赔调查系统从一个模糊想法推进成了可运营系统：
 
@@ -32,7 +32,7 @@ description: Capstone 系统验收、垂直切片、证据包、发布门禁与 
 
 这也是 Capstone 的真正含义：它不是把 RAG、MCP、A2A、Memory、Graph、Guardrail 和更多 Agent 堆在一起，而是用最少必要组件闭合从问题、架构、实现、验收到发布和维护的完整生命周期。
 
-## 1. Demo Paradox：看见成功，不等于可以接受
+## 1. 演示悖论：看见成功，不等于可以接受
 
 演示天然偏向 Happy Path。讲解者熟悉环境、知道正确输入、可以跳过等待，还能在异常出现时用口头解释补足缺失。系统验收的视角恰好相反：评审者要主动寻找那些 Demo 没有证明的东西。
 
@@ -679,7 +679,7 @@ kill_or_pause_if:
 | Evidence | 我为什么应该相信这些声明？ |
 | Governance | 我怎样报告问题、贡献和判断维护状态？ |
 
-把课程逐字稿、代码注释和 README 重复三遍不会增加价值。知识解释 Why 与 Trade-off；代码实现 Contract；Evidence 证明 Claim；Governance 定义参与和责任。
+把同一段说明在正文、代码注释和 README 中重复三遍不会增加价值。正文解释 Why 与 Trade-off；代码实现 Contract；Evidence 证明 Claim；Governance 定义参与和责任。
 
 GitHub 的 Community Profile 会检查 README、LICENSE、CODE_OF_CONDUCT、CONTRIBUTING 等健康文件；这些文件不是装饰，而是向使用者和贡献者公开项目规则。[^github-community]
 
@@ -747,14 +747,14 @@ SECURITY.md 应写：
 一个 Release 页面至少回答：
 
 ```markdown
-## What works
-## Who this is for
-## Quality and security evidence
-## Known limitations
-## Compatibility and migration
-## Upgrade / rollback
-## Artifact digests and provenance
-## Support window
+### What works
+### Who this is for
+### Quality and security evidence
+### Known limitations
+### Compatibility and migration
+### Upgrade / rollback
+### Artifact digests and provenance
+### Support window
 ```
 
 `v1.0.0` 不是“所有能力已经成熟”，而是当前 Public Contract 已经声明，并愿意按兼容政策维护。Release Notes 要区分：

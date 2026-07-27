@@ -1,6 +1,7 @@
 visual_system:
   name: architect-whiteboard
-  version: 1
+  version: 3
+  specification: ../visual-system.yml
   canvas: warm-white
   primary_ink: "#1e3a5f"
   accent_amber: "#d59621"
@@ -42,4 +43,4 @@ provenance:
   method: deterministic SVG composition
   generated_text: false
   source_book_images_reused: false
-  note: 所有图围绕 CaseOps 独立设计，未复用参考书插图或视觉结构。
+  note: 所有图围绕 CaseOps 独立设计，并由统一白板视觉终审脚本生成 SVG 与 PNG。

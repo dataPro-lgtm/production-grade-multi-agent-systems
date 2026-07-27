@@ -1,9 +1,9 @@
 ---
-title: 第 04 章 让模型只看到正确的上下文
-description: 从 Context Pack、Hybrid 与 Agentic RAG、GraphRAG，到可追溯的企业知识调查系统
+title: 第 04 章 上下文工程：Agentic RAG、GraphRAG 与证据链
+description: 把检索候选转化为具备来源、权限、时态和完整性约束的运行时证据
 ---
 
-# 第 04 章：让模型只看到正确的上下文——Context Engineering、Agentic RAG 与 GraphRAG
+# 第 04 章　上下文工程：Agentic RAG、GraphRAG 与证据链
 
 上一章的支付事故调查留下了一个尚未解决的问题。
 
@@ -1069,7 +1069,7 @@ docker compose up --build -d
 make acceptance-chapter-04
 ```
 
-这次验收不是把预期输出写在文档里：它会实际调用 API，检查幂等回放，再查询 PostgreSQL 中的 `context_runs`、事务 Outbox、图关系与全文索引。
+验收脚本不会把预期输出停留在文档里：它会实际调用 API，检查幂等回放，再查询 PostgreSQL 中的 `context_runs`、事务 Outbox、图关系与全文索引。
 
 ## 19. 评测：先判断上下文哪里坏了
 
@@ -1118,7 +1118,7 @@ make acceptance-chapter-04
 
 最终答案正确率很重要，但它不能替代过程指标。一个偶然回答正确、却使用越权或过期证据的系统仍然不合格。
 
-## 20. 一份可执行的落地顺序
+## 20. 落地顺序
 
 构建企业级上下文系统，可以按下面的顺序推进：
 
@@ -1139,7 +1139,7 @@ make acceptance-chapter-04
 
 不要从“先上 GraphRAG”开始。先证明普通检索在哪类问题上失败，再引入能够修复该失败的最小结构。
 
-## 结语：上下文是模型看到的世界
+## 小结：上下文决定模型看到的世界
 
 模型不会自动知道企业中的真实状态。它只知道系统在这一轮调用中交给它的内容。
 

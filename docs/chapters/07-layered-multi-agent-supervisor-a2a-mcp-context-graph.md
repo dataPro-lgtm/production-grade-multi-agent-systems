@@ -1,9 +1,9 @@
 ---
-title: 第 07 章 从组件拼装到系统合龙
-description: 分层多 Agent、Supervisor、A2A、MCP、Context Graph、恢复与端到端验收
+title: 第 07 章 系统合龙：Supervisor、A2A、MCP 与 Context Graph
+description: 让目标、权限、状态、证据和恢复语义跨越 Agent 与服务边界仍保持一致
 ---
 
-# 第 07 章：从组件拼装到系统合龙——分层多 Agent、Supervisor、A2A、MCP 与 Context Graph
+# 第 07 章　系统合龙：Supervisor、A2A、MCP 与 Context Graph
 
 前六章分别解决了 Agent 边界、工具调用、协作模式、上下文、生产平台和安全控制。本章要回答一个更难的问题：
 
@@ -1054,13 +1054,13 @@ owners:
 
 ## 21. CaseOps Slice 6：把前六章合成一个可运行系统
 
-讲到这里，最容易出现两个极端：一种是只讲架构图，读者无法判断这些边界能否真正运行；另一种是直接钻进代码，读者只记住几个类名，却不明白为什么这样设计。我的做法是保留前面的判断框架，再用 CaseOps 的一个有界切片验证关键命题。
+讲到这里，最容易出现两个极端：一种是只讲架构图，读者无法判断这些边界能否真正运行；另一种是直接钻进代码，读者只记住几个类名，却不明白为什么这样设计。因此，本节保留前面的判断框架，再用 CaseOps 的一个有界切片验证关键命题。
 
 ![CaseOps 分层合龙与运行时 Context Graph](../assets/images/chapter-07/system-convergence-runtime-context-graph.png)
 
 *图 7-7　Context Team 与 Collaboration Team 分别收敛，Central Supervisor 只做系统级验收；Runtime Context Graph 与 OpenTelemetry Trace 各负其责。*
 
-### 21.1 这次究竟增加了什么
+### 21.1 参考实现承担哪些系统责任
 
 在前六章中，CaseOps 已经有两条独立成立的链路：
 
@@ -1077,7 +1077,7 @@ owners:
 | `specialist-collaboration` | Collaboration Team | 无 | A2A Tasks、专业 Claims、Join Result |
 | `system-acceptance` | Central Supervisor | 前两步 | System Result、Runtime Context Graph |
 
-前两个步骤在依赖意义上可以并行。当前本地执行器为了保持单进程数据库会话边界，按稳定顺序执行 Ready Set；DAG 合同没有假装已经交付跨进程队列调度。若将来加入队列、租约和 Worker 心跳，计划本身不需要改写。
+前两个步骤在依赖意义上可以并行。`v0.7.0` 的本地执行器为了保持单进程数据库会话边界，按稳定顺序执行 Ready Set；DAG 合同没有冒充跨进程队列调度。若引入队列、租约和 Worker 心跳，计划本身不需要改写。
 
 ### 21.2 Central Supervisor 不重新调查案件
 
@@ -1127,7 +1127,7 @@ Central Supervisor 不读取理赔表，不调用 MCP，也不读取 Worker 的�
 - 数据分类；
 - Payload 的 SHA-256 摘要。
 
-这样既能从最终 Claim 反向追到 Evidence，又不会因为“为了可观测”而建立第二份敏感数据仓库。当前测试还把一个关键不变量写进构建器：每个 Claim 节点必须至少存在一条 `SUPPORTED_BY` 边，否则整次图构建失败。
+这样既能从最终 Claim 反向追到 Evidence，又不会因为“为了可观测”而建立第二份敏感数据仓库。构建器还固化了一条关键不变量：每个 Claim 节点必须至少存在一条 `SUPPORTED_BY` 边，否则整次图构建失败。
 
 这套模型借鉴了 W3C PROV 对 Entity、Activity 与 Agent 的区分，但 CaseOps 没有声称实现完整 PROV 兼容。协议名称、约束和互操作测试没有完成之前，不应借一个相似概念冒充标准实现。
 
@@ -1144,7 +1144,7 @@ Central Supervisor 不读取理赔表，不调用 MCP，也不读取 Worker 的�
 
 这不是“Exactly Once”。它证明的是在当前只读边界内，重复请求不会制造第二份业务运行；将来加入写工具时，仍需第五章讨论的 Effect Ledger、外部幂等与 Reconcile。
 
-### 21.5 代码从哪里读
+### 21.5 沿执行路径阅读代码
 
 配套的 [CaseOps 仓库](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops)将职责分开放置：
 
@@ -1167,7 +1167,7 @@ scripts/
 
 本章发布版本为 [`v0.7.0`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.7.0)，对应里程碑 tag [`chapter-07-slice-6`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-07-slice-6)，固定提交为 `14e08f3`。一键验收会读取真实 Agent Card、运行 API → A2A → MCP → PostgreSQL 全链路、执行七项检查、查询 Runtime Context Graph、重放同一请求，并确认 ToolGuard 判定进入数据库。
 
-### 21.6 我刻意没有实现什么
+### 21.6 参考实现的有意限制
 
 专业实现不等于把所有新特性都打开。本切片明确保留以下边界：
 
@@ -1226,7 +1226,7 @@ Readiness 还需要检查合同版本、关键状态层、审计写入、能力�
 - 是否有自动化故障演练和明确通过标准？
 - 部署、Readiness、灰度、回滚、备份与 Runbook 是否就绪？
 
-## 24. 本章结论
+## 24. 本章小结
 
 多 Agent 系统真正的“合龙点”不是 Supervisor Prompt，而是一组跨边界仍成立的合同：
 

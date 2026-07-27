@@ -1,30 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-  <title id="title">CaseOps MCP 双重信任边界</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" aria-labelledby="title desc" role="img" focusable="false" data-whiteboard-version="3">
+<title id="whiteboard-title">双重授权：协议连通以后，还要验证资源边界</title>
+<desc id="whiteboard-desc">《生产级多智能体系统》第 02 章架构图，使用确定性白板线框表达控制流、证据或责任边界。</desc>
+
+<title id="title">CaseOps MCP 双重信任边界</title>
   <desc id="desc">API Host 先根据用户身份与任务授权，签发短期任务令牌；MCP Server 再验证令牌、租户、任务、作用域和资源，模型参数不包含租户。</desc>
-  <defs>
+  <defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern>
     <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
       <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="31" result="noise"/>
       <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/>
     </filter>
     <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
-      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#1e3a5f" stroke-width="2.2"/>
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#173a63" stroke-width="2.2"/>
     </marker>
     <style>
       .label{font-family:"Kaiti SC","STKaiti","Noto Sans SC",sans-serif;fill:#24364b}
       .title{font-size:42px;font-weight:700}.box-title{font-size:28px;font-weight:700}.body{font-size:20px}.small{font-size:18px}
-      .flow{fill:none;stroke:#1e3a5f;stroke-width:4.5;stroke-linecap:round;marker-end:url(#arrow)}
+      .flow{fill:none;stroke:#173a63;stroke-width:4.5;stroke-linecap:round;marker-end:url(#arrow)}
     </style>
   </defs>
-  <rect width="1600" height="900" fill="#fbfaf5"/>
-  <path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
   <text x="80" y="72" class="label title">双重授权：协议连通以后，还要验证资源边界</text>
 
   <g filter="url(#rough)">
-    <rect x="55" y="170" width="400" height="560" rx="30" fill="#fff4d2" stroke="#d59621" stroke-width="5"/>
-    <rect x="520" y="235" width="250" height="170" rx="24" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
-    <rect x="520" y="500" width="250" height="170" rx="24" fill="#f4ebff" stroke="#7651a6" stroke-width="5"/>
-    <rect x="845" y="170" width="420" height="560" rx="30" fill="#e7f5ed" stroke="#3c8d77" stroke-width="5"/>
-    <rect x="1330" y="260" width="220" height="380" rx="28" fill="#e8f2ff" stroke="#326da8" stroke-width="5"/>
+    <rect x="55" y="170" width="400" height="560" rx="30" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="520" y="235" width="250" height="170" rx="24" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="520" y="500" width="250" height="170" rx="24" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="5"/>
+    <rect x="845" y="170" width="420" height="560" rx="30" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="1330" y="260" width="220" height="380" rx="28" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
   </g>
 
   <text x="255" y="225" text-anchor="middle" class="label box-title">CaseOps API / MCP Host</text>
@@ -64,6 +74,7 @@
   <path d="M770 585 C815 555 820 360 845 330" class="flow"/>
   <path d="M1265 400 L1330 400" class="flow"/>
 
-  <rect x="230" y="770" width="1140" height="72" rx="28" fill="#fff0ef" stroke="#c94c4c" stroke-width="4" filter="url(#rough)"/>
+  <rect x="230" y="770" width="1140" height="72" rx="28" fill="#fff3f2" stroke="#c73e3e" stroke-width="4" filter="url(#rough)"/>
   <text x="800" y="816" text-anchor="middle" class="label box-title" fill="#9d3030">工具参数没有 tenant_id；凭据不进入 Prompt，也不向下游透传</text>
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Kaiti SC','STKaiti','Noto Sans SC',sans-serif" font-size="18" fill="#526a82" text-anchor="end">生产级多智能体系统 · 第 02 章</text>
 </svg>

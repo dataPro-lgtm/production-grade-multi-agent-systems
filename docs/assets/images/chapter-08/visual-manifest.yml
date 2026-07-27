@@ -1,5 +1,6 @@
 chapter: 08
-style: architect-whiteboard
+style: architect-whiteboard-v3
+specification: ../visual-system.yml
 generator: scripts/generate_ch08_visuals.mjs
 deterministic: true
 assets:
