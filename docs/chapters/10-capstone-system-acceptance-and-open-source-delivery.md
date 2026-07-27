@@ -379,6 +379,40 @@ README 的第一条路径应覆盖：
 
 GitHub 也把 README 定位为访客理解“项目做什么、为什么有用、怎样开始、到哪里求助、谁在维护”的首要入口。[^github-readme]
 
+### 8.2 CaseOps：干净环境不是再跑一次当前目录
+
+我在 CaseOps 里刻意没有把 `docker compose up` 称作干净环境验收。它会读取当前工作区；而当前工作区可能恰好留着未提交代码、本地数据库、`.env`、构建缓存，以及上一轮评测生成的证据。这样的成功只能证明“这台机器现在能跑”，不能证明仓库里的某个提交能跑。
+
+第十章的终审把对象收窄为精确 Git tree：
+
+```text
+git commit
+  → git archive HEAD
+  → 在临时目录解包
+  → 断言不存在 .git / .env / 本地数据库 / 历史证据
+  → 从零构建运行镜像
+  → 在镜像内检查包版本与 OpenAPI 版本
+  → 检查 UID、OCI version 与 revision
+```
+
+这里有三个容易被忽略的判断。
+
+第一，**验收对象必须先提交**。未提交代码没有稳定身份，不能与测试报告、镜像摘要和发布标签建立一对一关系。
+
+第二，**缓存命中不等于证据失效**。缓存可以优化下载和编译，只要所有输入被版本与哈希约束，输出仍会绑定当前提交；真正危险的是从工作区或外部环境偷偷读取未声明输入。
+
+第三，**可复现不等于逐字节相同**。逐字节可重复构建是更强目标；本章首先要求功能、身份、依赖集合和验收结论可以在独立环境重建。若行业要求 bit-for-bit reproducibility，还要继续固定时钟、压缩元数据、编译器、平台和构建器。
+
+CaseOps 的实际入口是：
+
+```bash
+make acceptance-chapter-08
+make acceptance-chapter-09
+make acceptance-chapter-10
+```
+
+第十章不能跳过前两条命令。否则我们最多证明“源码能构建”，却没有证明系统质量和事故恢复仍属于同一个候选版本。
+
 ## 9. 合成数据、秘密与公开边界
 
 公开复现不能通过公开真实客户数据实现。Seed Manifest 应记录：
@@ -554,6 +588,48 @@ GitHub 可以从 Dependency Graph 导出 SPDX 格式 SBOM，也支持通过 Acti
 
 SLSA 1.2 将 Provenance 定义为可验证的制品来源信息，并把 Build 和 Source 分成独立 Track。需要特别注意：有 Attestation 不代表软件没有漏洞；消费者仍要验证签名、Builder Identity、Build Type 和外部参数是否符合自己的政策。[^slsa]
 
+### 13.2 CaseOps v1.0：把五类身份绑在一起
+
+CaseOps 的 v1.0 发布没有创造一份“万能证明”，而是让不同证据各司其职：
+
+| 证据 | 回答的问题 | 不能回答 |
+|---|---|---|
+| Git commit | 被评审的是哪份源码 | 构建产物里实际有什么 |
+| Image digest | 运行对象是否被替换 | 这个对象是否安全 |
+| SPDX SBOM | 镜像内有哪些包和版本 | 这些包是否适合当前风险 |
+| Provenance attestation | 谁在什么 Workflow 中用哪些输入构建 | 源码逻辑是否正确 |
+| Eval / GameDay | 当前候选是否通过质量与恢复门禁 | 未来所有环境都不会失败 |
+
+![CaseOps v1.0 可验证发布证据链](../assets/images/chapter-10/verifiable-release-evidence-chain.png)
+
+*图 10-5　完整性、成分、来源和行为证据互相补充；没有任何一种证明可以替代消费者的信任策略。*
+
+代码仓库中的 `release-evidence.json` 把这些证据收束为机器可读清单：
+
+```json
+{
+  "schema_version": "caseops.release-evidence.v1",
+  "release": "v1.0.0",
+  "source": {
+    "commit": "<40-char-git-sha>",
+    "ref": "v1.0.0"
+  },
+  "runtime": {
+    "image": "ghcr.io/datapro-lgtm/production-grade-multi-agent-caseops",
+    "digest": "sha256:<image-digest>",
+    "database_revision": "0007",
+    "non_root_uid": 10001
+  },
+  "artifacts": []
+}
+```
+
+`artifacts` 不只列文件名，还记录每个 OpenAPI、发布契约、系统评测、GameDay 和 SBOM 的 SHA-256 与字节数。最外层 `SHA256SUMS` 再覆盖清单本身。这样，读者可以先验证下载包来自预期仓库和 Workflow，再验证包内文件没有变化，最后审查每项行为证据。
+
+运行依赖也不再由发布当天临时解析。CaseOps 分别提交运行时和开发锁文件，每个候选包都带允许的 SHA-256；Python 基础镜像使用不可变 digest。依赖更新因此成为一次显式变更：重建锁文件、审查差异、重跑安全与系统门禁，而不是在相同源码下静默改变运行结果。
+
+正式标签触发的 Release Workflow 还会重新执行全部 Gate，而不是直接复用“main 最近绿过”的印象。门禁全部通过后才推送 GHCR 镜像、生成 Syft SPDX SBOM、为镜像生成构建来源与 SBOM Attestation，并为下载证据包生成独立 Attestation。Syft 可以直接分析容器镜像或文件系统并输出 SPDX、CycloneDX 等机器格式；这里扫描的是实际发布镜像，不是手写依赖表。[^syft]
+
 ## 14. 灰度、回滚与 Kill Criteria
 
 发布计划至少包含：
@@ -592,7 +668,7 @@ kill_or_pause_if:
 
 ![开源交付的四个相互咬合产品](../assets/images/chapter-10/open-source-delivery-products.png)
 
-*图 10-5　可理解的知识、可运行的代码、可审查的证据和可持续的治理共同构成开源交付。*
+*图 10-6　可理解的知识、可运行的代码、可审查的证据和可持续的治理共同构成开源交付。*
 
 一个成熟开源交付包含四个产品：
 
@@ -693,7 +769,7 @@ SECURITY.md 应写：
 
 ![由可验证能力而非 Agent 数量定义的成熟度阶梯](../assets/images/chapter-10/capstone-maturity-ladder.png)
 
-*图 10-6　成熟度上升意味着合同、控制、测量和运营能力增强，不意味着 Agent 数量增加。*
+*图 10-7　成熟度上升意味着合同、控制、测量和运营能力增强，不意味着 Agent 数量增加。*
 
 | Level | 证明标准 |
 |---|---|
@@ -769,6 +845,20 @@ independent_acceptance:
 
 这份记录把“相信作者”转换成“验证系统”。
 
+CaseOps 的仓库把这份签署拆成两层：
+
+- 自动签署：CI 和 Release Workflow 记录 Commit、Gate、镜像 Digest、SBOM 与 Attestation；
+- 人工签署：独立评审者确认适用环境、已知限制和业务风险是否可以接受。
+
+前者不能替代后者，因为机器能证明“按照声明的流程构建并通过了这些断言”，却不能替业务 Owner 决定剩余风险是否值得承担。后者也不能替代前者，因为一句“我看过了”无法让外部读者重放证据。
+
+配套工程已经把第十章变成可运行交付，而不是书中的伪代码：
+
+- [CaseOps v1.0 代码仓库](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops)
+- [第十章终审运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/main/docs/chapter-10-runbook.md)
+- `make acceptance-chapter-10`：干净源码、非 root 镜像、SBOM 与校验和终审
+- `v1.0.0`：触发完整发布 Gate、GHCR 镜像和可验证 GitHub Release
+
 ## 21. 全书收束：从架构判断到可公共验证
 
 一本关于生产级多智能体系统的书，如果只告诉读者怎样创建 Agent，就没有完成自己的目标。真正完整的工程路径是：
@@ -808,6 +898,7 @@ independent_acceptance:
 [^github-sbom]: GitHub Docs, [Exporting a software bill of materials for your repository](https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/establish-provenance-and-integrity/export-dependencies-as-sbom)。GitHub Dependency Graph 可导出 SPDX SBOM。
 [^github-attestation]: GitHub Docs, [Using artifact attestations to establish provenance for builds](https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations)。Artifact Attestation 连接制品与构建来源，但不替代漏洞和政策判断。
 [^slsa]: SLSA, [SLSA specification v1.2](https://slsa.dev/spec/v1.2/) 与 [Verifying artifacts](https://slsa.dev/spec/v1.2/verifying-artifacts)。Provenance 只有在按受信任预期验证时才产生安全价值。
+[^syft]: Anchore, [Syft](https://github.com/anchore/syft)。Syft 可以从容器镜像与文件系统生成 SPDX、CycloneDX 等 SBOM 格式；本章固定发布流程使用的工具版本。
 [^github-community]: GitHub Docs, [About community profiles for public repositories](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/about-community-profiles-for-public-repositories)。Community Profile 检查公开仓库的关键健康文件。
 [^osi-license]: Open Source Initiative, [OSI Approved Licenses](https://opensource.org/licenses)。OSI 批准列表用于判断许可证是否符合 Open Source Definition。
 [^github-contributing]: GitHub Docs, [Setting guidelines for repository contributors](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors)。贡献指南会在仓库、Issue 与 PR 流程中被展示。

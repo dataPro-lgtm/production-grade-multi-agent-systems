@@ -28,6 +28,11 @@ assets:
     png: open-source-delivery-products.png
     width: 1600
     height: 900
+  - id: verifiable-release-evidence-chain
+    svg: verifiable-release-evidence-chain.svg
+    png: verifiable-release-evidence-chain.png
+    width: 1600
+    height: 900
   - id: capstone-maturity-ladder
     svg: capstone-maturity-ladder.svg
     png: capstone-maturity-ladder.png

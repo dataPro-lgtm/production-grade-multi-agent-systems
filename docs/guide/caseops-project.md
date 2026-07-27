@@ -10,16 +10,16 @@ CaseOps 是本书独立维护的生产导向参考系统：
 
 | 项目 | 值 |
 |---|---|
-| 当前章节里程碑 | `chapter-09-slice-8` |
-| 发布版本 | `v0.9.0` |
-| 固定提交 | `4241834` |
+| 当前章节里程碑 | `chapter-10-slice-9` |
+| 发布版本 | `v1.0.0` |
+| 固定提交 | `d52f0e0` |
 | 运行方式 | Docker Compose |
 | 服务 | FastAPI、A2A HTTP+JSON、MCP Streamable HTTP、PostgreSQL 17、OTel Collector、Tempo、Prometheus、Grafana |
 | 许可 | MIT |
 
-[查看第 9 章当前代码版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.9.0)
+[查看 CaseOps v1.0.0 正式版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v1.0.0)
 
-## 已交付的九个切片
+## 已交付的十个切片
 
 ### Slice 0：确定性基线
 
@@ -153,29 +153,43 @@ C-102 通过 7 项系统检查，最终为 `SYSTEM_ACCEPTED_WITH_HUMAN_REVIEW`�
 
 一次实测留下 3 份运行评估、12 条资源成本事件和 3 条审计记录；工程测试 62 项全部通过，含分支统计的覆盖率为 85.99%。
 
+### Slice 9：干净环境复现与可验证发布
+
+第 10 章没有继续增加业务 Agent，而是关闭从源码到消费者的交付证据链：
+
+1. Python 基础镜像固定到不可变 digest，运行时与开发依赖分别由带哈希的锁文件约束；
+2. 终审只从已提交的 `git archive HEAD` 构建，不读取 `.env`、本地数据库、缓存和历史报告；
+3. 干净镜像验证 UID 10001、包版本、OCI version、源码 revision 和迁移头；
+4. Syft 扫描实际运行镜像并生成 SPDX 2.3 JSON SBOM；
+5. Release Evidence Manifest 绑定 Commit、镜像 Digest、OpenAPI、评测、GameDay、SBOM 与文件摘要；
+6. GitHub Release Workflow 重跑完整门禁，再推送 GHCR 镜像和下载包；
+7. 镜像获得构建来源与 SBOM Attestation，下载包获得独立来源 Attestation；
+8. `gh attestation verify` 与 `SHA256SUMS` 让消费者不依赖作者口头说明即可验证来源和完整性。
+
+这个切片明确保留边界：SBOM 不是漏洞报告，Attestation 也不是安全认证。它们让“包含什么”和“从哪里构建”可验证，是否接受剩余风险仍由消费者和业务 Owner 决定。
+
 ## 运行当前切片
 
 ```bash
 git clone https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops.git
 cd production-grade-multi-agent-caseops
-git checkout v0.9.0
+git checkout v1.0.0
 
 docker compose up --build --wait --wait-timeout 120 -d
+make acceptance-chapter-08
 make acceptance-chapter-09
+make acceptance-chapter-10
 ```
 
-验收脚本会执行健康基线、A2A 中断、事故重建、依赖恢复和 Goal 复验。一次实测输出：
+三道最终门禁依次证明系统质量、事故恢复和干净环境交付。第十章成功终态为：
 
 ```text
-operations schema accepted: revision 0007
-healthy baseline accepted with durable evidence and honest unit attribution
-incident bundle accepted: first failure=collaboration, safe side effects=0, wasted context unit=1
-post-recovery run accepted: A2A readiness and goal convergence restored
-durable operations evidence accepted: assessments=3 cost_events=12 audits=3
-chapter 09 AgentOps GameDay acceptance passed
+clean-room runtime import accepted
+chapter 10 accepted: clean archive -> pinned image -> non-root runtime
+-> SPDX SBOM -> checksummed release evidence
 ```
 
-详细命令、报告解读与失败注入见 [第 9 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.9.0/docs/chapter-09-runbook.md)。发布评测仍可执行 `make acceptance-chapter-08`；分层合龙可执行 `make acceptance-chapter-07`。
+详细命令、证据清单和消费者验证见 [第 10 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v1.0.0/docs/chapter-10-runbook.md)。事故诊断与恢复仍可单独执行 `make acceptance-chapter-09`。
 
 ## 为什么不把它叫 Demo
 
@@ -207,6 +221,8 @@ chapter 09 AgentOps GameDay acceptance passed
 - 13 次 Live HTTP N-run、跨租户图探测、语义指纹与 CI 评测 Artifact。
 - 持久化运行评估、跨层首故障重建、最小 Incident Bundle 与版本快照；
 - 可核验资源数量归因、A2A 故障注入、恢复后 Goal 复验与 CI GameDay Artifact。
+- 带哈希依赖锁、固定基础镜像、干净 Git 归档和非 root 运行时终审；
+- SPDX SBOM、Release Evidence Manifest、SHA-256 校验、GHCR 与 Artifact Attestation。
 
 这仍不等于“替任何企业完成生产认证”。真实身份提供方、完整 OAuth 2.1、经过领域评测的向量检索、跨进程 Supervisor 恢复、异步长任务入口、Broker 消费端、真实流量容量目标、PITR、跨区域灾备和在线模型评测仍是后续交付。未完成的能力会写成限制，不写成承诺。
 

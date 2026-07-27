@@ -190,6 +190,47 @@ ${text(800, 506, "Trusted", 31, { anchor: "middle", weight: 800, color: C.purple
 ${text(800, 548, "Delivery", 31, { anchor: "middle", weight: 800, color: C.purple })}
 `);
 
+files["verifiable-release-evidence-chain.svg"] = svg(`
+${titleBlock("CaseOps v1.0：可验证发布证据链", "完整性、成分和来源是三种不同声明；消费者必须按自己的信任策略验证。")}
+${box(55, 290, 230, 160, { fill: C.blueSoft, stroke: C.ink, width: 4 })}
+${text(170, 340, "Git commit", 28, { anchor: "middle", weight: 800 })}
+${text(170, 386, "v1.0.0", 23, { anchor: "middle" })}
+${text(170, 423, "clean tree", 18, { anchor: "middle", color: C.muted })}
+${arrow(285, 370, 355, 370)}
+${box(355, 260, 270, 220, { fill: C.purpleSoft, stroke: C.purple, width: 4 })}
+${text(490, 315, "Release Gates", 28, { anchor: "middle", weight: 800, color: C.purple })}
+${text(490, 360, ["tests · red team", "evaluation · GameDay", "clean-room build"], 19, { anchor: "middle", lineGap: 1.45 })}
+${arrow(625, 330, 715, 255, { color: C.purple })}
+${arrow(625, 410, 715, 515, { color: C.purple })}
+${box(715, 190, 300, 155, { fill: C.greenSoft, stroke: C.green, width: 4 })}
+${text(865, 240, "OCI image", 28, { anchor: "middle", weight: 800, color: C.green })}
+${text(865, 285, "immutable digest", 22, { anchor: "middle" })}
+${text(865, 320, "运行对象", 18, { anchor: "middle", color: C.muted })}
+${box(715, 440, 300, 175, { fill: C.amberSoft, stroke: C.amber, width: 4 })}
+${text(865, 490, "Release bundle", 28, { anchor: "middle", weight: 800, color: C.amber })}
+${text(865, 535, "manifest · OpenAPI", 20, { anchor: "middle" })}
+${text(865, 570, "eval · GameDay · hashes", 19, { anchor: "middle" })}
+${arrow(1015, 255, 1110, 255, { color: C.green })}
+${arrow(1015, 535, 1110, 535, { color: C.amber })}
+${box(1110, 180, 270, 160, { fill: C.redSoft, stroke: C.red, width: 4 })}
+${text(1245, 230, "SPDX SBOM", 27, { anchor: "middle", weight: 800, color: C.red })}
+${text(1245, 277, "镜像里有什么", 21, { anchor: "middle" })}
+${text(1245, 313, "不是漏洞结论", 17, { anchor: "middle", color: C.muted })}
+${box(1110, 455, 270, 160, { fill: C.blueSoft, stroke: C.ink, width: 4 })}
+${text(1245, 505, "Attestation", 27, { anchor: "middle", weight: 800 })}
+${text(1245, 552, "谁用什么构建", 21, { anchor: "middle" })}
+${text(1245, 588, "不是安全结论", 17, { anchor: "middle", color: C.muted })}
+${arrow(1015, 305, 1110, 475, { color: C.green, dash: "10 8" })}
+${arrow(1380, 260, 1490, 365, { color: C.red })}
+${arrow(1380, 535, 1490, 425)}
+${circle(1500, 395, 90, { fill: C.paper, stroke: C.green, width: 5 })}
+${text(1500, 383, "Verify", 25, { anchor: "middle", weight: 800, color: C.green })}
+${text(1500, 420, "then trust", 18, { anchor: "middle" })}
+${box(235, 700, 1130, 105, { fill: C.paper, stroke: C.red, dash: "12 9", radius: 34 })}
+${text(800, 746, "Digest 证明“没被替换” · SBOM 证明“包含什么” · Provenance 证明“从哪里构建”", 24, { anchor: "middle", weight: 760 })}
+${text(800, 782, "三者都不能单独证明软件安全；验证策略仍由消费者承担。", 20, { anchor: "middle", color: C.red })}
+`);
+
 files["capstone-maturity-ladder.svg"] = svg(`
 ${titleBlock("成熟度由可验证能力决定，不由 Agent 数量决定", "每一级都增加合同、控制、测量或运营能力。")}
 ${box(80, 620, 275, 150, { fill: C.paper, stroke: C.muted, width: 3 })}

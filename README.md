@@ -28,7 +28,7 @@
 
 ## 随书工程产物
 
-本书配套独立代码仓库 [CaseOps](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops)。它不是按章复制的零散示例，而是一套逐章演进、始终可运行的生产导向参考系统。当前已交付第 9 章里程碑 [`chapter-09-slice-8`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-09-slice-8)：持久化运行评估会从顶层系统结果下钻到失败委托任务，真实 A2A GameDay 留下健康基线、事故证据包、资源归因和恢复复验。历史章节均保留不可变 tag。
+本书配套独立代码仓库 [CaseOps](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops)。它不是按章复制的零散示例，而是一套逐章演进、始终可运行的生产导向参考系统。当前已交付第 10 章里程碑 [`chapter-10-slice-9`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-10-slice-9) 与正式版本 [`v1.0.0`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/releases/tag/v1.0.0)：锁定构建输入、干净环境复现、SPDX SBOM、发布证据清单、GHCR 镜像与可验证来源证明共同关闭交付链。历史章节均保留不可变 tag。
 
 书稿仓库同时提供可直接带回项目使用的架构图、决策方法和工程契约，包括 Agent 定义卡、ADR、Context Engineering 画布、生产就绪与安全评审、Golden Dataset、AgentOps 运营就绪以及 Capstone 验收与开源交付模板。
 
