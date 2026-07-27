@@ -28,7 +28,7 @@
 
 ## 随书工程产物
 
-本书配套独立代码仓库 [CaseOps](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops)。它不是按章复制的零散示例，而是一套逐章演进、始终可运行的生产导向参考系统。当前已交付第 7 章里程碑 [`chapter-07-slice-6`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-07-slice-6)：在前六章能力之上加入类型化系统 DAG、Central / Team / Worker 状态所有权、跨团队确定性验收、持久化父子运行与 Runtime Context Graph。真实容器验收会执行 API → A2A → MCP → PostgreSQL 全链路，并证明最终 Claim 均可回到 Evidence。历史章节均保留不可变 tag。
+本书配套独立代码仓库 [CaseOps](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops)。它不是按章复制的零散示例，而是一套逐章演进、始终可运行的生产导向参考系统。当前已交付第 8 章里程碑 [`chapter-08-slice-7`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-08-slice-7)：版本化 Golden Dataset、质量契约与 v0.7.0 基线驱动 5 类场景、13 次真实 HTTP 运行，契约、结果、路径、证据、安全和效率六层共同控制候选发布。历史章节均保留不可变 tag。
 
 书稿仓库同时提供可直接带回项目使用的架构图、决策方法和工程契约，包括 Agent 定义卡、ADR、Context Engineering 画布、生产就绪与安全评审、Golden Dataset、AgentOps 运营就绪以及 Capstone 验收与开源交付模板。
 

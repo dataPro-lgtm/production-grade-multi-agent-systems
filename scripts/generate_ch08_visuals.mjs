@@ -270,6 +270,39 @@ ${arrow(390, 635, 160, 415, { color: C.red, dash: "12 9" })}
 ${text(800, 795, "质量事件 → 最小复现 Case → 人工复核 → 治理后进入 Golden Dataset", 28, { anchor: "middle", color: C.red, weight: 760 })}
 `);
 
+files["caseops-slice-7-release-gate.svg"] = svg(`
+${titleBlock("CaseOps Slice 7：把质量判断编译成发布门禁", "5 类 Golden 场景、13 次真实运行；按层成对比较，任一硬约束回归即阻断。")}
+${box(55, 230, 260, 430, { fill: C.blueSoft, stroke: C.ink })}
+${text(185, 285, "版本化输入", 30, { anchor: "middle", weight: 760 })}
+${pill(90, 330, 190, "Golden Dataset", C.ink, C.paper, 19)}
+${pill(90, 410, 190, "Quality Contract", C.amber, C.amberSoft, 19)}
+${pill(90, 490, 190, "v0.7.0 Baseline", C.purple, C.purpleSoft, 18)}
+${pill(90, 570, 190, "C-102 Fixture", C.green, C.greenSoft, 19)}
+${arrow(315, 445, 390, 445)}
+${box(390, 230, 260, 430, { fill: C.greenSoft, stroke: C.green, width: 4 })}
+${text(520, 285, "Live HTTP N-run", 29, { anchor: "middle", weight: 760, color: C.green })}
+${text(520, 355, ["标准合龙 × 3", "最小预算 × 3", "提示注入 × 3", "幂等重放 × 2", "幂等冲突 × 2"], 22, { anchor: "middle", lineGap: 1.58 })}
+${pill(430, 570, 180, "共 13 Trials", C.green, C.paper, 20)}
+${arrow(650, 445, 725, 445, { color: C.green })}
+${box(725, 210, 360, 470, { fill: C.amberSoft, stroke: C.amber, width: 4 })}
+${text(905, 270, "六层确定性 Grader", 30, { anchor: "middle", weight: 760, color: C.amber })}
+${pill(770, 315, 130, "契约", C.ink, C.paper, 20)}
+${pill(910, 315, 130, "结果", C.red, C.redSoft, 20)}
+${pill(770, 390, 130, "路径", C.amber, C.paper, 20)}
+${pill(910, 390, 130, "证据", C.green, C.paper, 20)}
+${pill(770, 465, 130, "安全", C.purple, C.paper, 20)}
+${pill(910, 465, 130, "效率", C.ink, C.paper, 20)}
+${text(905, 570, ["Claim → SUPPORTED_BY", "跨租户 Graph → 404", "语义指纹 → 一致"], 20, { anchor: "middle", lineGap: 1.5 })}
+${arrow(1085, 445, 1160, 445, { color: C.amber })}
+${box(1160, 230, 380, 430, { fill: C.redSoft, stroke: C.red, width: 4 })}
+${text(1350, 285, "Paired Release Gate", 29, { anchor: "middle", weight: 760, color: C.red })}
+${text(1350, 355, ["按 Case 对齐", "按 Layer 比较", "硬门禁不可抵扣", "JSON 报告留存"], 22, { anchor: "middle", lineGap: 1.62 })}
+${box(1225, 545, 250, 75, { fill: C.paper, stroke: C.red, radius: 36 })}
+${text(1350, 592, "PASS / BLOCK", 27, { anchor: "middle", weight: 800, color: C.red })}
+${box(285, 735, 1030, 75, { fill: C.paper, stroke: C.ink, dash: "12 9", radius: 36 })}
+${text(800, 782, "确定性模式证明控制面稳定；它不冒充真实随机模型的分布评测。", 27, { anchor: "middle", weight: 760, color: C.ink })}
+`);
+
 for (const [name, content] of Object.entries(files)) {
   fs.writeFileSync(path.join(outDir, name), content);
 }

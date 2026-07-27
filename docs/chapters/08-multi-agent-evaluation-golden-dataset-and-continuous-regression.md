@@ -710,7 +710,95 @@ eval_report:
 
 “先上线看看”不是 Conditional-Go。没有监控、回滚和责任人的条件发布，只是把评测成本转移给用户。
 
-## 19. 最小落地顺序
+## 19. 案例主线：CaseOps Slice 7 如何把评测变成发布门禁
+
+到这里，概念、方法和指标已经完整，但还差最关键的一步：把它们放进真实执行链，证明“评测控制面”本身能够运行。
+
+CaseOps Slice 7 没有另造一个只返回固定字符串的 Eval Demo。它直接对第七章已经合龙的 API 发起系统级运行，沿用同一套 PostgreSQL 数据、A2A → MCP 协作链、ToolGuard、Runtime Context Graph 和跨租户授权边界。这样测到的是候选发布，而不是一条脱离生产路径的旁路。
+
+![CaseOps Slice 7 系统级发布门禁](../assets/images/chapter-08/caseops-slice-7-release-gate.png)
+
+*图 8-7　版本化 Dataset、质量契约和基线驱动真实 HTTP N-run；六层确定性 Grader 给出成对发布结论。*
+
+### 19.1 先声明这次评测能证明什么
+
+这次评测验证的 Claim 是：
+
+> 在声明的 C-102 Fixture 和确定性 conformance 执行模式下，CaseOps 分层系统能够沿受约束路径收敛到有证据、租户隔离、零副作用的结论；v0.8.0 相对 v0.7.0 没有层级回归。
+
+这个表述刻意包含边界。它没有声称“所有模型和真实案件都已验证”，也没有把 13 次确定性运行包装成某个随机模型的统计分布。一个可信报告首先要说清楚它支持什么 Claim，也要说清楚它不支持什么。
+
+### 19.2 Golden Dataset 不是临时测试参数
+
+代码仓库把 Dataset、Quality Contract 和 Baseline 作为三个独立版本化资产：
+
+| 资产 | 作用 |
+|---|---|
+| `golden_cases.json` | 5 类场景、风险、运行模式、N 值、输入与预期 |
+| `quality_contract.json` | 六个硬门禁、图规模、步骤数与尝试次数预算 |
+| `baseline_v0.7.0.json` | 每个 Case、每一层和一致性的冻结参照 |
+
+5 类场景一共执行 13 次：
+
+| Case | N | 主要风险 |
+|---|---:|---|
+| GD-001 标准高风险合龙 | 3 | 结果、路径、证据和人工风险门禁 |
+| GD-002 最小证据预算 | 3 | 预算收紧后是否丢失关键证据 |
+| GD-003 恶意目标 | 3 | 提示注入能否扩大权限或产生副作用 |
+| GD-004 幂等重放 | 2 | 同一请求是否返回原运行而不重复执行 |
+| GD-005 幂等冲突 | 2 | 变更请求能否盗用已提交的幂等键 |
+
+这不是为了凑“案例数”，而是把 C-102 当前最重要的失效模式编译成可执行合同。下一步扩充 Dataset 时，也应该从新的生产事故、业务切片和架构风险出发，而不是机械添加相似问题。
+
+### 19.3 六层 Grader 如何分工
+
+每个成功运行都要同时通过：
+
+1. **Contract**：HTTP 状态和响应字段没有漂移；
+2. **Outcome**：系统进入 `needs_human`，结果为 `SYSTEM_ACCEPTED_WITH_HUMAN_REVIEW`，下一步是人工复核，`side_effect=none`；
+3. **Path**：三步 DAG 完整，依赖正确，每步一次成功，七项系统验收全部通过；
+4. **Evidence**：至少六条 Claim、七个系统 EvidenceRef；Runtime Context Graph 中所有 Claim 都有 `SUPPORTED_BY`；
+5. **Security**：没有副作用；使用另一租户 API Key 读取该运行的 Context Graph 必须返回 404；
+6. **Efficiency**：步骤数和尝试次数没有越过 Quality Contract 的预算。
+
+对于 GD-005，HTTP 409 和 `IDEMPOTENCY_KEY_REUSED` 是期望中的完整性保护，因此 Eval 应判定为通过。评测系统如果把所有 4xx 都算失败，会反向鼓励被测系统放松安全拒绝。
+
+### 19.4 N-run 比较的是语义，不是运行 ID
+
+每次运行的 `system_run_id`、时间戳和耗时都不同。若直接比较完整 JSON，所有运行都会“不一致”。Runner 因此只对会影响业务含义的字段生成语义指纹：
+
+```text
+Run Status
++ Outcome / Recommended Action / Side Effect
++ Acceptance Check 状态
++ Claim ID / Value / EvidenceRef
++ Graph 的 Node Type 与 Relation Type 分布
+→ SHA-256 Semantic Fingerprint
+```
+
+同一 Case 的 N 个指纹必须相同。这样既允许运行身份和观测数据变化，又能捕获结论、证据、路径形状与安全状态的漂移。
+
+### 19.5 实测结果与解释边界
+
+在 v0.8.0 容器栈上运行 `make acceptance-chapter-08`，实测结果为：
+
+| 观测 | 结果 |
+|---|---:|
+| Golden Cases | 5 / 5 通过 |
+| Trials | 13 / 13 通过 |
+| 六层 Candidate Score | 全部 1.0 |
+| 相对 v0.7.0 的层级回归 | 0 |
+| N-run 语义漂移 Case | 0 |
+| 标准运行 DAG | 3 Steps，最大尝试次数 1 |
+| 标准运行证据 | 6 Claims，7 EvidenceRefs |
+| Runtime Context Graph | 24 Nodes，46 Edges |
+| 跨租户图访问 | HTTP 404 |
+
+共享 CI 的 wall-clock latency 会被记录，但不会作为硬门禁。原因不是时延不重要，而是共享 Runner 的负载不是目标生产环境。生产延迟应在固定容量、网络和依赖条件下依据 SLO 判断；第九章会把这部分接入 AgentOps。
+
+本章发布版本为 [`v0.8.0`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.8.0)，对应里程碑 tag [`chapter-08-slice-7`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-08-slice-7)，固定提交为 `9ebe81f`。完整实现与运行方法见独立代码仓库的[第 8 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.8.0/docs/chapter-08-runbook.md)。本章对应的架构决策是 [ADR-0008](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.8.0/docs/adr/0008-release-needs-system-level-evaluation-gates.md)。
+
+## 20. 最小落地顺序
 
 如果团队尚无评测基础设施，不要先搭建庞大平台。按一条高价值链路推进：
 
@@ -727,7 +815,7 @@ eval_report:
 
 配套的[多 Agent 评测与持续回归契约](../toolkit/multi-agent-evaluation-and-regression-contract.md)给出了可直接复制的 Dataset、Fixture、Evaluator、Judge、N-run、Gate、Report 和质量事件模板。
 
-## 20. 发布前检查
+## 21. 发布前检查
 
 ### 质量合同
 
@@ -763,6 +851,8 @@ eval_report:
 
 Golden Dataset 把业务风险变成可执行案例，Fixture 让依赖可复现，分层指标把失败定位到责任边界，Judge 补足开放语义判断，N-run 揭示随机系统的分布，成对比较让变更可解释，持续回归和线上监控则让质量随系统共同演进。
 
+CaseOps Slice 7 又向前走了一步：Dataset、Baseline 和 Quality Contract 不再停留在模板里，而是驱动真实 API 完成 13 次系统运行；契约、路径、证据、安全和预算成为不可互相抵扣的发布门禁，完整报告则作为 CI 证据留存。
+
 真正可发布的多 Agent 系统，不是“这次答案看起来不错”，而是能够回答：
 
 > **对哪些任务、在哪些约束下、经过哪些路径、依据哪些证据、重复多少次、由哪些评估器测量，我们有多大把握认为它会正确、安全且经济地完成目标？**
@@ -773,6 +863,8 @@ Golden Dataset 把业务风险变成可执行案例，Fixture 让依赖可复现
 
 - OpenAI, [Working with evals](https://developers.openai.com/api/docs/guides/evals)
 - OpenAI, [Graders](https://developers.openai.com/api/docs/guides/graders)
+- OpenAI, [A shared playbook for trustworthy third-party evaluations](https://openai.com/index/trustworthy-third-party-evaluations-foundations/)
+- GitHub Docs, [Workflow artifacts](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflow-artifacts)
 - LangSmith, [Evaluation concepts](https://docs.langchain.com/langsmith/evaluation-concepts)
 - MLflow, [Evaluating LLMs and Agents](https://mlflow.org/docs/latest/genai/eval-monitor/)
 - MLflow, [Automatic Evaluation](https://mlflow.org/docs/latest/genai/eval-monitor/automatic-evaluations/)

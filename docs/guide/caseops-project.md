@@ -10,16 +10,16 @@ CaseOps 是本书独立维护的生产导向参考系统：
 
 | 项目 | 值 |
 |---|---|
-| 当前章节里程碑 | `chapter-07-slice-6` |
-| 发布版本 | `v0.7.0` |
-| 固定提交 | `14e08f3` |
+| 当前章节里程碑 | `chapter-08-slice-7` |
+| 发布版本 | `v0.8.0` |
+| 固定提交 | `9ebe81f` |
 | 运行方式 | Docker Compose |
 | 服务 | FastAPI、A2A HTTP+JSON、MCP Streamable HTTP、PostgreSQL 17、OTel Collector、Tempo、Prometheus、Grafana |
 | 许可 | MIT |
 
-[查看第 7 章当前代码版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.7.0)
+[查看第 8 章当前代码版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.8.0)
 
-## 已交付的七个切片
+## 已交付的八个切片
 
 ### Slice 0：确定性基线
 
@@ -122,30 +122,45 @@ CaseOps 是本书独立维护的生产导向参考系统：
 
 C-102 通过 7 项系统检查，最终为 `SYSTEM_ACCEPTED_WITH_HUMAN_REVIEW`。这表示系统证明人工复核是必要门禁，不表示系统执行了任何外部动作。
 
+### Slice 7：Golden Dataset 与系统级发布门禁
+
+第 8 章没有为评测另造一条简化路径，而是直接对 Slice 6 的真实 API、A2A → MCP 协作链、PostgreSQL 和 Runtime Context Graph 做回归：
+
+1. Golden Dataset、Quality Contract 与 v0.7.0 Baseline 分别版本化；
+2. 5 类场景执行 13 次独立 HTTP 运行；
+3. 契约、结果、路径、证据、安全与效率六层分别评分；
+4. 每条成功运行都验证三步 DAG、七项验收与 Claim → Evidence 图不变量；
+5. 另一租户访问每个成功运行的 Context Graph 必须得到 404；
+6. N-run 对排除运行身份和时间戳后的语义指纹做一致性检查；
+7. Candidate 与 Baseline 按 Case、按 Layer 成对比较，硬门禁不可互相抵扣；
+8. CI 以 JSON Artifact 留存每个 Trial 的诊断与发布结论。
+
+当前 conformance 执行器是确定性的。这 13 次运行验证控制面和系统路径稳定，不冒充真实随机模型的总体分布评测。
+
 ## 运行当前切片
 
 ```bash
 git clone https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops.git
 cd production-grade-multi-agent-caseops
-git checkout v0.7.0
+git checkout v0.8.0
 
 docker compose up --build -d
-make acceptance-chapter-07
+make acceptance-chapter-08
 ```
 
-验收脚本会读取真实 Agent Card，执行系统 DAG、Context Team 与 A2A → MCP 协作链，完成 7 项跨团队一致性检查，验证每条 Claim 的 `SUPPORTED_BY` 边，并重放同一系统请求。一次实测输出：
+验收脚本会执行 5 个 Golden Case、13 次系统运行，检查六层硬门禁、N-run 语义一致性、Runtime Context Graph 和跨租户隔离。一次实测输出：
 
 ```text
-hierarchical orchestration schema accepted: revision 0006
-A2A capability snapshot accepted: HTTP+JSON 1.0 and three bounded skills
-system convergence accepted: <system-run-id>
-runtime Context Graph accepted: nodes=24 edges=46
-system-level idempotent replay accepted
-durable hierarchy accepted: steps=3 security_decisions=6
-chapter 07 hierarchical system acceptance passed
+PASS: 5/5 cases, 13 trials, semantic drift cases=0
+PASS GD-001: N=3 consistency=1.000
+PASS GD-002: N=3 consistency=1.000
+PASS GD-003: N=3 consistency=1.000
+PASS GD-004: N=2 consistency=1.000
+PASS GD-005: N=2 consistency=1.000
+chapter 08 evaluation gate accepted: 5 cases, 13 trials, zero semantic drift, zero paired regression
 ```
 
-详细命令、状态查询与剩余边界见 [第 7 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.7.0/docs/chapter-07-runbook.md)。安全回归仍可执行 `make acceptance-chapter-06`；若要回归 Trace、SLO、依赖降级和隔离恢复，再执行 `make observability-up && make acceptance-chapter-05`。
+详细命令、报告解读与失败注入见 [第 8 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.8.0/docs/chapter-08-runbook.md)。分层合龙仍可执行 `make acceptance-chapter-07`；安全回归可执行 `make acceptance-chapter-06`。
 
 ## 为什么不把它叫 Demo
 
@@ -173,6 +188,8 @@ chapter 07 hierarchical system acceptance passed
 - 摘要化安全决策、OutputGuard、11 项红队与间接提示注入隔离验收。
 - 类型化系统 DAG、父子运行、跨团队确定性验收与 Runtime Context Graph；
 - 系统级幂等重放、Claim-Evidence 图不变量与第 7 章容器验收。
+- 版本化 Golden Dataset、Quality Contract、成对 Baseline 和六层确定性 Grader；
+- 13 次 Live HTTP N-run、跨租户图探测、语义指纹与 CI 评测 Artifact。
 
 这仍不等于“替任何企业完成生产认证”。真实身份提供方、完整 OAuth 2.1、经过领域评测的向量检索、跨进程 Supervisor 恢复、异步长任务入口、Broker 消费端、真实流量容量目标、PITR、跨区域灾备和在线模型评测仍是后续交付。未完成的能力会写成限制，不写成承诺。
 

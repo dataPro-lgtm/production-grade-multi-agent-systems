@@ -15,3 +15,5 @@ assets:
     png: n-run-distribution-and-gates.png
   - svg: continuous-evaluation-loop.svg
     png: continuous-evaluation-loop.png
+  - svg: caseops-slice-7-release-gate.svg
+    png: caseops-slice-7-release-gate.png
