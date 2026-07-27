@@ -268,6 +268,36 @@ ${text(1350, 824, "Go · Conditional · No-Go", 18, { anchor: "middle" })}
 ${arrow(1060, 755, 1180, 790, { color: C.green, dash: "9 7" })}
 `);
 
+files["caseops-slice-8-incident-operations-loop.svg"] = svg(`
+${titleBlock("CaseOps Slice 8：把 A2A 故障变成可复核运营证据", "基线、事故与恢复都走同一套系统 API、持久化账本和运行评估契约。")}
+${pill(60, 225, 220, "健康基线", C.green, C.greenSoft, 25)}
+${arrow(280, 251, 340, 251, { color: C.green })}
+${pill(340, 225, 220, "停止 A2A", C.red, C.redSoft, 25)}
+${arrow(560, 251, 620, 251, { color: C.red })}
+${pill(620, 225, 250, "受控系统拒绝", C.amber, C.amberSoft, 24)}
+${arrow(870, 251, 930, 251, { color: C.amber })}
+${pill(930, 225, 250, "Incident Bundle", C.purple, C.purpleSoft, 22)}
+${arrow(1180, 251, 1240, 251, { color: C.purple })}
+${pill(1240, 225, 280, "恢复并重新验证", C.green, C.greenSoft, 23)}
+
+${box(75, 365, 420, 250, { fill: C.blueSoft, stroke: C.ink, width: 4 })}
+${text(285, 415, "顶层症状", 30, { anchor: "middle", weight: 800 })}
+${text(285, 470, ["HTTP 201", "System Run = failed", "System Steps = 3 succeeded"], 23, { anchor: "middle", lineGap: 1.55 })}
+${box(590, 365, 420, 250, { fill: C.redSoft, stroke: C.red, width: 4 })}
+${text(800, 415, "首个因果失败", 30, { anchor: "middle", weight: 800, color: C.red })}
+${text(800, 470, ["Layer = collaboration", "3 Delegated Tasks failed", "A2A dependency unavailable"], 23, { anchor: "middle", lineGap: 1.55 })}
+${box(1105, 365, 420, 250, { fill: C.greenSoft, stroke: C.green, width: 4 })}
+${text(1315, 415, "安全与恢复证据", 30, { anchor: "middle", weight: 800, color: C.green })}
+${text(1315, 470, ["External side effects = 0", "Wasted Context Run = 1", "Recovery Goal = healthy"], 23, { anchor: "middle", lineGap: 1.55 })}
+${arrow(495, 490, 575, 490)}
+${arrow(1010, 490, 1090, 490, { color: C.red })}
+
+${box(100, 690, 1400, 100, { fill: C.paper, stroke: C.amber, width: 3, dash: "11 8", radius: 34 })}
+${text(800, 730, "Durable Evidence Spine", 28, { anchor: "middle", weight: 800, color: C.amber })}
+${text(800, 766, "system run · step · delegated task · context graph · security decision · cost event · version snapshot", 21, { anchor: "middle", color: C.muted })}
+${text(800, 845, "诊断要穿透顶层结果码；没有 token 与价格表时，不伪造货币成本。", 28, { anchor: "middle", weight: 760, color: C.red })}
+`);
+
 for (const [name, content] of Object.entries(files)) {
   fs.writeFileSync(path.join(outDir, name), content);
 }

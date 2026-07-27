@@ -33,3 +33,8 @@ assets:
     png: continuous-operations-loop.png
     width: 1600
     height: 900
+  - id: caseops-slice-8-incident-operations-loop
+    svg: caseops-slice-8-incident-operations-loop.svg
+    png: caseops-slice-8-incident-operations-loop.png
+    width: 1600
+    height: 900

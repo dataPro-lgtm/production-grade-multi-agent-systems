@@ -10,16 +10,16 @@ CaseOps 是本书独立维护的生产导向参考系统：
 
 | 项目 | 值 |
 |---|---|
-| 当前章节里程碑 | `chapter-08-slice-7` |
-| 发布版本 | `v0.8.0` |
-| 固定提交 | `9ebe81f` |
+| 当前章节里程碑 | `chapter-09-slice-8` |
+| 发布版本 | `v0.9.0` |
+| 固定提交 | `4241834` |
 | 运行方式 | Docker Compose |
 | 服务 | FastAPI、A2A HTTP+JSON、MCP Streamable HTTP、PostgreSQL 17、OTel Collector、Tempo、Prometheus、Grafana |
 | 许可 | MIT |
 
-[查看第 8 章当前代码版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.8.0)
+[查看第 9 章当前代码版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.9.0)
 
-## 已交付的八个切片
+## 已交付的九个切片
 
 ### Slice 0：确定性基线
 
@@ -137,30 +137,45 @@ C-102 通过 7 项系统检查，最终为 `SYSTEM_ACCEPTED_WITH_HUMAN_REVIEW`�
 
 当前 conformance 执行器是确定性的。这 13 次运行验证控制面和系统路径稳定，不冒充真实随机模型的总体分布评测。
 
+### Slice 8：事故证据、资源归因与恢复验证
+
+第 9 章没有增加一个自由阅读日志的“事故分析 Agent”，而是把运行诊断做成显式、幂等、租户隔离的持久化产品：
+
+1. 只有终态系统运行能够生成 `caseops.operational-assessment.v1`；
+2. 报告固定影响、事实时间线、首个失败点、证据清单、资源归因、控制建议与版本快照；
+3. 诊断从 `system_runs`、`system_steps` 下钻到 `collaboration_runs`、`delegated_tasks`；
+4. Incident Bundle 只保存引用、摘要和数量，不复制 Prompt、工具参数或业务载荷；
+5. 步骤尝试、Context Run、委托尝试和安全决策分别记账，不混加不同单位；
+6. 没有 token 用量和版本化价格表时，货币成本明确为 `null`；
+7. GameDay 真实停止 A2A，验证三个委托任务受控失败、首故障位于协作层、外部副作用为 0；
+8. 恢复 A2A 后执行新系统运行，必须重新得到健康评估；
+9. CI 留存基线、事故和恢复三份评估组成的版本化 JSON 证据。
+
+一次实测留下 3 份运行评估、12 条资源成本事件和 3 条审计记录；工程测试 62 项全部通过，含分支统计的覆盖率为 85.99%。
+
 ## 运行当前切片
 
 ```bash
 git clone https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops.git
 cd production-grade-multi-agent-caseops
-git checkout v0.8.0
+git checkout v0.9.0
 
-docker compose up --build -d
-make acceptance-chapter-08
+docker compose up --build --wait --wait-timeout 120 -d
+make acceptance-chapter-09
 ```
 
-验收脚本会执行 5 个 Golden Case、13 次系统运行，检查六层硬门禁、N-run 语义一致性、Runtime Context Graph 和跨租户隔离。一次实测输出：
+验收脚本会执行健康基线、A2A 中断、事故重建、依赖恢复和 Goal 复验。一次实测输出：
 
 ```text
-PASS: 5/5 cases, 13 trials, semantic drift cases=0
-PASS GD-001: N=3 consistency=1.000
-PASS GD-002: N=3 consistency=1.000
-PASS GD-003: N=3 consistency=1.000
-PASS GD-004: N=2 consistency=1.000
-PASS GD-005: N=2 consistency=1.000
-chapter 08 evaluation gate accepted: 5 cases, 13 trials, zero semantic drift, zero paired regression
+operations schema accepted: revision 0007
+healthy baseline accepted with durable evidence and honest unit attribution
+incident bundle accepted: first failure=collaboration, safe side effects=0, wasted context unit=1
+post-recovery run accepted: A2A readiness and goal convergence restored
+durable operations evidence accepted: assessments=3 cost_events=12 audits=3
+chapter 09 AgentOps GameDay acceptance passed
 ```
 
-详细命令、报告解读与失败注入见 [第 8 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.8.0/docs/chapter-08-runbook.md)。分层合龙仍可执行 `make acceptance-chapter-07`；安全回归可执行 `make acceptance-chapter-06`。
+详细命令、报告解读与失败注入见 [第 9 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.9.0/docs/chapter-09-runbook.md)。发布评测仍可执行 `make acceptance-chapter-08`；分层合龙可执行 `make acceptance-chapter-07`。
 
 ## 为什么不把它叫 Demo
 
@@ -190,6 +205,8 @@ chapter 08 evaluation gate accepted: 5 cases, 13 trials, zero semantic drift, ze
 - 系统级幂等重放、Claim-Evidence 图不变量与第 7 章容器验收。
 - 版本化 Golden Dataset、Quality Contract、成对 Baseline 和六层确定性 Grader；
 - 13 次 Live HTTP N-run、跨租户图探测、语义指纹与 CI 评测 Artifact。
+- 持久化运行评估、跨层首故障重建、最小 Incident Bundle 与版本快照；
+- 可核验资源数量归因、A2A 故障注入、恢复后 Goal 复验与 CI GameDay Artifact。
 
 这仍不等于“替任何企业完成生产认证”。真实身份提供方、完整 OAuth 2.1、经过领域评测的向量检索、跨进程 Supervisor 恢复、异步长任务入口、Broker 消费端、真实流量容量目标、PITR、跨区域灾备和在线模型评测仍是后续交付。未完成的能力会写成限制，不写成承诺。
 

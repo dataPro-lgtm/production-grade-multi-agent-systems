@@ -813,11 +813,118 @@ No-Go
 
 这条链路的关键不是“更快找到一个错误 Prompt”，而是让系统具备组织记忆：同类故障下一次更早被发现、更小范围受影响、更少依赖专家直觉。
 
-## 20. 本章结论
+## 20. 案例主线：CaseOps Slice 8 的 A2A 故障演练
+
+前面的 C-102 主体混淆展示了事故重建方法，但方法只有进入同一条生产执行路径，才算工程能力。为此，我在 CaseOps Slice 8 选择了一个边界清晰、可以真实注入、又不会产生外部副作用的故障：**运行期间停止 A2A 专业节点服务**。
+
+这个场景同时检验四件事：
+
+1. 系统是否把依赖失败收敛成受控终态，而不是留下半完成状态；
+2. 诊断是否能穿透顶层结果，定位到真正失败的委托任务；
+3. 已经消耗但没有形成成功 Goal 的工作，能否被归入浪费成本；
+4. 依赖恢复后，系统是否能用一条新运行证明目标重新收敛。
+
+![CaseOps Slice 8 从 A2A 故障到事故证据与恢复验证](../assets/images/chapter-09/caseops-slice-8-incident-operations-loop.png)
+
+*图 9-7　GameDay 不以“容器重新启动”为终点，而以基线、事故与恢复三份可复核运行评估为证据。*
+
+### 20.1 先把运行评估定义成受治理的产品
+
+Slice 8 没有增加一个“事故分析 Agent”去阅读日志并自由发挥。它增加的是显式运行评估：
+
+```text
+POST /v1/system-runs/{system_run_id}/operational-assessments
+```
+
+接口只接受已经进入 `completed`、`needs_human` 或 `failed` 的系统运行，并具备四个约束：
+
+- **显式写入**：读取运行不会偷偷创建事故记录；
+- **幂等**：相同租户和幂等键返回同一评估，不重复记账；
+- **租户隔离**：另一租户访问同一运行仍然得到 404；
+- **最小证据**：报告保存运行、步骤、子任务、Context Graph 和安全决策的引用与摘要，不复制 Prompt、工具参数和业务载荷。
+
+每份评估固定包含影响、首个失败点、事实时间线、证据清单、成本归因、建议控制动作和版本快照。报告内容计算 SHA-256 摘要；评估快照、四类资源事件和审计记录在同一事务中提交。这样，Incident Bundle 不再是事故结束后人工拼出的文档，而是可重放、可比较的运行制品。
+
+对应实现并不隐藏在章节专用脚本里：
+
+| 责任 | 固定代码 |
+|---|---|
+| 运行评估契约 | [`operations/contracts.py`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.9.0/src/caseops/operations/contracts.py) |
+| 因果诊断与归因 | [`operations/service.py`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.9.0/src/caseops/operations/service.py) |
+| 持久化迁移 | [`0007_add_operational_assessments.py`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.9.0/migrations/versions/0007_add_operational_assessments.py) |
+| 真实故障演练 | [`acceptance-chapter-09.sh`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.9.0/scripts/acceptance-chapter-09.sh) |
+| 完整操作说明 | [第 9 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.9.0/docs/chapter-09-runbook.md) |
+
+### 20.2 顶层成功执行，不等于下游没有失败
+
+第一次真实演练揭示了一个比预设更有价值的现象。A2A 停止后，系统运行接口仍返回 HTTP 201，三个顶层 `system_steps` 也都进入 `succeeded`。如果只看 HTTP、Span 状态或顶层步骤，这次运行很容易被误判为健康。
+
+但业务终态是 `SYSTEM_REJECTED`，`system_run` 状态为 `failed`。继续下钻到协作账本后，可以看到 coverage、document、risk 三个委托任务全部失败。换句话说：
+
+```text
+HTTP 201
+  → System Steps 3/3 succeeded
+  → System Result = SYSTEM_REJECTED
+  → Delegated Tasks 3/3 failed
+  → First Causal Failure = collaboration / A2A unavailable
+```
+
+这正是“症状”与“根因”的区别。顶层步骤成功，表示 Supervisor 正确执行了自己的责任：收集子系统结果并安全拒绝；它不表示子系统完成了目标。Slice 8 因而把诊断范围从 `system_runs → system_steps` 扩展到 `collaboration_runs → delegated_tasks`。首个失败点由持久化完成时间和错误码确定，不由模型猜测。
+
+### 20.3 成本归因宁可不完整，也不能虚假精确
+
+本次失败发生前，Context Team 已经成功构建了一份 Context Run；由于最终 Goal 没有成功，这份工作对该 Goal 而言是 `wasted`。三个委托尝试同样归入失败目标。安全决策则单独标记为 `protective`，因为它们的价值是守住边界，不应被简单视为浪费。
+
+Slice 8 记录四类可核验单位：
+
+- `system_step_attempt`；
+- `context_run`；
+- `delegated_task_attempt`；
+- `security_decision`。
+
+我没有把这些不同单位强行相加，也没有给它们随意赋权。当前默认执行器是确定性的 conformance 模式，没有调用计费模型，也没有版本化供应商价格表，所以：
+
+```yaml
+pricing_status: not_configured
+currency: null
+monetary_cost_microunits: null
+```
+
+这不是缺陷掩饰，而是成本证据的诚信边界。将来接入真实模型时，应新增 token usage、provider、model、region、price version 和 currency，再计算货币成本；不能拿估算值冒充账单事实。
+
+### 20.4 恢复证据必须覆盖“故障前—故障中—故障后”
+
+GameDay 的退出钩子会在任何断言失败时尝试恢复 A2A，避免演练本身长期破坏本地平台。正常路径则依次生成三份评估：
+
+| 阶段 | 稳定事实 |
+|---|---|
+| 基线 | Goal 健康；Context Graph 和安全决策可查询；外部副作用为 0 |
+| 事故 | 系统拒绝；三个委托任务失败；首故障在协作层；浪费 Context Run 为 1 |
+| 恢复 | A2A 健康检查通过；新系统运行重新收敛；外部副作用仍为 0 |
+
+实测最终留下 3 份 `operational_assessments`、12 条 `operational_cost_events` 和 3 条审计记录，并生成 `caseops.gameday-report.v1` JSON 报告。工程测试为 62 项全部通过，含分支统计的覆盖率为 85.99%。固定提交为 `4241834`。
+
+这里需要严格限定结论：这次演练证明当前容器化参考系统可以识别并恢复 **A2A 依赖中断**，不等于证明所有网络分区、数据库故障、模型退化和真实生产流量都满足某个 RTO。新的故障模式仍需新的 GameDay、SLO 和恢复证据。
+
+### 20.5 复现实验
+
+固定版本为 [`chapter-09-slice-8`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-09-slice-8)，发布版本为 [`v0.9.0`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.9.0)：
+
+```bash
+git clone https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops.git
+cd production-grade-multi-agent-caseops
+git checkout v0.9.0
+docker compose up --build --wait --wait-timeout 120 -d
+make acceptance-chapter-09
+```
+
+这条命令会真的停止和恢复本地 A2A 容器。不要在共享生产环境直接照搬；企业环境应通过变更审批、限定爆炸半径、明确停止条件，并由演练控制面注入故障。
+
+## 21. 本章结论
 
 生产级多 Agent 系统上线后，工程对象从“会不会运行”转向“能不能持续兑现承诺”。
 
-可以用七句话概括本章：
+可以用八句话概括本章：
 
 1. HTTP 和基础设施健康不等于 Goal 健康。
 2. Tier 1 判断用户承诺，Tier 2 定位责任层。
@@ -826,6 +933,7 @@ No-Go
 5. 控制动作必须有范围、审批、版本、期限与恢复条件。
 6. 恢复要重新授权、对账副作用并验证不变量。
 7. 成本、反馈、演练和事故都必须回流到评测与发布。
+8. 运营结论必须来自持久化事实，并用故障前、故障中和故障后的证据闭环。
 
 当 Dashboard、Alert、Incident Bundle、Control Plane、Runbook、GameDay 和 ORR 形成闭环，AgentOps 才不再是“模型出了问题就查日志”，而是一套能承接业务责任的生产运营系统。
 
