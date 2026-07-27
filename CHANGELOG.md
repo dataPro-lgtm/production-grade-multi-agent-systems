@@ -27,6 +27,8 @@
 - 将第 07 周 Word 讲义重构为“分层多 Agent、Supervisor、A2A、MCP 与 Context Graph 系统合龙”正式章节；
 - 增加 6 幅第 07 章可编辑白板手绘风原创系统合龙架构图及确定性生成脚本；
 - 增加 Layer Registry、Capability Snapshot、Plan、A2A Dispatch、MCP Tool、State Ownership、Join、Context Graph、Failure Drill 与 System Acceptance 合龙契约；
+- 将第 07 章与 CaseOps Slice 6 合流，补充类型化 DAG、父子运行、跨团队 7 项确定性验收、Runtime Context Graph、幂等重放与真实 A2A → MCP 容器证据；
+- 增加第 07 章分层合龙白板架构图，明确 Runtime Context Graph 与 OpenTelemetry Trace 的不同责任；
 - 将第 08 周 Word 讲义重构为“多 Agent 评测、Golden Dataset、分层指标、Judge、N-run 与持续回归”正式章节；
 - 增加 6 幅第 08 章可编辑白板手绘风原创评测架构图及确定性生成脚本；
 - 增加 Quality Contract、Golden Entry、Fixture、Evaluator、Judge Calibration、N-run、Regression Gate、Eval Report 与 Quality Incident 持续回归契约；

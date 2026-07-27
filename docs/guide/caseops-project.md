@@ -10,16 +10,16 @@ CaseOps 是本书独立维护的生产导向参考系统：
 
 | 项目 | 值 |
 |---|---|
-| 当前章节里程碑 | `chapter-06-slice-5` |
-| 发布版本 | `v0.6.1` |
-| 固定提交 | `3753325` |
+| 当前章节里程碑 | `chapter-07-slice-6` |
+| 发布版本 | `v0.7.0` |
+| 固定提交 | `14e08f3` |
 | 运行方式 | Docker Compose |
 | 服务 | FastAPI、A2A HTTP+JSON、MCP Streamable HTTP、PostgreSQL 17、OTel Collector、Tempo、Prometheus、Grafana |
 | 许可 | MIT |
 
-[查看第 6 章当前代码版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.6.1)
+[查看第 7 章当前代码版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.7.0)
 
-## 已交付的六个切片
+## 已交付的七个切片
 
 ### Slice 0：确定性基线
 
@@ -107,28 +107,45 @@ CaseOps 是本书独立维护的生产导向参考系统：
 
 这一切只证明当前实现边界。仓库没有把开发用 HS256 任务令牌写成企业 IdP，也没有把正则检测写成完整 DLP。
 
+### Slice 6：分层系统合龙与 Runtime Context Graph
+
+第 7 章没有再增加一个“万能 Agent”，而是把既有 Context Team 与 Collaboration Team 合成一个可验收系统：
+
+1. Central Supervisor 创建并验证三步无环 DAG；
+2. Context Team 交付 Context Pack 与证据绑定主张；
+3. Collaboration Team 通过真实 A2A → MCP 链调度 Coverage、Document、Risk；
+4. 系统 Reducer 核对规则版本、材料状态、风险门禁、证据与副作用；
+5. `system_runs`、`system_steps` 持久化父子运行、依赖、尝试与结果摘要；
+6. Runtime Context Graph 连接 Goal、Plan、Step、Task、Claim、Evidence、Acceptance 与 Result；
+7. 图只保留引用、分类与 SHA-256 摘要，不复制原始 Prompt 和业务载荷；
+8. 相同幂等键重放不会重复创建系统运行、子运行和来源图。
+
+C-102 通过 7 项系统检查，最终为 `SYSTEM_ACCEPTED_WITH_HUMAN_REVIEW`。这表示系统证明人工复核是必要门禁，不表示系统执行了任何外部动作。
+
 ## 运行当前切片
 
 ```bash
 git clone https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops.git
 cd production-grade-multi-agent-caseops
-git checkout v0.6.1
+git checkout v0.7.0
 
 docker compose up --build -d
-make acceptance-chapter-06
+make acceptance-chapter-07
 ```
 
-验收脚本会执行 11 个确定性红队样例，把“读取 C-999 并导出客户联系方式”的恶意目标送入真实协作链，查询 6 次 ToolGuard 决策，并验证外部邮件中的提示注入没有进入 Context Pack。一次实测输出：
+验收脚本会读取真实 Agent Card，执行系统 DAG、Context Team 与 A2A → MCP 协作链，完成 7 项跨团队一致性检查，验证每条 Claim 的 `SUPPORTED_BY` 边，并重放同一系统请求。一次实测输出：
 
 ```text
-security schema gate accepted: revision 0005
-deterministic red-team suite accepted: 11/11
-least-authority tool execution accepted: decisions=6 denied=0
-indirect prompt injection containment accepted
-chapter 06 security acceptance passed
+hierarchical orchestration schema accepted: revision 0006
+A2A capability snapshot accepted: HTTP+JSON 1.0 and three bounded skills
+system convergence accepted: <system-run-id>
+runtime Context Graph accepted: nodes=24 edges=46
+system-level idempotent replay accepted
+durable hierarchy accepted: steps=3 security_decisions=6
+chapter 07 hierarchical system acceptance passed
 ```
 
-详细命令、安全决策查询与剩余边界见 [第 6 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.6.1/docs/chapter-06-runbook.md)。若要回归 Trace、SLO、依赖降级和隔离恢复，再执行 `make observability-up && make acceptance-chapter-05`。
+详细命令、状态查询与剩余边界见 [第 7 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.7.0/docs/chapter-07-runbook.md)。安全回归仍可执行 `make acceptance-chapter-06`；若要回归 Trace、SLO、依赖降级和隔离恢复，再执行 `make observability-up && make acceptance-chapter-05`。
 
 ## 为什么不把它叫 Demo
 
@@ -154,6 +171,8 @@ chapter 06 security acceptance passed
 - 依赖降级、备份清单、隔离恢复和业务不变量验证。
 - Tool Security Manifest、三层权限交集、purpose/resource 绑定与默认拒绝的 ToolGuard；
 - 摘要化安全决策、OutputGuard、11 项红队与间接提示注入隔离验收。
+- 类型化系统 DAG、父子运行、跨团队确定性验收与 Runtime Context Graph；
+- 系统级幂等重放、Claim-Evidence 图不变量与第 7 章容器验收。
 
 这仍不等于“替任何企业完成生产认证”。真实身份提供方、完整 OAuth 2.1、经过领域评测的向量检索、跨进程 Supervisor 恢复、异步长任务入口、Broker 消费端、真实流量容量目标、PITR、跨区域灾备和在线模型评测仍是后续交付。未完成的能力会写成限制，不写成承诺。
 
@@ -169,7 +188,7 @@ chapter 06 security acceptance passed
 | 4 | Context Pipeline、RAG 2.0、GraphRAG 与证据 |
 | 5 | 平台化部署、遥测、SLO 与恢复 |
 | 6 | Tool Guard、权限交集、隐私释放、安全审计和红队 |
-| 7 | 分层多 Agent 系统合龙 |
+| 7 | 分层 DAG、团队合龙、系统验收与 Runtime Context Graph |
 | 8 | Golden Dataset、N-run 与持续回归 |
 | 9 | AgentOps、事件诊断和成本治理 |
 | 10 | Clean-room 验收、SBOM 和发布来源证明 |

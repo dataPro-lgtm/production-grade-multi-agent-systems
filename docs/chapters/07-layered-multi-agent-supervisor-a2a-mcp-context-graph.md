@@ -9,7 +9,7 @@ description: 分层多 Agent、Supervisor、A2A、MCP、Context Graph、恢复�
 
 > **这些能力怎样组成同一个可运行、可恢复、可解释、可验收的系统？**
 
-支付事故调查系统已经能够检索知识、调用工具、记录 Trace，也能在高风险动作前执行 Tool Guard。此时，理赔运营人员提出了一个看似普通的请求：
+保险理赔调查系统已经能够检索知识、调用工具、记录 Trace，也能在高风险动作前执行 Tool Guard。此时，理赔运营人员提出了一个看似普通的请求：
 
 > “帮我查清 C-102 为什么还没有处理完，告诉我缺什么。如果需要通知客户，先生成通知草稿，不要直接发送。”
 
@@ -34,6 +34,8 @@ description: 分层多 Agent、Supervisor、A2A、MCP、Context Graph、恢复�
 系统合龙，不是把 Agent “连通”，而是让**目标、权限、状态、依赖、证据、错误、预算和恢复语义**穿过多个进程后仍然一致。
 
 本章沿 C-102 调查请求展开。我们先判断何时值得分层，再明确 Supervisor、A2A 与 MCP 的边界，随后把目标编译成 DAG，让状态、证据和恢复点进入 Context Graph，最后用故障注入和验收报告证明这不是一个只能顺利演示的系统。
+
+为了把原理讲透，本章前半段采用“会员、理赔、知识、通知”四个责任域说明完整方法；配套工程则选择更窄但可以真实验收的垂直切片：Context Team 与 Collaboration Team 并行形成证据，由 Central Supervisor 做系统级合龙。概念模型比当前代码宽，代码证据比概念示例更严格，两者不应互相冒充。
 
 !!! note "本章中的 Context Graph"
     `Context Graph` 是本书采用的运行时证据模型：它记录 Goal、Plan、Step、Agent、Tool、Evidence、Claim、Decision、Approval 与 Artifact 之间的关系。它不是 A2A、MCP 或 OpenTelemetry 的标准对象，也不等同于第四章的 Knowledge Graph。团队可以用图数据库、关系表、事件投影或混合存储实现这项责任。
@@ -1050,33 +1052,160 @@ owners:
 | 运营 | SLO、告警、Runbook、On-call 就绪 | 只能靠开发者手工观察 |
 | 回滚 | 旧版本和数据迁移可回退 | 不可逆变更无补偿 |
 
-## 21. 常见误判
+## 21. CaseOps Slice 6：把前六章合成一个可运行系统
 
-### 21.1 “Supervisor 能调用所有 Agent，所以它应该拥有所有权限”
+讲到这里，最容易出现两个极端：一种是只讲架构图，读者无法判断这些边界能否真正运行；另一种是直接钻进代码，读者只记住几个类名，却不明白为什么这样设计。我的做法是保留前面的判断框架，再用 CaseOps 的一个有界切片验证关键命题。
+
+![CaseOps 分层合龙与运行时 Context Graph](../assets/images/chapter-07/system-convergence-runtime-context-graph.png)
+
+*图 7-7　Context Team 与 Collaboration Team 分别收敛，Central Supervisor 只做系统级验收；Runtime Context Graph 与 OpenTelemetry Trace 各负其责。*
+
+### 21.1 这次究竟增加了什么
+
+在前六章中，CaseOps 已经有两条独立成立的链路：
+
+- Context Team 能构建带时态、权限、来源、完整性和 Token 预算约束的 Context Pack；
+- Collaboration Team 能通过 A2A 把任务委托给 Coverage、Document、Risk 三个专业节点，节点再通过 MCP 读取受治理工具，最后由 Evidence Join 收敛。
+
+两条链都返回成功，仍然不能证明系统结论正确。它们可能使用不同规则版本，可能对事故证明是否满足要求得出相反结论，也可能对是否需要人工复核判断不一致。因此 Slice 6 增加的不是第四个专业 Agent，而是一个更重要的责任：**跨团队验收**。
+
+一次系统运行的 DAG 只有三个步骤：
+
+| Step | Owner | 依赖 | 交付物 |
+|---|---|---|---|
+| `context-evidence` | Context Team | 无 | Context Pack、Evidence-bound Claims |
+| `specialist-collaboration` | Collaboration Team | 无 | A2A Tasks、专业 Claims、Join Result |
+| `system-acceptance` | Central Supervisor | 前两步 | System Result、Runtime Context Graph |
+
+前两个步骤在依赖意义上可以并行。当前本地执行器为了保持单进程数据库会话边界，按稳定顺序执行 Ready Set；DAG 合同没有假装已经交付跨进程队列调度。若将来加入队列、租约和 Worker 心跳，计划本身不需要改写。
+
+### 21.2 Central Supervisor 不重新调查案件
+
+Central Supervisor 不读取理赔表，不调用 MCP，也不读取 Worker 的思维过程。它只消费两个团队已经验收的结构化结果，然后执行七项检查：
+
+| 检查 | 通过条件 | 不通过时为什么必须阻断 |
+|---|---|---|
+| Context 完整 | 必要主张均有证据 | 缺证据时不能形成完整业务判断 |
+| Collaboration 完整 | 必要专业节点与 Join 合同满足 | 部分专业失败不能伪装成全量结论 |
+| 规则版本一致 | Context 的 `2026.1` 出现在案件绑定规则证据中 | 新旧规则混用会改变材料和风险判断 |
+| 材料状态一致 | `satisfied:ACCIDENT_CERTIFICATE` 对应专业结论 `complete` | 同一材料不能在两个团队中同时“满足”和“缺失” |
+| 风险门禁一致 | `required=true` 对应 `manual_review_required` | 自动处置不能绕过人工风险门禁 |
+| Claim 有证据 | 每条接受的 Claim 至少有一个 Evidence Ref | 无法追溯的结论不进入系统结果 |
+| 无副作用 | 两个团队都返回 `side_effect=none` | 调查请求不能悄悄变成处置动作 |
+
+这些检查写在确定性 Reducer 中。模型可以帮助解释失败原因，但没有权力把失败改成通过。正常 C-102 的结果是：
+
+```json
+{
+  "status": "needs_human",
+  "result": {
+    "outcome": "SYSTEM_ACCEPTED_WITH_HUMAN_REVIEW",
+    "checks": [
+      {"check_id": "context-complete", "status": "passed"},
+      {"check_id": "collaboration-complete", "status": "passed"},
+      {"check_id": "policy-version-consistent", "status": "passed"},
+      {"check_id": "document-status-consistent", "status": "passed"},
+      {"check_id": "risk-gate-consistent", "status": "passed"},
+      {"check_id": "claims-evidence-bound", "status": "passed"},
+      {"check_id": "side-effect-free", "status": "passed"}
+    ],
+    "side_effect": "none"
+  }
+}
+```
+
+这里的 `needs_human` 不是系统失败。它表示系统成功证明了“事故证明已满足当前规则，但高金额与短保单期限触发人工复核”，并且没有替人工执行拒赔、冻结或通知。
+
+### 21.3 Runtime Context Graph 保存什么
+
+我把运行时来源图落成两张关系表：`runtime_context_nodes` 与 `runtime_context_edges`。节点包含 Goal、Plan、Step、Context Pack、Delegated Task、Claim、Evidence、Acceptance 与 Result；边包含 `DECOMPOSED_INTO`、`DEPENDS_ON`、`PRODUCED`、`USED`、`SUPPORTED_BY`、`VALIDATED_BY` 与 `DERIVED_FROM`。
+
+图中不复制 Prompt、Context Pack 正文、工具参数或工具结果，只保存：
+
+- 稳定对象引用；
+- 责任主体与状态；
+- 数据分类；
+- Payload 的 SHA-256 摘要。
+
+这样既能从最终 Claim 反向追到 Evidence，又不会因为“为了可观测”而建立第二份敏感数据仓库。当前测试还把一个关键不变量写进构建器：每个 Claim 节点必须至少存在一条 `SUPPORTED_BY` 边，否则整次图构建失败。
+
+这套模型借鉴了 W3C PROV 对 Entity、Activity 与 Agent 的区分，但 CaseOps 没有声称实现完整 PROV 兼容。协议名称、约束和互操作测试没有完成之前，不应借一个相似概念冒充标准实现。
+
+### 21.4 状态怎样持久化与重放
+
+`system_runs` 保存顶层目标、问题、`as_of`、计划、子运行引用和最终结果；`system_steps` 保存 Owner、依赖、尝试次数、结果引用、结果摘要与错误。Context Run 与 Collaboration Run 仍由原来的团队服务拥有，顶层只保存外键引用。
+
+系统级幂等键绑定规范化请求哈希：
+
+- 同一键、同一请求：返回原 `system_run_id`，不重复创建步骤、子运行和来源图；
+- 同一键、不同请求：返回 `409 IDEMPOTENCY_KEY_REUSED`；
+- 上次在中途失败：复用已完成子运行的幂等结果，从未完成步骤继续；
+- 已完成：直接重放最终结果。
+
+这不是“Exactly Once”。它证明的是在当前只读边界内，重复请求不会制造第二份业务运行；将来加入写工具时，仍需第五章讨论的 Effect Ledger、外部幂等与 Reconcile。
+
+### 21.5 代码从哪里读
+
+配套的 [CaseOps 仓库](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops)将职责分开放置：
+
+```text
+src/caseops/orchestration/
+  contracts.py     # SystemPlan、SystemResult、Runtime Context Graph 合同
+  acceptance.py    # 七项跨团队确定性验收
+  graph.py         # 来源图构建与 Claim-Evidence 不变量
+  service.py       # 父子运行、步骤状态、重放、审计与 Outbox
+
+migrations/versions/
+  0006_add_hierarchical_system_runs.py
+
+tests/
+  test_system_orchestration.py
+
+scripts/
+  acceptance-chapter-07.sh
+```
+
+本章发布版本为 [`v0.7.0`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.7.0)，对应里程碑 tag [`chapter-07-slice-6`](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-07-slice-6)，固定提交为 `14e08f3`。一键验收会读取真实 Agent Card、运行 API → A2A → MCP → PostgreSQL 全链路、执行七项检查、查询 Runtime Context Graph、重放同一请求，并确认 ToolGuard 判定进入数据库。
+
+### 21.6 我刻意没有实现什么
+
+专业实现不等于把所有新特性都打开。本切片明确保留以下边界：
+
+- A2A 用于独立 Agent 系统之间的业务任务；Context Team 仍是进程内领域服务，没有为了层级外观再伪造一个 A2A Server；
+- MCP `2025-11-25` 的 Tasks 仍属实验能力，而五个 CaseOps 工具都是有界、同步、只读查询，因此声明 `task_support=false`；
+- 当前调度器没有跨进程租约、心跳、抢占和工作窃取，不能声称是分布式工作流平台；
+- Runtime Context Graph 是运行来源索引，不是新的 Knowledge Graph，也不替代 OpenTelemetry Trace；
+- 七项检查覆盖当前 C-102 主张。新领域、新 Claim 或新副作用必须新增显式映射、失败语义和回归样例。
+
+这几条限制并不会削弱工程价值。相反，它们说明每个技术都在需要它的责任边界内出现，而不是为了技术清单被强行塞进系统。
+
+## 22. 常见误判
+
+### 22.1 “Supervisor 能调用所有 Agent，所以它应该拥有所有权限”
 
 错误。Supervisor 只拥有调度责任。每次委托的有效权限仍是用户、Workload、任务、Skill、资源、环境与审批的交集。
 
-### 21.2 “用了 A2A，就不需要内部状态机”
+### 22.2 “用了 A2A，就不需要内部状态机”
 
 错误。A2A 定义跨 Agent 系统的互操作对象和操作，不替你定义业务 DAG、Join、Budget、Policy 与 Reducer。
 
-### 21.3 “用了 MCP Task，就可以把远端 Agent 当工具”
+### 22.3 “用了 MCP Task，就可以把远端 Agent 当工具”
 
 不一定。MCP Task 解决耗时请求的持久执行；如果远端拥有独立目标、技能发现、协作状态和 Artifact，A2A 的责任模型更匹配。
 
-### 21.4 “Context Graph 是新的唯一数据库”
+### 22.4 “Context Graph 是新的唯一数据库”
 
 错误。它是因果与证据关系的权威视图，不应吞并 Artifact、Checkpoint、Event 与 Trace 的职责。
 
-### 21.5 “有 Trace，就能解释最终答案”
+### 22.5 “有 Trace，就能解释最终答案”
 
 Trace 能告诉你发生了什么操作，不自动证明某个 Claim 来自哪个数据版本。业务解释仍需 Evidence 与 Context Graph。
 
-### 21.6 “所有必需服务都健康，系统就 Ready”
+### 22.6 “所有必需服务都健康，系统就 Ready”
 
 Readiness 还需要检查合同版本、关键状态层、审计写入、能力快照、模型 Fallback 与安全依赖。进程存活不代表可以接收新目标。
 
-## 22. 架构评审清单
+## 23. 架构评审清单
 
 - 是否有一个组件同时负责规划、授权和执行？
 - Central Supervisor 是否直接访问业务数据或任意工具？
@@ -1097,7 +1226,7 @@ Readiness 还需要检查合同版本、关键状态层、审计写入、能力�
 - 是否有自动化故障演练和明确通过标准？
 - 部署、Readiness、灰度、回滚、备份与 Runbook 是否就绪？
 
-## 23. 本章结论
+## 24. 本章结论
 
 多 Agent 系统真正的“合龙点”不是 Supervisor Prompt，而是一组跨边界仍成立的合同：
 
@@ -1122,5 +1251,8 @@ Readiness 还需要检查合同版本、关键状态层、审计写入、能力�
 - [MCP 2025-11-25 Tasks（实验能力）](https://modelcontextprotocol.io/specification/2025-11-25/basic/utilities/tasks)
 - [LangChain Multi-Agent Subagents](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents)
 - [OpenTelemetry Traces](https://opentelemetry.io/docs/concepts/signals/traces/)
+- [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/)
+- [W3C PROV Data Model](https://www.w3.org/2012/10/prov-dm)
+- [CloudEvents Specification](https://github.com/cloudevents/spec)
 
 本章配套的可复制合同见[《多 Agent 系统合龙与验收契约》](../toolkit/multi-agent-system-integration-contract.md)。
