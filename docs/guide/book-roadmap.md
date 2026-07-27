@@ -20,7 +20,7 @@
 |---|---|---|
 | [04](../chapters/04-context-engineering-agentic-rag-and-graphrag.md) | **让模型只看到正确的上下文**<br>讲透 Context Pack、Hybrid / Agentic RAG 与 GraphRAG，再用 CaseOps 验证受治理证据管线。 | Context Pack、GraphRAG 设计画布、Slice 3 与检索验收证据 |
 | [05](../chapters/05-production-infrastructure-observability-and-recovery.md) | **从“能启动”到“可恢复”**<br>讲透运行保证、状态所有权、可靠性与恢复，再用 CaseOps 验证 Trace、SLO、降级和隔离恢复。 | 运行契约、Slice 4、跨服务 Trace、SLO 与恢复证据 |
-| [06](../chapters/06-agent-security-tool-guard-privacy-and-red-teaming.md) | **不要指望模型保护自己**<br>用确定性边界限制被操纵模型的影响范围。 | Tool Guard、隐私审计、红队与安全验收 |
+| [06](../chapters/06-agent-security-tool-guard-privacy-and-red-teaming.md) | **不要指望模型保护自己**<br>讲透信任边界、权限交集、数据释放与安全证据，再用 CaseOps 验证模型失守后的影响隔离。 | Tool Guard、Slice 5、最小安全审计、11 项红队与注入隔离证据 |
 
 ## 第三部分：合龙、验证与交付 { #part-three }
 

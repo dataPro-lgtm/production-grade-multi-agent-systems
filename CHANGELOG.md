@@ -22,7 +22,7 @@
 - 增加 7 幅第 05 章可编辑白板手绘风原创架构图及确定性生成脚本；
 - 增加 State Ownership Catalog、Service Runtime Contract、Deployment Verification、Fault Injection 与 Restore Drill 生产就绪契约；
 - 将第 06 周 Word 讲义重构为“多 Agent 纵深防御、Tool Guard、隐私审计与红队验证”正式章节；
-- 增加 6 幅第 06 章可编辑白板手绘风原创安全架构图及确定性生成脚本；
+- 增加 7 幅第 06 章可编辑白板手绘风原创安全架构图及确定性生成脚本；
 - 增加 Threat Record、Tool Security Manifest、Bound Approval、Delegation、Audit、Red-Team Case 与 Security Acceptance 安全评审契约；
 - 将第 07 周 Word 讲义重构为“分层多 Agent、Supervisor、A2A、MCP 与 Context Graph 系统合龙”正式章节；
 - 增加 6 幅第 07 章可编辑白板手绘风原创系统合龙架构图及确定性生成脚本；
@@ -55,6 +55,7 @@
 - 将第 05 章与 CaseOps Slice 4 合流，补充跨服务 deadline、W3C Trace、健康语义、OpenTelemetry、SLO 规则、依赖降级与 PostgreSQL 隔离恢复的真实运行证据；
 - 去除第 06 章中的学习成果、单元安排、课堂攻防、多媒体脚本、作业和评分 Rubric；
 - 将第 06 章从控制项罗列重构为间接注入攻击主线，并按 OWASP Agentic Top 10 2026、MCP 2025-11-25 与 A2A 1.0 校准；
+- 将第 06 章与 CaseOps Slice 5 合流，补充 Tool Security Manifest、三层权限交集、资源与用途绑定、最小安全审计、OutputGuard、11 项红队和真实注入隔离证据；
 - 去除第 07 章中的学习成果、课次安排、演示脚本、作业、评分 Rubric、自测答案和预告；
 - 将第 07 章从组件与检查项罗列重构为 C-102 调查主线，并按 A2A 1.0、MCP 2025-11-25 与 OpenTelemetry 当前规范校准；
 - 去除第 08 章中的学习成果、课次安排、演示脚本、作业、评分 Rubric、自测答案和预告；

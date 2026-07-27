@@ -10,16 +10,16 @@ CaseOps 是本书独立维护的生产导向参考系统：
 
 | 项目 | 值 |
 |---|---|
-| 当前章节里程碑 | `chapter-05-slice-4` |
-| 发布版本 | `v0.5.0` |
-| 固定提交 | `2834e50` |
+| 当前章节里程碑 | `chapter-06-slice-5` |
+| 发布版本 | `v0.6.1` |
+| 固定提交 | `3753325` |
 | 运行方式 | Docker Compose |
 | 服务 | FastAPI、A2A HTTP+JSON、MCP Streamable HTTP、PostgreSQL 17、OTel Collector、Tempo、Prometheus、Grafana |
 | 许可 | MIT |
 
-[查看第 5 章固定代码版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-05-slice-4)
+[查看第 6 章当前代码版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/v0.6.1)
 
-## 已交付的五个切片
+## 已交付的六个切片
 
 ### Slice 0：确定性基线
 
@@ -92,27 +92,43 @@ CaseOps 是本书独立维护的生产导向参考系统：
 
 这份本地平台切片证明运行合同能够执行，不把单机恢复时间或本地阈值表述成企业生产 RTO / SLO。
 
+### Slice 5：模型之外的安全控制面
+
+第 6 章不把安全责任交给另一个模型，而是让执行路径保持确定性边界：
+
+1. 五个只读工具分别绑定版本、定义摘要、scope、purpose、资源类型、分类、风险和副作用；
+2. MCP 工具执行前统一经过默认拒绝的 ToolGuard；
+3. 有效权限取用户、工作负载与本次委托 scope 的交集；
+4. 短期令牌绑定 tenant、task、audience、workload、purpose 和 case resource；
+5. 工具定义、scope 或风险声明漂移会拒绝执行；
+6. 每次允许和拒绝都写入摘要化安全审计，不复制 Prompt、参数和工具载荷；
+7. OutputGuard 最小化邮箱与手机号，阻断合成 canary secret 和未获准的 Restricted 数据；
+8. 11 个版本化红队样例与一条真实恶意协作目标共同验证零越权副作用。
+
+这一切只证明当前实现边界。仓库没有把开发用 HS256 任务令牌写成企业 IdP，也没有把正则检测写成完整 DLP。
+
 ## 运行当前切片
 
 ```bash
 git clone https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops.git
 cd production-grade-multi-agent-caseops
-git checkout chapter-05-slice-4
+git checkout v0.6.1
 
-make observability-up
-make acceptance-chapter-05
+docker compose up --build -d
+make acceptance-chapter-06
 ```
 
-验收脚本会实际发起 `C-102` 协作，等待完整 Trace，查询 Prometheus 规则，停止并恢复 A2A，再完成 PostgreSQL 备份与隔离恢复。一次实测输出：
+验收脚本会执行 11 个确定性红队样例，把“读取 C-999 并导出客户联系方式”的恶意目标送入真实协作链，查询 6 次 ToolGuard 决策，并验证外部邮件中的提示注入没有进入 Context Pack。一次实测输出：
 
 ```text
-cross-service W3C trace accepted: caseops-a2a, caseops-api, caseops-mcp
-SLO recording and actionable alert rules accepted
-optional dependency degradation accepted without failing liveness
-isolated PostgreSQL restore accepted: rto=6s
+security schema gate accepted: revision 0005
+deterministic red-team suite accepted: 11/11
+least-authority tool execution accepted: decisions=6 denied=0
+indirect prompt injection containment accepted
+chapter 06 security acceptance passed
 ```
 
-`6s` 只是开发机小数据集的一次测量。详细命令见 [第 5 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/chapter-05-slice-4/docs/chapter-05-runbook.md)。
+详细命令、安全决策查询与剩余边界见 [第 6 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/v0.6.1/docs/chapter-06-runbook.md)。若要回归 Trace、SLO、依赖降级和隔离恢复，再执行 `make observability-up && make acceptance-chapter-05`。
 
 ## 为什么不把它叫 Demo
 
@@ -136,6 +152,8 @@ isolated PostgreSQL restore accepted: rto=6s
 - W3C Trace Context、绝对 deadline 和跨服务 Trace 验收；
 - Collector、Tempo、Prometheus、Grafana 可观测性栈；
 - 依赖降级、备份清单、隔离恢复和业务不变量验证。
+- Tool Security Manifest、三层权限交集、purpose/resource 绑定与默认拒绝的 ToolGuard；
+- 摘要化安全决策、OutputGuard、11 项红队与间接提示注入隔离验收。
 
 这仍不等于“替任何企业完成生产认证”。真实身份提供方、完整 OAuth 2.1、经过领域评测的向量检索、跨进程 Supervisor 恢复、异步长任务入口、Broker 消费端、真实流量容量目标、PITR、跨区域灾备和在线模型评测仍是后续交付。未完成的能力会写成限制，不写成承诺。
 
@@ -150,7 +168,7 @@ isolated PostgreSQL restore accepted: rto=6s
 | 3 | Supervisor、委托、并行与 Join Contract |
 | 4 | Context Pipeline、RAG 2.0、GraphRAG 与证据 |
 | 5 | 平台化部署、遥测、SLO 与恢复 |
-| 6 | 企业鉴权、Tool Guard、隐私和红队 |
+| 6 | Tool Guard、权限交集、隐私释放、安全审计和红队 |
 | 7 | 分层多 Agent 系统合龙 |
 | 8 | Golden Dataset、N-run 与持续回归 |
 | 9 | AgentOps、事件诊断和成本治理 |

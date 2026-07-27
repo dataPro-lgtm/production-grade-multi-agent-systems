@@ -260,6 +260,41 @@ ${text(800, 650, "修复发现 → 加入回归集 → 重新执行 → 保存�
 ${text(800, 760, "测试集 ASR = 0 只证明当前版本和当前样本；未知攻击风险仍然存在。", 28, { anchor: "middle", color: C.red, weight: 700 })}
 `);
 
+files["caseops-slice5-security-control-plane.svg"] = svg(`
+${titleBlock("CaseOps Slice 5：模型可以失守，权限边界不能失守", "恶意内容只能影响意图；Manifest、权限交集、资源绑定和释放策略决定真实影响。")}
+${box(45, 220, 260, 170, { fill: C.redSoft, stroke: C.red })}
+${text(175, 270, "不可信输入", 30, { anchor: "middle", weight: 760, color: C.red })}
+${text(175, 320, ["恶意 Goal", "外部邮件 / Context"], 21, { anchor: "middle", lineGap: 1.45 })}
+${arrow(305, 305, 385, 305, { color: C.red })}
+${box(385, 220, 240, 170, { fill: C.purpleSoft, stroke: C.purple })}
+${text(505, 270, "Agent 意图", 30, { anchor: "middle", weight: 760, color: C.purple })}
+${text(505, 320, ["Tool + Arguments", "可能已被操纵"], 21, { anchor: "middle", lineGap: 1.45 })}
+${arrow(625, 305, 705, 305, { color: C.purple })}
+${box(705, 180, 420, 250, { fill: C.amberSoft, stroke: C.amber, width: 4 })}
+${text(915, 235, "ToolGuard · Default Deny", 31, { anchor: "middle", weight: 760, color: C.amber })}
+${text(760, 290, ["Manifest + Definition Digest", "User ∩ Workload ∩ Delegation", "Purpose + Resource + Audience", "Risk + Side Effect + Kill Switch"], 21, { lineGap: 1.5 })}
+${arrow(1125, 270, 1215, 270, { color: C.green })}
+${box(1215, 190, 330, 160, { fill: C.greenSoft, stroke: C.green })}
+${text(1380, 245, "ALLOW", 30, { anchor: "middle", weight: 760, color: C.green })}
+${text(1380, 295, ["MCP 只读工具", "Tenant-bound PostgreSQL"], 21, { anchor: "middle", lineGap: 1.4 })}
+${arrow(915, 430, 915, 525, { color: C.red })}
+${pill(795, 470, 240, "DENY · 无副作用", C.red, C.paper, 21)}
+${box(65, 535, 420, 175, { fill: C.paper, stroke: C.ink, dash: "12 9" })}
+${text(275, 585, "最小安全决策审计", 28, { anchor: "middle", weight: 760 })}
+${text(275, 635, ["稳定原因码 + 策略版本", "Manifest / Context / Arguments Hash"], 20, { anchor: "middle", lineGap: 1.45 })}
+${arrow(705, 370, 485, 620, { color: C.ink, dash: "10 8" })}
+${arrow(1215, 320, 485, 650, { color: C.ink, dash: "10 8" })}
+${box(565, 535, 420, 175, { fill: C.blueSoft, stroke: C.ink })}
+${text(775, 585, "OutputGuard", 28, { anchor: "middle", weight: 760 })}
+${text(775, 635, ["PII 最小化 · Canary 阻断", "Release / Redact / Block"], 20, { anchor: "middle", lineGap: 1.45 })}
+${arrow(1215, 350, 985, 620, { color: C.green })}
+${box(1065, 535, 480, 175, { fill: C.purpleSoft, stroke: C.purple })}
+${text(1305, 585, "同一控制面接受红队回归", 28, { anchor: "middle", weight: 760, color: C.purple })}
+${text(1305, 635, ["11 / 11 通过", "0 越权副作用 · 0 Canary 泄漏"], 20, { anchor: "middle", lineGap: 1.45 })}
+${arrow(1065, 620, 985, 620, { color: C.purple, dash: "10 8" })}
+${text(800, 800, "安全结论来自执行路径和证据，不来自模型的一句“我拒绝”。", 29, { anchor: "middle", color: C.red, weight: 700 })}
+`);
+
 for (const [name, content] of Object.entries(files)) {
   fs.writeFileSync(path.join(outDir, name), content);
 }

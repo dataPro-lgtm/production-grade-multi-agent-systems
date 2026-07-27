@@ -27,7 +27,10 @@ assets:
   - id: red-team-evidence-loop
     figure: 6-6
     purpose: 展示威胁、攻击、观测、评测、验收与回归闭环
+  - id: caseops-slice5-security-control-plane
+    figure: 6-7
+    purpose: 展示 CaseOps 的 ToolGuard、权限交集、安全审计、输出门禁与红队证据
 provenance:
   original: true
   external_assets: none
-  generated_at: 2026-07-23
+  generated_at: 2026-07-27
