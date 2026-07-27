@@ -60,23 +60,23 @@ description: 生产级多智能体系统的基础设施、平台化部署、可�
 
 成熟度越高，证据越接近真实业务，而不是越接近基础设施表面。
 
-### 1.2 本章沿用的支付事故主线
+### 1.2 本章沿用的 CaseOps 理赔调查主线
 
-我们继续使用前几章的事故调查系统。它包含：
+我们继续使用前几章的案件 `C-102` 理赔调查系统。它不是一个凭空新建的运维示例，而是已经完成三个工程切片的同一条业务链：确定性领域内核、受控 Agent 与 MCP、多 Agent 协作，以及受治理的 Context Pack。
 
-- Gateway：接收调查请求并传播身份；
-- Supervisor：拆解任务、分配预算、汇总结果；
-- Specialist Agent：分别调查部署、日志、服务关系和政策；
-- Tool Runtime：执行 SQL、Graph、Search、Object 与外部 API 调用；
-- Worker：处理耗时检索、索引和报告生成；
-- PostgreSQL：持久化任务、Checkpoint、审批和审计；
-- Graph Store：保存 Knowledge Graph；
-- Vector Store：保存可重建的语义索引；
-- Object Store：保存不可变 Evidence 与 Artifact；
-- Queue：承载异步任务；
-- Telemetry Stack：接收 Trace、Metric 和 Log。
+本章关心的是这条链路怎样成为一个可以运营的系统。当前可执行拓扑包含：
 
-本章的目标不是选出“唯一正确”的产品组合，而是让每一项状态、流量、故障和恢复责任都有明确所有者。
+- FastAPI：接收调查请求、认证租户主体并执行请求幂等；
+- Supervisor：建立三份委托合同，分配 deadline、scope 与验收条件；
+- A2A Service：承载 coverage、document、risk 三个专业 Agent；
+- MCP Service：以短期任务令牌保护五个只读工具；
+- Context Pipeline：执行结构化、全文与关系检索，构建 Context Pack；
+- PostgreSQL：保存案件、运行、Checkpoint、任务、知识对象、审计和 Outbox；
+- Telemetry Pipeline：接收跨 API、A2A、MCP 的 Trace，并采集 SLI。
+
+它暂时没有消息 Broker、对象存储和独立向量库。书中会讲清这些能力应该在什么条件下加入，但代码不会为了让拓扑“看起来完整”而创建空壳组件。生产设计的第一条诚实原则，是只把已有运行证据的能力写成当前事实。
+
+本章的目标不是选出“唯一正确”的产品组合，而是让每一项状态、流量、故障和恢复责任都有明确所有者，并用 CaseOps Slice 4 把关键保证变成可执行证据。
 
 ## 2. 五个平面：不要把所有生产责任塞进 Agent Runtime
 
@@ -1173,7 +1173,235 @@ full
 
 可复制的 State Ownership Catalog、Service Runtime Contract、Deployment Verification 与 Restore Drill 模板见[生产就绪与恢复契约](../toolkit/production-readiness-contract.md)。
 
-## 21. 回到开头：为什么所有容器都是绿色，系统仍然不可用
+## 21. CaseOps Slice 4：把运行保证变成可执行证据
+
+前面的二十节回答了“生产系统应该具备什么”。如果到这里就结束，本章仍然可能退化成一份写得很完整的架构建议。真正困难的是把建议压进代码、配置和验收，让错误设计能够自动失败。
+
+我在 CaseOps Slice 4 中选择了四项相互咬合的保证：
+
+| 保证 | 代码中的执行位置 | 验收证据 |
+|---|---|---|
+| 请求不会无界执行 | API / A2A / MCP Runtime Envelope | 同一 Trace、绝对 deadline、过期请求返回 `408` |
+| 健康状态不会说谎 | startup / liveness / readiness | Schema 版本门禁、关键依赖失败、可选依赖降级 |
+| 一次协作可以重建因果链 | OTel SDK → Collector → Tempo | 一个 Trace 内同时出现 API、A2A、MCP |
+| 数据损坏后能够恢复业务状态 | `pg_dump` → 隔离恢复 → 校验 | revision、内容签名、`tenant-demo/C-102` 不变量 |
+
+这四项并不等于“生产基础设施已经全部完成”。它们是一条最小垂直切片：请求有边界，服务能表达真实状态，故障能被定位，权威数据能被恢复。缺少任何一项，另外三项都不完整。
+
+### 21.1 Runtime Envelope：把时间预算和因果标识收进统一信封
+
+很多系统在每一跳都写 `timeout=30s`。一次请求经过 API、A2A 和 MCP 后，最坏等待时间不再是 30 秒，而可能是 90 秒以上；如果还有重试和并行 Join，总耗时更难预测。
+
+Slice 4 在入口接受两种合同：
+
+- `X-Request-Timeout-Ms`：客户端给出的相对预算；
+- `X-Request-Deadline`：RFC 3339 绝对截止时间。
+
+两者不能同时出现。入口把相对预算转换为绝对时间，并限制在平台最大值内；下游调用只传播绝对 deadline，并用“deadline 减当前时间”计算本地 timeout。于是预算具有单调性：
+
+$$
+B_{i+1}=\max(0,\ D-t_{i+1})\le B_i
+$$
+
+其中 $D$ 是全链路唯一截止时间，$B_i$ 是第 $i$ 跳看到的剩余预算。任何下游都不能因为开始了一次新调用而重新获得 30 秒。
+
+同一个中间件还负责解析或创建 W3C `traceparent`，并在响应中返回：
+
+```text
+X-Trace-ID: 11111111111111111111111111111115
+traceparent: 00-11111111111111111111111111111115-<span-id>-01
+X-Request-Deadline: 2026-07-27T09:32:18.267003+00:00
+```
+
+这三项各有不同职责：Trace ID 用来关联因果链；Span ID 区分当前操作；deadline 决定是否还值得继续执行。把它们都叫 `request_id` 会丢失语义。
+
+入口发现 deadline 已过时，直接返回 `408`，不进入领域逻辑；A2A Client 和 MCP Client 注入当前 Trace Context，并以剩余预算设置 HTTP timeout；Supervisor 创建专业任务时，子任务 deadline 不得晚于父请求。这样“什么时候必须停”成为控制面状态，而不是散落在三个 HTTP Client 里的魔法数字。
+
+### 21.2 健康检查必须表达能力，而不是只表达进程
+
+Slice 4 提供三个 API：
+
+| API | 回答的问题 | 失败后的正确动作 |
+|---|---|---|
+| `/health/live` | 进程事件循环还能否响应 | 连续失败时重启 |
+| `/health/startup` | 数据库是否达到预期迁移 `0004` | 不允许实例进入服务 |
+| `/health/ready` | 当前能提供哪些业务能力 | 停止或限制新流量 |
+
+Readiness 中，PostgreSQL 是关键依赖，因为案件、租户边界、运行账本和幂等都在这里；A2A 与 MCP 是可选依赖，因为它们不可用时，API 仍能提供存活检查、历史结果读取等有限能力。健康响应因此不只有布尔值：
+
+```json
+{
+  "status": "degraded",
+  "checks": [
+    {"name": "database", "status": "ok", "critical": true},
+    {"name": "mcp", "status": "ok", "critical": false},
+    {"name": "a2a", "status": "unavailable", "critical": false}
+  ]
+}
+```
+
+当数据库失败，Readiness 返回 `503 unavailable`；当 A2A 暂时失败，它返回 `200 degraded`。这里保留 `200` 不是掩盖故障，而是在表达“进程仍有一组受限能力”。上层网关是否继续路由某类请求，应根据能力路由合同决定；如果当前只有一个统一流量入口，也可以把 `degraded` 映射为不接收写流量。
+
+我在验收脚本中真实执行 `docker compose stop a2a`。预期不是 API 被重启，而是：
+
+```text
+liveness = ok
+readiness.status = degraded
+checks.a2a = unavailable
+```
+
+随后脚本重启 A2A，继续执行恢复演练。这比对健康端点做 Mock 更接近编排器会看到的实际状态。
+
+### 21.3 遥测链路：服务负责产生信号，Collector 负责路由
+
+三个服务都使用 OpenTelemetry SDK 创建带有稳定资源属性的 Tracer Provider：
+
+```text
+service.name
+service.version = 0.5.0
+deployment.environment
+```
+
+服务不直接依赖 Tempo 的存储协议，而是通过 OTLP/HTTP 把 Span 发给 OpenTelemetry Collector。Collector 执行内存限制与批处理，再把 Trace 送到 Tempo。这个边界让后端更换、采样和多目的地路由留在运营平面，不侵入业务服务。
+
+![CaseOps Slice 4 可执行运行保证](../assets/images/chapter-05/caseops-slice4-runtime-guarantees.png)
+
+*图 5-7　同一运行信封连接请求预算与跨服务 Trace；Prometheus 证明服务趋势；恢复演练证明权威状态可重建。*
+
+一次 `C-102` 多 Agent 协作在 Tempo 中形成同一条 Trace：
+
+```text
+caseops-api
+  POST /v1/cases/C-102/collaboration-runs
+    caseops-a2a
+      GET /.well-known/agent-card.json
+      POST /a2a/rest/message:send
+        caseops-mcp
+          POST /mcp
+```
+
+验收不会在查到第一个 Span 后立即通过。Batch Exporter 和 Collector 都可能造成短暂可见性延迟，脚本会轮询，直到三个 `service.name` 同时出现在同一 Trace 中。这次测试也揭示了一个容易忽略的问题：**遥测是最终可见的，验收条件必须等待完整因果链，而不是等待“Trace 存在”。**
+
+### 21.4 指标和告警：只把可聚合维度放进 Label
+
+Prometheus 从 API 的 `/metrics` 拉取请求量、错误、时延、进行中请求、deadline 拒绝和依赖就绪状态。`case_id`、`tenant_id`、Trace ID、异常文本都不会成为 Label；这些高基数细节属于 Trace、Log 或受控业务分析。
+
+Slice 4 提供四条记录规则和三条告警规则。核心错误率记录为：
+
+$$
+\text{error ratio}_{5m}
+=
+\frac{\sum \operatorname{rate}(\text{5xx requests}[5m])}
+{\sum \operatorname{rate}(\text{all requests}[5m])}
+$$
+
+记录规则把常用、昂贵或容易写错的表达式固定下来；告警规则只关注用户症状和可执行状态：
+
+- 可用性错误预算快速燃烧；
+- 关键依赖不可用；
+- 可选依赖持续降级。
+
+每条告警包含 owner、severity 和 Runbook URL。Grafana 预置运行看板，但 Dashboard 不是验收依据；Prometheus API 中存在正确规则、真实指标可被采集，才是底层证据。
+
+本地可观测性栈使用确定版本：
+
+```text
+OpenTelemetry Collector 0.153.0
+Tempo 2.10.5
+Prometheus 3.12.0
+Grafana 13.1.0
+```
+
+这些版本用于复现实验，不意味着以后永不升级。升级时必须重新通过配置校验、规则校验和完整验收。
+
+### 21.5 恢复演练：比较内容与业务不变量，不只检查退出码
+
+`scripts/backup-postgres.sh` 生成 PostgreSQL custom-format archive，并同时保存 Manifest：
+
+```json
+{
+  "schema_version": "caseops.backup-manifest.v1",
+  "database": "caseops",
+  "alembic_revision": "0004",
+  "archive_format": "postgresql-custom",
+  "archive_bytes": 0,
+  "sha256": "<archive-sha256>"
+}
+```
+
+这里的 `archive_bytes` 在真实文件中会是实际大小，示例写成 `0` 是为了避免把一次开发机运行的瞬时数值误当成合同。真正的合同是字段、格式和验证方式。
+
+恢复脚本不会覆盖源数据库。它创建隔离数据库 `caseops_restore_drill_ch05`，执行 `pg_restore --exit-on-error`，然后验证三层证据：
+
+1. **Schema**：`alembic_version` 必须等于 `0004`；
+2. **内容**：核心表按稳定顺序拼接并计算 MD5，源库与恢复库必须一致；
+3. **业务**：恢复库中必须存在租户 `tenant-demo` 的案件 `C-102`。
+
+第三层曾经让第一次验收失败。脚本把外部业务键 `case_id` 错写成内部主键 `id`；数据库已经成功恢复，内容签名也一致，但业务不变量仍不成立。修正字段后，完整演练通过：
+
+```text
+isolated PostgreSQL restore accepted:
+rto=6s
+signature=59be10a6b8c65e14c9d3482f57323163
+```
+
+这个 `6s` 是小数据集在开发机上的一次测量，不是生产 RTO。它证明恢复流程可以计时、可以重复、可以因业务断言失败；生产 RTO 仍需在接近真实数据量、拓扑和带宽的环境中测量。对于更严格的 RPO，还需要 WAL 归档和 PITR，而不是提高 `pg_dump` 频率来冒充连续恢复能力。
+
+### 21.6 一键验收的顺序本身就是恢复合同
+
+第 5 章验收脚本按以下顺序运行：
+
+```text
+startup / readiness
+  → 过期 deadline 失败
+  → C-102 多 Agent 协作
+  → Tempo 完整 Trace
+  → Prometheus 规则
+  → 停止 A2A 并观察降级
+  → 重启 A2A
+  → 备份
+  → 隔离恢复
+  → 内容签名与业务不变量
+```
+
+顺序很重要。若故障注入后不验证恢复，团队只证明了系统会坏；若恢复后不继续验证状态，团队只证明了容器会重新变绿；若先删除原数据再验证备份，则把一次演练变成了不可逆操作。
+
+在本切片中，运行与质量证据为：
+
+```text
+45 tests passed
+Mypy strict passed
+coverage 86.29%
+Bandit passed
+pip-audit: no known vulnerabilities
+Prometheus rules: 7 passed
+cross-service W3C trace: api / a2a / mcp passed
+optional dependency degradation passed
+isolated PostgreSQL restore passed
+```
+
+### 21.7 固定版本与复现入口
+
+完整实现位于独立工程 [production-grade-multi-agent-caseops](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-05-slice-4)，版本为 `v0.5.0`，对应提交 `2834e50`。
+
+```bash
+git clone https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops.git
+cd production-grade-multi-agent-caseops
+git checkout chapter-05-slice-4
+
+docker compose \
+  -f compose.yaml \
+  -f deploy/compose.observability.yaml \
+  up --build -d
+
+make acceptance-chapter-05
+```
+
+Grafana 默认映射到 `http://localhost:3300`，避免与常见的本地开发服务占用的 `3000` 端口冲突。完整命令、手工 Trace 查询、备份清单与停止方式见[第 5 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/chapter-05-slice-4/docs/chapter-05-runbook.md)。
+
+这段工程实践没有取代理论框架。相反，代码让我们看见框架中的词是否真的有执行语义：deadline 是否会传递，Readiness 是否会降级，Trace 是否跨过协议边界，备份是否能恢复成业务可用状态。只有能被这样的测试推翻，架构判断才不是口号。
+
+## 22. 回到开头：为什么所有容器都是绿色，系统仍然不可用
 
 现在可以重新解释本章开头的事故：
 
@@ -1196,10 +1424,19 @@ full
 
 - [Kubernetes：Liveness、Readiness 与 Startup Probes](https://kubernetes.io/docs/concepts/workloads/pods/probes/)
 - [Kubernetes：Container Images](https://kubernetes.io/docs/concepts/containers/images/)
+- [Kubernetes：Container Lifecycle Hooks](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/)
 - [OpenTelemetry：Signals](https://opentelemetry.io/docs/concepts/signals/)
 - [OpenTelemetry：Baggage](https://opentelemetry.io/docs/concepts/signals/baggage/)
+- [OpenTelemetry：Instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/)
+- [OpenTelemetry：Collector Configuration](https://opentelemetry.io/docs/collector/configuration/)
 - [Prometheus：Instrumentation Best Practices](https://prometheus.io/docs/practices/instrumentation/)
+- [Prometheus：Metric and Label Naming](https://prometheus.io/docs/practices/naming/)
+- [Prometheus：Alerting Rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
+- [Prometheus：Alerting Best Practices](https://prometheus.io/docs/practices/alerting/)
 - [Google SRE Workbook：Error Budget Policy](https://sre.google/workbook/error-budget-policy/)
+- [Google SRE Workbook：Monitoring](https://sre.google/workbook/monitoring/)
 - [AWS Builders’ Library：Timeouts, Retries and Backoff with Jitter](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/)
+- [PostgreSQL：pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html)
+- [PostgreSQL：pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html)
 - [PostgreSQL：Continuous Archiving and Point-in-Time Recovery](https://www.postgresql.org/docs/current/continuous-archiving.html)
-
+- [CaseOps Slice 4](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-05-slice-4)：本章运行信封、健康合同、可观测性栈、SLO 规则、恢复演练与验收脚本。

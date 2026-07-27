@@ -262,6 +262,60 @@ ${text(800, 655, "恢复点 · 耗时 · 版本集合 · 不变量 · 异常 · 
 ${text(800, 765, "数据库可连接只是开始；任务不重放、Artifact 对齐、索引同源、权限仍生效才是完成。", 26, { anchor: "middle", color: C.red, weight: 700 })}
 `);
 
+files["caseops-slice4-runtime-guarantees.svg"] = svg(`
+${titleBlock("CaseOps Slice 4：运行保证必须可以被执行", "同一运行信封约束因果链与时间预算；观测和恢复分别证明“发生了什么”与“能否回来”。")}
+${pill(55, 205, 280, "traceparent + deadline", C.amber, C.amberSoft, 23)}
+${arrow(335, 231, 405, 231, { color: C.amber })}
+${box(405, 185, 250, 95, { fill: C.blueSoft, stroke: C.ink })}
+${text(530, 226, "Runtime Envelope", 27, { anchor: "middle", weight: 760 })}
+${text(530, 258, "解析 · 限幅 · 传播", 19, { anchor: "middle", color: C.muted })}
+${arrow(655, 231, 725, 231)}
+${box(725, 185, 175, 95, { fill: C.paper, stroke: C.ink })}
+${text(812, 242, "API", 31, { anchor: "middle", weight: 760 })}
+${arrow(900, 231, 970, 231)}
+${box(970, 185, 175, 95, { fill: C.purpleSoft, stroke: C.purple })}
+${text(1057, 242, "A2A", 31, { anchor: "middle", weight: 760, color: C.purple })}
+${arrow(1145, 231, 1215, 231, { color: C.purple })}
+${box(1215, 185, 175, 95, { fill: C.greenSoft, stroke: C.green })}
+${text(1302, 242, "MCP", 31, { anchor: "middle", weight: 760, color: C.green })}
+${text(1465, 220, ["预算只减", "Trace 不断"], 22, { anchor: "middle", lineGap: 1.45, color: C.red, weight: 700 })}
+
+${box(55, 340, 470, 245, { fill: C.greenSoft, stroke: C.green })}
+${pill(105, 370, 370, "健康合同 / 流量判断", C.green, C.paper, 25)}
+${text(100, 455, "startup", 23, { weight: 720 })}
+${text(230, 455, "Schema 0004", 22)}
+${text(100, 500, "liveness", 23, { weight: 720 })}
+${text(230, 500, "进程可前进", 22)}
+${text(100, 545, "readiness", 23, { weight: 720 })}
+${text(230, 545, "DB 硬依赖 · A2A/MCP 可降级", 21)}
+
+${box(565, 340, 470, 245, { fill: C.purpleSoft, stroke: C.purple })}
+${pill(620, 370, 360, "因果证据 / OTel Pipeline", C.purple, C.paper, 25)}
+${text(800, 466, "API · A2A · MCP Spans", 24, { anchor: "middle", weight: 720 })}
+${arrow(800, 485, 800, 530, { color: C.purple })}
+${pill(640, 520, 320, "Collector  →  Tempo", C.purple, C.paper, 23)}
+
+${box(1075, 340, 470, 245, { fill: C.amberSoft, stroke: C.amber })}
+${pill(1130, 370, 360, "趋势证据 / SLI 与 SLO", C.amber, C.paper, 25)}
+${text(1310, 460, "Prometheus 记录规则", 24, { anchor: "middle", weight: 720 })}
+${text(1310, 507, "错误预算 · 依赖告警", 23, { anchor: "middle" })}
+${text(1310, 548, "Grafana 运行看板", 22, { anchor: "middle", color: C.muted })}
+
+${box(185, 650, 1230, 135, { fill: C.redSoft, stroke: C.red, width: 4 })}
+${box(220, 672, 210, 88, { fill: C.paper, stroke: C.red })}
+${text(325, 726, "PostgreSQL", 25, { anchor: "middle", weight: 760, color: C.red })}
+${arrow(430, 716, 500, 716, { color: C.red })}
+${box(500, 672, 370, 88, { fill: C.paper, stroke: C.red })}
+${text(685, 708, ["Custom Dump", "+ SHA-256 Manifest"], 21, { anchor: "middle", weight: 720, lineGap: 1.25 })}
+${arrow(870, 716, 940, 716, { color: C.red })}
+${box(940, 672, 200, 88, { fill: C.paper, stroke: C.red })}
+${text(1040, 726, "隔离恢复", 25, { anchor: "middle", weight: 760, color: C.red })}
+${arrow(1140, 716, 1210, 716, { color: C.red })}
+${box(1210, 672, 200, 88, { fill: C.paper, stroke: C.red })}
+${text(1310, 707, ["Revision", "签名 · 业务不变量"], 19, { anchor: "middle", weight: 720, lineGap: 1.35 })}
+${text(800, 840, "Running ≠ Ready ≠ Recoverable：三个结论都要由可重复的验收证据支撑。", 29, { anchor: "middle", color: C.red, weight: 760 })}
+`);
+
 for (const [name, content] of Object.entries(files)) {
   fs.writeFileSync(path.join(outDir, name), content);
 }

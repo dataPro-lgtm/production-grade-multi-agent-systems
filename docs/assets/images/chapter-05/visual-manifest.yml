@@ -27,7 +27,10 @@ assets:
   - id: backup-restore-loop
     figure: 5-6
     purpose: 把备份、恢复、业务不变量与 RPO/RTO 连接成闭环
+  - id: caseops-slice4-runtime-guarantees
+    figure: 5-7
+    purpose: 展示 CaseOps 请求信封、健康合同、遥测、SLO 与隔离恢复的可执行证据链
 provenance:
   original: true
   external_assets: none
-  generated_at: 2026-07-23
+  generated_at: 2026-07-27

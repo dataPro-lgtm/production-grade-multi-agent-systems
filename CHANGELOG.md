@@ -19,7 +19,7 @@
 - 增加 7 幅第 04 章可编辑白板手绘风原创架构图及确定性生成脚本；
 - 增加 Context Inventory、Source Manifest、Evidence、Retrieval Plan、Context Pack 与分段评测设计画布；
 - 将第 05 周 Word 讲义重构为“生产基础设施、可观测性与故障恢复”正式章节；
-- 增加 6 幅第 05 章可编辑白板手绘风原创架构图及确定性生成脚本；
+- 增加 7 幅第 05 章可编辑白板手绘风原创架构图及确定性生成脚本；
 - 增加 State Ownership Catalog、Service Runtime Contract、Deployment Verification、Fault Injection 与 Restore Drill 生产就绪契约；
 - 将第 06 周 Word 讲义重构为“多 Agent 纵深防御、Tool Guard、隐私审计与红队验证”正式章节；
 - 增加 6 幅第 06 章可编辑白板手绘风原创安全架构图及确定性生成脚本；
@@ -52,6 +52,7 @@
 - 将第 04 章与 CaseOps Slice 3 合流，补充 PostgreSQL 全文检索、受限图路径、RRF、Context Gates、证据充分性、Claim-Citation、Context Trace 与真实容器验收；
 - 去除第 05 章中的学习成果、单元安排、课堂推演、多媒体脚本、作业和评分 Rubric；
 - 将第 05 章从部署产品与命令罗列重构为平台边界、状态所有权、运行契约、遥测、可靠性与恢复证据链；
+- 将第 05 章与 CaseOps Slice 4 合流，补充跨服务 deadline、W3C Trace、健康语义、OpenTelemetry、SLO 规则、依赖降级与 PostgreSQL 隔离恢复的真实运行证据；
 - 去除第 06 章中的学习成果、单元安排、课堂攻防、多媒体脚本、作业和评分 Rubric；
 - 将第 06 章从控制项罗列重构为间接注入攻击主线，并按 OWASP Agentic Top 10 2026、MCP 2025-11-25 与 A2A 1.0 校准；
 - 去除第 07 章中的学习成果、课次安排、演示脚本、作业、评分 Rubric、自测答案和预告；

@@ -10,16 +10,16 @@ CaseOps 是本书独立维护的生产导向参考系统：
 
 | 项目 | 值 |
 |---|---|
-| 当前章节里程碑 | `chapter-04-slice-3` |
-| 发布版本 | `v0.4.0` |
-| 固定提交 | `35c3c85` |
+| 当前章节里程碑 | `chapter-05-slice-4` |
+| 发布版本 | `v0.5.0` |
+| 固定提交 | `2834e50` |
 | 运行方式 | Docker Compose |
-| 服务 | FastAPI、A2A HTTP+JSON、MCP Streamable HTTP、PostgreSQL 17 |
+| 服务 | FastAPI、A2A HTTP+JSON、MCP Streamable HTTP、PostgreSQL 17、OTel Collector、Tempo、Prometheus、Grafana |
 | 许可 | MIT |
 
-[查看第 4 章固定代码版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-04-slice-3)
+[查看第 5 章固定代码版本](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/tree/chapter-05-slice-4)
 
-## 已交付的四个切片
+## 已交付的五个切片
 
 ### Slice 0：确定性基线
 
@@ -77,27 +77,42 @@ CaseOps 是本书独立维护的生产导向参考系统：
 
 当前 Hybrid 是结构化、全文和图路径的真实组合。Vector Channel 已进入类型合同，但在真实领域语料、固定 Embedding 版本、ACL 策略和可复现评测就绪前不默认启用。
 
+### Slice 4：可执行的生产运行保证
+
+第 5 章没有用更多 YAML 冒充生产化，而是把四类保证做成可失败的验收：
+
+1. API、A2A、MCP 统一解析并传播 W3C Trace Context；
+2. 相对 timeout 在入口变成绝对 deadline，下游只使用剩余预算；
+3. startup、liveness、readiness 分离，数据库失败与可选依赖降级语义不同；
+4. OpenTelemetry Collector 汇聚 Span，Tempo 重建跨服务因果链；
+5. Prometheus 使用低基数 SLI、记录规则和可执行告警，Grafana 预置运行看板；
+6. 验收真实停止 A2A，确认 API 存活且 readiness 降级，再恢复服务；
+7. PostgreSQL custom-format 备份附带 revision、大小与 SHA-256 清单；
+8. 隔离恢复比较源库与恢复库内容签名，并验证租户 `tenant-demo` 的 `C-102` 业务不变量。
+
+这份本地平台切片证明运行合同能够执行，不把单机恢复时间或本地阈值表述成企业生产 RTO / SLO。
+
 ## 运行当前切片
 
 ```bash
 git clone https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops.git
 cd production-grade-multi-agent-caseops
-git checkout chapter-04-slice-3
+git checkout chapter-05-slice-4
 
-docker compose up --build -d
-docker compose ps
-make acceptance-chapter-04
+make observability-up
+make acceptance-chapter-05
 ```
 
-验收脚本会实际调用 Context Investigation API，检查 Context Pack、Claim-Citation、幂等重放，并查询 PostgreSQL 中的持久化运行、事务 Outbox、图关系与 GIN 全文索引。预期：
+验收脚本会实际发起 `C-102` 协作，等待完整 Trace，查询 Prometheus 规则，停止并恢复 A2A，再完成 PostgreSQL 备份与隔离恢复。一次实测输出：
 
 ```text
-governed Context Pack accepted: <run_id>
-idempotency replay accepted: Context Pack was not rebuilt
-durable context evidence accepted: runs=1 events=1 fts_index=1 relations=8
+cross-service W3C trace accepted: caseops-a2a, caseops-api, caseops-mcp
+SLO recording and actionable alert rules accepted
+optional dependency degradation accepted without failing liveness
+isolated PostgreSQL restore accepted: rto=6s
 ```
 
-详细命令见 [第 4 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/chapter-04-slice-3/docs/chapter-04-runbook.md)。
+`6s` 只是开发机小数据集的一次测量。详细命令见 [第 5 章运行手册](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/blob/chapter-05-slice-4/docs/chapter-05-runbook.md)。
 
 ## 为什么不把它叫 Demo
 
@@ -117,9 +132,12 @@ durable context evidence accepted: runs=1 events=1 fts_index=1 relations=8
 - 非 root、只读根文件系统、capabilities 全移除的容器；
 - Ruff、Mypy strict、pytest、分支覆盖率、Bandit 和 pip-audit；
 - API → A2A → MCP → PostgreSQL 端到端验收；
-- Context Pipeline → PostgreSQL FTS / Graph → Context Pack 端到端验收。
+- Context Pipeline → PostgreSQL FTS / Graph → Context Pack 端到端验收；
+- W3C Trace Context、绝对 deadline 和跨服务 Trace 验收；
+- Collector、Tempo、Prometheus、Grafana 可观测性栈；
+- 依赖降级、备份清单、隔离恢复和业务不变量验证。
 
-这仍不等于“替任何企业完成生产认证”。真实身份提供方、完整 OAuth 2.1、经过领域评测的向量检索、跨进程 Supervisor 恢复、异步长任务入口、Broker 消费端、容量目标、备份恢复和在线模型评测仍是后续交付。未完成的能力会写成限制，不写成承诺。
+这仍不等于“替任何企业完成生产认证”。真实身份提供方、完整 OAuth 2.1、经过领域评测的向量检索、跨进程 Supervisor 恢复、异步长任务入口、Broker 消费端、真实流量容量目标、PITR、跨区域灾备和在线模型评测仍是后续交付。未完成的能力会写成限制，不写成承诺。
 
 ## 十章如何共用一个仓库
 
