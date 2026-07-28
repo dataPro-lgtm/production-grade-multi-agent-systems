@@ -1,15 +1,19 @@
 # 《生产级多智能体系统：从架构判断到工程落地》
 
+[简体中文](README.md) · [English](README.en.md) · [日本語](README.ja.md)
+
 [![Open Book](https://img.shields.io/badge/在线阅读-Open%20Book-173a63)](https://datapro-lgtm.github.io/production-grade-multi-agent-systems/)
 [![Book Build](https://github.com/dataPro-lgtm/production-grade-multi-agent-systems/actions/workflows/pages.yml/badge.svg)](https://github.com/dataPro-lgtm/production-grade-multi-agent-systems/actions/workflows/pages.yml)
 [![CaseOps](https://img.shields.io/badge/CaseOps-v1.0.0-2f7d67)](https://github.com/dataPro-lgtm/production-grade-multi-agent-caseops/releases/tag/v1.0.0)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-d97706)](LICENSE)
 
-一本面向 AI 工程师、架构师、平台与安全团队、技术负责人的中文开源书。
+一本面向 AI 工程师、架构师、平台与安全团队、技术负责人的开源书，提供简体中文、英文和日文三个完整版本。
 
 本书从一个基础判断出发：系统中的哪一部分，真的需要根据环境反馈自主决定下一步？围绕这个问题，十章依次讨论受控工具调用、多 Agent 协作、上下文工程、生产基础设施、安全、系统合龙、评测、AgentOps 和可验证交付。
 
-[在线阅读](https://datapro-lgtm.github.io/production-grade-multi-agent-systems/) ·
+[简体中文](https://datapro-lgtm.github.io/production-grade-multi-agent-systems/) ·
+[English](https://datapro-lgtm.github.io/production-grade-multi-agent-systems/en/) ·
+[日本語](https://datapro-lgtm.github.io/production-grade-multi-agent-systems/ja/) ·
 [全书目录](docs/guide/book-roadmap.md) ·
 [阅读建议](docs/guide/reading-path.md) ·
 [CaseOps 运行指南](docs/guide/caseops-project.md)
@@ -70,7 +74,7 @@ python -m pip install -r requirements.txt
 mkdocs serve
 ```
 
-浏览器打开 `http://127.0.0.1:8000`。
+浏览器打开 `http://127.0.0.1:8000`，使用页面顶部的语言选择器切换简体中文、English 和日本語。
 
 提交前执行严格检查：
 
@@ -87,7 +91,8 @@ mkdocs serve
 │   ├── guide/               # 目录、阅读建议与 CaseOps 指南
 │   ├── toolkit/             # 可复制的工程契约和检查表
 │   ├── appendices/          # 术语、许可与引用
-│   └── assets/              # SVG、PNG 与站点样式
+│   └── assets/              # 三语 SVG、PNG 与站点样式
+├── i18n/                    # 术语规范、图稿翻译与版本同步清单
 ├── sources/                 # 原始资料与版本溯源
 ├── scripts/                 # 内容、图稿和构建校验
 ├── .github/                 # 贡献流程与自动发布
@@ -97,6 +102,8 @@ mkdocs serve
 ## 参与贡献
 
 欢迎提交勘误、案例、图解和工程改进。请先阅读 [贡献指南](CONTRIBUTING.md)。涉及代码时，请给出真实文件路径、运行方式、失败路径和验证证据。
+
+翻译贡献请遵循 [Translation Guide](i18n/TRANSLATION_GUIDE.md)。中文是内容源，英文文件使用 `.en.md` 后缀，日文文件使用 `.ja.md` 后缀；三种语言必须通过结构、链接、图稿和版本同步校验。
 
 ## 许可与作者
 

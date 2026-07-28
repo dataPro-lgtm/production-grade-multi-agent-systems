@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" aria-labelledby="title desc" role="img" focusable="false" data-whiteboard-version="3" lang="en">
+<title id="whiteboard-title">Dual authorization: after protocol connectivity, verify resource boundaries</title>
+<desc id="whiteboard-desc">Chapter 02 architecture diagrams from Production-Grade Multi-Agent Systems, using deterministic whiteboard wireframes to show control flow, evidence, and responsibility boundaries.</desc>
+
+<title id="title">CaseOps MCP dual trust boundary</title>
+  <desc id="desc">The API Host first authorizes the user identity and task and issues a short-lived task token; the MCP Server then verifies the token, tenant, task, scope, and resource. Model parameters omit the tenant.</desc>
+  <defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="31" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#173a63" stroke-width="2.2"/>
+    </marker>
+    <style>
+      .label{font-family:'Chalkboard SE','Comic Sans MS','Arial',sans-serif;fill:#24364b}
+      .title{font-size:34.4px;font-weight:700}.box-title{font-size:23px;font-weight:700}.body{font-size:16.4px}.small{font-size:14.8px}
+      .flow{fill:none;stroke:#173a63;stroke-width:4.5;stroke-linecap:round;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">Dual authorization: after protocol connectivity, verify resource boundaries</text>
+
+  <g filter="url(#rough)">
+    <rect x="55" y="170" width="400" height="560" rx="30" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="520" y="235" width="250" height="170" rx="24" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="520" y="500" width="250" height="170" rx="24" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="5"/>
+    <rect x="845" y="170" width="420" height="560" rx="30" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="1330" y="260" width="220" height="380" rx="28" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+  </g>
+
+  <text x="255" y="225" text-anchor="middle" class="label box-title">CaseOps API / MCP Host</text>
+  <text x="100" y="295" class="label body">① API Key → Principal</text>
+  <text x="100" y="340" class="label body">② Lock tenant_id and case_id</text>
+  <text x="100" y="385" class="label body">③ Tool allowlist and Scope</text>
+  <text x="100" y="430" class="label body">④ Risk, budget, and action fingerprint</text>
+  <text x="100" y="475" class="label body">⑤ Give Planner only the minimum tools</text>
+  <text x="255" y="590" text-anchor="middle" class="label box-title" fill="#9d3030">Host authorization boundary</text>
+  <text x="255" y="635" text-anchor="middle" class="label small">Model proposes; runtime verifies identity</text>
+
+  <text x="645" y="292" text-anchor="middle" class="label box-title">MCP Client</text>
+  <text x="645" y="337" text-anchor="middle" class="label body">initialize · list · call</text>
+  <text x="645" y="375" text-anchor="middle" class="label small">Streamable HTTP</text>
+
+  <text x="645" y="548" text-anchor="middle" class="label box-title">Short-lived task token</text>
+  <text x="645" y="590" text-anchor="middle" class="label small">aud · tenant · task · sub</text>
+  <text x="645" y="622" text-anchor="middle" class="label small">scope · iat · nbf · exp · jti</text>
+
+  <text x="1055" y="225" text-anchor="middle" class="label box-title">CaseOps MCP Tool Server</text>
+  <text x="900" y="295" class="label body">① Verify signature · issuer · audience</text>
+  <text x="900" y="340" class="label body">② Read tenant and task from token</text>
+  <text x="900" y="385" class="label body">③ Check each tool&apos;s required scope</text>
+  <text x="900" y="430" class="label body">④ Recheck parameters + business rules</text>
+  <text x="900" y="475" class="label body">⑤ Structured result and evidence_ref</text>
+  <text x="1055" y="590" text-anchor="middle" class="label box-title" fill="#9d3030">Server resource boundary</text>
+  <text x="1055" y="635" text-anchor="middle" class="label small">Connected ≠ authorized to read data</text>
+
+  <text x="1440" y="330" text-anchor="middle" class="label box-title">PostgreSQL</text>
+  <text x="1440" y="385" text-anchor="middle" class="label body">Cases · Rules</text>
+  <text x="1440" y="425" text-anchor="middle" class="label body">Source material · Aliases</text>
+  <text x="1440" y="485" text-anchor="middle" class="label small">Query must include</text>
+  <text x="1440" y="520" text-anchor="middle" class="label small">verified tenant_id</text>
+
+  <path d="M455 320 L520 320" class="flow"/>
+  <path d="M645 405 L645 500" class="flow"/>
+  <path d="M770 585 C815 555 820 360 845 330" class="flow"/>
+  <path d="M1265 400 L1330 400" class="flow"/>
+
+  <rect x="230" y="770" width="1140" height="72" rx="28" fill="#fff3f2" stroke="#c73e3e" stroke-width="4" filter="url(#rough)"/>
+  <text x="800" y="816" text-anchor="middle" class="label box-title" fill="#9d3030">Tool parameters omit tenant_id; credentials never enter the Prompt or flow downstream</text>
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="14.8" fill="#526a82" text-anchor="end">Production-Grade Multi-Agent Systems · Chapter 02</text>
+</svg>

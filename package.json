@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "visuals": "node scripts/finalize_visuals.mjs"
+    "visuals": "node scripts/finalize_visuals.mjs",
+    "visuals:i18n:init": "node scripts/localize_visuals.mjs init",
+    "visuals:i18n": "node scripts/localize_visuals.mjs build"
   },
   "devDependencies": {
     "sharp": "0.35.3"

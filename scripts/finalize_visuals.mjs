@@ -165,7 +165,10 @@ for (const directory of chapterDirs) {
   const directoryPath = path.join(root, directory.name);
   const svgFiles = fs
     .readdirSync(directoryPath)
-    .filter((name) => name.endsWith(".svg"))
+    .filter(
+      (name) =>
+        name.endsWith(".svg") && !/\.(?:en|ja)\.svg$/u.test(name),
+    )
     .sort()
     .map((name) => path.join(directoryPath, name));
   for (const file of svgFiles) {

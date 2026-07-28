@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" focusable="false" data-whiteboard-version="3" lang="en">
+<title id="whiteboard-title">System integration: teams converge independently; the Supervisor handles only system acceptance</title>
+<desc id="whiteboard-desc">Chapter 07 architecture diagram for Production-Grade Multi-Agent Systems, using deterministic whiteboard wireframes to show control flow, evidence, or responsibility boundaries.</desc>
+
+<defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern>
+  <marker id="arrow-1e3a5f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#173a63"/>
+  </marker>
+  <marker id="arrow-3c8d77" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d67"/>
+  </marker>
+  <marker id="arrow-7651a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#6d4ba0"/>
+  </marker>
+</defs>
+<rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<text x="70" y="76" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="35.3" font-weight="760" fill="#173a63">System integration: teams converge independently; the Supervisor handles only system acceptance</text>
+<path d="M 70 96 C 310 87, 570 103, 830 94" fill="none" stroke="#d97706" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+<text x="72" y="134" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="18.9" fill="#526a82">Runtime Context Graph records business causality; OpenTelemetry Trace records technical execution.</text>
+
+<rect x="55" y="330" width="150" height="108" rx="54" fill="#ffffff" stroke="#173a63" stroke-width="3"/>
+<rect x="57" y="329" width="149" height="109" rx="55" fill="none" stroke="#173a63" stroke-width="1.1" opacity=".28" transform="rotate(.25 130 384)"/>
+<text x="130" y="374" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="23" font-weight="720" fill="#173a63">Business goal</text>
+<text x="130" y="410" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="15.6" fill="#526a82">Case C-102</text>
+
+<rect x="260" y="300" width="210" height="168" rx="24" fill="#f3f7fb" stroke="#173a63" stroke-width="3"/>
+<rect x="262" y="299" width="209" height="169" rx="25" fill="none" stroke="#173a63" stroke-width="1.1" opacity=".28" transform="rotate(.18 365 384)"/>
+<text x="365" y="350" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="23" font-weight="720" fill="#173a63">Central</text>
+<text x="365" y="385" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="23" font-weight="720" fill="#173a63">Supervisor</text>
+<text x="365" y="430" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="15.6" fill="#526a82">Validate DAG · Assign responsibility</text>
+
+<path d="M 205 384 C 220 383, 240 384, 260 384" fill="none" stroke="#173a63" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+
+<rect x="540" y="195" width="390" height="190" rx="25" fill="#f1f8f5" stroke="#2f7d67" stroke-width="3"/>
+<rect x="542" y="194" width="389" height="191" rx="26" fill="none" stroke="#2f7d67" stroke-width="1.1" opacity=".28" transform="rotate(.16 735 290)"/>
+<text x="575" y="245" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="23.8" font-weight="720" fill="#2f7d67">Context Team</text>
+<text x="575" y="292" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="17.2" fill="#173a63">Query planning → Evidence retrieval → Context Pack</text>
+<rect x="575" y="319" width="320" height="38" rx="19" fill="#ffffff" stroke="#2f7d67" stroke-width="2"/>
+<text x="735" y="345" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="14.8" fill="#2f7d67">Gates: permissions · temporal validity · citations · sufficiency</text>
+
+<rect x="540" y="438" width="390" height="190" rx="25" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="3"/>
+<rect x="542" y="437" width="389" height="191" rx="26" fill="none" stroke="#6d4ba0" stroke-width="1.1" opacity=".28" transform="rotate(-.16 735 533)"/>
+<text x="575" y="488" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="23.8" font-weight="720" fill="#6d4ba0">Collaboration Team</text>
+<text x="575" y="535" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="17.2" fill="#173a63">Coverage · Document · Risk</text>
+<rect x="575" y="562" width="320" height="38" rx="19" fill="#ffffff" stroke="#6d4ba0" stroke-width="2"/>
+<text x="735" y="588" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="14.8" fill="#6d4ba0">A2A delegation → MCP tools → Deterministic Join</text>
+
+<path d="M 470 356 C 495 355, 505 290, 540 290" fill="none" stroke="#2f7d67" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-3c8d77)"/>
+<path d="M 470 412 C 495 413, 505 533, 540 533" fill="none" stroke="#6d4ba0" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-7651a6)"/>
+
+<path d="M 1035 278 L 1135 383 L 1035 488 L 935 383 Z" fill="#fff8e8" stroke="#d97706" stroke-width="3"/>
+<path d="M 1037 277 L 1136 384 L 1034 489 L 934 381 Z" fill="none" stroke="#d97706" stroke-width="1.1" opacity=".3"/>
+<text x="1035" y="357" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="22.1" font-weight="720" fill="#d97706">System acceptance</text>
+<text x="1035" y="395" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="15.6" fill="#173a63">Contract · Evidence</text>
+<text x="1035" y="426" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="15.6" fill="#173a63">Termination &amp; approval boundaries</text>
+<path d="M 930 290 C 970 292, 970 320, 988 332" fill="none" stroke="#2f7d67" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-3c8d77)"/>
+<path d="M 930 533 C 970 531, 970 451, 988 435" fill="none" stroke="#6d4ba0" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-7651a6)"/>
+
+<rect x="1190" y="195" width="350" height="433" rx="26" fill="#ffffff" stroke="#173a63" stroke-width="3"/>
+<rect x="1192" y="194" width="349" height="434" rx="27" fill="none" stroke="#173a63" stroke-width="1.1" opacity=".28" transform="rotate(.12 1365 411.5)"/>
+<text x="1365" y="245" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="23.8" font-weight="720" fill="#173a63">Runtime Context Graph</text>
+<text x="1365" y="282" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="14.8" fill="#526a82">Business semantics &amp; causal attribution</text>
+<circle cx="1365" cy="350" r="48" fill="#f1f8f5" stroke="#2f7d67" stroke-width="3"/>
+<circle cx="1268" cy="455" r="48" fill="#f3f7fb" stroke="#173a63" stroke-width="3"/>
+<circle cx="1462" cy="455" r="48" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="3"/>
+<circle cx="1365" cy="560" r="48" fill="#fff8e8" stroke="#d97706" stroke-width="3"/>
+<text x="1365" y="359" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="18" font-weight="720" fill="#2f7d67">Claim</text>
+<text x="1268" y="464" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="18" font-weight="720" fill="#173a63">Evidence</text>
+<text x="1462" y="464" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="18" font-weight="720" fill="#6d4ba0">Task</text>
+<text x="1365" y="569" text-anchor="middle" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="18" font-weight="720" fill="#d97706">Result</text>
+<path d="M 1332 384 L 1300 420 M 1398 384 L 1430 420 M 1310 490 L 1333 526 M 1420 490 L 1397 526 M 1316 455 L 1414 455" fill="none" stroke="#173a63" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<path d="M 1135 383 C 1155 382, 1170 412, 1190 412" fill="none" stroke="#173a63" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+
+<path d="M 65 715 C 440 706, 930 726, 1535 714" fill="none" stroke="#526a82" stroke-width="2" stroke-dasharray="10 10" opacity=".72"/>
+<text x="75" y="770" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="21.3" font-weight="720" fill="#173a63">OpenTelemetry Trace</text>
+<text x="370" y="770" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="16.4" fill="#526a82">Technical execution: span · latency · error · retry · dependency</text>
+<path d="M 75 815 C 360 805, 690 824, 1010 813 S 1350 814, 1510 812" fill="none" stroke="#173a63" stroke-width="4" stroke-dasharray="14 10" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<circle cx="315" cy="812" r="11" fill="#ffffff" stroke="#173a63" stroke-width="3"/>
+<circle cx="660" cy="816" r="11" fill="#ffffff" stroke="#173a63" stroke-width="3"/>
+<circle cx="1005" cy="813" r="11" fill="#ffffff" stroke="#173a63" stroke-width="3"/>
+<circle cx="1350" cy="813" r="11" fill="#ffffff" stroke="#173a63" stroke-width="3"/>
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="14.8" fill="#526a82" text-anchor="end">Production-Grade Multi-Agent Systems · Chapter 07</text>
+</svg>

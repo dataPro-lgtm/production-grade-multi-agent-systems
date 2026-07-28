@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" focusable="false" data-whiteboard-version="3" lang="ja">
+<title id="whiteboard-title">コスト因果ツリー：すべての消費をGoal Outcomeに紐づける</title>
+<desc id="whiteboard-desc">『プロダクショングレード・マルチエージェントシステム』第09章のアーキテクチャ図。決定論的なホワイトボード・ワイヤーフレームで制御フロー、エビデンス、責任境界を表現。</desc>
+
+<defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern><marker id="arrow-1e3a5f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#173a63"/></marker><marker id="arrow-d59621" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"/></marker><marker id="arrow-3c8d77" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d67"/></marker><marker id="arrow-c94c4c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c73e3e"/></marker><marker id="arrow-7651a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d4ba0"/></marker><filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="7" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .035"/></feComponentTransfer></filter></defs>
+<rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<rect width="1600" height="900" fill="#38516d" filter="url(#paper)" opacity=".16"/>
+
+<text x="70" y="82" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="39.6" font-weight="800" fill="#173a63" text-anchor="start"><tspan x="70" dy="0">コスト因果ツリー：すべての消費をGoal Outcomeに紐づける</tspan></text><text x="72" y="128" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="20.2" font-weight="500" fill="#526a82" text-anchor="start"><tspan x="72" dy="0">総請求額から分かるのは支出額だけ。因果帰属によって初めて価値に見合うか判断できる。</tspan></text><path d="M 70 160 C 556.6666666666666 158, 1043.3333333333333 162, 1530 160" fill="none" stroke="#d97706" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 10"/>
+<rect x="620" y="205" width="360" height="100" rx="34" fill="#f1f8f5" stroke="#2f7d67" stroke-width="4"/><rect x="622" y="204" width="359" height="101" rx="35" fill="none" stroke="#2f7d67" stroke-width="1.2" opacity=".28" transform="rotate(.18 800 255)"/>
+<text x="800" y="250" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="28.5" font-weight="800" fill="#2f7d67" text-anchor="middle"><tspan x="800" dy="0">Goal / Outcome</tspan></text>
+<text x="800" y="284" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="17.5" font-weight="500" fill="#526a82" text-anchor="middle"><tspan x="800" dy="0">success · partial · failed · blocked</tspan></text>
+<path d="M 710 305 C 603.3333333333334 303, 496.6666666666667 412, 390 410" fill="none" stroke="#2f7d67" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-3c8d77)"/>
+<path d="M 800 305 C 800 303, 800 412, 800 410" fill="none" stroke="#2f7d67" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-3c8d77)"/>
+<path d="M 890 305 C 996.6666666666666 303, 1103.3333333333333 412, 1210 410" fill="none" stroke="#2f7d67" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-3c8d77)"/>
+<rect x="180" y="410" width="420" height="110" rx="22" fill="#f3f7fb" stroke="#173a63" stroke-width="3"/><rect x="182" y="409" width="419" height="111" rx="23" fill="none" stroke="#173a63" stroke-width="1.2" opacity=".28" transform="rotate(.18 390 465)"/>
+<text x="390" y="455" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="25.8" font-weight="800" fill="#173a63" text-anchor="middle"><tspan x="390" dy="0">Team / Step</tspan></text>
+<text x="390" y="491" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="17.5" font-weight="500" fill="#526a82" text-anchor="middle"><tspan x="390" dy="0">critical path · optional · discarded</tspan></text>
+<rect x="590" y="410" width="420" height="110" rx="22" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="3"/><rect x="592" y="409" width="419" height="111" rx="23" fill="none" stroke="#6d4ba0" stroke-width="1.2" opacity=".28" transform="rotate(.18 800 465)"/>
+<text x="800" y="455" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="25.8" font-weight="800" fill="#6d4ba0" text-anchor="middle"><tspan x="800" dy="0">Model / Tool</tspan></text>
+<text x="800" y="491" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="17.5" font-weight="500" fill="#526a82" text-anchor="middle"><tspan x="800" dy="0">token · call · provider · evidence</tspan></text>
+<rect x="1000" y="410" width="420" height="110" rx="22" fill="#fff8e8" stroke="#d97706" stroke-width="3"/><rect x="1002" y="409" width="419" height="111" rx="23" fill="none" stroke="#d97706" stroke-width="1.2" opacity=".28" transform="rotate(.18 1210 465)"/>
+<text x="1210" y="455" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="25.8" font-weight="800" fill="#d97706" text-anchor="middle"><tspan x="1210" dy="0">Retry / Cache</tspan></text>
+<text x="1210" y="491" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="17.5" font-weight="500" fill="#526a82" text-anchor="middle"><tspan x="1210" dy="0">amplification · hit · stale · bypass</tspan></text>
+<path d="M 390 520 C 390 518, 390 637, 390 635" fill="none" stroke="#173a63" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<path d="M 800 520 C 800 518, 800 637, 800 635" fill="none" stroke="#6d4ba0" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-7651a6)"/>
+<path d="M 1210 520 C 1210 518, 1210 637, 1210 635" fill="none" stroke="#d97706" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-d59621)"/>
+<rect x="140" y="635" width="440" height="115" rx="22" fill="#f1f8f5" stroke="#2f7d67" stroke-width="3"/><rect x="142" y="634" width="439" height="116" rx="23" fill="none" stroke="#2f7d67" stroke-width="1.2" opacity=".28" transform="rotate(.18 360 692.5)"/>
+<text x="360" y="680" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="23.9" font-weight="800" fill="#2f7d67" text-anchor="middle"><tspan x="360" dy="0">Cost per Successful Goal</tspan></text>
+<text x="360" y="717" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="17.5" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="360" dy="0">コストはユーザー価値に転換されたか</tspan></text>
+<rect x="580" y="635" width="440" height="115" rx="22" fill="#fff3f2" stroke="#c73e3e" stroke-width="3"/><rect x="582" y="634" width="439" height="116" rx="23" fill="none" stroke="#c73e3e" stroke-width="1.2" opacity=".28" transform="rotate(.18 800 692.5)"/>
+<text x="800" y="680" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="23.9" font-weight="800" fill="#c73e3e" text-anchor="middle"><tspan x="800" dy="0">Wasted / Retry Cost</tspan></text>
+<text x="800" y="717" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="17.5" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="800" dy="0">失敗、破棄、重複、価値を生まない処理</tspan></text>
+<rect x="1020" y="635" width="440" height="115" rx="22" fill="#f3f7fb" stroke="#173a63" stroke-width="3"/><rect x="1022" y="634" width="439" height="116" rx="23" fill="none" stroke="#173a63" stroke-width="1.2" opacity=".28" transform="rotate(.18 1240 692.5)"/>
+<text x="1240" y="680" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="23" font-weight="800" fill="#173a63" text-anchor="middle"><tspan x="1240" dy="0">Critical Path / Evidence Cost</tspan></text>
+<text x="1240" y="717" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="17.5" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="1240" dy="0">目標達成に本当に必要な投入</tspan></text>
+<text x="800" y="825" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="25.8" font-weight="760" fill="#c73e3e" text-anchor="middle"><tspan x="800" dy="0">予算不足時は明示的に縮退または遮断し、必要なEvidenceを黙って削除しない。</tspan></text>
+
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="16.6" fill="#526a82" text-anchor="end">プロダクショングレード・マルチエージェントシステム · 第09章</text>
+</svg>

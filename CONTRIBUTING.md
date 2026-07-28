@@ -9,6 +9,7 @@
 - 可运行的实验、测试和评测数据；
 - 新章节提案或现有章节重写；
 - 无障碍、术语一致性和阅读体验改进。
+- 英文版、日文版及图稿本地化改进。
 
 ## 开始之前
 
@@ -44,8 +45,22 @@ python -m pip install -r requirements.txt
 ```bash
 npm ci
 npm run visuals
+npm run visuals:i18n
 ./scripts/validate.sh
 ```
+
+## 多语言内容
+
+中文是内容源。英文和日文页面与中文页面同目录保存，分别使用 `.en.md` 和 `.ja.md` 后缀。翻译前请阅读 [`i18n/TRANSLATION_GUIDE.md`](i18n/TRANSLATION_GUIDE.md)，不得修改代码标识符、路径、协议名、链接目标或验收数据。
+
+正文或翻译发生变化后，重新生成同步清单：
+
+```bash
+python scripts/update_translation_manifest.py
+./scripts/validate.sh
+```
+
+图内文字由 `i18n/visuals/{locale}/chapter-NN.json` 管理。不要直接手工修改语言版 SVG 或 PNG；修改翻译映射后执行 `npm run visuals:i18n`。
 
 ## 文件命名
 
@@ -61,3 +76,4 @@ npm run visuals
 - [ ] 新增代码有复现命令和测试
 - [ ] 引用与第三方许可已核对
 - [ ] 术语与全书保持一致
+- [ ] 英文、日文页面与图稿未发生结构或版本漂移

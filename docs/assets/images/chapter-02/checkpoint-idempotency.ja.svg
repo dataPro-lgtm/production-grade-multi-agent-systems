@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" aria-labelledby="title desc" role="img" focusable="false" data-whiteboard-version="3" lang="ja">
+<title id="whiteboard-title">Checkpoint は状態を復旧できるが、重複する副作用を自動では排除できない</title>
+<desc id="whiteboard-desc">『プロダクショングレード・マルチエージェントシステム』第 02 章のアーキテクチャ図。決定論的なホワイトボードのワイヤーフレームで、制御フロー、エビデンス、責任境界を示します。</desc>
+
+<title id="title">Checkpoint と冪等性の障害ウィンドウ</title>
+  <desc id="desc">外部アクション成功後、新しい Checkpoint の保存前にクラッシュすると、復旧時にアクションが重複実行される可能性があります。冪等キーと実行台帳でこのリスクウィンドウを閉じます。</desc>
+  <defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="29" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#173a63" stroke-width="2.2"/></marker>
+    <style>.label{font-family:'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;fill:#24364b}.title{font-size:38.6px;font-weight:700}.box-title{font-size:25.8px;font-weight:700}.body{font-size:19.3px}.small{font-size:16.6px}.flow{fill:none;stroke:#173a63;stroke-width:4.5;marker-end:url(#arrow)}.risk{fill:none;stroke:#c73e3e;stroke-width:5;stroke-dasharray:10 8;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">Checkpoint は状態を復旧できるが、重複する副作用を自動では排除できない</text>
+
+  <path d="M120 330 C460 318 770 335 1090 322 C1280 315 1420 325 1490 318" stroke="#173a63" stroke-width="5" fill="none"/>
+  <g filter="url(#rough)">
+    <rect x="90" y="210" width="220" height="100" rx="18" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="380" y="210" width="220" height="100" rx="18" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="670" y="210" width="220" height="100" rx="18" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="960" y="210" width="220" height="100" rx="18" fill="#fff3f2" stroke="#c73e3e" stroke-width="5"/>
+    <rect x="1250" y="210" width="220" height="100" rx="18" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+  </g>
+  <text x="200" y="252" text-anchor="middle" class="label box-title">CP-2 を読み取る</text><text x="200" y="286" text-anchor="middle" class="label small">最新の安定状態</text>
+  <text x="490" y="252" text-anchor="middle" class="label box-title">書き込みツールを呼び出す</text><text x="490" y="286" text-anchor="middle" class="label small">冪等キーを付与</text>
+  <text x="780" y="252" text-anchor="middle" class="label box-title">外部処理成功</text><text x="780" y="286" text-anchor="middle" class="label small">副作用が発生済み</text>
+  <text x="1070" y="252" text-anchor="middle" class="label box-title" fill="#9d3030">プロセスクラッシュ</text><text x="1070" y="286" text-anchor="middle" class="label small">CP-3 は未保存</text>
+  <text x="1360" y="252" text-anchor="middle" class="label box-title">CP-2 から再開</text><text x="1360" y="286" text-anchor="middle" class="label small">再呼び出しの可能性</text>
+
+  <line x1="200" y1="310" x2="200" y2="370" stroke="#326da8" stroke-width="4"/>
+  <line x1="490" y1="310" x2="490" y2="370" stroke="#d97706" stroke-width="4"/>
+  <line x1="780" y1="310" x2="780" y2="370" stroke="#2f7d67" stroke-width="4"/>
+  <line x1="1070" y1="310" x2="1070" y2="370" stroke="#c73e3e" stroke-width="4"/>
+  <line x1="1360" y1="310" x2="1360" y2="370" stroke="#326da8" stroke-width="4"/>
+
+  <path d="M1080 390 C1030 460 900 470 790 410" class="risk"/>
+  <text x="930" y="475" text-anchor="middle" class="label box-title" fill="#9d3030">危険なウィンドウ：外部処理は成功、状態は未コミット</text>
+
+  <g filter="url(#rough)">
+    <rect x="150" y="560" width="390" height="180" rx="24" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="605" y="560" width="390" height="180" rx="24" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="1060" y="560" width="390" height="180" rx="24" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="5"/>
+  </g>
+  <text x="345" y="615" text-anchor="middle" class="label box-title">安定した冪等キー</text><text x="345" y="658" text-anchor="middle" class="label body">同じ業務アクションには同じ Key を維持</text><text x="345" y="700" text-anchor="middle" class="label small">再試行回数に基づき再生成しない</text>
+  <text x="800" y="615" text-anchor="middle" class="label box-title">実行台帳</text><text x="800" y="658" text-anchor="middle" class="label body">PENDING · COMPLETED · FAILED</text><text x="800" y="700" text-anchor="middle" class="label small">復旧時はまず台帳を確認</text>
+  <text x="1255" y="615" text-anchor="middle" class="label box-title">トランザクション / 一意制約</text><text x="1255" y="658" text-anchor="middle" class="label body">結果を再利用するか重複書き込みを拒否</text><text x="1255" y="700" text-anchor="middle" class="label small">必要に応じて補償処理または人間へ引き継ぐ</text>
+
+  <text x="800" y="835" text-anchor="middle" class="label box-title">Checkpoint は「どこから再開するか」、冪等性は「再開時に処理が重複するか」に答える</text>
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="16.6" fill="#526a82" text-anchor="end">プロダクショングレード・マルチエージェントシステム · 第 02 章</text>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" aria-labelledby="title desc" role="img" focusable="false" data-whiteboard-version="3" lang="en">
+<title id="whiteboard-title">CaseOps: explicit states after Planner enters the control plane</title>
+<desc id="whiteboard-desc">Chapter 02 architecture diagrams from Production-Grade Multi-Agent Systems, using deterministic whiteboard wireframes to show control flow, evidence, and responsibility boundaries.</desc>
+
+<title id="title">Explicit state machine for the CaseOps controlled Agent</title>
+  <desc id="desc">The flow moves from planning through tool proposal, authorization, execution, and observation back to planning, then reaches completion, human review, stop, or failure; read-only tools support checkpoint recovery.</desc>
+  <defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="17" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#173a63" stroke-width="2.2"/>
+    </marker>
+    <style>
+      .label{font-family:'Chalkboard SE','Comic Sans MS','Arial',sans-serif;fill:#24364b}
+      .title{font-size:34.4px;font-weight:700}.box-title{font-size:20.5px;font-weight:700}.body{font-size:15.6px}.small{font-size:14px}
+      .flow{fill:none;stroke:#173a63;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+      .recover{fill:none;stroke:#6d4ba0;stroke-width:4.2;stroke-dasharray:11 8;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">CaseOps: explicit states after Planner enters the control plane</text>
+
+  <g filter="url(#rough)">
+    <rect x="45" y="235" width="185" height="135" rx="24" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="285" y="235" width="205" height="135" rx="24" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="545" y="235" width="210" height="135" rx="24" fill="#fff3f2" stroke="#c73e3e" stroke-width="5"/>
+    <rect x="810" y="235" width="210" height="135" rx="24" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="1075" y="235" width="205" height="135" rx="24" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="1335" y="235" width="220" height="135" rx="24" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="5"/>
+
+    <rect x="150" y="590" width="260" height="125" rx="24" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="490" y="590" width="260" height="125" rx="24" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="830" y="590" width="260" height="125" rx="24" fill="#fff3f2" stroke="#c73e3e" stroke-width="5"/>
+    <rect x="1170" y="590" width="260" height="125" rx="24" fill="#ffffff" stroke="#c73e3e" stroke-width="5"/>
+  </g>
+
+  <text x="137" y="288" text-anchor="middle" class="label box-title">created</text>
+  <text x="137" y="328" text-anchor="middle" class="label body">Assign run_id</text>
+  <text x="387" y="288" text-anchor="middle" class="label box-title">planning</text>
+  <text x="387" y="328" text-anchor="middle" class="label body">Propose an action</text>
+  <text x="650" y="288" text-anchor="middle" class="label box-title">tool_proposed</text>
+  <text x="650" y="328" text-anchor="middle" class="label body">Schema · Fingerprint</text>
+  <text x="915" y="288" text-anchor="middle" class="label box-title">tool_authorized</text>
+  <text x="915" y="328" text-anchor="middle" class="label body">Scope · Resource · Risk</text>
+  <text x="1177" y="288" text-anchor="middle" class="label box-title">tool_running</text>
+  <text x="1177" y="328" text-anchor="middle" class="label body">timeout · retry</text>
+  <text x="1445" y="288" text-anchor="middle" class="label box-title">observing</text>
+  <text x="1445" y="328" text-anchor="middle" class="label body">Result · Error · Evidence</text>
+
+  <path d="M230 302 L285 302" class="flow"/>
+  <path d="M490 302 L545 302" class="flow"/>
+  <path d="M755 302 L810 302" class="flow"/>
+  <path d="M1020 302 L1075 302" class="flow"/>
+  <path d="M1280 302 L1335 302" class="flow"/>
+  <path d="M1445 370 C1440 465 620 455 387 370" class="flow"/>
+
+  <text x="280" y="642" text-anchor="middle" class="label box-title">completed</text>
+  <text x="280" y="683" text-anchor="middle" class="label body">Terminal-state contract passes</text>
+  <text x="620" y="642" text-anchor="middle" class="label box-title">needs_human</text>
+  <text x="620" y="683" text-anchor="middle" class="label body">Insufficient evidence or authorization</text>
+  <text x="960" y="642" text-anchor="middle" class="label box-title">stopped</text>
+  <text x="960" y="683" text-anchor="middle" class="label body">Circuit break on budget or repetition</text>
+  <text x="1300" y="642" text-anchor="middle" class="label box-title">failed</text>
+  <text x="1300" y="683" text-anchor="middle" class="label body">Unrecoverable error</text>
+
+  <path d="M387 370 C365 475 300 515 280 590" class="flow"/>
+  <path d="M650 370 C650 470 630 520 620 590" class="flow"/>
+  <path d="M915 370 C915 470 940 520 960 590" class="flow"/>
+  <path d="M1177 370 C1190 470 1260 520 1300 590" class="flow"/>
+
+  <path d="M1177 235 C1170 150 560 145 410 235" class="recover"/>
+  <text x="790" y="155" text-anchor="middle" class="label body" fill="#6d4ba0">Read-only crash window: replan from the latest Checkpoint</text>
+
+  <path d="M80 795 C390 780 700 800 1010 786 C1240 777 1420 793 1520 783" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="800" y="840" text-anchor="middle" class="label box-title" fill="#9d3030">Valid transitions · Max steps · Action fingerprints · Timeouts · Retries—all enforced by the runtime</text>
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="14.8" fill="#526a82" text-anchor="end">Production-Grade Multi-Agent Systems · Chapter 02</text>
+</svg>

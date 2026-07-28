@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" aria-labelledby="title desc" role="img" focusable="false" data-whiteboard-version="3" lang="en">
+<title id="whiteboard-title">Checkpoint restores state but cannot automatically eliminate duplicate side effects</title>
+<desc id="whiteboard-desc">Chapter 02 architecture diagrams from Production-Grade Multi-Agent Systems, using deterministic whiteboard wireframes to show control flow, evidence, and responsibility boundaries.</desc>
+
+<title id="title">Checkpoint and idempotency failure window</title>
+  <desc id="desc">If an external action succeeds but the process crashes before the new checkpoint is saved, recovery may repeat the action; an idempotency key and execution ledger close this risk window.</desc>
+  <defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="29" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#173a63" stroke-width="2.2"/></marker>
+    <style>.label{font-family:'Chalkboard SE','Comic Sans MS','Arial',sans-serif;fill:#24364b}.title{font-size:34.4px;font-weight:700}.box-title{font-size:23px;font-weight:700}.body{font-size:17.2px}.small{font-size:14.8px}.flow{fill:none;stroke:#173a63;stroke-width:4.5;marker-end:url(#arrow)}.risk{fill:none;stroke:#c73e3e;stroke-width:5;stroke-dasharray:10 8;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">Checkpoint restores state but cannot automatically eliminate duplicate side effects</text>
+
+  <path d="M120 330 C460 318 770 335 1090 322 C1280 315 1420 325 1490 318" stroke="#173a63" stroke-width="5" fill="none"/>
+  <g filter="url(#rough)">
+    <rect x="90" y="210" width="220" height="100" rx="18" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="380" y="210" width="220" height="100" rx="18" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="670" y="210" width="220" height="100" rx="18" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="960" y="210" width="220" height="100" rx="18" fill="#fff3f2" stroke="#c73e3e" stroke-width="5"/>
+    <rect x="1250" y="210" width="220" height="100" rx="18" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+  </g>
+  <text x="200" y="252" text-anchor="middle" class="label box-title">Read CP-2</text><text x="200" y="286" text-anchor="middle" class="label small">Latest stable state</text>
+  <text x="490" y="252" text-anchor="middle" class="label box-title">Call write tool</text><text x="490" y="286" text-anchor="middle" class="label small">Include idempotency key</text>
+  <text x="780" y="252" text-anchor="middle" class="label box-title">External success</text><text x="780" y="286" text-anchor="middle" class="label small">Side effect occurred</text>
+  <text x="1070" y="252" text-anchor="middle" class="label box-title" fill="#9d3030">Process crash</text><text x="1070" y="286" text-anchor="middle" class="label small">CP-3 not yet saved</text>
+  <text x="1360" y="252" text-anchor="middle" class="label box-title">Resume from CP-2</text><text x="1360" y="286" text-anchor="middle" class="label small">May call again</text>
+
+  <line x1="200" y1="310" x2="200" y2="370" stroke="#326da8" stroke-width="4"/>
+  <line x1="490" y1="310" x2="490" y2="370" stroke="#d97706" stroke-width="4"/>
+  <line x1="780" y1="310" x2="780" y2="370" stroke="#2f7d67" stroke-width="4"/>
+  <line x1="1070" y1="310" x2="1070" y2="370" stroke="#c73e3e" stroke-width="4"/>
+  <line x1="1360" y1="310" x2="1360" y2="370" stroke="#326da8" stroke-width="4"/>
+
+  <path d="M1080 390 C1030 460 900 470 790 410" class="risk"/>
+  <text x="930" y="475" text-anchor="middle" class="label box-title" fill="#9d3030">Danger window: external success, state not committed</text>
+
+  <g filter="url(#rough)">
+    <rect x="150" y="560" width="390" height="180" rx="24" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="605" y="560" width="390" height="180" rx="24" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="1060" y="560" width="390" height="180" rx="24" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="5"/>
+  </g>
+  <text x="345" y="615" text-anchor="middle" class="label box-title">Stable idempotency key</text><text x="345" y="658" text-anchor="middle" class="label body">Keep the same Key for the same business action</text><text x="345" y="700" text-anchor="middle" class="label small">Do not regenerate based on retry count</text>
+  <text x="800" y="615" text-anchor="middle" class="label box-title">Execution ledger</text><text x="800" y="658" text-anchor="middle" class="label body">PENDING · COMPLETED · FAILED</text><text x="800" y="700" text-anchor="middle" class="label small">Check the ledger before recovery</text>
+  <text x="1255" y="615" text-anchor="middle" class="label box-title">Transaction / Unique constraint</text><text x="1255" y="658" text-anchor="middle" class="label body">Reuse result or reject duplicate write</text><text x="1255" y="700" text-anchor="middle" class="label small">Compensate or hand off to a human when needed</text>
+
+  <text x="800" y="835" text-anchor="middle" class="label box-title">Checkpoint answers “where to resume”; idempotency answers “whether resuming repeats work”</text>
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="14.8" fill="#526a82" text-anchor="end">Production-Grade Multi-Agent Systems · Chapter 02</text>
+</svg>

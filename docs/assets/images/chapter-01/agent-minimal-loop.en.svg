@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" focusable="false" data-whiteboard-version="3" lang="en">
+<title id="whiteboard-title">The agent&apos;s minimal loop: model chooses, runtime controls</title>
+<desc id="whiteboard-desc">Chapter 01 architecture diagram for Production-Grade Multi-Agent Systems, using deterministic whiteboard line art to show control flow, evidence, and responsibility boundaries.</desc>
+
+<defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern><marker id="arrow-1e3a5f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#173a63"/></marker><marker id="arrow-d59621" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"/></marker><marker id="arrow-3c8d77" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d67"/></marker><marker id="arrow-c94c4c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c73e3e"/></marker><marker id="arrow-7651a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d4ba0"/></marker><marker id="arrow-55708f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526a82"/></marker></defs>
+<rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<path d="M 18 177 C 420 169, 930 188, 1580 176 M 25 720 C 520 730, 1000 708, 1575 721" stroke="#e7dfce" stroke-width="2" fill="none" opacity=".55"/>
+
+<text x="70" y="75" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="35.3" font-weight="760" fill="#173a63" text-anchor="start"><tspan x="70" dy="0">The agent&apos;s minimal loop: model chooses, runtime controls</tspan></text>
+<path d="M 70 94 C 270 87, 490 101, 720 93" fill="none" stroke="#d97706" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+<text x="72" y="130" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="18.9" font-weight="500" fill="#526a82" text-anchor="start"><tspan x="72" dy="0">Observations must change the next action; permissions, execution, state, and termination stay outside model discretion.</tspan></text>
+<rect x="565" y="315" width="470" height="235" rx="90" fill="#ffffff" stroke="#173a63" stroke-width="4"/>
+<rect x="567" y="314" width="469" height="236" rx="91" fill="none" stroke="#173a63" stroke-width="1.2" opacity=".3" transform="rotate(.15 800 432.5)"/>
+<text x="800" y="385" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="31.2" font-weight="760" fill="#173a63" text-anchor="middle"><tspan x="800" dy="0">Goal + Current state</tspan></text>
+<text x="800" y="438" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="20.5" font-weight="500" fill="#526a82" text-anchor="middle"><tspan x="800" dy="0">Scope · Budget · Evidence gaps</tspan></text>
+<rect x="690" y="474" width="220" height="50" rx="25" fill="#fff8e8" stroke="#d97706" stroke-width="2"/>
+<rect x="692" y="473" width="219" height="51" rx="26" fill="none" stroke="#d97706" stroke-width="1.2" opacity=".3" transform="rotate(.15 800 499)"/><text x="800" y="507" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="18" font-weight="700" fill="#d97706" text-anchor="middle"><tspan x="800" dy="0">Constrained actions</tspan></text>
+<rect x="85" y="255" width="285" height="150" rx="22" fill="#f3f7fb" stroke="#173a63" stroke-width="3"/>
+<rect x="87" y="254" width="284" height="151" rx="23" fill="none" stroke="#173a63" stroke-width="1.2" opacity=".3" transform="rotate(.15 227.5 330)"/>
+<text x="228" y="308" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="25.4" font-weight="720" fill="#173a63" text-anchor="middle"><tspan x="228" dy="0">① Observe</tspan></text>
+<text x="228" y="353" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="17.2" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="228" dy="0">Results · Errors · Access</tspan></text>
+<rect x="1230" y="255" width="285" height="150" rx="22" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="3"/>
+<rect x="1232" y="254" width="284" height="151" rx="23" fill="none" stroke="#6d4ba0" stroke-width="1.2" opacity=".3" transform="rotate(.15 1372.5 330)"/>
+<text x="1372" y="308" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="25.4" font-weight="720" fill="#6d4ba0" text-anchor="middle"><tspan x="1372" dy="0">② Decide</tspan></text>
+<text x="1372" y="353" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="17.2" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="1372" dy="0">Choose next action or stop</tspan></text>
+<rect x="1230" y="590" width="285" height="150" rx="22" fill="#fff3f2" stroke="#c73e3e" stroke-width="3"/>
+<rect x="1232" y="589" width="284" height="151" rx="23" fill="none" stroke="#c73e3e" stroke-width="1.2" opacity=".3" transform="rotate(.15 1372.5 665)"/>
+<text x="1372" y="643" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="23.8" font-weight="720" fill="#c73e3e" text-anchor="middle"><tspan x="1372" dy="0">③ Policy + Act</tspan></text>
+<text x="1372" y="688" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="17.2" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="1372" dy="0">Auth · Validate · Idempotent</tspan></text>
+<rect x="85" y="590" width="285" height="150" rx="22" fill="#f1f8f5" stroke="#2f7d67" stroke-width="3"/>
+<rect x="87" y="589" width="284" height="151" rx="23" fill="none" stroke="#2f7d67" stroke-width="1.2" opacity=".3" transform="rotate(.15 227.5 665)"/>
+<text x="228" y="643" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="25.4" font-weight="720" fill="#2f7d67" text-anchor="middle"><tspan x="228" dy="0">④ Update</tspan></text>
+<text x="228" y="688" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="17.2" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="228" dy="0">Persist state and evidence</tspan></text>
+<path d="M 370 320 C 435 318, 500 382, 565 380" fill="none" stroke="#173a63" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<path d="M 1035 380 C 1100 378, 1165 322, 1230 320" fill="none" stroke="#6d4ba0" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-7651a6)"/>
+<path d="M 1372 405 C 1372 403, 1372 592, 1372 590" fill="none" stroke="#c73e3e" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-c94c4c)"/>
+<path d="M 1230 665 C 1165 663, 1100 502, 1035 500" fill="none" stroke="#c73e3e" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-c94c4c)"/>
+<path d="M 565 500 C 500 498, 435 667, 370 665" fill="none" stroke="#2f7d67" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-3c8d77)"/>
+<path d="M 228 590 C 228 588, 228 407, 228 405" fill="none" stroke="#2f7d67" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-3c8d77)"/>
+<rect x="545" y="650" width="510" height="105" rx="22" fill="#ffffff" stroke="#526a82" stroke-width="2" stroke-dasharray="10 8"/>
+<rect x="547" y="649" width="509" height="106" rx="23" fill="none" stroke="#526a82" stroke-width="1.2" opacity=".3" transform="rotate(.15 800 702.5)"/>
+<text x="800" y="693" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="22.1" font-weight="700" fill="#173a63" text-anchor="middle"><tspan x="800" dy="0">Termination is an explicit action</tspan></text>
+<text x="800" y="730" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="17.2" font-weight="500" fill="#526a82" text-anchor="middle"><tspan x="800" dy="0">Done · Evidence gap · Refuse · Approval wait · Handoff</tspan></text>
+
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="14.8" fill="#526a82" text-anchor="end">Production-Grade Multi-Agent Systems · Chapter 01</text>
+</svg>
