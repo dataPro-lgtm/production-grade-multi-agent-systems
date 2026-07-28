@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" aria-labelledby="title desc" role="img" focusable="false" data-whiteboard-version="3" lang="ja">
+<title id="whiteboard-title">二重認可：プロトコル接続後もリソース境界を検証</title>
+<desc id="whiteboard-desc">『プロダクショングレード・マルチエージェントシステム』第 02 章のアーキテクチャ図。決定論的なホワイトボードのワイヤーフレームで、制御フロー、エビデンス、責任境界を示します。</desc>
+
+<title id="title">CaseOps MCP の二重信頼境界</title>
+  <desc id="desc">API Host はユーザーの身元とタスクを認可し、短期タスクトークンを発行します。MCP Server はトークン、テナント、タスク、スコープ、リソースを検証し、モデルパラメータにはテナントを含めません。</desc>
+  <defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="31" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#173a63" stroke-width="2.2"/>
+    </marker>
+    <style>
+      .label{font-family:'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;fill:#24364b}
+      .title{font-size:38.6px;font-weight:700}.box-title{font-size:25.8px;font-weight:700}.body{font-size:18.4px}.small{font-size:16.6px}
+      .flow{fill:none;stroke:#173a63;stroke-width:4.5;stroke-linecap:round;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">二重認可：プロトコル接続後もリソース境界を検証</text>
+
+  <g filter="url(#rough)">
+    <rect x="55" y="170" width="400" height="560" rx="30" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="520" y="235" width="250" height="170" rx="24" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="520" y="500" width="250" height="170" rx="24" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="5"/>
+    <rect x="845" y="170" width="420" height="560" rx="30" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="1330" y="260" width="220" height="380" rx="28" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+  </g>
+
+  <text x="255" y="225" text-anchor="middle" class="label box-title">CaseOps API / MCP Host</text>
+  <text x="100" y="295" class="label body">① API Key → Principal</text>
+  <text x="100" y="340" class="label body">② tenant_id と case_id を固定</text>
+  <text x="100" y="385" class="label body">③ Tool allowlist と Scope</text>
+  <text x="100" y="430" class="label body">④ リスク、予算、アクションフィンガープリント</text>
+  <text x="100" y="475" class="label body">⑤ 最小限のツールだけを Planner に渡す</text>
+  <text x="255" y="590" text-anchor="middle" class="label box-title" fill="#9d3030">Host の認可境界</text>
+  <text x="255" y="635" text-anchor="middle" class="label small">モデルは提案のみ可能で、身元を主張できない</text>
+
+  <text x="645" y="292" text-anchor="middle" class="label box-title">MCP Client</text>
+  <text x="645" y="337" text-anchor="middle" class="label body">initialize · list · call</text>
+  <text x="645" y="375" text-anchor="middle" class="label small">Streamable HTTP</text>
+
+  <text x="645" y="548" text-anchor="middle" class="label box-title">短期タスクトークン</text>
+  <text x="645" y="590" text-anchor="middle" class="label small">aud · tenant · task · sub</text>
+  <text x="645" y="622" text-anchor="middle" class="label small">scope · iat · nbf · exp · jti</text>
+
+  <text x="1055" y="225" text-anchor="middle" class="label box-title">CaseOps MCP Tool Server</text>
+  <text x="900" y="295" class="label body">① 署名、issuer、audience を検証</text>
+  <text x="900" y="340" class="label body">② トークンから tenant と task を取得</text>
+  <text x="900" y="385" class="label body">③ ツールごとに required scope を確認</text>
+  <text x="900" y="430" class="label body">④ パラメータと業務ルールを再検証</text>
+  <text x="900" y="475" class="label body">⑤ 構造化結果と evidence_ref</text>
+  <text x="1055" y="590" text-anchor="middle" class="label box-title" fill="#9d3030">Server のリソース境界</text>
+  <text x="1055" y="635" text-anchor="middle" class="label small">プロトコル接続 ≠ データ読み取り権限</text>
+
+  <text x="1440" y="330" text-anchor="middle" class="label box-title">PostgreSQL</text>
+  <text x="1440" y="385" text-anchor="middle" class="label body">ケース · ルール</text>
+  <text x="1440" y="425" text-anchor="middle" class="label body">出典資料 · 別名</text>
+  <text x="1440" y="485" text-anchor="middle" class="label small">クエリの必須項目</text>
+  <text x="1440" y="520" text-anchor="middle" class="label small">verified tenant_id</text>
+
+  <path d="M455 320 L520 320" class="flow"/>
+  <path d="M645 405 L645 500" class="flow"/>
+  <path d="M770 585 C815 555 820 360 845 330" class="flow"/>
+  <path d="M1265 400 L1330 400" class="flow"/>
+
+  <rect x="230" y="770" width="1140" height="72" rx="28" fill="#fff3f2" stroke="#c73e3e" stroke-width="4" filter="url(#rough)"/>
+  <text x="800" y="816" text-anchor="middle" class="label box-title" fill="#9d3030">ツールパラメータに tenant_id は含めず、認証情報は Prompt にも下流にも渡さない</text>
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="16.6" fill="#526a82" text-anchor="end">プロダクショングレード・マルチエージェントシステム · 第 02 章</text>
+</svg>

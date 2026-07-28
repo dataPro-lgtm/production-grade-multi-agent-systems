@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" aria-labelledby="title desc" role="img" focusable="false" data-whiteboard-version="3" lang="ja">
+<title id="whiteboard-title">State は Agent のランタイム契約であり、単なるメッセージ一覧ではない</title>
+<desc id="whiteboard-desc">『プロダクショングレード・マルチエージェントシステム』第 02 章のアーキテクチャ図。決定論的なホワイトボードのワイヤーフレームで、制御フロー、エビデンス、責任境界を示します。</desc>
+
+<title id="title">Agent State の 5 層ランタイム契約</title>
+  <desc id="desc">Agent State は、メッセージ、タスク、エビデンス、制御、トレーシングの 5 層で構成されます。完全な状態と、モデルに渡す制限付きコンテキストを分離します。</desc>
+  <defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="23" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#173a63" stroke-width="2.2"/></marker>
+    <style>.label{font-family:'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;fill:#24364b}.title{font-size:38.6px;font-weight:700}.layer{font-size:26.7px;font-weight:700}.body{font-size:20.2px}.small{font-size:17.5px}.flow{fill:none;stroke:#173a63;stroke-width:4.5;stroke-dasharray:11 9;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">State は Agent のランタイム契約であり、単なるメッセージ一覧ではない</text>
+
+  <g filter="url(#rough)">
+    <rect x="120" y="150" width="980" height="108" rx="18" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="120" y="276" width="980" height="108" rx="18" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="120" y="402" width="980" height="108" rx="18" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="120" y="528" width="980" height="108" rx="18" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="120" y="654" width="980" height="108" rx="18" fill="#fff3f2" stroke="#c73e3e" stroke-width="5"/>
+    <rect x="1210" y="220" width="300" height="350" rx="28" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="5"/>
+  </g>
+
+  <text x="165" y="215" class="label layer">Messages</text><text x="430" y="215" class="label body">ユーザー入力 · モデル応答 · Tool Message</text>
+  <text x="165" y="341" class="label layer">Task</text><text x="430" y="341" class="label body">目標 · 計画 · 現在のステップ · タスク状態</text>
+  <text x="165" y="467" class="label layer">Evidence</text><text x="430" y="467" class="label body">事実 · 出典 · 鮮度 · 品質状態</text>
+  <text x="165" y="593" class="label layer">Control</text><text x="430" y="593" class="label body">予算 · 再試行 · リスク · 権限 · 承認</text>
+  <text x="165" y="719" class="label layer">Trace</text><text x="430" y="719" class="label body">thread_id · trace_id · call_id · バージョン</text>
+
+  <text x="1360" y="282" text-anchor="middle" class="label layer">モデルコンテキスト</text>
+  <text x="1360" y="330" text-anchor="middle" class="label body">選択・フィルタリング済み</text>
+  <text x="1360" y="380" text-anchor="middle" class="label small">必要なメッセージ</text>
+  <text x="1360" y="416" text-anchor="middle" class="label small">必要なエビデンス</text>
+  <text x="1360" y="452" text-anchor="middle" class="label small">参照可能な制約</text>
+  <text x="1360" y="510" text-anchor="middle" class="label body" fill="#9d3030">完全な State ではない</text>
+
+  <path d="M1100 204 C1160 205 1170 275 1210 300" class="flow"/>
+  <path d="M1100 456 C1160 450 1170 390 1210 380" class="flow"/>
+  <path d="M1100 582 C1170 575 1170 480 1210 460" class="flow"/>
+
+  <text x="800" y="835" text-anchor="middle" class="label layer" fill="#9d3030">制御データは構造化して保存し、必要な内容だけをモデルコンテキストに含める</text>
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="16.6" fill="#526a82" text-anchor="end">プロダクショングレード・マルチエージェントシステム · 第 02 章</text>
+</svg>

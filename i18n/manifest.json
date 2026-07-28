@@ -1,0 +1,375 @@
+{
+  "version": 1,
+  "source_locale": "zh",
+  "locales": [
+    "en",
+    "ja"
+  ],
+  "page_count": 26,
+  "pages": [
+    {
+      "source": "docs/appendices/glossary.md",
+      "source_sha256": "d38eb429c222d923df78394d3d180bf88e7b77b94e5477cedfdaee6df9e12bb5",
+      "translations": {
+        "en": {
+          "path": "docs/appendices/glossary.en.md",
+          "sha256": "333556ca911146fb38bc07e5c2e75001b575584cd94fa96380b2d6bd927e6df1"
+        },
+        "ja": {
+          "path": "docs/appendices/glossary.ja.md",
+          "sha256": "870f56cba7557ea8d8eae2260df668f77397d8e6c17c34dcb61d47e6bfbc75f4"
+        }
+      }
+    },
+    {
+      "source": "docs/appendices/license-and-citation.md",
+      "source_sha256": "1a09d8c4686aeaf89823262ceba669a3d68fef0ba5b89d29142a74fd383a8245",
+      "translations": {
+        "en": {
+          "path": "docs/appendices/license-and-citation.en.md",
+          "sha256": "293ff274cb013bd8573e81b80ccbd61777aa4dc61412c06f5bd9b5245dbb5e18"
+        },
+        "ja": {
+          "path": "docs/appendices/license-and-citation.ja.md",
+          "sha256": "2f57b7ba57b99c27a8f0c724ad040faf71632300fcd69aa311a1491607477de5"
+        }
+      }
+    },
+    {
+      "source": "docs/chapters/01-what-is-an-ai-agent.md",
+      "source_sha256": "d0d02b933a333af246782fb29fb844f170eadbba151dc592b3fe40af617f7d49",
+      "translations": {
+        "en": {
+          "path": "docs/chapters/01-what-is-an-ai-agent.en.md",
+          "sha256": "1d70c42c7cb4c5f738f6d5b74a379b9a661cbd2a19602516ddf19edecfd754ac"
+        },
+        "ja": {
+          "path": "docs/chapters/01-what-is-an-ai-agent.ja.md",
+          "sha256": "96f25ef3c418b2768103d645482af8dfae9d0c08f1acb0d1090ae3610a168b92"
+        }
+      }
+    },
+    {
+      "source": "docs/chapters/02-tool-calling-state-machine-and-mcp.md",
+      "source_sha256": "6ca3a5d6f49c817c1bb30039af0ed253fa4e7e2a1921373edaa84564f839f231",
+      "translations": {
+        "en": {
+          "path": "docs/chapters/02-tool-calling-state-machine-and-mcp.en.md",
+          "sha256": "64dfe718a8f7ac76889a76b642500b01165e64425eab6a7fdde91732f231a39c"
+        },
+        "ja": {
+          "path": "docs/chapters/02-tool-calling-state-machine-and-mcp.ja.md",
+          "sha256": "370e7ac29ffb0151269d08c7830aa433d48033b4cf1c99f0b249eae527c0033f"
+        }
+      }
+    },
+    {
+      "source": "docs/chapters/03-multi-agent-patterns-collaboration-and-incident-response.md",
+      "source_sha256": "ed43db42e5dce52b05e40070a56cb492eae727feded9a814f39d8809ae8834f9",
+      "translations": {
+        "en": {
+          "path": "docs/chapters/03-multi-agent-patterns-collaboration-and-incident-response.en.md",
+          "sha256": "07bfbede6544d05055403497534f2cd1b5d653d14d8c10171480019b57920108"
+        },
+        "ja": {
+          "path": "docs/chapters/03-multi-agent-patterns-collaboration-and-incident-response.ja.md",
+          "sha256": "47a6a6c137629ea467b0a3748bca48f8fe4b37db4ddc0b7ce4d0b458566d85ec"
+        }
+      }
+    },
+    {
+      "source": "docs/chapters/04-context-engineering-agentic-rag-and-graphrag.md",
+      "source_sha256": "0a56334bcfbc100c06b6f6cc704be775bef869418d0fa75b59c3550eca24f064",
+      "translations": {
+        "en": {
+          "path": "docs/chapters/04-context-engineering-agentic-rag-and-graphrag.en.md",
+          "sha256": "a5e93b5403741b37dbc42be39fd3dc38f671f0823c3c7c379ec39236ca1a9b75"
+        },
+        "ja": {
+          "path": "docs/chapters/04-context-engineering-agentic-rag-and-graphrag.ja.md",
+          "sha256": "c6561c5e3a21ce3435e4a8aa601139f72867122d3d533d1432947cfdfaf6e8dc"
+        }
+      }
+    },
+    {
+      "source": "docs/chapters/05-production-infrastructure-observability-and-recovery.md",
+      "source_sha256": "dbf8b09ce7e60cef33cd5df0703931c838ff3989345f356e15d833d6bbd55140",
+      "translations": {
+        "en": {
+          "path": "docs/chapters/05-production-infrastructure-observability-and-recovery.en.md",
+          "sha256": "bf32784ce300b6a793b302333806d620ed0f08717952e18d783c784d019d5170"
+        },
+        "ja": {
+          "path": "docs/chapters/05-production-infrastructure-observability-and-recovery.ja.md",
+          "sha256": "231cede6104a91f204c61c79bfca8feaf557a635581199ea0a053a2624490e10"
+        }
+      }
+    },
+    {
+      "source": "docs/chapters/06-agent-security-tool-guard-privacy-and-red-teaming.md",
+      "source_sha256": "03a64b1b4b1026fa2422b8001701438a738c339847aa15035f67a4d8f5db6256",
+      "translations": {
+        "en": {
+          "path": "docs/chapters/06-agent-security-tool-guard-privacy-and-red-teaming.en.md",
+          "sha256": "e800faa0a3d203ea87f7d4fcc676a0c2d15a0261aaf9ec54f153c1d19721bc58"
+        },
+        "ja": {
+          "path": "docs/chapters/06-agent-security-tool-guard-privacy-and-red-teaming.ja.md",
+          "sha256": "aa22eff607e1122652db709775cfb7f5cf0a600f642f030ba40a28364bb65042"
+        }
+      }
+    },
+    {
+      "source": "docs/chapters/07-layered-multi-agent-supervisor-a2a-mcp-context-graph.md",
+      "source_sha256": "dfdbb72bb28504fa541d8750dee48414f6acdd8a5aba5c1bbc1948089f468c42",
+      "translations": {
+        "en": {
+          "path": "docs/chapters/07-layered-multi-agent-supervisor-a2a-mcp-context-graph.en.md",
+          "sha256": "f19deb9cd9fb6233a81fd33d215cdebd98b08edef983ddb8d800ea8ecb5c22f6"
+        },
+        "ja": {
+          "path": "docs/chapters/07-layered-multi-agent-supervisor-a2a-mcp-context-graph.ja.md",
+          "sha256": "c0b6af50f474a13353165dba6e9f947d50ed9605c195a4fc40c48010a255ea4e"
+        }
+      }
+    },
+    {
+      "source": "docs/chapters/08-multi-agent-evaluation-golden-dataset-and-continuous-regression.md",
+      "source_sha256": "b2fcb778cfd2820485476c3de5c0923dbbf322ca3f037a9f46e26999d501d6a7",
+      "translations": {
+        "en": {
+          "path": "docs/chapters/08-multi-agent-evaluation-golden-dataset-and-continuous-regression.en.md",
+          "sha256": "7893146410174dd3061fc6b6d47eadbbf4b34f3fbac1caf22cb0fad364088d83"
+        },
+        "ja": {
+          "path": "docs/chapters/08-multi-agent-evaluation-golden-dataset-and-continuous-regression.ja.md",
+          "sha256": "dc40374a24b040b247be9576204db337113bcda08211ff471041ff6630dc700d"
+        }
+      }
+    },
+    {
+      "source": "docs/chapters/09-agentops-incident-diagnosis-resilience-and-continuous-optimization.md",
+      "source_sha256": "fbe7a25fcdd57de9accde57752b8c6bf53ed01a5e7aa7d62a37e7c0de781d409",
+      "translations": {
+        "en": {
+          "path": "docs/chapters/09-agentops-incident-diagnosis-resilience-and-continuous-optimization.en.md",
+          "sha256": "c747113339d4c26bb62f8b01d1624b8dceb5a8bcbf009d6488dcaa69a1f3e932"
+        },
+        "ja": {
+          "path": "docs/chapters/09-agentops-incident-diagnosis-resilience-and-continuous-optimization.ja.md",
+          "sha256": "432f1fc6b9f217fd6037e6a01cc66f876c934cd6fdacf0bd09fc0f65f81eead5"
+        }
+      }
+    },
+    {
+      "source": "docs/chapters/10-capstone-system-acceptance-and-open-source-delivery.md",
+      "source_sha256": "3234daecd2fd4bccb6947b2c361739fec50b99429d4f9811084bd48c4a16522c",
+      "translations": {
+        "en": {
+          "path": "docs/chapters/10-capstone-system-acceptance-and-open-source-delivery.en.md",
+          "sha256": "4b74b1ddf4ee10c29883f526e8998adbce5d7cc6eb4691ffef4e353eb4fcf82c"
+        },
+        "ja": {
+          "path": "docs/chapters/10-capstone-system-acceptance-and-open-source-delivery.ja.md",
+          "sha256": "6b8bf020d8502e792e0e60f589b7f14f039f983afa8721bba5b21a308f61039c"
+        }
+      }
+    },
+    {
+      "source": "docs/guide/book-roadmap.md",
+      "source_sha256": "22abba0ecc3db59f5913f18733747b77aeb85c312fc4da3b3d1ef1e9aa929e05",
+      "translations": {
+        "en": {
+          "path": "docs/guide/book-roadmap.en.md",
+          "sha256": "99d8ba133e159aa4e427d89b85b5683983694afd069102c1bac768eff84832fc"
+        },
+        "ja": {
+          "path": "docs/guide/book-roadmap.ja.md",
+          "sha256": "ea403aacc2a504b94eb661829dde6c0de5b40ecf78cbf57f154ac9de1413beca"
+        }
+      }
+    },
+    {
+      "source": "docs/guide/caseops-project.md",
+      "source_sha256": "15332b376d89760ad126433f090fa29eac5d934d1c85daa47476f76a9dbd2d2f",
+      "translations": {
+        "en": {
+          "path": "docs/guide/caseops-project.en.md",
+          "sha256": "e55e0206169b99862b91dabea2f5184b4fca91a9225639902b57281539de83b5"
+        },
+        "ja": {
+          "path": "docs/guide/caseops-project.ja.md",
+          "sha256": "4cf2bebb4f7a7cfb11674eafe73b802d78915258e3f92eada74a2a24db6b4568"
+        }
+      }
+    },
+    {
+      "source": "docs/guide/reading-path.md",
+      "source_sha256": "0b0eac6ffa81351510773583e3279b2e6438f07c146df510f6ac16d62dff6726",
+      "translations": {
+        "en": {
+          "path": "docs/guide/reading-path.en.md",
+          "sha256": "6bb34fc629ba494b85b735677314c00fbca03f4c6a7deafdfc60c221f26330a2"
+        },
+        "ja": {
+          "path": "docs/guide/reading-path.ja.md",
+          "sha256": "8e07c259b7d6019be65ebba407924c1de0b0d117860e7b864f924d0a6b2510c5"
+        }
+      }
+    },
+    {
+      "source": "docs/index.md",
+      "source_sha256": "07ae2b4966a9dd230a2b68365a3c552ea63c25716d931ccb9859a5b713453c56",
+      "translations": {
+        "en": {
+          "path": "docs/index.en.md",
+          "sha256": "a214a87a34f91cee42278bbd3e0c96cc5973785e22849edd4360df004d9a815d"
+        },
+        "ja": {
+          "path": "docs/index.ja.md",
+          "sha256": "0e3b406e3a2e199a87c86eef5b06f15a10bc29245172492d638e99e96fd72f6f"
+        }
+      }
+    },
+    {
+      "source": "docs/toolkit/agent-definition-card.md",
+      "source_sha256": "c93280e7bf6d7ae0d36ca929545f71c1d067321e30b748c578837cc5c8a687ca",
+      "translations": {
+        "en": {
+          "path": "docs/toolkit/agent-definition-card.en.md",
+          "sha256": "d9dd601afbd790f0516de75fd7f454fdd13623c023e953600b5378f7995c353e"
+        },
+        "ja": {
+          "path": "docs/toolkit/agent-definition-card.ja.md",
+          "sha256": "8807b9697526ec3907b99221c20f7ac4ffa0490b4aed328f229c7197715ec166"
+        }
+      }
+    },
+    {
+      "source": "docs/toolkit/agent-security-review-pack.md",
+      "source_sha256": "77d4b61e4d038e9e4a34427567ee5ed495cfb427e0ae119b47f8fbc3b5166606",
+      "translations": {
+        "en": {
+          "path": "docs/toolkit/agent-security-review-pack.en.md",
+          "sha256": "18ccd1ca2ba58b762bb65a1afe75003df93ec7b6670187520fc34bd3e6ef064f"
+        },
+        "ja": {
+          "path": "docs/toolkit/agent-security-review-pack.ja.md",
+          "sha256": "263c2ece10790e6ef9acb941b21f27b9dfb478794fda2c0a81d97bcb81bfee17"
+        }
+      }
+    },
+    {
+      "source": "docs/toolkit/agentops-operations-readiness-contract.md",
+      "source_sha256": "2dafe59eba613e75f9a5bff9617340dc8c2fb37202c49f4aef9df23e02daf21d",
+      "translations": {
+        "en": {
+          "path": "docs/toolkit/agentops-operations-readiness-contract.en.md",
+          "sha256": "d48b4ef19475487add74f5b1dc11de964dfa8c0c5808983d0155816cdcb4bfcf"
+        },
+        "ja": {
+          "path": "docs/toolkit/agentops-operations-readiness-contract.ja.md",
+          "sha256": "108aa22cdc29bce34d7ebfff06e797abbb243bbe4588eac8a91faddd01ab74aa"
+        }
+      }
+    },
+    {
+      "source": "docs/toolkit/architecture-decision-record.md",
+      "source_sha256": "44613c1d2c231d2a57a8e2c238f1c0d6b4e3a5a5b9f350ea1661c99d3b1d93a9",
+      "translations": {
+        "en": {
+          "path": "docs/toolkit/architecture-decision-record.en.md",
+          "sha256": "ad8b481a94889c36e01e8a3bff4c85c9ca530c6628e6028185db715622974d06"
+        },
+        "ja": {
+          "path": "docs/toolkit/architecture-decision-record.ja.md",
+          "sha256": "23a9b3f2233d80a6664a33f06569135110735db81205b48f8af56af80632deaf"
+        }
+      }
+    },
+    {
+      "source": "docs/toolkit/capstone-system-acceptance-and-open-source-delivery-contract.md",
+      "source_sha256": "0bb79026bd3ab5936eb1196776f275402533819cabc2901f429b018429dd558a",
+      "translations": {
+        "en": {
+          "path": "docs/toolkit/capstone-system-acceptance-and-open-source-delivery-contract.en.md",
+          "sha256": "0bc2db81ce733877f47305dd083ced6a91d95ed268ad47f939ed847b6e8898a1"
+        },
+        "ja": {
+          "path": "docs/toolkit/capstone-system-acceptance-and-open-source-delivery-contract.ja.md",
+          "sha256": "a17a8a7b59a2e7b8896d198844e36a24066bea356f3635db1d4c0d4c0e466df9"
+        }
+      }
+    },
+    {
+      "source": "docs/toolkit/context-engineering-canvas.md",
+      "source_sha256": "5ae410c881a4d65d0b9d6d98500ea859f734c15fa40dbe66a198de9f05ec86f5",
+      "translations": {
+        "en": {
+          "path": "docs/toolkit/context-engineering-canvas.en.md",
+          "sha256": "5afac7e11ac91bcd0e08cf3b8773576c73c6abe830fdcaba5acf76592364e704"
+        },
+        "ja": {
+          "path": "docs/toolkit/context-engineering-canvas.ja.md",
+          "sha256": "667188e6fdb130590ad86f4b2075ebd557e949e6c22aea51d5bf6544bd151a68"
+        }
+      }
+    },
+    {
+      "source": "docs/toolkit/multi-agent-evaluation-and-regression-contract.md",
+      "source_sha256": "3c846084a2a39ff56182cd05edd62800b41436d86ed54c9f7e0eadc1c4aa0938",
+      "translations": {
+        "en": {
+          "path": "docs/toolkit/multi-agent-evaluation-and-regression-contract.en.md",
+          "sha256": "31aa44c6cf6d157a2f862b24139d47c3b44cd3fbcfb5e283f0cd42e42fe5e158"
+        },
+        "ja": {
+          "path": "docs/toolkit/multi-agent-evaluation-and-regression-contract.ja.md",
+          "sha256": "4b68d8c31874799e0eed213cfc999c879d31733423a4e8ada26ed3c21a824ce7"
+        }
+      }
+    },
+    {
+      "source": "docs/toolkit/multi-agent-system-integration-contract.md",
+      "source_sha256": "0dfd8ebd697c8277c0036b651c1dc462f0229b271d0032010b37f2d08be7629a",
+      "translations": {
+        "en": {
+          "path": "docs/toolkit/multi-agent-system-integration-contract.en.md",
+          "sha256": "81eb178369d94e01eed0c93efac7a4170abd65309da46dadea34439537cad27f"
+        },
+        "ja": {
+          "path": "docs/toolkit/multi-agent-system-integration-contract.ja.md",
+          "sha256": "6677196eb1dfef37093560f6117b66cac89b49e086af2d8d914d179766e29247"
+        }
+      }
+    },
+    {
+      "source": "docs/toolkit/pattern-decision-record.md",
+      "source_sha256": "dbe69538abc653758d16da892ebab62bdb67fd2040d132fbaa72fa7211c77c69",
+      "translations": {
+        "en": {
+          "path": "docs/toolkit/pattern-decision-record.en.md",
+          "sha256": "3d957f121773b2535f8bcc078f7f0ea4b8b40b032faf5144c5267c410ba2e5e4"
+        },
+        "ja": {
+          "path": "docs/toolkit/pattern-decision-record.ja.md",
+          "sha256": "e3af8b0e170bee3b5f8c84ffcf56788bbd390058331146c9d2184dffe421befd"
+        }
+      }
+    },
+    {
+      "source": "docs/toolkit/production-readiness-contract.md",
+      "source_sha256": "275e57a16e377eb42728f614e86766b1712fc7e334b4ad32cd52e34c26b215cb",
+      "translations": {
+        "en": {
+          "path": "docs/toolkit/production-readiness-contract.en.md",
+          "sha256": "51e739a2cc1c586c56adbbc94bd0d86cb7ef9fb70811f8104daf0c93ff871f2a"
+        },
+        "ja": {
+          "path": "docs/toolkit/production-readiness-contract.ja.md",
+          "sha256": "1058b617b623d7fc023cf30f54cead92c69ae2a73b4d9b71bc6027bc8cf02113"
+        }
+      }
+    }
+  ]
+}

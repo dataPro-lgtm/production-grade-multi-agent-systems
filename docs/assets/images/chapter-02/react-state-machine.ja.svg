@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" aria-labelledby="title desc" role="img" focusable="false" data-whiteboard-version="3" lang="ja">
+<title id="whiteboard-title">CaseOps：Planner がコントロールプレーンに入った後の明示的状態</title>
+<desc id="whiteboard-desc">『プロダクショングレード・マルチエージェントシステム』第 02 章のアーキテクチャ図。決定論的なホワイトボードのワイヤーフレームで、制御フロー、エビデンス、責任境界を示します。</desc>
+
+<title id="title">CaseOps の制御された Agent の明示的ステートマシン</title>
+  <desc id="desc">計画からツール提案、認可、実行、観察を経て計画へ戻り、完了、人手レビュー、停止、失敗の終端状態へ進みます。読み取り専用ツールは Checkpoint からの復旧に対応します。</desc>
+  <defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="17" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#173a63" stroke-width="2.2"/>
+    </marker>
+    <style>
+      .label{font-family:'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;fill:#24364b}
+      .title{font-size:38.6px;font-weight:700}.box-title{font-size:23px;font-weight:700}.body{font-size:17.5px}.small{font-size:15.6px}
+      .flow{fill:none;stroke:#173a63;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+      .recover{fill:none;stroke:#6d4ba0;stroke-width:4.2;stroke-dasharray:11 8;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">CaseOps：Planner がコントロールプレーンに入った後の明示的状態</text>
+
+  <g filter="url(#rough)">
+    <rect x="45" y="235" width="185" height="135" rx="24" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="285" y="235" width="205" height="135" rx="24" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="545" y="235" width="210" height="135" rx="24" fill="#fff3f2" stroke="#c73e3e" stroke-width="5"/>
+    <rect x="810" y="235" width="210" height="135" rx="24" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="1075" y="235" width="205" height="135" rx="24" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="1335" y="235" width="220" height="135" rx="24" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="5"/>
+
+    <rect x="150" y="590" width="260" height="125" rx="24" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="490" y="590" width="260" height="125" rx="24" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="830" y="590" width="260" height="125" rx="24" fill="#fff3f2" stroke="#c73e3e" stroke-width="5"/>
+    <rect x="1170" y="590" width="260" height="125" rx="24" fill="#ffffff" stroke="#c73e3e" stroke-width="5"/>
+  </g>
+
+  <text x="137" y="288" text-anchor="middle" class="label box-title">created</text>
+  <text x="137" y="328" text-anchor="middle" class="label body">run_id を割り当てる</text>
+  <text x="387" y="288" text-anchor="middle" class="label box-title">planning</text>
+  <text x="387" y="328" text-anchor="middle" class="label body">アクションを提案</text>
+  <text x="650" y="288" text-anchor="middle" class="label box-title">tool_proposed</text>
+  <text x="650" y="328" text-anchor="middle" class="label body">Schema · フィンガープリント</text>
+  <text x="915" y="288" text-anchor="middle" class="label box-title">tool_authorized</text>
+  <text x="915" y="328" text-anchor="middle" class="label body">Scope · リソース · リスク</text>
+  <text x="1177" y="288" text-anchor="middle" class="label box-title">tool_running</text>
+  <text x="1177" y="328" text-anchor="middle" class="label body">timeout · retry</text>
+  <text x="1445" y="288" text-anchor="middle" class="label box-title">observing</text>
+  <text x="1445" y="328" text-anchor="middle" class="label body">結果 · エラー · エビデンス</text>
+
+  <path d="M230 302 L285 302" class="flow"/>
+  <path d="M490 302 L545 302" class="flow"/>
+  <path d="M755 302 L810 302" class="flow"/>
+  <path d="M1020 302 L1075 302" class="flow"/>
+  <path d="M1280 302 L1335 302" class="flow"/>
+  <path d="M1445 370 C1440 465 620 455 387 370" class="flow"/>
+
+  <text x="280" y="642" text-anchor="middle" class="label box-title">completed</text>
+  <text x="280" y="683" text-anchor="middle" class="label body">終端状態の契約を満たす</text>
+  <text x="620" y="642" text-anchor="middle" class="label box-title">needs_human</text>
+  <text x="620" y="683" text-anchor="middle" class="label body">エビデンスまたは認可が不足</text>
+  <text x="960" y="642" text-anchor="middle" class="label box-title">stopped</text>
+  <text x="960" y="683" text-anchor="middle" class="label body">予算超過または反復でサーキットブレーク</text>
+  <text x="1300" y="642" text-anchor="middle" class="label box-title">failed</text>
+  <text x="1300" y="683" text-anchor="middle" class="label body">回復不能なエラー</text>
+
+  <path d="M387 370 C365 475 300 515 280 590" class="flow"/>
+  <path d="M650 370 C650 470 630 520 620 590" class="flow"/>
+  <path d="M915 370 C915 470 940 520 960 590" class="flow"/>
+  <path d="M1177 370 C1190 470 1260 520 1300 590" class="flow"/>
+
+  <path d="M1177 235 C1170 150 560 145 410 235" class="recover"/>
+  <text x="790" y="155" text-anchor="middle" class="label body" fill="#6d4ba0">読み取り専用処理のクラッシュウィンドウ：最新の Checkpoint から再計画</text>
+
+  <path d="M80 795 C390 780 700 800 1010 786 C1240 777 1420 793 1520 783" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="800" y="840" text-anchor="middle" class="label box-title" fill="#9d3030">有効な遷移 · 最大ステップ数 · アクションフィンガープリント · タイムアウト · 再試行をすべてランタイムで強制</text>
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="16.6" fill="#526a82" text-anchor="end">プロダクショングレード・マルチエージェントシステム · 第 02 章</text>
+</svg>

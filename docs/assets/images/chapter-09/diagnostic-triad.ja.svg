@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" focusable="false" data-whiteboard-version="3" lang="ja">
+<title id="whiteboard-title">診断の三点セット：Graph × Trace × Artifact</title>
+<desc id="whiteboard-desc">『プロダクショングレード・マルチエージェントシステム』第09章のアーキテクチャ図。決定論的なホワイトボード・ワイヤーフレームで制御フロー、エビデンス、責任境界を表現。</desc>
+
+<defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern><marker id="arrow-1e3a5f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#173a63"/></marker><marker id="arrow-d59621" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"/></marker><marker id="arrow-3c8d77" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d67"/></marker><marker id="arrow-c94c4c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c73e3e"/></marker><marker id="arrow-7651a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d4ba0"/></marker><filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="7" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .035"/></feComponentTransfer></filter></defs>
+<rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<rect width="1600" height="900" fill="#38516d" filter="url(#paper)" opacity=".16"/>
+
+<text x="70" y="82" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="39.6" font-weight="800" fill="#173a63" text-anchor="start"><tspan x="70" dy="0">診断の三点セット：Graph × Trace × Artifact</tspan></text><text x="72" y="128" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="20.2" font-weight="500" fill="#526a82" text-anchor="start"><tspan x="72" dy="0">同一インシデントの関係、時間、原資料を相互にたどれるようにする。</tspan></text><path d="M 70 160 C 556.6666666666666 158, 1043.3333333333333 162, 1530 160" fill="none" stroke="#d97706" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 10"/>
+<rect x="90" y="255" width="390" height="310" rx="22" fill="#f1f8f5" stroke="#2f7d67" stroke-width="4"/><rect x="92" y="254" width="389" height="311" rx="23" fill="none" stroke="#2f7d67" stroke-width="1.2" opacity=".28" transform="rotate(.18 285 410)"/>
+<text x="285" y="315" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="29.4" font-weight="800" fill="#2f7d67" text-anchor="middle"><tspan x="285" dy="0">Context Graph</tspan></text>
+<text x="285" y="375" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="22.1" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="285" dy="0">なぜ依存するのか？</tspan><tspan x="285" dy="40.8">Claimは誰が裏づけるか？</tspan><tspan x="285" dy="40.8">エラーはどこまで伝播したか？</tspan></text>
+<rect x="605" y="255" width="390" height="310" rx="22" fill="#f3f7fb" stroke="#173a63" stroke-width="4"/><rect x="607" y="254" width="389" height="311" rx="23" fill="none" stroke="#173a63" stroke-width="1.2" opacity=".28" transform="rotate(.18 800 410)"/>
+<text x="800" y="315" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="29.4" font-weight="800" fill="#173a63" text-anchor="middle"><tspan x="800" dy="0">Trace</tspan></text>
+<text x="800" y="375" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="22.1" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="800" dy="0">いつ発生したか？</tspan><tspan x="800" dy="40.8">クリティカルパスはどれほど遅かったか？</tspan><tspan x="800" dy="40.8">どこで再試行またはキャンセルしたか？</tspan></text>
+<rect x="1120" y="255" width="390" height="310" rx="22" fill="#fff8e8" stroke="#d97706" stroke-width="4"/><rect x="1122" y="254" width="389" height="311" rx="23" fill="none" stroke="#d97706" stroke-width="1.2" opacity=".28" transform="rotate(.18 1315 410)"/>
+<text x="1315" y="315" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="29.4" font-weight="800" fill="#d97706" text-anchor="middle"><tspan x="1315" dy="0">Artifact</tspan></text>
+<text x="1315" y="375" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="22.1" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="1315" dy="0">当時何が見えていたか？</tspan><tspan x="1315" dy="40.8">Prompt / Tool Result</tspan><tspan x="1315" dy="40.8">Policy / Evidence</tspan></text>
+<path d="M 285 565 C 381.6666666666667 563, 478.3333333333333 692, 575 690" fill="none" stroke="#2f7d67" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-3c8d77)"/>
+<path d="M 800 565 C 800 563, 800 667, 800 665" fill="none" stroke="#173a63" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<path d="M 1315 565 C 1218.3333333333333 563, 1121.6666666666667 692, 1025 690" fill="none" stroke="#d97706" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-d59621)"/>
+<rect x="510" y="665" width="580" height="120" rx="36" fill="#fff3f2" stroke="#c73e3e" stroke-width="4"/><rect x="512" y="664" width="579" height="121" rx="37" fill="none" stroke="#c73e3e" stroke-width="1.2" opacity=".28" transform="rotate(.18 800 725)"/>
+<text x="800" y="712" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="28.5" font-weight="800" fill="#c73e3e" text-anchor="middle"><tspan x="800" dy="0">Incident Reconstruction</tspan></text>
+<text x="800" y="752" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="21.2" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="800" dy="0">最初の因果エラーを見つけ、最終回答だけを整えない</tspan></text>
+<text x="800" y="845" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="23" font-weight="500" fill="#526a82" text-anchor="middle"><tspan x="800" dy="0">機密の原文は制御されたArtifactへ格納し、TraceとGraphには最小限の属性と参照のみを保存する。</tspan></text>
+
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="16.6" fill="#526a82" text-anchor="end">プロダクショングレード・マルチエージェントシステム · 第09章</text>
+</svg>

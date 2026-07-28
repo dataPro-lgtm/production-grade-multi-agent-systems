@@ -1,12 +1,12 @@
 cff-version: 1.2.0
-message: 如果本书对你的研究、课程或工程实践有帮助，请按以下信息引用。
+message: "如果本书对你的研究、课程或工程实践有帮助，请按以下信息引用。 Please cite this book if it supports your research, teaching, or engineering work."
 title: "生产级多智能体系统：从架构判断到工程落地"
 type: book
 authors:
   - family-names: DataDan
-version: 1.0.0
-date-released: 2026-07-27
+version: 1.1.0
+date-released: 2026-07-28
 license: CC-BY-4.0
-abstract: 一本从架构判断、受控执行与多智能体协作出发，系统讲解可信上下文、生产保障、质量工程、AgentOps 与可验证交付的中文开源技术书。
+abstract: 一本提供简体中文、英文与日文完整版本的开源技术书，从架构判断、受控执行与多智能体协作出发，系统讲解可信上下文、生产保障、质量工程、AgentOps 与可验证交付。
 repository-code: https://github.com/dataPro-lgtm/production-grade-multi-agent-systems
 url: https://datapro-lgtm.github.io/production-grade-multi-agent-systems/

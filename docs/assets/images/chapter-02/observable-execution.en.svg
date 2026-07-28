@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" aria-labelledby="title desc" role="img" focusable="false" data-whiteboard-version="3" lang="en">
+<title id="whiteboard-title">Observability must reconstruct the process, not merely save the answer</title>
+<desc id="whiteboard-desc">Chapter 02 architecture diagrams from Production-Grade Multi-Agent Systems, using deterministic whiteboard wireframes to show control flow, evidence, and responsibility boundaries.</desc>
+
+<title id="title">Observability chain from Thread to Trace, Run, and Evidence</title>
+  <desc id="desc">A Thread contains multiple Traces; each Trace contains model, policy, tool, and validation Runs linked to evidence and the final answer.</desc>
+  <defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="37" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="2.1"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#173a63" stroke-width="2.2"/></marker>
+    <style>.label{font-family:'Chalkboard SE','Comic Sans MS','Arial',sans-serif;fill:#24364b}.title{font-size:34.4px;font-weight:700}.box-title{font-size:22.1px;font-weight:700}.body{font-size:16.4px}.small{font-size:14.8px}.flow{fill:none;stroke:#173a63;stroke-width:4;marker-end:url(#arrow)}.link{fill:none;stroke:#6d4ba0;stroke-width:4;stroke-dasharray:10 8;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<path d="M55 92 C380 66 690 80 980 66 C1210 55 1420 69 1545 58" stroke="#d7d2c8" stroke-width="3" fill="none"/>
+  <text x="80" y="72" class="label title">Observability must reconstruct the process, not merely save the answer</text>
+
+  <g filter="url(#rough)">
+    <rect x="580" y="125" width="440" height="92" rx="20" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="580" y="270" width="440" height="92" rx="20" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="5"/>
+    <rect x="55" y="445" width="255" height="145" rx="22" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="365" y="445" width="255" height="145" rx="22" fill="#fff3f2" stroke="#c73e3e" stroke-width="5"/>
+    <rect x="675" y="445" width="255" height="145" rx="22" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="985" y="445" width="255" height="145" rx="22" fill="#f3f7fb" stroke="#326da8" stroke-width="5"/>
+    <rect x="1295" y="445" width="255" height="145" rx="22" fill="#fff8e8" stroke="#d97706" stroke-width="5"/>
+    <rect x="240" y="690" width="430" height="110" rx="22" fill="#f1f8f5" stroke="#2f7d67" stroke-width="5"/>
+    <rect x="930" y="690" width="430" height="110" rx="22" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="5"/>
+  </g>
+
+  <text x="800" y="165" text-anchor="middle" class="label box-title">Thread: cross-turn task state</text><text x="800" y="198" text-anchor="middle" class="label small">thread_id · User · Conversation lifecycle</text>
+  <text x="800" y="310" text-anchor="middle" class="label box-title">Trace: one user goal</text><text x="800" y="343" text-anchor="middle" class="label small">trace_id · Prompt / Tool / Dataset versions</text>
+
+  <text x="182" y="495" text-anchor="middle" class="label box-title">Model Run</text><text x="182" y="535" text-anchor="middle" class="label body">Tool selection</text><text x="182" y="566" text-anchor="middle" class="label small">Token · Latency</text>
+  <text x="492" y="495" text-anchor="middle" class="label box-title">Policy Run</text><text x="492" y="535" text-anchor="middle" class="label body">Authorization and risk</text><text x="492" y="566" text-anchor="middle" class="label small">Rule version · Reason</text>
+  <text x="802" y="495" text-anchor="middle" class="label box-title">Tool Run</text><text x="802" y="535" text-anchor="middle" class="label body">Parameters and results</text><text x="802" y="566" text-anchor="middle" class="label small">call_id · Latency</text>
+  <text x="1112" y="495" text-anchor="middle" class="label box-title">Model Run</text><text x="1112" y="535" text-anchor="middle" class="label body">Evidence interpretation</text><text x="1112" y="566" text-anchor="middle" class="label small">Decision · Answer</text>
+  <text x="1422" y="495" text-anchor="middle" class="label box-title">Validation Run</text><text x="1422" y="535" text-anchor="middle" class="label body">Evidence and safety</text><text x="1422" y="566" text-anchor="middle" class="label small">Coverage · Score</text>
+
+  <text x="455" y="735" text-anchor="middle" class="label box-title">Evidence</text><text x="455" y="772" text-anchor="middle" class="label body">Source · Freshness · Quality · evidence_id</text>
+  <text x="1145" y="735" text-anchor="middle" class="label box-title">Final answer / Termination reason</text><text x="1145" y="772" text-anchor="middle" class="label body">Cite evidence, or explicitly fail, refuse, or hand off to a human</text>
+
+  <path d="M800 217 L800 270" class="flow"/>
+  <path d="M690 362 C520 405 310 390 182 445" class="flow"/><path d="M750 362 C650 410 565 405 492 445" class="flow"/>
+  <path d="M800 362 L802 445" class="flow"/><path d="M850 362 C950 410 1040 405 1112 445" class="flow"/><path d="M910 362 C1080 405 1300 390 1422 445" class="flow"/>
+  <path d="M802 590 C720 650 580 650 500 690" class="link"/>
+  <path d="M500 690 C680 625 960 625 1080 690" class="link"/>
+  <path d="M1422 590 C1400 640 1300 660 1250 690" class="flow"/>
+
+  <text x="800" y="858" text-anchor="middle" class="label box-title">Redact parameters and results first; stable IDs make models, policies, tools, evidence, and answers mutually traceable</text>
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Chalkboard SE','Comic Sans MS','Arial',sans-serif" font-size="14.8" fill="#526a82" text-anchor="end">Production-Grade Multi-Agent Systems · Chapter 02</text>
+</svg>

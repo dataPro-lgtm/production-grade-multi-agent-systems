@@ -11,7 +11,6 @@ theme:
   name: material
   language: zh
   features:
-    - navigation.instant
     - navigation.tracking
     - navigation.sections
     - navigation.top
@@ -99,10 +98,110 @@ markdown_extensions:
       custom_checkbox: true
 
 plugins:
-  - search:
-      lang:
-        - zh
-        - en
+  - search
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: false
+      build_only_locale: !ENV [BUILD_ONLY_LOCALE]
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: zh
+          name: 简体中文
+          default: true
+          build: true
+        - locale: en
+          name: English
+          build: true
+          site_name: Production-Grade Multi-Agent Systems
+          site_description: From architectural judgment and controlled execution to production operations, evaluation, and verifiable delivery
+          copyright: Copyright © 2026 DataDan · CC BY 4.0
+          theme:
+            font:
+              text: Inter
+              code: JetBrains Mono
+          nav_translations:
+            首页: Home
+            阅读本书: Read the Book
+            阅读建议: Reading Guide
+            全书目录: Contents
+            贯穿项目 CaseOps: CaseOps Reference Project
+            第一部分 · 架构判断与执行控制: Part I · Architectural Judgment and Execution Control
+            第 01 章 Agent 的本质与架构边界: Chapter 01 · The Nature of Agents and Architectural Boundaries
+            第 02 章 工具调用：状态机、控制面与 MCP: Chapter 02 · Tool Calling — State Machines, Control Planes, and MCP
+            第 03 章 多 Agent 协作：架构模式、协议与事件响应: Chapter 03 · Multi-Agent Collaboration — Patterns, Protocols, and Incident Response
+            第二部分 · 可信上下文与生产保障: Part II · Trustworthy Context and Production Assurance
+            第 04 章 上下文工程：Agentic RAG、GraphRAG 与证据链: Chapter 04 · Context Engineering — Agentic RAG, GraphRAG, and Evidence Chains
+            第 05 章 生产底座：部署、可观测性与故障恢复: Chapter 05 · Production Foundations — Deployment, Observability, and Failure Recovery
+            第 06 章 Agent 安全：纵深防御、Tool Guard 与红队验证: Chapter 06 · Agent Security — Defense in Depth, Tool Guard, and Red-Team Validation
+            第三部分 · 系统合龙与持续交付: Part III · System Integration and Continuous Delivery
+            第 07 章 系统合龙：Supervisor、A2A、MCP 与 Context Graph: Chapter 07 · System Integration — Supervisor, A2A, MCP, and the Context Graph
+            第 08 章 质量工程：Golden Dataset、分层评测与持续回归: Chapter 08 · Quality Engineering — Golden Datasets, Layered Evaluation, and Continuous Regression
+            第 09 章 AgentOps：事件诊断、系统韧性与成本治理: Chapter 09 · AgentOps — Incident Diagnosis, System Resilience, and Cost Governance
+            第 10 章 系统交付：验收证据、Release Gate 与开源治理: Chapter 10 · System Delivery — Acceptance Evidence, Release Gates, and Open-Source Governance
+            工程模板: Engineering Templates
+            架构决策: Architecture Decisions
+            Agent 定义卡: Agent Definition Card
+            架构决策记录: Architecture Decision Record
+            多 Agent 模式决策记录: Multi-Agent Pattern Decision Record
+            系统设计: System Design
+            Context Engineering 设计画布: Context Engineering Canvas
+            生产就绪与恢复契约: Production Readiness and Recovery Contract
+            Agent 安全评审与红队契约: Agent Security Review and Red-Team Contract
+            验证与交付: Verification and Delivery
+            系统合龙与验收契约: System Integration and Acceptance Contract
+            评测与持续回归契约: Evaluation and Continuous Regression Contract
+            AgentOps 生产运营契约: AgentOps Production Operations Contract
+            Capstone 验收与开源交付契约: Capstone Acceptance and Open-Source Delivery Contract
+            附录: Appendices
+            术语表: Glossary
+            许可与引用: License and Citation
+        - locale: ja
+          name: 日本語
+          build: true
+          site_name: プロダクショングレード・マルチエージェントシステム
+          site_description: アーキテクチャ判断と制御された実行から、本番運用、評価、検証可能なデリバリーまで
+          copyright: Copyright © 2026 DataDan · CC BY 4.0
+          theme:
+            font:
+              text: Noto Sans JP
+              code: JetBrains Mono
+          nav_translations:
+            首页: ホーム
+            阅读本书: 本書を読む
+            阅读建议: 読み方ガイド
+            全书目录: 全体構成
+            贯穿项目 CaseOps: リファレンスプロジェクト CaseOps
+            第一部分 · 架构判断与执行控制: 第I部 · アーキテクチャ判断と実行制御
+            第 01 章 Agent 的本质与架构边界: 第01章 · Agentの本質とアーキテクチャ境界
+            第 02 章 工具调用：状态机、控制面与 MCP: 第02章 · ツール呼び出し — ステートマシン、コントロールプレーン、MCP
+            第 03 章 多 Agent 协作：架构模式、协议与事件响应: 第03章 · マルチエージェント協調 — パターン、プロトコル、インシデント対応
+            第二部分 · 可信上下文与生产保障: 第II部 · 信頼できるコンテキストと本番運用基盤
+            第 04 章 上下文工程：Agentic RAG、GraphRAG 与证据链: 第04章 · コンテキストエンジニアリング — Agentic RAG、GraphRAG、エビデンスチェーン
+            第 05 章 生产底座：部署、可观测性与故障恢复: 第05章 · 本番基盤 — デプロイ、オブザーバビリティ、障害復旧
+            第 06 章 Agent 安全：纵深防御、Tool Guard 与红队验证: 第06章 · Agentセキュリティ — 多層防御、Tool Guard、レッドチーム検証
+            第三部分 · 系统合龙与持续交付: 第III部 · システム統合と継続的デリバリー
+            第 07 章 系统合龙：Supervisor、A2A、MCP 与 Context Graph: 第07章 · システム統合 — Supervisor、A2A、MCP、Context Graph
+            第 08 章 质量工程：Golden Dataset、分层评测与持续回归: 第08章 · 品質エンジニアリング — Golden Dataset、レイヤー別評価、継続的回帰テスト
+            第 09 章 AgentOps：事件诊断、系统韧性与成本治理: 第09章 · AgentOps — インシデント診断、システムレジリエンス、コストガバナンス
+            第 10 章 系统交付：验收证据、Release Gate 与开源治理: 第10章 · システムデリバリー — 受け入れ検証エビデンス、リリースゲート、オープンソースガバナンス
+            工程模板: エンジニアリングテンプレート
+            架构决策: アーキテクチャ判断
+            Agent 定义卡: Agent定義カード
+            架构决策记录: アーキテクチャ判断記録
+            多 Agent 模式决策记录: マルチエージェントパターン判断記録
+            系统设计: システム設計
+            Context Engineering 设计画布: Context Engineering設計キャンバス
+            生产就绪与恢复契约: 本番準備・復旧契約
+            Agent 安全评审与红队契约: Agentセキュリティレビュー・レッドチーム契約
+            验证与交付: 検証とデリバリー
+            系统合龙与验收契约: システム統合・受け入れ検証契約
+            评测与持续回归契约: 評価・継続的回帰テスト契約
+            AgentOps 生产运营契约: AgentOps本番運用契約
+            Capstone 验收与开源交付契约: Capstone受け入れ検証・オープンソースデリバリー契約
+            附录: 付録
+            术语表: 用語集
+            许可与引用: ライセンスと引用
 
 extra_css:
   - assets/stylesheets/extra.css

@@ -124,6 +124,31 @@
   margin-left: auto;
 }
 
+html[lang="en"] .md-typeset {
+  font-size: 0.88rem;
+  line-height: 1.78;
+}
+
+html[lang="en"] .md-typeset > p {
+  margin: 1em 0;
+}
+
+html[lang="ja"] .md-typeset {
+  line-break: strict;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+html[lang="ja"] .md-typeset h1,
+html[lang="ja"] .md-typeset h2 {
+  letter-spacing: 0;
+}
+
+html[lang="en"] .book-kicker,
+html[lang="ja"] .book-kicker {
+  letter-spacing: 0.07em;
+}
+
 /* Book landing page */
 .book-home {
   padding-bottom: 1.5rem;

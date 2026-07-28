@@ -9,3 +9,4 @@ site/
 tmp/
 output/
 node_modules/
+.playwright-cli/

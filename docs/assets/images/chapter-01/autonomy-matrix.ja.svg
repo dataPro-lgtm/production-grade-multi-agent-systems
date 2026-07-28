@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" focusable="false" data-whiteboard-version="3" lang="ja">
+<title id="whiteboard-title">自律性には2つの軸がある：計画できても実行を許されるとは限らない</title>
+<desc id="whiteboard-desc">『プロダクショングレード・マルチエージェントシステム』第01章のアーキテクチャ図。決定論的なホワイトボードの線画で、制御フロー、エビデンス、責任境界を示します。</desc>
+
+<defs><pattern id="whiteboard-paper-dots" width="17" height="17" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="3" r=".7" fill="#d7dee7" opacity=".34"/>
+  <circle cx="13" cy="11" r=".45" fill="#eadfce" opacity=".3"/>
+</pattern><marker id="arrow-1e3a5f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#173a63"/></marker><marker id="arrow-d59621" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"/></marker><marker id="arrow-3c8d77" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d67"/></marker><marker id="arrow-c94c4c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c73e3e"/></marker><marker id="arrow-7651a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d4ba0"/></marker><marker id="arrow-55708f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526a82"/></marker></defs>
+<rect width="1600" height="900" fill="#fffdf9"/>
+<g id="whiteboard-surface" aria-hidden="true" opacity=".22">
+  <rect width="1600" height="900" fill="url(#whiteboard-paper-dots)"/>
+</g>
+
+<path d="M 18 177 C 420 169, 930 188, 1580 176 M 25 720 C 520 730, 1000 708, 1575 721" stroke="#e7dfce" stroke-width="2" fill="none" opacity=".55"/>
+
+<text x="70" y="75" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="39.6" font-weight="760" fill="#173a63" text-anchor="start"><tspan x="70" dy="0">自律性には2つの軸がある：計画できても実行を許されるとは限らない</tspan></text>
+<path d="M 70 94 C 270 87, 490 101, 720 93" fill="none" stroke="#d97706" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+<text x="72" y="130" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="21.2" font-weight="500" fill="#526a82" text-anchor="start"><tspan x="72" dy="0">計画の自律性は「次を誰が選ぶか」、実行の自律性は「システムが何の変更を許すか」を決めます。</tspan></text>
+<path d="M 240 730 C 643.3333333333334 728, 1046.6666666666667 732, 1450 730" fill="none" stroke="#173a63" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<path d="M 240 730 C 240 728, 240 207, 240 205" fill="none" stroke="#173a63" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow-1e3a5f)"/>
+<text x="1450" y="780" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="23" font-weight="700" fill="#173a63" text-anchor="end"><tspan x="1450" dy="0">計画の自律性：高</tspan></text>
+<text x="245" y="780" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="20.2" font-weight="500" fill="#526a82" text-anchor="start"><tspan x="245" dy="0">計画の自律性：低</tspan></text>
+<text x="172" y="215" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="23" font-weight="700" fill="#173a63" text-anchor="middle"><tspan x="172" dy="0">実行の自律性：高</tspan></text>
+<text x="168" y="710" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="20.2" font-weight="500" fill="#526a82" text-anchor="middle"><tspan x="168" dy="0">実行の自律性：低</tspan></text>
+<path d="M 845 225 C 845 223, 845 732, 845 730" fill="none" stroke="#d9d4c7" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+<path d="M 240 475 C 636.6666666666666 473, 1033.3333333333333 477, 1430 475" fill="none" stroke="#d9d4c7" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+<rect x="295" y="260" width="430" height="150" rx="22" fill="#fff3f2" stroke="#c73e3e" stroke-width="3"/>
+<rect x="297" y="259" width="429" height="151" rx="23" fill="none" stroke="#c73e3e" stroke-width="1.2" opacity=".3" transform="rotate(.15 510 335)"/>
+<text x="510" y="312" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="28.5" font-weight="720" fill="#c73e3e" text-anchor="middle"><tspan x="510" dy="0">固定資金ワークフロー</tspan></text>
+<text x="510" y="357" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="20.2" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="510" dy="0">コード固定経路 · 実際の副作用あり</tspan></text>
+<rect x="965" y="260" width="400" height="150" rx="22" fill="#f7f3fb" stroke="#6d4ba0" stroke-width="3"/>
+<rect x="967" y="259" width="399" height="151" rx="23" fill="none" stroke="#6d4ba0" stroke-width="1.2" opacity=".3" transform="rotate(.15 1165 335)"/>
+<text x="1165" y="312" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="28.5" font-weight="720" fill="#6d4ba0" text-anchor="middle"><tspan x="1165" dy="0">高リスク自律システム</tspan></text>
+<text x="1165" y="357" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="20.2" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="1165" dy="0">少数シナリオ · 厳格な統制と承認</tspan></text>
+<rect x="295" y="545" width="430" height="135" rx="22" fill="#f3f7fb" stroke="#173a63" stroke-width="3"/>
+<rect x="297" y="544" width="429" height="136" rx="23" fill="none" stroke="#173a63" stroke-width="1.2" opacity=".3" transform="rotate(.15 510 612.5)"/>
+<text x="510" y="595" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="28.5" font-weight="720" fill="#173a63" text-anchor="middle"><tspan x="510" dy="0">通常のワークフロー</tspan></text>
+<text x="510" y="638" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="20.2" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="510" dy="0">コード固定経路 · 読み取り専用／副作用なし</tspan></text>
+<rect x="965" y="530" width="400" height="165" rx="22" fill="#f1f8f5" stroke="#2f7d67" stroke-width="4"/>
+<rect x="967" y="529" width="399" height="166" rx="23" fill="none" stroke="#2f7d67" stroke-width="1.2" opacity=".3" transform="rotate(.15 1165 612.5)"/>
+<text x="1165" y="583" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="29.4" font-weight="760" fill="#2f7d67" text-anchor="middle"><tspan x="1165" dy="0">CaseOpsの目標位置</tspan></text>
+<text x="1165" y="626" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="21.2" font-weight="500" fill="#173a63" text-anchor="middle"><tspan x="1165" dy="0">動的調査 · 低い実行権限</tspan></text>
+<rect x="1050" y="655" width="230" height="50" rx="25" fill="#fff8e8" stroke="#d97706" stroke-width="2"/>
+<rect x="1052" y="654" width="229" height="51" rx="26" fill="none" stroke="#d97706" stroke-width="1.2" opacity=".3" transform="rotate(.15 1165 680)"/><text x="1165" y="688" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="20.2" font-weight="700" fill="#d97706" text-anchor="middle"><tspan x="1165" dy="0">下書きは承認必須</tspan></text>
+<text x="800" y="825" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="23.9" font-weight="650" fill="#526a82" text-anchor="middle"><tspan x="800" dy="0">このマトリクスは成熟度ランキングではありません。計画空間を広げても、実行権限まで広げる必要はありません。</tspan></text>
+
+<text id="whiteboard-footer" x="1525" y="862" font-family="'Klee One','Yu Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="16.6" fill="#526a82" text-anchor="end">プロダクショングレード・マルチエージェントシステム · 第01章</text>
+</svg>
